@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité — Basal</title>
+<meta name="description" content="Politique de confidentialité de l'application Basal (suivi nutritionnel, poids, métabolisme et activité).">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --ink: #1c1c1e;
+    --ink-soft: #55555a;
+    --line: #e2e2e6;
+    --accent: #c2540a;
+    --card: #f7f6f4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15130f;
+      --ink: #f2efe9;
+      --ink-soft: #b9b3a8;
+      --line: #34302a;
+      --accent: #f97316;
+      --card: #1e1b16;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  h1 {
+    font-size: 28px;
+    margin: 0 0 4px;
+  }
+  .updated {
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin: 0 0 32px;
+  }
+  h2 {
+    font-size: 19px;
+    margin: 40px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  p, li { font-size: 15.5px; }
+  ul, ol { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--ink); }
+  a { color: var(--accent); }
+  .note {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .contact {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-top: 8px;
+  }
+  code {
+    background: var(--card);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 0.92em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 56px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Politique de confidentialité — Basal</h1>
+  <p class="updated">Dernière mise à jour : 20 juillet 2026</p>
+
+  <p>Cette politique décrit précisément ce que fait l'application <strong>Basal</strong> aujourd'hui, sans anticiper de fonctionnalités non encore disponibles.</p>
+
+  <h2>1. Résumé</h2>
+  <ul>
+    <li><strong>Tes données personnelles</strong> (profil, poids, repas, activité, objectifs — voir section 2) restent <strong>entièrement sur ton appareil</strong>. Il n'existe <strong>aucun compte utilisateur</strong>, aucune inscription, aucun mot de passe, et <strong>aucune synchronisation cloud</strong> de ces données à ce jour : elles ne quittent ton appareil que si toi-même choisis de les exporter ou de les partager (section 7).</li>
+    <li>Aucun outil de suivi publicitaire, aucune publicité, et aucune analyse du comportement ou de l'usage que tu fais de l'application n'est intégré.</li>
+    <li>Un outil de diagnostic technique (rapports de crash anonymes, voir section 5) est utilisé pour identifier et corriger les bugs. Il ne reçoit <strong>jamais</strong> tes données personnelles (poids, repas, objectifs...) — uniquement des informations techniques anonymes en cas d'erreur logicielle.</li>
+  </ul>
+
+  <h2>2. Données que tu enregistres dans l'application</h2>
+  <p>Lorsque tu utilises Basal, tu peux enregistrer :</p>
+  <ul>
+    <li>ton profil (taille, âge, sexe, niveau d'activité, objectif, poids cible) ;</li>
+    <li>ton poids et son historique ;</li>
+    <li>les repas et aliments que tu consignes (nom, quantité, macronutriments) ;</li>
+    <li>ton nombre de pas quotidien (saisi manuellement, ou synchronisé automatiquement depuis Android Health Connect si tu actives cette option — voir section 8) ;</li>
+    <li>tes séances de sport (catégorie, intensité, durée — les calories brûlées sont calculées automatiquement par l'application, jamais saisies manuellement) ;</li>
+    <li>tes objectifs caloriques et nutritionnels, et la stratégie nutritionnelle choisie ;</li>
+    <li>tes préférences de rappels/notifications et de thème (clair/sombre) ;</li>
+    <li>ta progression et tes succès débloqués, calculés à partir des données ci-dessus.</li>
+  </ul>
+  <p>Ces données sont considérées comme des <strong>données de santé et de bien-être</strong> au sens large (poids, alimentation, activité physique). Elles sont traitées avec la même rigueur que toute donnée sensible : elles restent sur ton appareil et ne sont partagées avec personne par l'application elle-même.</p>
+  <p>L'application ne demande <strong>ni compte, ni adresse e-mail, ni identifiant, ni numéro de téléphone</strong>. Aucune de ces données n'est associée à ton identité civile — elles ne servent qu'à faire fonctionner les calculs et graphiques affichés dans l'application.</p>
+
+  <h2>3. Où sont stockées ces données</h2>
+  <p>Toutes tes données décrites en section 2 (profil, poids, repas, activité, objectifs...) sont stockées <strong>localement sur ton appareil</strong>, via le stockage natif de l'application (AsyncStorage). Aucune de ces données n'est envoyée à un serveur appartenant à l'éditeur de l'application : il n'existe simplement pas de serveur de ce type aujourd'hui.</p>
+  <p>Seule exception, décrite en détail en section 5 : en cas d'erreur technique imprévue (bug, plantage), un rapport <strong>anonyme et purement technique</strong> — jamais tes données personnelles — peut être transmis à un service tiers de diagnostic (Sentry) pour permettre de corriger le problème.</p>
+  <p>Concrètement :</p>
+  <ul>
+    <li>Désinstaller l'application supprime définitivement toutes tes données locales.</li>
+    <li>Changer d'appareil sans passer par l'export manuel (voir section 7) ne transfère aucune donnée : chaque appareil a son propre stockage indépendant.</li>
+    <li>L'éditeur de l'application n'a techniquement pas accès à tes données : il n'existe aucun canal par lequel elles lui seraient transmises.</li>
+  </ul>
+
+  <h2>4. Partage des données avec des tiers</h2>
+  <p><strong>L'éditeur de l'application ne vend, ne loue et ne partage aucune de tes données avec un tiers</strong>, à des fins publicitaires, commerciales ou autres. Aucun outil d'analyse d'audience (analytics comportemental), de publicité ni de suivi publicitaire (tracking) tiers n'est intégré.</p>
+  <p>L'application effectue un type d'appel réseau déclenché par toi-même — la <strong>recherche d'aliments et le scan de code-barres</strong> : lorsque tu tapes une recherche, le texte saisi est envoyé à la base de données publique et collaborative <strong>Open Food Facts</strong> ; lorsque tu scannes un code-barres, seul le numéro du code-barres lui est envoyé pour identifier le produit.</p>
+  <p>Aucune autre information (ton profil, ton poids, tes repas déjà enregistrés) n'est transmise à cette occasion. Ces requêtes sont soumises à la politique de confidentialité d'Open Food Facts, un projet indépendant de l'éditeur de cette application.</p>
+  <p>Un second type d'appel réseau existe, non déclenché par une action volontaire mais par une erreur technique imprévue : voir section 5 (diagnostic technique / Sentry).</p>
+
+  <h2>5. Diagnostic technique (rapports de crash)</h2>
+  <p>L'application utilise <strong>Sentry</strong>, un service tiers de diagnostic technique, pour être informée automatiquement lorsqu'un bug ou un plantage se produit et pouvoir le corriger. C'est un outil de <strong>diagnostic</strong>, pas un outil d'analyse d'audience ou de suivi publicitaire — il ne s'active qu'au moment d'une erreur logicielle.</p>
+  <p><strong>Ce qui est transmis à Sentry en cas d'erreur :</strong></p>
+  <ul>
+    <li>des informations techniques sur l'erreur elle-même (message d'erreur, trace de la pile d'appel, écran ou fonctionnalité concernée — ex. « recherche d'aliment », « export », jamais le contenu que tu as saisi) ;</li>
+    <li>des informations techniques standards sur l'appareil (version de l'application, système d'exploitation, modèle d'appareil) — le même type d'information que celle affichée dans les rapports de plantage natifs d'iOS/Android ;</li>
+    <li>un identifiant <strong>anonyme généré aléatoirement</strong> à l'installation de l'application, qui ne peut être relié ni à ton identité, ni à une adresse e-mail, ni à un compte (il n'y en a pas) — il sert uniquement à relier plusieurs rapports d'un même appareil entre eux, pour mesurer si un correctif résout bien le problème.</li>
+  </ul>
+  <p><strong>Ce qui n'est jamais transmis à Sentry :</strong> ton profil, ton poids, tes repas, tes objectifs, tes séances d'activité, ou toute autre donnée décrite en section 2 — ni ton adresse IP (la collecte de données personnelles par défaut de l'outil est explicitement désactivée côté configuration). Aucune photo ni donnée de localisation n'est collectée.</p>
+  <p><strong>Où et quand :</strong></p>
+  <ul>
+    <li>Cet outil est <strong>désactivé pendant le développement</strong> de l'application ; il n'est actif que dans les versions distribuées (bêta et version publiée du store).</li>
+    <li>Les données sont hébergées par Sentry sur des serveurs situés dans l'<strong>Union européenne</strong> (Allemagne).</li>
+    <li>Sentry agit comme <strong>sous-traitant technique</strong> de l'éditeur au sens du RGPD, pour cette seule finalité de diagnostic. Sa propre politique de confidentialité s'applique à l'hébergement de ces rapports techniques : voir <a href="https://sentry.io/privacy/">sentry.io/privacy</a>.</li>
+  </ul>
+
+  <h2>6. Notifications</h2>
+  <p>L'application peut t'envoyer des rappels locaux (pesée, repas non enregistré, résumé quotidien) si tu actives cette fonctionnalité. Ces notifications sont planifiées <strong>entièrement sur ton appareil</strong> : aucun serveur externe n'est impliqué, et aucune donnée n'est transmise pour générer ces rappels.</p>
+
+  <h2>7. Export de tes données</h2>
+  <p>Tu peux à tout moment exporter l'ensemble de tes données (profil, poids, repas, pas, séances, métabolisme) au format JSON ou CSV, depuis Réglages → Export. Ce fichier est généré sur ton appareil et :</p>
+  <ul>
+    <li>soit téléchargé directement (version web) ;</li>
+    <li>soit partagé via le système natif de partage de ton appareil (mobile), qui te laisse choisir où l'envoyer (e-mail, stockage cloud personnel, etc.).</li>
+  </ul>
+  <p>L'éditeur de l'application n'a accès à aucun de ces exports : le choix de la destination t'appartient entièrement.</p>
+
+  <h2>8. Autorisations demandées par l'application</h2>
+  <p>L'application demande jusqu'à trois autorisations sur ton appareil, chacune liée à une fonctionnalité précise, <strong>jamais activée par défaut sans ton accord</strong>, et désactivable à tout moment dans les réglages de ton téléphone :</p>
+  <ul>
+    <li><strong>Caméra</strong> : utilisée uniquement pour scanner le code-barres d'un produit alimentaire afin de préremplir ses informations nutritionnelles. Aucune photo ni vidéo n'est prise, enregistrée ou transmise — la caméra sert uniquement à lire le code-barres en direct, pendant que l'écran de scan est ouvert. L'application ne demande pas l'accès au microphone.</li>
+    <li><strong>Notifications</strong> : utilisées uniquement pour les rappels locaux que tu configures toi-même (pesée, repas, récapitulatif de journée). Ces notifications sont générées et planifiées entièrement sur ton appareil ; elles ne transitent par aucun service d'envoi de notifications push distant.</li>
+    <li><strong>Données de santé Android (Health Connect — pas quotidiens)</strong>, si ton appareil est sous Android : uniquement si tu actives toi-même la synchronisation depuis Réglages → Santé, l'application lit ton nombre de pas quotidien déjà enregistré par Health Connect, en <strong>lecture seule</strong> — elle n'y écrit jamais de donnée et ne lit aucune autre catégorie (fréquence cardiaque, sommeil, etc.). Cette autorisation reste désactivée par défaut ; sur iOS, cette fonctionnalité n'existe pas encore (voir section 12).</li>
+  </ul>
+  <p>Tu peux refuser ou révoquer ces autorisations à tout moment ; l'application reste utilisable, seules les fonctionnalités correspondantes (scan de code-barres, rappels, synchronisation des pas) seront alors indisponibles — la saisie manuelle des pas reste toujours possible.</p>
+
+  <h2>9. Suppression de tes données</h2>
+  <p>Tu peux supprimer tes données à tout moment :</p>
+  <ul>
+    <li>individuellement, en supprimant une pesée, un repas ou une séance ;</li>
+    <li>entièrement, en effaçant les données de l'application depuis les réglages système de ton appareil, ou en désinstallant l'application (toutes les données locales sont alors supprimées par le système d'exploitation).</li>
+  </ul>
+  <p>Comme aucune copie de tes données n'existe en dehors de ton appareil, il n'y a aucune démarche supplémentaire à effectuer auprès de l'éditeur pour en demander la suppression.</p>
+
+  <h2>10. Confidentialité des mineurs</h2>
+  <p>L'application ne s'adresse pas spécifiquement aux enfants et ne collecte, comme décrit ci-dessus, aucune donnée transmise à un tiers ou à l'éditeur.</p>
+
+  <h2>11. Tes droits</h2>
+  <p>Puisque l'éditeur de l'application ne collecte, ne reçoit ni ne stocke aucune de tes données <strong>personnelles</strong> sur un serveur, les droits d'accès, de rectification et de suppression prévus par les réglementations applicables (comme le RGPD) s'exercent directement par toi-même, sur ton appareil : tu es la seule personne à détenir tes données (voir sections 7 et 9 ci-dessus).</p>
+  <p>Seule exception, limitée aux rapports techniques anonymes décrits en section 5 : comme ils ne sont rattachés à aucune identité (pas de compte, pas d'e-mail, pas de nom), ils ne peuvent pas être reliés à toi spécifiquement pour exercer un droit d'accès ou de suppression individuel — ils sont conservés par Sentry selon sa propre politique de rétention, puis supprimés automatiquement.</p>
+
+  <h2>12. Évolutions futures</h2>
+  <p>Si une synchronisation cloud, un compte utilisateur, une synchronisation santé complémentaire (Apple Health, Garmin, Fitbit) ou tout autre traitement impliquant un transfert de données hors de ton appareil venait à être proposé, cette politique de confidentialité serait mise à jour au préalable pour décrire précisément ce nouveau traitement, et cette fonctionnalité te serait présentée comme optionnelle.</p>
+
+  <h2>13. Contact</h2>
+  <div class="contact">
+    <p style="margin:0">Pour toute question relative à cette politique de confidentialité, tu peux contacter l'éditeur de l'application à l'adresse <strong>basal.trackingapp@gmail.com</strong>, ou via la fiche de l'application sur le store où tu l'as téléchargée.</p>
+  </div>
+
+  <footer>
+    Basal — application de suivi nutritionnel, poids, métabolisme et activité.
+  </footer>
+
+</div>
+</body>
+</html>
