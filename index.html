@@ -98,13 +98,14 @@
 <div class="page">
 
   <h1>Politique de confidentialité — Basal</h1>
-  <p class="updated">Dernière mise à jour : 20 juillet 2026</p>
+  <p class="updated">Dernière mise à jour : 29 juillet 2026</p>
 
   <p>Cette politique décrit précisément ce que fait l'application <strong>Basal</strong> aujourd'hui, sans anticiper de fonctionnalités non encore disponibles.</p>
 
   <h2>1. Résumé</h2>
   <ul>
-    <li><strong>Tes données personnelles</strong> (profil, poids, repas, activité, objectifs — voir section 2) restent <strong>entièrement sur ton appareil</strong>. <strong>Aucun compte n'est requis pour utiliser l'application</strong> : un compte optionnel existe (voir section 3) si tu veux sauvegarder ta progression ou activer Premium, mais il n'implique ni mot de passe ni serveur — il reste, comme le reste de tes données, <strong>entièrement local</strong> à ce jour. Il n'y a <strong>aucune synchronisation cloud</strong> de tes données : elles ne quittent ton appareil que si toi-même choisis de les exporter ou de les partager (section 8).</li>
+    <li><strong>Aucun compte n'est requis pour utiliser l'application.</strong> Sans compte, tes données personnelles (profil, poids, repas, activité, objectifs — voir section 2) restent <strong>entièrement sur ton appareil</strong> et ne sont transmises à personne : elles ne le quittent que si toi-même choisis de les exporter (section 8).</li>
+    <li><strong>Si — et seulement si — tu crées un compte</strong> (voir section 3), tes données sont sauvegardées sur un serveur situé en <strong>Irlande, dans l'Union européenne</strong>, afin de te permettre de les retrouver sur un autre appareil. Tu peux supprimer ce compte à tout moment, ce qui efface également ces données du serveur (section 10). Certaines informations restent malgré tout propres à chaque appareil et ne sont <strong>jamais</strong> envoyées — la liste figure en section 4.</li>
     <li>Aucun outil de suivi publicitaire, aucune publicité, et aucune analyse du comportement ou de l'usage que tu fais de l'application n'est intégré.</li>
     <li>Un outil de diagnostic technique (rapports de crash anonymes, voir section 6) est utilisé pour identifier et corriger les bugs. Il ne reçoit <strong>jamais</strong> tes données personnelles (poids, repas, objectifs...) — uniquement des informations techniques anonymes en cas d'erreur logicielle.</li>
   </ul>
@@ -125,30 +126,36 @@
   <p>Un compte reste entièrement <strong>optionnel</strong> (voir section 3) : si tu n'en crées pas, l'application ne demande ni adresse e-mail, ni identifiant, ni numéro de téléphone, ni mot de passe. Même si tu crées un compte, aucune de ces données n'est associée à ton identité civile — elles ne servent qu'à faire fonctionner les calculs et graphiques affichés dans l'application.</p>
 
   <h2>3. Compte (optionnel)</h2>
-  <p>Tu peux, si tu le souhaites, créer un compte depuis Réglages → Compte — jamais imposé au lancement de l'application, jamais requis pour l'utiliser pleinement. Un compte sert uniquement à te repérer plus tard (sauvegarde, changement d'appareil, gestion d'un abonnement Premium) ; il ne synchronise <strong>rien vers un serveur</strong> à ce jour, car aucun serveur de ce type n'existe encore (voir section 4).</p>
-  <p>Créer un compte enregistre uniquement, <strong>toujours sur ton appareil</strong> :</p>
+  <p>Tu peux, si tu le souhaites, créer un compte depuis Réglages → Compte — jamais imposé au lancement de l'application, jamais requis pour l'utiliser pleinement. Un compte sert à sauvegarder tes données et à les retrouver sur un autre appareil, ainsi qu'à faire suivre un abonnement Premium d'une plateforme à l'autre.</p>
+  <p>Créer un compte enregistre :</p>
   <ul>
-    <li>un identifiant technique interne (le même que celui déjà utilisé pour tes données locales — créer un compte ne duplique jamais tes données, il les rattache) ;</li>
-    <li>une adresse e-mail et un nom affiché, <strong>tous deux facultatifs</strong> — ni vérifiés, ni utilisés pour t'authentifier ailleurs, ni transmis à qui que ce soit ;</li>
-    <li>la date de création du compte.</li>
+    <li>ton <strong>adresse e-mail</strong>, désormais obligatoire : c'est elle qui identifie ton compte et permet de te reconnecter ;</li>
+    <li>un <strong>mot de passe</strong>, que l'application ne conserve jamais telle quelle. Il est transmis à notre prestataire d'authentification, qui n'en garde qu'une empreinte chiffrée ; ni l'éditeur ni l'application ne peuvent le lire ;</li>
+    <li>un <strong>nom affiché</strong>, facultatif ;</li>
+    <li>un identifiant technique et la date de création du compte.</li>
   </ul>
-  <p>Tu peux te déconnecter ou supprimer ce compte à tout moment depuis le même écran. Supprimer le compte ne supprime <strong>pas</strong> tes données locales (poids, repas, recettes, objectifs...) : celles-ci restent sur ton appareil, comme décrit en section 2.</p>
+  <p>Ton adresse doit être confirmée par un lien envoyé par e-mail avant que le compte ne devienne utilisable. Tu peux te déconnecter, réinitialiser ton mot de passe, ou supprimer définitivement ton compte à tout moment depuis le même écran.</p>
+  <p>Supprimer le compte efface tes données <strong>du serveur</strong>, mais <strong>pas</strong> de ton appareil : poids, repas, recettes et objectifs y restent, et l'application redevient simplement locale, comme avant la création du compte.</p>
 
   <h2>4. Où sont stockées ces données</h2>
-  <p>Toutes tes données décrites en section 2 (profil, poids, repas, activité, objectifs...), ainsi que les informations de compte décrites en section 3, sont stockées <strong>localement sur ton appareil</strong>, via le stockage natif de l'application (AsyncStorage). Aucune de ces données n'est envoyée à un serveur appartenant à l'éditeur de l'application : il n'existe simplement pas de serveur de ce type aujourd'hui.</p>
-  <p>Seule exception, décrite en détail en section 6 : en cas d'erreur technique imprévue (bug, plantage), un rapport <strong>anonyme et purement technique</strong> — jamais tes données personnelles — peut être transmis à un service tiers de diagnostic (Sentry) pour permettre de corriger le problème.</p>
-  <p>Concrètement :</p>
+  <p><strong>Sans compte</strong>, toutes tes données décrites en section 2 sont stockées uniquement sur ton appareil, via le stockage natif de l'application. Aucune n'est envoyée à un serveur : désinstaller l'application les supprime définitivement, et changer d'appareil sans passer par l'export manuel (section 8) n'en transfère aucune.</p>
+  <p><strong>Avec un compte</strong>, ces mêmes données sont en plus copiées sur un serveur hébergé par <strong>Supabase</strong>, dans la région <strong>Irlande (Union européenne)</strong>. Elles y sont associées à ton compte et protégées par un cloisonnement qui empêche techniquement un autre utilisateur d'y accéder. Cette copie sert à te les restituer sur un autre appareil.</p>
+  <p>Certaines informations restent <strong>propres à chaque appareil et ne sont jamais envoyées</strong>, parce qu'elles n'auraient aucun sens ailleurs ou nuiraient à un autre appareil :</p>
   <ul>
-    <li>Désinstaller l'application supprime définitivement toutes tes données locales, compte compris.</li>
-    <li>Changer d'appareil sans passer par l'export manuel (voir section 8) ne transfère aucune donnée : chaque appareil a son propre stockage indépendant, y compris pour un compte créé (un compte ne synchronise rien entre appareils à ce jour).</li>
-    <li>L'éditeur de l'application n'a techniquement pas accès à tes données : il n'existe aucun canal par lequel elles lui seraient transmises.</li>
+    <li>les identifiants de notifications attribués par ton téléphone ;</li>
+    <li>l'état de la synchronisation avec Santé / Health Connect, propre à l'appareil ;</li>
+    <li>ton statut d'abonnement mis en cache, qui provient toujours de l'App Store ou du Play Store, jamais de nous ;</li>
+    <li>l'identifiant technique de l'installation et l'identifiant anonyme de diagnostic ;</li>
+    <li>la séance de musculation éventuellement en cours sur ce téléphone.</li>
   </ul>
+  <p>Enfin, en cas d'erreur technique imprévue (bug, plantage), un rapport <strong>anonyme et purement technique</strong> — jamais tes données personnelles — peut être transmis à un service tiers de diagnostic (voir section 6).</p>
 
   <h2>5. Partage des données avec des tiers</h2>
   <p><strong>L'éditeur de l'application ne vend, ne loue et ne partage aucune de tes données avec un tiers</strong>, à des fins publicitaires, commerciales ou autres. Aucun outil d'analyse d'audience (analytics comportemental), de publicité ni de suivi publicitaire (tracking) tiers n'est intégré.</p>
   <p>L'application effectue un type d'appel réseau déclenché par toi-même — la <strong>recherche d'aliments et le scan de code-barres</strong> : lorsque tu tapes une recherche, le texte saisi est envoyé à la base de données publique et collaborative <strong>Open Food Facts</strong> ; lorsque tu scannes un code-barres, seul le numéro du code-barres lui est envoyé pour identifier le produit.</p>
   <p>Aucune autre information (ton profil, ton poids, tes repas déjà enregistrés) n'est transmise à cette occasion. Ces requêtes sont soumises à la politique de confidentialité d'Open Food Facts, un projet indépendant de l'éditeur de cette application.</p>
   <p>Un second type d'appel réseau existe, non déclenché par une action volontaire mais par une erreur technique imprévue : voir section 6 (diagnostic technique / Sentry).</p>
+  <p>Enfin, <strong>si tu as créé un compte</strong>, l'application communique avec <strong>Supabase</strong>, notre prestataire d'hébergement et d'authentification, pour y sauvegarder tes données et vérifier ton identité à la connexion. Supabase agit uniquement pour notre compte et selon nos instructions ; il n'exploite pas tes données pour son propre usage. Les serveurs utilisés se situent en Irlande, dans l'Union européenne. Sans compte, aucune communication de ce type n'a lieu.</p>
 
   <h2>6. Diagnostic technique (rapports de crash)</h2>
   <p>L'application utilise <strong>Sentry</strong>, un service tiers de diagnostic technique, pour être informée automatiquement lorsqu'un bug ou un plantage se produit et pouvoir le corriger. C'est un outil de <strong>diagnostic</strong>, pas un outil d'analyse d'audience ou de suivi publicitaire — il ne s'active qu'au moment d'une erreur logicielle.</p>
@@ -193,17 +200,26 @@
     <li>ton compte (voir section 3), depuis Réglages → Compte, sans supprimer tes données locales ;</li>
     <li>entièrement, en effaçant les données de l'application depuis les réglages système de ton appareil, ou en désinstallant l'application (toutes les données locales sont alors supprimées par le système d'exploitation).</li>
   </ul>
-  <p>Comme aucune copie de tes données n'existe en dehors de ton appareil, il n'y a aucune démarche supplémentaire à effectuer auprès de l'éditeur pour en demander la suppression.</p>
+  <p><strong>Sans compte</strong>, aucune copie de tes données n'existe en dehors de ton appareil : il n'y a donc aucune démarche supplémentaire à effectuer auprès de l'éditeur.</p>
+  <p><strong>Avec un compte</strong>, supprimer ton compte depuis Réglages → Compte efface également, et immédiatement, toutes les données associées <strong>sur le serveur</strong>. Cette suppression est définitive et ne nécessite aucune demande par e-mail : elle est accessible directement dans l'application, comme l'exigent l'App Store et le Play Store. Tes données locales, elles, restent sur ton appareil tant que tu ne les effaces pas toi-même.</p>
 
   <h2>11. Confidentialité des mineurs</h2>
-  <p>L'application ne s'adresse pas spécifiquement aux enfants et ne collecte, comme décrit ci-dessus, aucune donnée transmise à un tiers ou à l'éditeur.</p>
+  <p>L'application ne s'adresse pas spécifiquement aux enfants. Sans compte, aucune donnée n'est transmise à un tiers ni à l'éditeur ; avec un compte, les données décrites en section 4 sont hébergées en Union européenne et supprimables à tout moment.</p>
 
   <h2>12. Tes droits</h2>
-  <p>Puisque l'éditeur de l'application ne collecte, ne reçoit ni ne stocke aucune de tes données <strong>personnelles</strong> sur un serveur — y compris les informations de ton compte éventuel (section 3), qui restent locales — les droits d'accès, de rectification et de suppression prévus par les réglementations applicables (comme le RGPD) s'exercent directement par toi-même, sur ton appareil : tu es la seule personne à détenir tes données (voir sections 8 et 10 ci-dessus).</p>
+  <p><strong>Sans compte</strong>, l'éditeur ne reçoit ni ne stocke aucune de tes données personnelles : les droits d'accès, de rectification et de suppression prévus par le RGPD s'exercent directement par toi-même, sur ton appareil — tu es la seule personne à les détenir (voir sections 8 et 10).</p>
+  <p><strong>Avec un compte</strong>, une copie de tes données est hébergée en Irlande, dans l'Union européenne. Tes droits s'exercent alors ainsi :</p>
+  <ul>
+    <li><strong>accès et portabilité</strong> : la fonction d'export (section 8) produit à tout moment l'intégralité de tes données dans un format ouvert et lisible ;</li>
+    <li><strong>rectification</strong> : toute donnée se corrige directement dans l'application, la correction remplaçant la version enregistrée sur le serveur ;</li>
+    <li><strong>suppression</strong> : supprimer ton compte depuis Réglages → Compte efface immédiatement et définitivement les données du serveur (section 10), sans aucune démarche à effectuer auprès de l'éditeur ;</li>
+    <li><strong>opposition</strong> : tu peux à tout moment cesser d'utiliser le compte et revenir au mode local, qui reste pleinement fonctionnel.</li>
+  </ul>
+  <p>Pour toute question ou réclamation, l'adresse de contact figure en section 14. Tu disposes également du droit d'introduire une réclamation auprès de la CNIL.</p>
   <p>Seule exception, limitée aux rapports techniques anonymes décrits en section 6 : comme ils ne sont rattachés à aucune identité (même si tu as créé un compte, cet identifiant anonyme n'y est jamais relié), ils ne peuvent pas être reliés à toi spécifiquement pour exercer un droit d'accès ou de suppression individuel — ils sont conservés par Sentry selon sa propre politique de rétention, puis supprimés automatiquement.</p>
 
   <h2>13. Évolutions futures</h2>
-  <p>Si une synchronisation cloud réelle de ton compte, une synchronisation santé complémentaire (Apple Health, Garmin, Fitbit) ou tout autre traitement impliquant un transfert de données hors de ton appareil venait à être proposé, cette politique de confidentialité serait mise à jour au préalable pour décrire précisément ce nouveau traitement, et cette fonctionnalité te serait présentée comme optionnelle — exactement comme le compte décrit en section 3 l'est déjà aujourd'hui.</p>
+  <p>Si une synchronisation santé complémentaire (Apple Health, Garmin, Fitbit) ou tout autre traitement impliquant un nouveau transfert de données venait à être proposé, cette politique serait mise à jour au préalable pour le décrire précisément, et la fonctionnalité te serait présentée comme optionnelle — exactement comme le compte décrit en section 3 l'est déjà.</p>
 
   <h2>14. Contact</h2>
   <div class="contact">
