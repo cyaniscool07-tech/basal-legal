@@ -85,15 +85,6 @@
   }
   figure { margin: 0; }
 
-  .editor {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 16px 20px;
-    font-size: 14.5px;
-    color: var(--ink-soft);
-  }
-  .editor strong { color: var(--ink); }
 
   footer {
     margin-top: 56px;
@@ -181,14 +172,12 @@
     aucune revente. Export possible à tout moment.
   </p>
 
-  <h2>Éditeur</h2>
-  <p class="editor">
-    <strong>Théo Serrano</strong>, entrepreneur individuel, exerçant sous le nom commercial
-    <strong>Basal</strong>.<br>
-    958 route de Saint Abdon, 69390 Charly, France — SIRET 943&nbsp;668&nbsp;137&nbsp;000&nbsp;12.<br>
-    Contact : <a href="mailto:contact@basal-app.fr">contact@basal-app.fr</a>
-  </p>
-
+  <!-- L'identité complète de l'éditeur — adresse postale et SIRET — vit dans
+       mentions-legales.html, pas ici. La loi exige qu'elle soit ACCESSIBLE, pas affichée en page
+       d'accueil : une page dédiée reliée par un lien satisfait l'obligation. Or le siège de
+       l'entreprise individuelle est un domicile privé, et rien ne justifie de l'exposer au
+       premier écran. Le nom de l'éditeur et le contact restent, ce sont eux qui rattachent le
+       site à l'organisation. -->
   <footer>
     <nav>
       <a href="confidentialite.html">Politique de confidentialité</a>
@@ -196,6 +185,11 @@
       <a href="mentions-legales.html">Mentions légales</a>
       <a href="suppression-compte.html">Suppression de compte</a>
     </nav>
+    <p>
+      Édité par Théo Serrano, entrepreneur individuel, sous le nom commercial Basal —
+      <a href="mailto:contact@basal-app.fr">contact@basal-app.fr</a>.
+      Coordonnées complètes dans les <a href="mentions-legales.html">mentions légales</a>.
+    </p>
     <p>Basal est une application mobile. Elle n'est pas un dispositif médical et ne remplace pas
     l'avis d'un professionnel de santé.</p>
   </footer>
