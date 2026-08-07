@@ -1,0 +1,358 @@
+/*
+  Feuille unique du site basal-app.fr.
+
+  POURQUOI ELLE EXISTE. Chaque page embarquait sa propre copie du CSS — jusqu'à 8,7 Ko dupliqués
+  entre l'accueil français et l'anglais, et les variables de couleur recopiées huit fois. Toute
+  retouche d'identité imposait huit modifications, et il suffisait d'en oublier une pour que le
+  site se contredise. Ajouter une navigation par recopie aurait aggravé cette dette au lieu de
+  la régler.
+
+  Les classes des différentes pages ne se chevauchaient pas, à deux exceptions près, vérifiées
+  avant fusion : `.page` ne différait que par sa largeur (unifiée à 720 px), et `.note` était
+  rigoureusement identique dans les trois pages légales. Celui de l'accueil est portée par
+  `.cta .note`, donc distinct.
+*/
+
+/* ------------------------------------------------------------------ couleurs */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --ink: #1c1c1e;
+  --ink-soft: #55555a;
+  --line: #e2e2e6;
+  --accent: #c2540a;
+  --card: #f7f6f4;
+  /* Le noir chaud de l'écran de démarrage de l'application, réutilisé tel quel. */
+  --nuit: #12100E;
+  --nuit-ink: #f2efe9;
+  --nuit-soft: #a9a296;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15130f;
+    --ink: #f2efe9;
+    --ink-soft: #b9b3a8;
+    --line: #34302a;
+    --accent: #f97316;
+    --card: #1e1b16;
+  }
+}
+
+/* ------------------------------------------------------------------ base */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.65;
+}
+a { color: var(--accent); }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  background: var(--card);
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+
+/* Deux largeurs de contenu, et deux seulement.
+   `.wrap` pour l'accueil, qui présente des grilles ; `.page` pour tout ce qui se lit en
+   continu, où une ligne trop longue fatigue l'œil. */
+.wrap { max-width: 940px; margin: 0 auto; padding: 0 24px; }
+.page { max-width: 720px; margin: 0 auto; padding: 34px 24px 72px; }
+
+/* ------------------------------------------------------------------ navigation */
+/*
+  Barre sombre sur TOUTES les pages, y compris celles au fond clair. C'est ce qui fait tenir le
+  site ensemble : sans elle, chaque page repartait de zéro et l'on ne pouvait atteindre le
+  calculateur que par le pied de l'accueil. Sur la page d'accueil, l'en-tête sombre enchaîne
+  sans couture puisqu'ils partagent la même couleur de fond.
+*/
+.topbar { background: var(--nuit); color: var(--nuit-ink); }
+.topbar-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--nuit-ink);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+  flex: none;
+}
+.topbar nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  /* Sur un écran étroit, les liens défilent au doigt plutôt que de passer à la ligne ou
+     d'imposer un menu déroulant — quatre entrées ne justifient pas un bouton hamburger. */
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.topbar nav::-webkit-scrollbar { display: none; }
+.topbar nav a {
+  color: var(--nuit-soft);
+  text-decoration: none;
+  font-size: 14.5px;
+  padding: 7px 11px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: color 0.16s ease, background-color 0.16s ease;
+}
+.topbar nav a:hover { color: var(--nuit-ink); background: rgba(255,255,255,0.07); }
+/* La page courante se signale par le style ET par aria-current : l'un pour l'œil, l'autre
+   pour les lecteurs d'écran. Un seul des deux ne suffit à personne. */
+.topbar nav a[aria-current="page"] { color: var(--nuit-ink); background: rgba(255,255,255,0.10); }
+.topbar nav a.lang {
+  border: 1px solid rgba(255,255,255,0.18);
+  margin-left: 6px;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+}
+
+/* ------------------------------------------------------------------ accueil */
+.hero {
+  background:
+    radial-gradient(1100px 520px at 18% -10%, rgba(249,115,22,0.20), transparent 62%),
+    var(--nuit);
+  color: var(--nuit-ink);
+  padding: 62px 0 82px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  position: relative;
+  overflow: hidden;
+}
+.hero .wrap { position: relative; z-index: 1; }
+.brand { display: flex; align-items: center; gap: 20px; }
+.brand svg { flex: none; }
+.brand h1 {
+  font-size: clamp(40px, 7vw, 60px);
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -1.5px;
+  font-weight: 700;
+}
+.tagline {
+  font-size: clamp(19px, 2.6vw, 25px);
+  line-height: 1.45;
+  color: var(--nuit-soft);
+  margin: 28px 0 0;
+  max-width: 20em;
+}
+.tagline strong { color: var(--nuit-ink); font-weight: 600; }
+
+/* Tant que l'application n'est pas publiée, les badges seraient MORTS : un bouton qui ne mène
+   nulle part coûte plus cher que son absence. On annonce donc l'état réel, et le jour du
+   lancement ces deux <span> deviennent des <a>. */
+.cta { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta .store {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.05);
+  color: var(--nuit-soft);
+  font-size: 14.5px;
+  font-weight: 600;
+}
+.cta .note { font-size: 13.5px; color: var(--nuit-soft); opacity: 0.85; }
+
+section { padding: 64px 0 0; }
+h2 {
+  font-size: 13px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+  font-weight: 700;
+}
+p, li { font-size: 16px; }
+
+.liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.liste li { padding-left: 26px; position: relative; color: var(--ink-soft); }
+.liste li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 10px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.55;
+}
+
+.cartes { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); }
+.carte {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px 24px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.carte h3 { font-size: 16.5px; margin: 0 0 8px; line-height: 1.35; }
+.carte p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+.carte:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 38%, var(--line));
+  box-shadow: 0 12px 26px rgba(0,0,0,0.09);
+}
+
+.shots { display: grid; gap: 26px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin: 0; }
+figure { margin: 0; }
+.shots img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.13);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+.shots figure:hover img { transform: translateY(-5px); box-shadow: 0 26px 52px rgba(0,0,0,0.19); }
+.shots figcaption { font-size: 13.5px; color: var(--ink-soft); margin-top: 12px; text-align: center; }
+
+/* ------------------------------------------------------------------ pages de texte */
+h1 { font-size: clamp(26px, 4.2vw, 34px); line-height: 1.22; margin: 8px 0 10px; letter-spacing: -0.5px; }
+.page h2 {
+  font-size: 19px;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin: 44px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.page p, .page li { font-size: 16px; }
+.page ul, .page ol { padding-left: 22px; }
+.page li { margin-bottom: 7px; }
+.chapeau { font-size: 17.5px; color: var(--ink-soft); margin: 0 0 8px; }
+.updated { color: var(--ink-soft); font-size: 14px; margin: 0 0 30px; }
+.note {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.contact {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-top: 8px;
+}
+.encadre {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 22px;
+  margin: 28px 0;
+}
+.encadre p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+.encadre strong { color: var(--ink); }
+
+/* ------------------------------------------------------------------ calculateur */
+form { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+.champs { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 6px; }
+input, select {
+  width: 100%;
+  padding: 11px 13px;
+  font-size: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: inherit;
+}
+input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.large { grid-column: 1 / -1; }
+.resultat { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+.ligne { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 7px 0; }
+.ligne + .ligne { border-top: 1px dashed var(--line); }
+.ligne span { font-size: 14.5px; color: var(--ink-soft); }
+.ligne b { font-size: 21px; font-variant-numeric: tabular-nums; }
+.ligne.total b { font-size: 27px; color: var(--accent); }
+.vide { color: var(--ink-soft); font-size: 14.5px; margin: 0; }
+
+/* ------------------------------------------------------------------ pied */
+footer {
+  margin-top: 72px;
+  padding: 26px 0 56px;
+  border-top: 1px solid var(--line);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+footer nav { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-bottom: 16px; }
+footer p { font-size: 13.5px; margin: 0 0 8px; }
+
+@media (max-width: 560px) {
+  .hero { padding: 46px 0 56px; }
+  .brand { gap: 15px; }
+  section { padding: 48px 0 0; }
+  .mark span { display: none; }
+}
+
+/* ------------------------------------------------------------------ mouvement */
+/*
+  ANIMATIONS AU DÉFILEMENT EN CSS PUR, sans une ligne de JavaScript.
+  Deux garde-fous, chacun indispensable :
+
+  `@supports` — un navigateur qui ignore la propriété n'applique RIEN et retrouve la page
+  statique. Le piège classique de ces effets est d'ouvrir à `opacity: 0` en comptant sur un
+  script pour révéler : quand il ne tourne pas, la page est vide. Ici l'état par défaut est
+  « visible », et l'animation ne fait qu'ajouter.
+
+  `prefers-reduced-motion` — rien ne bouge pour qui a demandé moins d'animations. Le mouvement
+  déclenche des troubles vestibulaires chez certaines personnes, et une application de santé est
+  mal placée pour l'ignorer.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    @keyframes apparait {
+      from { opacity: 0; transform: translateY(26px); }
+      to   { opacity: 1; transform: none; }
+    }
+    section {
+      animation: apparait linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 26%;
+    }
+    .carte, .shots figure {
+      animation: apparait linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 32%;
+    }
+    .cartes .carte:nth-child(2), .shots figure:nth-child(2) { animation-range: entry 0% cover 38%; }
+    .cartes .carte:nth-child(3), .shots figure:nth-child(3) { animation-range: entry 0% cover 44%; }
+    @keyframes halo { to { opacity: 0.35; transform: scale(1.12); } }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -20% -10% auto -10%;
+      height: 130%;
+      background: radial-gradient(760px 380px at 20% 0%, rgba(249,115,22,0.22), transparent 65%);
+      pointer-events: none;
+      animation: halo linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .carte, .shots img, .topbar nav a { transition: none; }
+  .carte:hover, .shots figure:hover img { transform: none; }
+}
