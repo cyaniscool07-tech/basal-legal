@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calcul du métabolisme de base et de la dépense (TDEE) — Basal</title>
+<meta name="description" content="Calcule ton métabolisme de base et ta dépense énergétique journalière avec l'équation de Mifflin-St Jeor. Gratuit, sans inscription, rien n'est envoyé.">
+<link rel="canonical" href="https://basal-app.fr/calcul-tdee.html">
+<meta property="og:title" content="Calcul du métabolisme de base et de la dépense (TDEE)">
+<meta property="og:description" content="Mifflin-St Jeor, sans inscription, rien n'est envoyé. Et ce que le résultat ne peut pas te dire.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://basal-app.fr/calcul-tdee.html">
+<meta property="og:image" content="https://basal-app.fr/img/og.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta name="theme-color" content="#12100E">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff; --ink: #1c1c1e; --ink-soft: #55555a;
+    --line: #e2e2e6; --accent: #c2540a; --card: #f7f6f4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15130f; --ink: #f2efe9; --ink-soft: #b9b3a8;
+      --line: #34302a; --accent: #f97316; --card: #1e1b16;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  .page { max-width: 700px; margin: 0 auto; padding: 40px 24px 72px; }
+  .retour { font-size: 14px; color: var(--ink-soft); text-decoration: none; }
+  h1 { font-size: clamp(26px, 4.2vw, 34px); line-height: 1.22; margin: 28px 0 10px; letter-spacing: -0.5px; }
+  .chapeau { font-size: 17.5px; color: var(--ink-soft); margin: 0 0 30px; }
+  h2 { font-size: 19px; margin: 44px 0 12px; }
+  p, li { font-size: 16px; }
+  a { color: var(--accent); }
+
+  form { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+  .champs { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 6px; }
+  input, select {
+    width: 100%; padding: 11px 13px; font-size: 16px;
+    border: 1px solid var(--line); border-radius: 10px;
+    background: var(--bg); color: var(--ink);
+    font-family: inherit;
+  }
+  input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .large { grid-column: 1 / -1; }
+
+  /* Le résultat est présent dès le chargement, pas injecté : un lecteur d'écran l'annonce
+     via aria-live, et la page ne saute pas quand il se remplit. */
+  .resultat { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .ligne { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 7px 0; }
+  .ligne + .ligne { border-top: 1px dashed var(--line); }
+  .ligne span { font-size: 14.5px; color: var(--ink-soft); }
+  .ligne b { font-size: 21px; font-variant-numeric: tabular-nums; }
+  .ligne.total b { font-size: 27px; color: var(--accent); }
+  .vide { color: var(--ink-soft); font-size: 14.5px; margin: 0; }
+
+  .encadre {
+    background: var(--card); border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 28px 0;
+  }
+  .encadre p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+  .encadre strong { color: var(--ink); }
+
+  footer {
+    margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--line);
+    font-size: 13.5px; color: var(--ink-soft);
+  }
+  footer nav { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="retour" href="/">← Basal</a>
+
+  <h1>Calcule ton métabolisme de base et ta dépense</h1>
+  <p class="chapeau">
+    Avec l'équation de Mifflin-St Jeor, celle qu'utilise l'application. Rien n'est envoyé nulle
+    part : le calcul se fait dans ton navigateur.
+  </p>
+
+  <form id="f" novalidate>
+    <div class="champs">
+      <div>
+        <label for="sexe">Sexe</label>
+        <select id="sexe">
+          <option value="male">Homme</option>
+          <option value="female">Femme</option>
+        </select>
+      </div>
+      <div>
+        <label for="age">Âge</label>
+        <input id="age" type="number" inputmode="numeric" min="14" max="100" placeholder="31">
+      </div>
+      <div>
+        <label for="taille">Taille (cm)</label>
+        <input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="178">
+      </div>
+      <div>
+        <label for="poids">Poids (kg)</label>
+        <input id="poids" type="number" inputmode="decimal" min="30" max="300" step="0.1" placeholder="75">
+      </div>
+      <div class="large">
+        <label for="activite">Niveau d'activité</label>
+        <select id="activite">
+          <option value="1.2">Sédentaire — peu ou pas de sport</option>
+          <option value="1.375">Légèrement actif — 1 à 3 séances par semaine</option>
+          <option value="1.55" selected>Modérément actif — 3 à 5 séances par semaine</option>
+          <option value="1.725">Actif — 6 à 7 séances par semaine</option>
+          <option value="1.9">Très actif — travail physique ou double entraînement</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="resultat" aria-live="polite">
+      <p class="vide" id="vide">Renseigne les quatre champs pour voir le résultat.</p>
+      <div id="sortie" hidden>
+        <div class="ligne">
+          <span>Métabolisme de base — au repos complet</span><b id="bmr">—</b>
+        </div>
+        <div class="ligne total">
+          <span>Dépense journalière estimée</span><b id="tdee">—</b>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="encadre">
+    <p>
+      <strong>Ce nombre est une estimation, pas une mesure.</strong> Il rend la dépense moyenne
+      des personnes qui te ressemblent sur quatre variables. Il ignore ta masse musculaire, ta
+      thyroïde et ton historique de régimes. Les études de validation rapportent couramment 10 %
+      d'écart — soit 250 kcal par jour sur une dépense de 2 500.
+    </p>
+  </div>
+
+  <h2>Comment le rendre juste</h2>
+  <p>
+    Le seul moyen de connaître ta dépense réelle est de l'observer : comparer ce que tu manges à
+    l'évolution effective de ton poids sur plusieurs semaines. C'est ce que fait Basal, en
+    partant de ce même calcul puis en le corrigeant à mesure que les données arrivent.
+  </p>
+  <p>
+    <a href="/metabolisme-adaptatif.html">Lire pourquoi une formule ne suffit pas</a> — et ce que
+    la correction ne peut pas faire non plus.
+  </p>
+
+  <h2>Le détail du calcul</h2>
+  <p>
+    Mifflin-St Jeor donne le métabolisme de base : <code>10 × poids + 6,25 × taille − 5 × âge</code>,
+    puis <code>+ 5</code> pour un homme et <code>− 161</code> pour une femme. La dépense
+    journalière est ce résultat multiplié par le coefficient d'activité, de 1,2 à 1,9.
+  </p>
+  <p>
+    Ce coefficient est le maillon faible : entre « sédentaire » et « modérément actif », l'écart
+    dépasse 500 kcal par jour, et c'est toi qui choisis, sans référence.
+  </p>
+
+  <footer>
+    <nav>
+      <a href="/">Accueil</a>
+      <a href="/metabolisme-adaptatif.html">Le métabolisme adaptatif</a>
+      <a href="/confidentialite.html">Politique de confidentialité</a>
+      <a href="/mentions-legales.html">Mentions légales</a>
+    </nav>
+    <p>Cet outil est informatif. Basal n'est pas un dispositif médical et ne remplace pas l'avis
+    d'un professionnel de santé.</p>
+  </footer>
+
+</div>
+
+<script>
+// Les MÊMES formules que l'application (services/nutritionCalculator.ts). Les recopier ici est
+// une duplication assumée — le site est un dépôt séparé — mais elle doit rester exacte : un
+// visiteur qui obtient 2 255 kcal ici et un autre chiffre dans l'app cesserait de croire les deux.
+(function () {
+  var f = document.getElementById('f');
+  var vide = document.getElementById('vide');
+  var sortie = document.getElementById('sortie');
+
+  function nb(id) {
+    var v = parseFloat(document.getElementById(id).value);
+    return isFinite(v) ? v : null;
+  }
+
+  function calcule() {
+    var poids = nb('poids'), taille = nb('taille'), age = nb('age');
+    var sexe = document.getElementById('sexe').value;
+    var coef = parseFloat(document.getElementById('activite').value);
+
+    // Bornes volontairement larges : on refuse l'absurde, pas l'inhabituel.
+    var ok = poids > 25 && poids < 350 && taille > 100 && taille < 250 && age > 10 && age < 110;
+    vide.hidden = ok;
+    sortie.hidden = !ok;
+    if (!ok) return;
+
+    var bmr = 10 * poids + 6.25 * taille - 5 * age + (sexe === 'male' ? 5 : -161);
+    var tdee = bmr * coef;
+
+    // Arrondi à l'AFFICHAGE seulement, jamais dans le calcul : afficher un BMR arrondi puis le
+    // multiplier donnerait un total qui ne correspond pas au produit des deux nombres affichés.
+    document.getElementById('bmr').textContent = Math.round(bmr).toLocaleString('fr-FR') + ' kcal';
+    document.getElementById('tdee').textContent = Math.round(tdee).toLocaleString('fr-FR') + ' kcal';
+  }
+
+  f.addEventListener('input', calcule);
+  f.addEventListener('change', calcule);
+  f.addEventListener('submit', function (e) { e.preventDefault(); });
+  calcule();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculateur de metabolisme de base et de depense journaliere",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Tous",
+  "url": "https://basal-app.fr/calcul-tdee.html",
+  "inLanguage": "fr",
+  "description": "Calcul du metabolisme de base et de la depense energetique journaliere avec l'equation de Mifflin-St Jeor.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "publisher": { "@type": "Organization", "name": "Basal", "email": "contact@basal-app.fr" }
+}
+</script>
+</body>
+</html>

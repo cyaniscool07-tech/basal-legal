@@ -1,0 +1,5 @@
+# https://basal-app.fr
+User-agent: *
+Allow: /
+
+Sitemap: https://basal-app.fr/sitemap.xml
