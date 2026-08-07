@@ -10,6 +10,16 @@
 <meta property="og:description" content="Un suivi nutritionnel dont les calculs s'adaptent à toi, pas des moyennes génériques.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://basal-app.fr/">
+<!-- URL ABSOLUE obligatoire : les réseaux et messageries qui déplient un lien ne résolvent pas
+     les chemins relatifs, et une og:image relative ne s'affiche nulle part. -->
+<meta property="og:image" content="https://basal-app.fr/img/og.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Basal">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <meta name="theme-color" content="#12100E">
 <style>
   /* Les variables des pages légales, prolongées de quelques valeurs propres à l'accueil.
@@ -244,8 +254,13 @@
             <stop offset="100%" stop-color="#c2540a"/>
           </linearGradient>
         </defs>
-        <circle cx="32" cy="32" r="21" fill="none" stroke="url(#anneau)" stroke-width="8"
-                stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/>
+        <!-- Le carré porte la MÊME couleur que la bande (#12100E) : c'est celle de l'icône, et
+             la changer ferait diverger le site de ce que les gens verront sur le store. Il
+             serait donc invisible sans le liseré, qui suffit à poser la forme sans l'éclaircir. -->
+        <rect x="0.5" y="0.5" width="63" height="63" rx="14" fill="#12100E"
+              stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+        <circle cx="32" cy="32" r="18" fill="none" stroke="url(#anneau)" stroke-width="7"
+                stroke-linecap="round" stroke-dasharray="88 25" transform="rotate(-115 32 32)"/>
       </svg>
       <h1>Basal</h1>
     </div>
