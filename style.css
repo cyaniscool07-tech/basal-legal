@@ -166,7 +166,20 @@ code {
   font-size: 14.5px;
   font-weight: 600;
 }
-.cta .note { font-size: 13.5px; color: var(--nuit-soft); opacity: 0.85; }
+/* Remise a zero EXPLICITE de ce que .note apporte plus bas. Surcharger la seule couleur ne
+   suffisait pas : la specificite de `.cta .note` l'emporte uniquement sur les proprietes
+   qu'elle redeclare, et le fond clair de `.note` passait au travers -- la mention se
+   retrouvait dans une pastille blanche au milieu de la bande sombre. */
+.cta .note {
+  font-size: 13.5px;
+  color: var(--nuit-soft);
+  opacity: 0.85;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
 
 section { padding: 64px 0 0; }
 h2 {
