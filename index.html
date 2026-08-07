@@ -10,8 +10,11 @@
 <meta property="og:description" content="Un suivi nutritionnel dont les calculs s'adaptent à toi, pas des moyennes génériques.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://basal-app.fr/">
+<meta name="theme-color" content="#12100E">
 <style>
-  /* Mêmes variables que les pages légales du site : une seule identité, pas deux. */
+  /* Les variables des pages légales, prolongées de quelques valeurs propres à l'accueil.
+     Une seule identité sur tout le site : le visiteur qui passe de l'accueil aux CGU ne doit
+     pas avoir l'impression de changer de site. */
   :root {
     color-scheme: light dark;
     --bg: #ffffff;
@@ -20,6 +23,10 @@
     --line: #e2e2e6;
     --accent: #c2540a;
     --card: #f7f6f4;
+    /* Le noir chaud de l'écran de démarrage de l'application, réutilisé tel quel. */
+    --nuit: #12100E;
+    --nuit-ink: #f2efe9;
+    --nuit-soft: #a9a296;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -32,6 +39,7 @@
     }
   }
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
     background: var(--bg);
@@ -39,138 +47,210 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
   }
-  .page { max-width: 860px; margin: 0 auto; padding: 56px 24px 64px; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 24px; }
 
-  /* En-tête : l'anneau ouvert de la marque, sur le noir chaud de l'écran de démarrage. */
-  .hero { display: flex; align-items: center; gap: 18px; }
-  .hero svg { flex: none; }
-  .hero h1 { font-size: 34px; margin: 0; letter-spacing: -0.5px; }
+  /* ---------------------------------------------------------------- en-tête */
+  /* Bande pleine largeur : c'est elle qui donne au site une présence que le logo de 64 px
+     sur fond blanc ne portait pas. Le halo orange est un radial-gradient, pas une image —
+     rien à télécharger, net à toute résolution. */
+  .hero {
+    background:
+      radial-gradient(1100px 520px at 18% -10%, rgba(249,115,22,0.20), transparent 62%),
+      var(--nuit);
+    color: var(--nuit-ink);
+    padding: 84px 0 88px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .brand { display: flex; align-items: center; gap: 20px; }
+  .brand svg { flex: none; }
+  .brand h1 {
+    font-size: clamp(40px, 7vw, 60px);
+    line-height: 1;
+    margin: 0;
+    letter-spacing: -1.5px;
+    font-weight: 700;
+  }
   .tagline {
-    font-size: 19px;
-    color: var(--ink-soft);
-    margin: 22px 0 0;
-    max-width: 34em;
-  }
-
-  h2 {
-    font-size: 19px;
-    margin: 56px 0 14px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--line);
-  }
-  p, li { font-size: 15.5px; }
-  ul { padding-left: 22px; margin: 0; }
-  li { margin-bottom: 10px; }
-  a { color: var(--accent); }
-
-  .shots {
-    display: flex;
-    gap: 18px;
+    font-size: clamp(19px, 2.6vw, 25px);
+    line-height: 1.45;
+    color: var(--nuit-soft);
     margin: 28px 0 0;
-    flex-wrap: wrap;
+    max-width: 20em;
   }
-  .shot { flex: 1 1 210px; max-width: 260px; }
-  .shot img {
+  .tagline strong { color: var(--nuit-ink); font-weight: 600; }
+
+  /* ---------------------------------------------------------------- sections */
+  section { padding: 64px 0 0; }
+  h2 {
+    font-size: 13px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 22px;
+    font-weight: 700;
+  }
+  p, li { font-size: 16px; }
+
+  .liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .liste li { padding-left: 26px; position: relative; color: var(--ink-soft); }
+  .liste li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 10px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.55;
+  }
+
+  /* Les trois arguments en cartes : ils portent le fond du raisonnement, ils méritent
+     d'être lus séparément plutôt qu'empilés en puces. */
+  .cartes { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); }
+  .carte {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .carte h3 { font-size: 16.5px; margin: 0 0 8px; line-height: 1.35; }
+  .carte p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+
+  /* ---------------------------------------------------------------- captures */
+  .shots {
+    display: grid;
+    gap: 26px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    margin: 0;
+  }
+  figure { margin: 0; }
+  .shots img {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 16px;
     border: 1px solid var(--line);
-    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.13);
   }
-  .shot figcaption {
-    font-size: 13px;
+  .shots figcaption {
+    font-size: 13.5px;
     color: var(--ink-soft);
-    margin-top: 8px;
+    margin-top: 12px;
     text-align: center;
   }
-  figure { margin: 0; }
 
-
+  /* ---------------------------------------------------------------- pied */
   footer {
-    margin-top: 56px;
-    padding-top: 20px;
+    margin-top: 80px;
+    padding: 28px 0 56px;
     border-top: 1px solid var(--line);
-    font-size: 14px;
+    font-size: 13.5px;
     color: var(--ink-soft);
   }
-  footer nav { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 14px; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-bottom: 18px; }
+  footer p { font-size: 13.5px; margin: 0 0 8px; }
+  a { color: var(--accent); }
+
+  @media (max-width: 560px) {
+    .hero { padding: 60px 0 62px; }
+    .brand { gap: 15px; }
+    section { padding: 48px 0 0; }
+  }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <div class="hero">
-    <!-- Anneau ouvert à extrémités arrondies, dégradé orange sur fond sombre : l'icône de
-         l'application, redessinée en vectoriel pour rester nette à toute taille. -->
-    <svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Logo Basal">
-      <defs>
-        <linearGradient id="anneau" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#f97316"/>
-          <stop offset="100%" stop-color="#c2540a"/>
-        </linearGradient>
-      </defs>
-      <rect width="64" height="64" rx="14" fill="#12100E"/>
-      <circle cx="32" cy="32" r="18" fill="none" stroke="url(#anneau)" stroke-width="7"
-              stroke-linecap="round" stroke-dasharray="88 25" transform="rotate(-115 32 32)"/>
-    </svg>
-    <h1>Basal</h1>
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <!-- Anneau ouvert à extrémités arrondies : l'icône de l'application, redessinée en
+           vectoriel pour rester nette à toute taille. -->
+      <svg width="84" height="84" viewBox="0 0 64 64" role="img" aria-label="Logo Basal">
+        <defs>
+          <linearGradient id="anneau" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#fb923c"/>
+            <stop offset="100%" stop-color="#c2540a"/>
+          </linearGradient>
+        </defs>
+        <circle cx="32" cy="32" r="21" fill="none" stroke="url(#anneau)" stroke-width="8"
+                stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/>
+      </svg>
+      <h1>Basal</h1>
+    </div>
+    <p class="tagline">
+      Le suivi nutritionnel dont les calculs <strong>s'adaptent à toi</strong>, plutôt que
+      de te comparer à une moyenne.
+    </p>
   </div>
+</header>
 
-  <p class="tagline">
-    Le suivi nutritionnel dont les calculs s'adaptent à toi, plutôt que de te comparer
-    à une moyenne.
-  </p>
+<div class="wrap">
 
-  <h2>Ce que fait l'application</h2>
-  <ul>
-    <li>Suivi des calories et des macros, par repas, avec recherche d'aliments et scanner de code-barres.</li>
-    <li>Suivi du poids et de sa tendance, lissée pour absorber les fluctuations normales.</li>
-    <li>Séances de sport et musculation : plus de 870 exercices, séries, charges, records.</li>
-    <li>Dépense énergétique calculée à partir de la durée, de l'intensité et du poids — jamais saisie à la main.</li>
-  </ul>
+  <section>
+    <h2>Ce que fait l'application</h2>
+    <ul class="liste">
+      <li>Suivi des calories et des macros, par repas, avec recherche d'aliments et scanner de code-barres.</li>
+      <li>Suivi du poids et de sa tendance, lissée pour absorber les fluctuations normales.</li>
+      <li>Séances de sport et musculation : plus de 870 exercices, séries, charges, records.</li>
+      <li>Dépense énergétique calculée à partir de la durée, de l'intensité et du poids — jamais saisie à la main.</li>
+    </ul>
+  </section>
 
-  <h2>Ce qui la distingue</h2>
-  <ul>
-    <li>
-      <strong>Un métabolisme qui s'apprend.</strong> Le point de départ est la formule de
-      Mifflin-St Jeor, mais l'application compare ensuite les calories enregistrées à
-      l'évolution réelle du poids pour en déduire la dépense effective. Une estimation
-      théorique ne bouge jamais ; celle-ci se corrige.
-    </li>
-    <li>
-      <strong>La nutrition croisée avec l'entraînement.</strong> Basal connaît les deux et les
-      rapproche : le volume reçu par chaque groupe musculaire, les protéines des jours
-      d'entraînement comparées aux jours de repos, et le signe qu'une perte de poids ne se
-      fait pas au détriment du muscle.
-    </li>
-    <li>
-      <strong>Elle constate, elle ne prescrit pas.</strong> Quand les données sont trop
-      minces pour conclure, elle le dit plutôt que de présenter du bruit comme un fait.
-    </li>
-  </ul>
+  <section>
+    <h2>Ce qui la distingue</h2>
+    <div class="cartes">
+      <article class="carte">
+        <h3>Un métabolisme qui s'apprend</h3>
+        <p>
+          Le point de départ est la formule de Mifflin-St Jeor, mais l'application compare
+          ensuite les calories enregistrées à l'évolution réelle du poids pour en déduire la
+          dépense effective. Une estimation théorique ne bouge jamais ; celle-ci se corrige.
+        </p>
+      </article>
+      <article class="carte">
+        <h3>La nutrition croisée avec l'entraînement</h3>
+        <p>
+          Basal connaît les deux et les rapproche : le volume reçu par chaque groupe
+          musculaire, les protéines des jours d'entraînement comparées aux jours de repos, et
+          le signe qu'une perte de poids ne se fait pas au détriment du muscle.
+        </p>
+      </article>
+      <article class="carte">
+        <h3>Elle constate, elle ne prescrit pas</h3>
+        <p>
+          Quand les données sont trop minces pour conclure, elle le dit plutôt que de
+          présenter du bruit comme un fait.
+        </p>
+      </article>
+    </div>
+  </section>
 
-  <div class="shots">
-    <figure class="shot">
-      <img src="img/kcal.jpg" alt="Écran de suivi des calories du jour" width="420" height="910" loading="lazy">
-      <figcaption>Le budget du jour</figcaption>
-    </figure>
-    <figure class="shot">
-      <img src="img/tdee.jpg" alt="Courbe du métabolisme appris" width="420" height="910" loading="lazy">
-      <figcaption>Le métabolisme appris</figcaption>
-    </figure>
-    <figure class="shot">
-      <img src="img/bilan.jpg" alt="Bilan hebdomadaire" width="420" height="910" loading="lazy">
-      <figcaption>Le bilan de la semaine</figcaption>
-    </figure>
-  </div>
+  <section>
+    <h2>À quoi ça ressemble</h2>
+    <div class="shots">
+      <figure>
+        <img src="img/kcal.jpg" alt="Écran de suivi des calories du jour" width="420" height="910" loading="lazy">
+        <figcaption>Le budget du jour</figcaption>
+      </figure>
+      <figure>
+        <img src="img/tdee.jpg" alt="Courbe du métabolisme appris" width="420" height="910" loading="lazy">
+        <figcaption>Le métabolisme appris</figcaption>
+      </figure>
+      <figure>
+        <img src="img/bilan.jpg" alt="Bilan hebdomadaire" width="420" height="910" loading="lazy">
+        <figcaption>Le bilan de la semaine</figcaption>
+      </figure>
+    </div>
+  </section>
 
-  <h2>Tes données</h2>
-  <p>
-    Aucun compte n'est nécessaire : sans compte, le profil, le poids et les repas restent sur
-    l'appareil. Créer un compte permet de les retrouver sur un autre téléphone ; ils sont alors
-    hébergés dans l'Union européenne, et supprimer le compte les efface. Aucune publicité,
-    aucune revente. Export possible à tout moment.
-  </p>
+  <section>
+    <h2>Tes données</h2>
+    <p style="color: var(--ink-soft); max-width: 62ch;">
+      Aucun compte n'est nécessaire : sans compte, le profil, le poids et les repas restent sur
+      l'appareil. Créer un compte permet de les retrouver sur un autre téléphone ; ils sont alors
+      hébergés dans l'Union européenne, et supprimer le compte les efface. Aucune publicité,
+      aucune revente. Export possible à tout moment.
+    </p>
+  </section>
 
   <!-- L'identité complète de l'éditeur — adresse postale et SIRET — vit dans
        mentions-legales.html, pas ici. La loi exige qu'elle soit ACCESSIBLE, pas affichée en page
