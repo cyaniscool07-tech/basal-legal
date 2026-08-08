@@ -95,7 +95,9 @@ code {
   align-items: center;
   gap: 4px;
   /* Sur un écran étroit, les liens défilent au doigt plutôt que de passer à la ligne ou
-     d'imposer un menu déroulant — quatre entrées ne justifient pas un bouton hamburger. */
+     d'imposer un menu déroulant. Mesuré à 375 px : les cinq entrées font 433 px pour 281
+     disponibles, et aucune combinaison ne tient — même à quatre entrées et en abrégeant, on
+     reste au-dessus. Les libellés français sont trop longs, le défilement est la réponse. */
   overflow-x: auto;
   scrollbar-width: none;
 }
