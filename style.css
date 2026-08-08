@@ -369,3 +369,32 @@ footer p { font-size: 13.5px; margin: 0 0 8px; }
   .carte, .shots img, .topbar nav a { transition: none; }
   .carte:hover, .shots figure:hover img { transform: none; }
 }
+
+/* Appel à l'action des pages de contenu. Le calculateur amenait le visiteur au moment exact
+   où il tient un chiffre et n'a rien pour l'exploiter, puis le laissait repartir : la page où
+   l'intention est la plus forte de tout le site n'offrait aucune suite. Le bloc reprend les
+   jetons de `.encadre` plutôt que d'introduire une troisième façon d'encadrer du contenu. */
+.appel {
+  margin: 34px 0 0;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  background: var(--card);
+}
+/* Sélecteur volontairement aussi spécifique que `.appel p` juste en dessous : avec la seule
+   classe, la règle du paragraphe l'emportait (0,1,1 contre 0,1,0) et le titre héritait de la
+   couleur adoucie du corps — invisible comme titre, surtout en thème sombre. */
+.appel .appel-t { margin: 0 0 8px; font-size: 17px; font-weight: 650; color: var(--ink); }
+.appel p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+/* Variante claire des pastilles de store. Celles de l'en-tête sont dessinées pour la bande
+   sombre — liseré et texte clairs — et deviendraient illisibles sur ce fond. Même remarque que
+   pour `.cta .note` plus haut : on redéclare explicitement, on ne compte pas sur l'héritage. */
+.appel .cta { margin-top: 16px; }
+.appel .cta .store {
+  border-color: var(--line);
+  background: var(--bg);
+  color: var(--ink);
+}
+.appel .cta .note { color: var(--ink-soft); opacity: 1; }
