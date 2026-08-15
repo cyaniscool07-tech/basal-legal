@@ -60,12 +60,21 @@
       </div>
       <div class="large">
         <label for="activite">Niveau d'activité</label>
+        <!-- Équivalences en pas ajoutées le 2026-08-15, reprises TELLES QUELLES de
+             services/nutritionCalculator.ts (ACTIVITY_OPTIONS.stepsHint) dans l'application.
+             Elles répondent au reproche que cette page fait elle-même deux paragraphes plus
+             bas — « c'est toi qui choisis, sans référence » — et que l'article sur le
+             métabolisme adaptatif appelle « le maillon faible ».
+
+             Purement INFORMATIVES : elles n'entrent dans aucun calcul, exactement comme dans
+             l'app. Fourchettes de la classification pas/jour usuelle, dans le même ordre
+             croissant que les coefficients. -->
         <select id="activite">
-          <option value="1.2">Sédentaire — peu ou pas de sport</option>
-          <option value="1.375">Légèrement actif — 1 à 3 séances par semaine</option>
-          <option value="1.55" selected>Modérément actif — 3 à 5 séances par semaine</option>
-          <option value="1.725">Actif — 6 à 7 séances par semaine</option>
-          <option value="1.9">Très actif — travail physique ou double entraînement</option>
+          <option value="1.2">Sédentaire — peu ou pas de sport · moins de 5 000 pas/jour</option>
+          <option value="1.375">Légèrement actif — 1 à 3 séances par semaine · 5 000 à 7 500 pas/jour</option>
+          <option value="1.55" selected>Modérément actif — 3 à 5 séances par semaine · 7 500 à 10 000 pas/jour</option>
+          <option value="1.725">Actif — 6 à 7 séances par semaine · 10 000 à 12 500 pas/jour</option>
+          <option value="1.9">Très actif — travail physique ou double entraînement · 12 500+ pas/jour</option>
         </select>
       </div>
     </div>
@@ -128,7 +137,9 @@
   </p>
   <p>
     Ce coefficient est le maillon faible : entre « sédentaire » et « modérément actif », l'écart
-    dépasse 500 kcal par jour, et c'est toi qui choisis, sans référence.
+    dépasse 500 kcal par jour. D'où les équivalences en pas indiquées dans le sélecteur —
+    un repère observable vaut mieux qu'une appréciation. Elles n'entrent dans aucun calcul :
+    elles servent à te situer, pas à te classer.
   </p>
 
   <footer>
