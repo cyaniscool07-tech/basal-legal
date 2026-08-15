@@ -152,16 +152,18 @@ code {
 }
 .tagline strong { color: var(--nuit-ink); font-weight: 600; }
 
-/* Publié le 2026-08-15. Le badge Play est devenu un <a> comme prévu ; celui d'Apple reste un
-   <span> tant que la fiche n'est pas propagée — « Ready for Distribution » ne rend pas l'URL
-   joignable tout de suite, et `itunes.apple.com/lookup` renvoyait encore `resultCount: 0` au
-   moment de la mise en ligne. La règle d'origine tient toujours : un bouton qui ne mène nulle
-   part coûte plus cher que son absence. */
+/* Publié le 2026-08-15 sur les deux stores. Les deux <span class="store"> sont devenus des
+   <a>, comme le prévoyait la version précédente de ce commentaire.
+   Le badge Apple est resté inerte environ deux heures après la publication : « Ready for
+   Distribution » ne rend pas la fiche joignable, `itunes.apple.com/lookup` répondait encore
+   `resultCount: 0`. D'où `.store.attente` juste en dessous — plus utilisé aujourd'hui, gardé
+   pour la prochaine plateforme ou la prochaine page publiée avant sa fiche. La règle qui l'a
+   motivé ne change pas : un bouton qui ne mène nulle part coûte plus cher que son absence. */
 .cta { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 /* Le badge actif est un lien : il faut retirer le soulignement que le navigateur ajoute, et
    donner un retour au survol — sans quoi rien ne distingue un bouton cliquable d'une pastille
-   morte. La pastille EN ATTENTE, elle, est volontairement estompée : elle annonce une
-   plateforme à venir, elle ne doit pas se faire cliquer. */
+   morte. `.attente` estompe une plateforme annoncée mais pas encore joignable ; aucune page ne
+   l'emploie depuis que les deux fiches sont en ligne. */
 .cta a.store { text-decoration: none; transition: background-color 120ms ease; }
 .cta a.store:hover { background: rgba(255,255,255,0.12); }
 .appel .cta a.store:hover { background: var(--bg-soft, #f0efed); }
