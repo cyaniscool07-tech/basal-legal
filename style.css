@@ -174,11 +174,18 @@ code {
    redessiner leurs badges — c’est aussi la raison pour laquelle ce sont LEURS fichiers,
    téléchargés chez eux, et non des logos redessinés à la main.
 
-   Les deux hauteurs diffèrent volontairement. Le PNG de Google embarque une marge transparente
-   d’environ 11 % de chaque côté, là où le SVG d’Apple s’arrête au bord du badge : à hauteur
-   d’image égale, celui de Google paraîtrait plus petit. Le facteur ~1,475 rend les deux badges
-   VISUELLEMENT de même taille, ce qui respecte au passage la règle de Google — son badge ne
-   doit jamais paraître plus petit que celui d’une autre boutique. */
+   Les deux hauteurs diffèrent volontairement, et l’écart est MESURÉ, pas estimé. Le PNG de
+   Google fait 646×250 mais son badge visible n’occupe que 646×192 : 29 px transparents en haut
+   et en bas, ZÉRO sur les côtés. Le SVG d’Apple, lui, s’arrête pile au bord du badge. À hauteur
+   d’image égale, celui de Google paraîtrait donc plus petit.
+
+   Facteur = 250 / 192 = 1,3021. Apple à 40 px et Google à 52 px donnent deux badges visibles de
+   40 px : identiques à l’œil, ce qui respecte au passage la règle de Google — son badge ne doit
+   jamais paraître plus petit que celui d’une autre boutique.
+
+   Une première version avait supposé une marge « d’environ 11 % de chaque côté » et retenu un
+   facteur 1,475 : le badge Google sortait 13 % trop haut. Si ces fichiers sont un jour remplacés,
+   REMESURER la boîte opaque plutôt que réutiliser ce nombre. */
 .cta .store-badge {
   display: inline-flex;
   align-items: center;
@@ -189,7 +196,7 @@ code {
   transition: opacity 120ms ease;
 }
 .cta .store-badge:hover { background: none; opacity: 0.82; }
-/* Les attributs width/height du HTML portent la taille D'AFFICHAGE (152×59 et 127×40), jamais la
+/* Les attributs width/height du HTML portent la taille D'AFFICHAGE (134×52 et 127×40), jamais la
    taille intrinsèque du fichier. C'est ce qui rend la page correcte MÊME SANS cette feuille de
    style : le PNG de Google fait 646×250, et avec ses dimensions naturelles en attributs il
    s'affichait à 646 px de large — cas réellement observé le 2026-08-18, chez un visiteur dont le
@@ -197,7 +204,7 @@ code {
    donc rester d'accord avec les attributs des cinq pages. */
 .cta .store-badge img { display: block; width: auto; }
 .cta .store-badge.apple img { height: 40px; }
-.cta .store-badge.play img { height: 59px; }
+.cta .store-badge.play img { height: 52px; }
 
 .cta .store {
   display: inline-flex;
