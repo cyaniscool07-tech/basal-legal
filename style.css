@@ -189,6 +189,12 @@ code {
   transition: opacity 120ms ease;
 }
 .cta .store-badge:hover { background: none; opacity: 0.82; }
+/* Les attributs width/height du HTML portent la taille D'AFFICHAGE (152×59 et 127×40), jamais la
+   taille intrinsèque du fichier. C'est ce qui rend la page correcte MÊME SANS cette feuille de
+   style : le PNG de Google fait 646×250, et avec ses dimensions naturelles en attributs il
+   s'affichait à 646 px de large — cas réellement observé le 2026-08-18, chez un visiteur dont le
+   navigateur servait l'ancienne CSS en cache avec le HTML neuf. Les hauteurs ci-dessous doivent
+   donc rester d'accord avec les attributs des cinq pages. */
 .cta .store-badge img { display: block; width: auto; }
 .cta .store-badge.apple img { height: 40px; }
 .cta .store-badge.play img { height: 59px; }
