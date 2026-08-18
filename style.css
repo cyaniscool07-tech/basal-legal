@@ -169,6 +169,30 @@ code {
 .appel .cta a.store:hover { background: var(--bg-soft, #f0efed); }
 .cta .store.attente { opacity: 0.45; }
 
+/* Badges officiels des deux boutiques. Aucune pastille autour d’eux, contrairement à `.store`
+   ci-dessus : les chartes d’Apple et de Google interdisent d’encadrer, de recolorer ou de
+   redessiner leurs badges — c’est aussi la raison pour laquelle ce sont LEURS fichiers,
+   téléchargés chez eux, et non des logos redessinés à la main.
+
+   Les deux hauteurs diffèrent volontairement. Le PNG de Google embarque une marge transparente
+   d’environ 11 % de chaque côté, là où le SVG d’Apple s’arrête au bord du badge : à hauteur
+   d’image égale, celui de Google paraîtrait plus petit. Le facteur ~1,475 rend les deux badges
+   VISUELLEMENT de même taille, ce qui respecte au passage la règle de Google — son badge ne
+   doit jamais paraître plus petit que celui d’une autre boutique. */
+.cta .store-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-decoration: none;
+  transition: opacity 120ms ease;
+}
+.cta .store-badge:hover { background: none; opacity: 0.82; }
+.cta .store-badge img { display: block; width: auto; }
+.cta .store-badge.apple img { height: 40px; }
+.cta .store-badge.play img { height: 59px; }
+
 .cta .store {
   display: inline-flex;
   align-items: center;
@@ -413,3 +437,7 @@ footer p { font-size: 13.5px; margin: 0 0 8px; }
   color: var(--ink);
 }
 .appel .cta .note { color: var(--ink-soft); opacity: 1; }
+
+/* Attribution des marques, exigée par les deux chartes dès lors qu’un badge est affiché.
+   Volontairement discrète : c’est une mention légale, pas un message au lecteur. */
+footer .marques { font-size: 0.82em; opacity: 0.62; }
