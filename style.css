@@ -106,7 +106,13 @@ code {
   color: var(--nuit-soft);
   text-decoration: none;
   font-size: 14.5px;
-  padding: 7px 11px;
+  /* Cible tactile garantie à 44 px. À 7px de padding les liens faisaient 38 px ; passer à
+     10px donnait 43,92 — l'arithmétique de padding dépend de la police et rate le seuil de
+     peu. `min-height` le garantit quelle que soit la taille de texte. Mesuré le 2026-10-06. */
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 11px;
   border-radius: 8px;
   white-space: nowrap;
   transition: color 0.16s ease, background-color 0.16s ease;
@@ -365,6 +371,13 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-bottom: 16px
 footer p { font-size: 13.5px; margin: 0 0 8px; }
 
 @media (max-width: 560px) {
+  /* La nav défile horizontalement et sa barre de défilement est masquée : rien n'indiquait
+     que des entrées restaient hors champ — d'autant moins depuis la 6e. Un fondu sur le bord
+     droit le signale, sans une ligne de JavaScript. */
+  .topbar nav {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+  }
   .hero { padding: 46px 0 56px; }
   .brand { gap: 15px; }
   section { padding: 48px 0 0; }
