@@ -370,14 +370,32 @@ footer {
 footer nav { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-bottom: 16px; }
 footer p { font-size: 13.5px; margin: 0 0 8px; }
 
-@media (max-width: 560px) {
-  /* La nav défile horizontalement et sa barre de défilement est masquée : rien n'indiquait
-     que des entrées restaient hors champ — d'autant moins depuis la 6e. Un fondu sur le bord
-     droit le signale, sans une ligne de JavaScript. */
+/* LA NAV PASSE SUR DEUX LIGNES dès qu'elle ne tient plus, elle ne défile plus.
+   Mesuré le 2026-10-06 : les six entrées font 527 px. À 375 px, TROIS d'entre elles —
+   Musculation, Comparatif, EN — étaient purement invisibles. Un fondu sur le bord droit avait
+   d'abord été posé pour signaler le défilement ; il disait qu'il y avait « quelque chose à
+   droite », pas qu'il manquait la moitié du menu. Insuffisant.
+
+   SEUIL À 680 px, ET NON 560 : le bloc mobile voisin s'arrête à 560, mais à 600 px il restait
+   encore 71 px hors champ — la zone 561-660 px, soit la plupart des tablettes en portrait,
+   gardait le défaut sans même le fondu. Le seuil suit la largeur que la nav réclame, pas celui
+   des autres règles.
+
+   Le retour à la ligne ne coûte rien ici parce que la barre est en `position: static` : elle ne
+   suit pas le défilement, sa hauteur ne pèse que sur le premier écran. C'est ce qui rend inutile
+   un menu à déplier, et ce qui permet de tenir sans une ligne de JavaScript. */
+@media (max-width: 680px) {
   .topbar nav {
-    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
-    mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: visible;
+    row-gap: 4px;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
+}
+
+@media (max-width: 560px) {
   .hero { padding: 46px 0 56px; }
   .brand { gap: 15px; }
   section { padding: 48px 0 0; }
