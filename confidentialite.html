@@ -44,7 +44,7 @@
     <li>ton profil (taille, âge, sexe, niveau d'activité, objectif, poids cible) ;</li>
     <li>ton poids et son historique ;</li>
     <li>les repas et aliments que tu consignes (nom, quantité, macronutriments) ;</li>
-    <li>ton nombre de pas quotidien (saisi manuellement, ou synchronisé automatiquement depuis Android Health Connect si tu actives cette option — voir section 9) ;</li>
+    <li>ton nombre de pas quotidien (saisi manuellement, ou synchronisé automatiquement depuis Health Connect sur Android ou l'app Santé sur iPhone, si tu actives cette option — voir section 9) ;</li>
     <li>tes séances de sport (catégorie, intensité, durée — les calories brûlées sont calculées automatiquement par l'application, jamais saisies manuellement) ;</li>
     <li>tes objectifs caloriques et nutritionnels, et la stratégie nutritionnelle choisie ;</li>
     <li>tes préférences de rappels/notifications et de thème (clair/sombre) ;</li>
@@ -76,7 +76,7 @@
   <p>Certaines informations restent <strong>propres à chaque appareil et ne sont jamais envoyées</strong>, parce qu'elles n'auraient aucun sens ailleurs ou nuiraient à un autre appareil :</p>
   <ul>
     <li>les identifiants de notifications attribués par ton téléphone ;</li>
-    <li>l'état de la synchronisation avec Santé / Health Connect, propre à l'appareil ;</li>
+    <li>l'état de la synchronisation Santé (Health Connect sur Android, Apple Santé sur iPhone), propre à l'appareil ;</li>
     <li>ton statut d'abonnement mis en cache, qui provient toujours de l'App Store ou du Play Store, jamais de nous ;</li>
     <li>l'identifiant technique de l'installation et l'identifiant anonyme de diagnostic ;</li>
     <li>la séance de musculation éventuellement en cours sur ce téléphone.</li>
@@ -122,7 +122,7 @@
   <ul>
     <li><strong>Caméra</strong> : utilisée uniquement pour scanner le code-barres d'un produit alimentaire afin de préremplir ses informations nutritionnelles. Aucune photo ni vidéo n'est prise, enregistrée ou transmise — la caméra sert uniquement à lire le code-barres en direct, pendant que l'écran de scan est ouvert. L'application ne demande pas l'accès au microphone.</li>
     <li><strong>Notifications</strong> : utilisées uniquement pour les rappels locaux que tu configures toi-même (pesée, repas, récapitulatif de journée). Ces notifications sont générées et planifiées entièrement sur ton appareil ; elles ne transitent par aucun service d'envoi de notifications push distant.</li>
-    <li><strong>Données de santé Android (Health Connect — pas quotidiens)</strong>, si ton appareil est sous Android : uniquement si tu actives toi-même la synchronisation depuis Réglages → Santé, l'application lit ton nombre de pas quotidien déjà enregistré par Health Connect, en <strong>lecture seule</strong> — elle n'y écrit jamais de donnée et ne lit aucune autre catégorie (fréquence cardiaque, sommeil, etc.). Cette autorisation reste désactivée par défaut ; sur iOS, cette fonctionnalité n'existe pas encore (voir section 13).</li>
+    <li><strong>Données de santé (pas quotidiens)</strong> : uniquement si tu actives toi-même la synchronisation depuis Réglages → Synchronisation Santé, l'application lit ton nombre de pas quotidien déjà enregistré par <strong>Health Connect</strong> sur Android ou par l'<strong>app Santé</strong> sur iPhone. Toujours en <strong>lecture seule</strong> : elle n'écrit jamais rien dans Santé, et ne lit aucune autre catégorie — ni fréquence cardiaque, ni sommeil, ni poids, ni séances. Cette autorisation reste désactivée par défaut et se révoque à tout moment depuis les réglages de ton téléphone. Sur iPhone, la donnée lue est le total agrégé de l'app Santé : elle peut donc inclure les pas mesurés par une Apple Watch ou par une autre application, si tu en utilises.</li>
   </ul>
   <p>Tu peux refuser ou révoquer ces autorisations à tout moment ; l'application reste utilisable, seules les fonctionnalités correspondantes (scan de code-barres, rappels, synchronisation des pas) seront alors indisponibles — la saisie manuelle des pas reste toujours possible.</p>
 
@@ -171,7 +171,7 @@
   <p>Seule exception, limitée aux rapports techniques anonymes décrits en section 6 : comme ils ne sont rattachés à aucune identité (même si tu as créé un compte, cet identifiant anonyme n'y est jamais relié), ils ne peuvent pas être reliés à toi spécifiquement pour exercer un droit d'accès ou de suppression individuel — ils sont conservés par Sentry selon sa propre politique de rétention, puis supprimés automatiquement.</p>
 
   <h2>13. Évolutions futures</h2>
-  <p>Si une synchronisation santé complémentaire (Apple Health, Garmin, Fitbit) ou tout autre traitement impliquant un nouveau transfert de données venait à être proposé, cette politique serait mise à jour au préalable pour le décrire précisément, et la fonctionnalité te serait présentée comme optionnelle — exactement comme le compte décrit en section 3 l'est déjà.</p>
+  <p>Si une synchronisation santé complémentaire (Garmin, Fitbit) ou tout autre traitement impliquant un nouveau transfert de données venait à être proposé, cette politique serait mise à jour au préalable pour le décrire précisément, et la fonctionnalité te serait présentée comme optionnelle — exactement comme le compte décrit en section 3 l'est déjà.</p>
 
   <h2>14. Contact</h2>
   <div class="contact">
