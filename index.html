@@ -195,5 +195,9 @@
   "publisher": { "@type": "Organization", "name": "Basal", "email": "contact@basal-app.fr" }
 }
 </script>
+<script>
+// Liens d'e-mail de compte envoyés avant la page dédiée : renvoyés vers /compte.html, jeton compris.
+if (/(access_token|error_code|type=(signup|recovery))/.test(location.hash)) location.replace('/compte.html' + location.hash);
+</script>
 </body>
 </html>

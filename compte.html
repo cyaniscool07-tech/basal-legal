@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ton compte — Basal</title>
+<link rel="canonical" href="https://basal-app.fr/compte.html">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .etat { display: none; }
+  .etat.actif { display: block; }
+  form.mdp { display: grid; gap: 12px; max-width: 420px; margin-top: 18px; }
+  form.mdp label { font-weight: 600; font-size: 15px; }
+  form.mdp input { font: inherit; padding: 12px 14px; border: 1px solid #d6d3cf; border-radius: 10px; }
+  form.mdp input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  form.mdp button { font: inherit; font-weight: 700; padding: 13px 18px; border: 0; border-radius: 10px; background: var(--accent); color: #fff; cursor: pointer; }
+  form.mdp button[disabled] { opacity: .55; cursor: default; }
+  .erreur { color: #b42318; font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="mark" href="/"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
+  </div>
+</header>
+
+<div class="page">
+  <!-- Page de retour des e-mails de compte (Supabase « Site URL ») : confirmation d'adresse et
+       mot de passe oublié. Sans elle, ces liens menaient à l'accueil du site, et la
+       réinitialisation du mot de passe était impossible. -->
+
+  <section class="etat actif" id="chargement" aria-live="polite">
+    <h1 data-fr="Un instant…" data-en="One moment…">Un instant…</h1>
+  </section>
+
+  <section class="etat" id="confirme">
+    <h1 data-fr="Ton adresse est confirmée" data-en="Your email address is confirmed">Ton adresse est confirmée</h1>
+    <p data-fr="Retourne dans l’application Basal et connecte-toi avec ton adresse et ton mot de passe. Tu peux fermer cette page." data-en="Go back to the Basal app and sign in with your email and password. You can close this page.">Retourne dans l’application Basal et connecte-toi avec ton adresse et ton mot de passe. Tu peux fermer cette page.</p>
+  </section>
+
+  <section class="etat" id="nouveau-mdp">
+    <h1 data-fr="Choisis un nouveau mot de passe" data-en="Choose a new password">Choisis un nouveau mot de passe</h1>
+    <p data-fr="Au moins 8 caractères. Il remplacera l’ancien sur tous tes appareils." data-en="At least 8 characters. It will replace the old one on all your devices.">Au moins 8 caractères. Il remplacera l’ancien sur tous tes appareils.</p>
+    <form class="mdp" id="form-mdp" novalidate>
+      <label for="mdp1" data-fr="Nouveau mot de passe" data-en="New password">Nouveau mot de passe</label>
+      <input id="mdp1" type="password" autocomplete="new-password" minlength="8" required>
+      <label for="mdp2" data-fr="Confirme-le" data-en="Confirm it">Confirme-le</label>
+      <input id="mdp2" type="password" autocomplete="new-password" minlength="8" required>
+      <p class="erreur" id="erreur-mdp" role="alert" hidden></p>
+      <button type="submit" id="envoyer" data-fr="Enregistrer le mot de passe" data-en="Save password">Enregistrer le mot de passe</button>
+    </form>
+  </section>
+
+  <section class="etat" id="mdp-ok">
+    <h1 data-fr="Mot de passe enregistré" data-en="Password saved">Mot de passe enregistré</h1>
+    <p data-fr="Retourne dans l’application Basal et connecte-toi avec ton nouveau mot de passe. Tu peux fermer cette page." data-en="Go back to the Basal app and sign in with your new password. You can close this page.">Retourne dans l’application Basal et connecte-toi avec ton nouveau mot de passe. Tu peux fermer cette page.</p>
+  </section>
+
+  <section class="etat" id="lien-invalide">
+    <h1 data-fr="Ce lien n’est plus valable" data-en="This link is no longer valid">Ce lien n’est plus valable</h1>
+    <p data-fr="Il a peut-être déjà servi ou expiré. Dans l’application, demande un nouvel e-mail (Réglages → Compte), puis ouvre le lien le plus récent." data-en="It may have been used already or expired. In the app, request a new email (Settings → Account), then open the most recent link.">Il a peut-être déjà servi ou expiré. Dans l’application, demande un nouvel e-mail (Réglages → Compte), puis ouvre le lien le plus récent.</p>
+  </section>
+
+  <section class="etat" id="rien">
+    <h1 data-fr="Ton compte Basal" data-en="Your Basal account">Ton compte Basal</h1>
+    <p data-fr="Cette page s’ouvre depuis les e-mails de Basal (confirmation d’adresse, mot de passe oublié). Pour gérer ton compte, ouvre l’application : Réglages → Compte." data-en="This page opens from Basal emails (email confirmation, forgotten password). To manage your account, open the app: Settings → Account.">Cette page s’ouvre depuis les e-mails de Basal (confirmation d’adresse, mot de passe oublié). Pour gérer ton compte, ouvre l’application : Réglages → Compte.</p>
+  </section>
+
+  <p class="updated"><a href="/" data-fr="Retour au site" data-en="Back to the website">Retour au site</a> · <a href="mailto:contact@basal-app.fr">contact@basal-app.fr</a></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+(function () {
+  // Langue : anglais seulement si le navigateur le préfère au français (même règle que l'app).
+  var langs = (navigator.languages || [navigator.language || 'fr']).map(function (l) { return String(l).toLowerCase(); });
+  var en = langs.length && langs[0].indexOf('en') === 0;
+  var L = en ? 'en' : 'fr';
+  document.documentElement.lang = L;
+  document.querySelectorAll('[data-fr]').forEach(function (el) { el.textContent = el.getAttribute('data-' + L); });
+  var msg = {
+    court: { fr: 'Le mot de passe doit faire au moins 8 caractères.', en: 'The password must be at least 8 characters.' },
+    different: { fr: 'Les deux mots de passe ne sont pas identiques.', en: 'The two passwords do not match.' },
+    echec: { fr: 'L’enregistrement a échoué. Réessaie, ou demande un nouvel e-mail depuis l’application.', en: 'Saving failed. Try again, or request a new email from the app.' },
+    titre: { fr: 'Ton compte — Basal', en: 'Your account — Basal' }
+  };
+  document.title = msg.titre[L];
+
+  function montrer(id) {
+    document.querySelectorAll('.etat').forEach(function (s) { s.classList.toggle('actif', s.id === id); });
+  }
+
+  // Clé PUBLIQUE (« publishable ») : la même que celle embarquée dans l'application. La sécurité
+  // repose sur le lien à usage unique envoyé par e-mail, pas sur le secret de cette clé.
+  var client = window.supabase.createClient('https://ncpmassgjiztymanexgk.supabase.co', 'sb_publishable_xul6U2LdIwKZ6S1iQBXQ-A_Pk8OTVIs', {
+    auth: { persistSession: false, detectSessionInUrl: true, flowType: 'implicit' }
+  });
+
+  var hash = new URLSearchParams(location.hash.replace(/^#/, ''));
+  var query = new URLSearchParams(location.search);
+  var type = hash.get('type') || query.get('type');
+  var erreur = hash.get('error') || query.get('error') || hash.get('error_code');
+
+  if (erreur) { montrer('lien-invalide'); return; }
+  if (!type && !hash.get('access_token')) { montrer('rien'); return; }
+
+  client.auth.getSession().then(function (r) {
+    var session = r && r.data && r.data.session;
+    if (type === 'recovery') {
+      montrer(session ? 'nouveau-mdp' : 'lien-invalide');
+    } else {
+      // signup, email_change, magiclink… : l'adresse est confirmée dès l'ouverture du lien.
+      montrer('confirme');
+    }
+    // Le jeton ne reste pas dans la barre d'adresse (ni dans l'historique).
+    history.replaceState(null, '', location.pathname);
+  });
+
+  var form = document.getElementById('form-mdp');
+  var bouton = document.getElementById('envoyer');
+  var zoneErreur = document.getElementById('erreur-mdp');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var a = document.getElementById('mdp1').value;
+    var b = document.getElementById('mdp2').value;
+    zoneErreur.hidden = true;
+    if (a.length < 8) { zoneErreur.textContent = msg.court[L]; zoneErreur.hidden = false; return; }
+    if (a !== b) { zoneErreur.textContent = msg.different[L]; zoneErreur.hidden = false; return; }
+    bouton.disabled = true;
+    client.auth.updateUser({ password: a }).then(function (r) {
+      bouton.disabled = false;
+      if (r.error) { zoneErreur.textContent = msg.echec[L]; zoneErreur.hidden = false; return; }
+      client.auth.signOut();
+      montrer('mdp-ok');
+    });
+  });
+})();
+</script>
+</body>
+</html>
