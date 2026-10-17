@@ -100,23 +100,41 @@
 
   var hash = new URLSearchParams(location.hash.replace(/^#/, ''));
   var query = new URLSearchParams(location.search);
-  var type = hash.get('type') || query.get('type');
+  var type = query.get('type') || hash.get('type');
+  var tokenHash = query.get('token_hash');
   var erreur = hash.get('error') || query.get('error') || hash.get('error_code');
+  // Le jeton ne reste pas dans la barre d'adresse (ni dans l'historique).
+  history.replaceState(null, '', location.pathname);
 
   if (erreur) { montrer('lien-invalide'); return; }
-  if (!type && !hash.get('access_token')) { montrer('rien'); return; }
 
-  client.auth.getSession().then(function (r) {
-    var session = r && r.data && r.data.session;
-    if (type === 'recovery') {
-      montrer(session ? 'nouveau-mdp' : 'lien-invalide');
-    } else {
-      // signup, email_change, magiclink… : l'adresse est confirmée dès l'ouverture du lien.
-      montrer('confirme');
-    }
-    // Le jeton ne reste pas dans la barre d'adresse (ni dans l'historique).
-    history.replaceState(null, '', location.pathname);
-  });
+  // Liens des modèles d'e-mail Supabase : ?token_hash=…&type=recovery|signup|email.
+  // C'est le seul format qu'une page web peut vérifier : l'app est en mode PKCE, et un lien
+  // « ?code=… » ne peut être échangé que par l'appareil qui a fait la demande.
+  if (tokenHash && type) {
+    var otpType = type === 'signup' ? 'email' : type;
+    client.auth.verifyOtp({ token_hash: tokenHash, type: otpType }).then(function (r) {
+      if (r.error) { montrer('lien-invalide'); return; }
+      montrer(type === 'recovery' ? 'nouveau-mdp' : 'confirme');
+    });
+    return;
+  }
+
+  // Ancien format (jeton dans le fragment, flux implicite).
+  if (hash.get('access_token')) {
+    client.auth.getSession().then(function (r) {
+      var session = r && r.data && r.data.session;
+      if (type === 'recovery') montrer(session ? 'nouveau-mdp' : 'lien-invalide');
+      else montrer('confirme');
+    });
+    return;
+  }
+
+  // « ?code=… » (PKCE) : non vérifiable ici. Pour une confirmation, l'adresse est déjà validée
+  // par Supabase avant la redirection ; pour un mot de passe, il faut un nouveau lien.
+  if (query.get('code') || location.search.indexOf('code=') !== -1) { montrer('lien-invalide'); return; }
+
+  montrer('rien');
 
   var form = document.getElementById('form-mdp');
   var bouton = document.getElementById('envoyer');
