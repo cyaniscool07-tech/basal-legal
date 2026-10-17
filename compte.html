@@ -35,6 +35,14 @@
     <h1 data-fr="Un instant…" data-en="One moment…">Un instant…</h1>
   </section>
 
+  <section class="etat" id="a-confirmer">
+    <h1 data-fr="Confirme ton adresse" data-en="Confirm your email address">Confirme ton adresse</h1>
+    <form class="mdp" id="form-confirmer" novalidate>
+      <p class="erreur" id="erreur-confirmer" role="alert" hidden></p>
+      <button type="submit" id="bouton-confirmer" data-fr="Confirmer mon adresse" data-en="Confirm my address">Confirmer mon adresse</button>
+    </form>
+  </section>
+
   <section class="etat" id="confirme">
     <h1 data-fr="Ton adresse est confirmée" data-en="Your email address is confirmed">Ton adresse est confirmée</h1>
     <p data-fr="Retourne dans l’application Basal et connecte-toi avec ton adresse et ton mot de passe. Tu peux fermer cette page." data-en="Go back to the Basal app and sign in with your email and password. You can close this page.">Retourne dans l’application Basal et connecte-toi avec ton adresse et ton mot de passe. Tu peux fermer cette page.</p>
@@ -108,17 +116,58 @@
 
   if (erreur) { montrer('lien-invalide'); return; }
 
+  var form = document.getElementById('form-mdp');
+  var bouton = document.getElementById('envoyer');
+  var zoneErreur = document.getElementById('erreur-mdp');
+  var otpType = type === 'signup' ? 'email' : type;
+  var verifie = false; // le jeton n'est consommé qu'une fois, au premier envoi réussi
+
+  // Le lien n'est vérifié QU'AU CLIC de la personne, jamais à l'ouverture : les analyseurs de
+  // liens des messageries, un préchargement ou un double clic consommeraient sinon ce jeton à
+  // usage unique, et la personne verrait « lien plus valable » sans avoir rien fait.
+  function verifier() {
+    if (verifie || !tokenHash) return Promise.resolve({ error: null });
+    return client.auth.verifyOtp({ token_hash: tokenHash, type: otpType }).then(function (r) {
+      if (!r.error) verifie = true;
+      return r;
+    });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var a = document.getElementById('mdp1').value;
+    var b = document.getElementById('mdp2').value;
+    zoneErreur.hidden = true;
+    if (a.length < 8) { zoneErreur.textContent = msg.court[L]; zoneErreur.hidden = false; return; }
+    if (a !== b) { zoneErreur.textContent = msg.different[L]; zoneErreur.hidden = false; return; }
+    bouton.disabled = true;
+    verifier().then(function (v) {
+      if (v.error) { bouton.disabled = false; montrer('lien-invalide'); return; }
+      return client.auth.updateUser({ password: a }).then(function (r) {
+        bouton.disabled = false;
+        if (r.error) { zoneErreur.textContent = msg.echec[L]; zoneErreur.hidden = false; return; }
+        client.auth.signOut();
+        montrer('mdp-ok');
+      });
+    });
+  });
+
+  document.getElementById('form-confirmer').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var b = document.getElementById('bouton-confirmer');
+    b.disabled = true;
+    verifier().then(function (r) {
+      b.disabled = false;
+      if (r.error) { montrer('lien-invalide'); return; }
+      client.auth.signOut();
+      montrer('confirme');
+    });
+  });
+
   // Liens des modèles d'e-mail Supabase : ?token_hash=…&type=recovery|signup|email.
   // C'est le seul format qu'une page web peut vérifier : l'app est en mode PKCE, et un lien
   // « ?code=… » ne peut être échangé que par l'appareil qui a fait la demande.
-  if (tokenHash && type) {
-    var otpType = type === 'signup' ? 'email' : type;
-    client.auth.verifyOtp({ token_hash: tokenHash, type: otpType }).then(function (r) {
-      if (r.error) { montrer('lien-invalide'); return; }
-      montrer(type === 'recovery' ? 'nouveau-mdp' : 'confirme');
-    });
-    return;
-  }
+  if (tokenHash && type) { montrer(type === 'recovery' ? 'nouveau-mdp' : 'a-confirmer'); return; }
 
   // Ancien format (jeton dans le fragment, flux implicite).
   if (hash.get('access_token')) {
@@ -130,30 +179,10 @@
     return;
   }
 
-  // « ?code=… » (PKCE) : non vérifiable ici. Pour une confirmation, l'adresse est déjà validée
-  // par Supabase avant la redirection ; pour un mot de passe, il faut un nouveau lien.
+  // « ?code=… » (PKCE) : non vérifiable ici.
   if (query.get('code') || location.search.indexOf('code=') !== -1) { montrer('lien-invalide'); return; }
 
   montrer('rien');
-
-  var form = document.getElementById('form-mdp');
-  var bouton = document.getElementById('envoyer');
-  var zoneErreur = document.getElementById('erreur-mdp');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var a = document.getElementById('mdp1').value;
-    var b = document.getElementById('mdp2').value;
-    zoneErreur.hidden = true;
-    if (a.length < 8) { zoneErreur.textContent = msg.court[L]; zoneErreur.hidden = false; return; }
-    if (a !== b) { zoneErreur.textContent = msg.different[L]; zoneErreur.hidden = false; return; }
-    bouton.disabled = true;
-    client.auth.updateUser({ password: a }).then(function (r) {
-      bouton.disabled = false;
-      if (r.error) { zoneErreur.textContent = msg.echec[L]; zoneErreur.hidden = false; return; }
-      client.auth.signOut();
-      montrer('mdp-ok');
-    });
-  });
 })();
 </script>
 </body>
