@@ -29,7 +29,7 @@
 <div class="page">
 
   <h1>Privacy policy — Basal</h1>
-  <p class="updated">Last updated: 16 October 2026</p>
+  <p class="updated">Last updated: 18 October 2026</p>
 
   <p>This is a translation of the <a href="/confidentialite.html" hreflang="fr" lang="fr">French privacy policy</a>. If the two versions ever differ, the French version prevails.</p>
 
@@ -39,8 +39,9 @@
   <ul>
     <li><strong>No account is required to use the app.</strong> Without an account, your personal data (profile, weight, meals, activity, goals — see section 2) stays <strong>entirely on your device</strong> and is sent to no one: it only leaves the device if you choose to export it yourself (section 8).</li>
     <li><strong>If — and only if — you create an account</strong> (see section 3), your data is backed up on a server located in <strong>Ireland, in the European Union</strong>, so that you can get it back on another device. You can delete this account at any time, which also erases this data from the server (section 10). Some information still stays specific to each device and is <strong>never</strong> sent — the list is in section 4.</li>
-    <li>No advertising tracker, no advertising, and no analysis of your behaviour or of how you use the app is built in.</li>
-    <li>A technical diagnostic tool (anonymous crash reports, see section 6) is used to identify and fix bugs. It <strong>never</strong> receives your personal data (weight, meals, goals…) — only anonymous technical information when a software error occurs.</li>
+    <li>No advertising tracker, no advertising, no profiling. Only <strong>anonymous usage counters</strong> (for example “the Premium screen was opened”, “a first meal was logged”) are sent, never any value you entered (section 6).</li>
+    <li>The <strong>Community</strong> (shared recipes, routines and programmes) can be browsed without an account. Publishing requires an account and a <strong>username</strong>: only that username and what you choose to publish become public — never your email address or your tracking (section 5a).</li>
+    <li>A technical diagnostic tool (section 6) receives crash reports and these anonymous usage counters. It <strong>never</strong> receives your personal data (weight, meals, goals…).</li>
   </ul>
 
   <h2>2. Data you record in the app</h2>
@@ -97,9 +98,35 @@
   <p>No other information (your profile, your weight, the meals you have already logged) is sent on these occasions. These requests are subject to the privacy policy of Open Food Facts, a project independent from the publisher of this app.</p>
   <p>A second kind of network request exists, triggered not by a deliberate action but by an unexpected technical error: see section 6 (technical diagnostics / Sentry).</p>
   <p>Finally, <strong>if you have created an account</strong>, the app communicates with <strong>Supabase</strong>, our hosting and authentication provider, to back up your data there and check your identity when you sign in. Supabase acts solely on our behalf and on our instructions; it does not use your data for its own purposes. The servers used are located in Ireland, in the European Union. Without an account, no such communication takes place.</p>
+  <p><strong>Account emails</strong> (confirming your address, forgotten password) are sent by <strong>Brevo</strong> (Sendinblue SAS, France), our email delivery provider. It only receives your email address and the content of that email, acts solely on our behalf and processes this data in the European Union. Links in these emails go through a Brevo click counter set to anonymous mode: a click is never linked to your address. No marketing email is ever sent.</p>
 
-  <h2>6. Technical diagnostics (crash reports)</h2>
-  <p>The app uses <strong>Sentry</strong>, a third-party technical diagnostic service, to be notified automatically when a bug or crash occurs so that it can be fixed. It is a <strong>diagnostic</strong> tool, not an audience analytics or ad tracking tool — it only activates when a software error occurs.</p>
+  <h2>5a. Community</h2>
+  <p>The Community is a library of recipes, routines and programmes shared by people who use Basal, <strong>checked before they become visible</strong>. It is not a social network: no messaging, no followers, no detailed profile.</p>
+  <p><strong>Browsing and importing</strong> do not require an account. The app then queries the server (Supabase, Ireland) with your search and filters (for example “vegetarian” or “30 min or less”); they are not stored, and nothing from your tracking is sent. Imported content becomes a <strong>personal</strong> recipe or routine on your device, as if you had created it. If you are signed in, the import is recorded (which content, which version, when); this information is never made public.</p>
+  <p><strong>Publishing requires an account.</strong> The server then stores:</p>
+  <ul>
+    <li>your <strong>username</strong> (3 to 24 characters), which you choose — never your email address or display name;</li>
+    <li>the version of the Community rules you accepted, and the date;</li>
+    <li>each publication and each of its versions, <strong>exactly what the preview shows before sending</strong>: for a recipe, its name, description, servings, times, steps and ingredients with their weights; for a routine, its exercises, sets, reps and rest times; for a programme, its days and routines;</li>
+    <li>the moderation decisions concerning it, with their reason;</li>
+    <li>your review requests.</li>
+  </ul>
+  <p><strong>What is never published</strong>: your email address, your log, your weight and weigh-ins, your loads, your workouts, your records, your private notes. A publication is built from a <strong>closed list</strong> of fields: anything not on it never leaves your device. Nutritional values are recalculated by the server from the ingredients.</p>
+  <p><strong>What is public</strong>: your username and <strong>approved</strong> content, visible to anyone who uses Basal, with or without an account.</p>
+  <p><strong>Reports and blocks.</strong> When you report content, the server keeps the reason, your optional comment and your account identifier; <strong>the author never knows who reported it</strong>. You can follow what happened to your reports in “My publications”. Blocking an author is recorded so that you no longer see their content; they are not notified.</p>
+  <p><strong>Moderation.</strong> The publisher reviews publications and reports. Every decision (approval, rejection, hiding, suspension) is explained, communicated to the person concerned and recorded in a <strong>log that cannot be edited or erased</strong>: this is what makes it possible to justify a decision and handle a dispute.</p>
+  <p><strong>Retention.</strong></p>
+  <ul>
+    <li>A publication stays visible until you withdraw it, or until moderation removes it.</li>
+    <li><strong>Deleting your account</strong> immediately deletes your username, your publications and their versions, your blocks, your imports and your review requests.</li>
+    <li>Your reports are kept <strong>without any link to you</strong>, for the review in progress; the moderation log keeps its decisions <strong>anonymised</strong> (without your identifier).</li>
+    <li>Copies that other people have already imported belong to them: they are personal recipes and routines, on their devices.</li>
+  </ul>
+  <p><strong>Hosting</strong>: the same as for accounts — Supabase, in Ireland (European Union).</p>
+
+  <h2>6. Technical diagnostics and anonymous usage counters</h2>
+  <p>The app uses <strong>Sentry</strong>, a third-party technical diagnostic service, to be notified automatically when a bug or crash occurs so that it can be fixed. It is not an ad tracking tool: no profile is built, nothing is cross-referenced with other services.</p>
+  <p>The same tool also receives a few <strong>anonymous usage counters</strong>, to know whether the app does its job and to improve its flows: for example “onboarding was completed”, “an onboarding step was completed”, “a first meal was logged”, “the Premium screen was opened or closed”, “a purchase was started, completed or cancelled” (with the chosen plan: monthly or yearly), “reminders were accepted or postponed”. These counters say <strong>that an action happened, never its value</strong>: no weight, no calories, no food, no content you entered. They are linked to the same anonymous installation identifier as crash reports, never to your account.</p>
   <p><strong>What is sent to Sentry when an error occurs:</strong></p>
   <ul>
     <li>technical information about the error itself (error message, stack trace, screen or feature involved — e.g. "food search", "export", never the content you entered);</li>
@@ -164,6 +191,8 @@
     <li><strong>Account, backup and return of your data</strong> — performance of a contract: it is the service you request by creating an account (Art. 6(1)(b) GDPR).</li>
     <li><strong>Managing a Premium subscription</strong> — performance of a contract (Art. 6(1)(b)).</li>
     <li><strong>Anonymous crash reports</strong> — legitimate interest: keeping the app in working order, without identifying anyone (Art. 6(1)(f)).</li>
+    <li><strong>Community: username, publications, imports</strong> — performance of a contract: it is the service you request by publishing (Art. 6(1)(b)).</li>
+    <li><strong>Community: moderation, reports, blocks, decision log</strong> — legal obligation under the EU Digital Services Act (Art. 6(1)(c)), and legitimate interest: keeping the library safe and being able to justify every decision (Art. 6(1)(f)).</li>
   </ul>
   <p>No processing is based on advertising, profiling or resale: there simply isn't any.</p>
   <h3>Your rights</h3>

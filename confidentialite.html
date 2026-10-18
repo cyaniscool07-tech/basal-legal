@@ -28,7 +28,7 @@
 <div class="page">
 
   <h1>Politique de confidentialité — Basal</h1>
-  <p class="updated">Dernière mise à jour : 16 octobre 2026 — <a href="/en/privacy.html" hreflang="en" lang="en">English version</a></p>
+  <p class="updated">Dernière mise à jour : 18 octobre 2026 — <a href="/en/privacy.html" hreflang="en" lang="en">English version</a></p>
 
   <p>Cette politique décrit précisément ce que fait l'application <strong>Basal</strong> aujourd'hui, sans anticiper de fonctionnalités non encore disponibles.</p>
 
@@ -36,8 +36,9 @@
   <ul>
     <li><strong>Aucun compte n'est requis pour utiliser l'application.</strong> Sans compte, tes données personnelles (profil, poids, repas, activité, objectifs — voir section 2) restent <strong>entièrement sur ton appareil</strong> et ne sont transmises à personne : elles ne le quittent que si toi-même choisis de les exporter (section 8).</li>
     <li><strong>Si — et seulement si — tu crées un compte</strong> (voir section 3), tes données sont sauvegardées sur un serveur situé en <strong>Irlande, dans l'Union européenne</strong>, afin de te permettre de les retrouver sur un autre appareil. Tu peux supprimer ce compte à tout moment, ce qui efface également ces données du serveur (section 10). Certaines informations restent malgré tout propres à chaque appareil et ne sont <strong>jamais</strong> envoyées — la liste figure en section 4.</li>
-    <li>Aucun outil de suivi publicitaire, aucune publicité, et aucune analyse du comportement ou de l'usage que tu fais de l'application n'est intégré.</li>
-    <li>Un outil de diagnostic technique (rapports de crash anonymes, voir section 6) est utilisé pour identifier et corriger les bugs. Il ne reçoit <strong>jamais</strong> tes données personnelles (poids, repas, objectifs...) — uniquement des informations techniques anonymes en cas d'erreur logicielle.</li>
+    <li>Aucun outil de suivi publicitaire, aucune publicité, aucun profilage. Seuls des <strong>compteurs d'usage anonymes</strong> (par exemple « l'écran Premium a été ouvert », « un premier repas a été noté ») sont transmis, sans jamais la moindre valeur saisie (section 6).</li>
+    <li>La <strong>Communauté</strong> (recettes, routines et programmes partagés) se consulte sans compte. Publier demande un compte et un <strong>pseudonyme</strong> : seuls ce pseudonyme et ce que tu choisis de publier deviennent publics — jamais ton e-mail ni ton suivi (section 5 bis).</li>
+    <li>Un outil de diagnostic technique (section 6) reçoit les rapports de plantage et ces compteurs d'usage anonymes. Il ne reçoit <strong>jamais</strong> tes données personnelles (poids, repas, objectifs...).</li>
   </ul>
 
   <h2>2. Données que tu enregistres dans l'application</h2>
@@ -94,9 +95,35 @@
   <p>Aucune autre information (ton profil, ton poids, tes repas déjà enregistrés) n'est transmise à cette occasion. Ces requêtes sont soumises à la politique de confidentialité d'Open Food Facts, un projet indépendant de l'éditeur de cette application.</p>
   <p>Un second type d'appel réseau existe, non déclenché par une action volontaire mais par une erreur technique imprévue : voir section 6 (diagnostic technique / Sentry).</p>
   <p>Enfin, <strong>si tu as créé un compte</strong>, l'application communique avec <strong>Supabase</strong>, notre prestataire d'hébergement et d'authentification, pour y sauvegarder tes données et vérifier ton identité à la connexion. Supabase agit uniquement pour notre compte et selon nos instructions ; il n'exploite pas tes données pour son propre usage. Les serveurs utilisés se situent en Irlande, dans l'Union européenne. Sans compte, aucune communication de ce type n'a lieu.</p>
+  <p>Les <strong>e-mails de compte</strong> (confirmation de ton adresse, mot de passe oublié) sont envoyés par <strong>Brevo</strong> (Sendinblue SAS, France), notre prestataire d'envoi d'e-mails. Il ne reçoit que ton adresse e-mail et le contenu de cet e-mail, agit uniquement pour notre compte et traite ces données dans l'Union européenne. Les liens de ces e-mails passent par un compteur de clics de Brevo, réglé en mode anonyme : un clic n'est jamais rattaché à ton adresse. Aucun e-mail publicitaire n'est envoyé.</p>
 
-  <h2>6. Diagnostic technique (rapports de crash)</h2>
-  <p>L'application utilise <strong>Sentry</strong>, un service tiers de diagnostic technique, pour être informée automatiquement lorsqu'un bug ou un plantage se produit et pouvoir le corriger. C'est un outil de <strong>diagnostic</strong>, pas un outil d'analyse d'audience ou de suivi publicitaire — il ne s'active qu'au moment d'une erreur logicielle.</p>
+  <h2>5 bis. Communauté</h2>
+  <p>La Communauté est une bibliothèque de recettes, de routines et de programmes partagés par les personnes qui utilisent Basal, <strong>vérifiés avant d'être visibles</strong>. Ce n'est pas un réseau social : pas de messagerie, pas d'abonnés, pas de profil détaillé.</p>
+  <p><strong>La consulter et importer</strong> ne demande pas de compte. L'application interroge alors le serveur (Supabase, Irlande) avec ta recherche et tes filtres (par exemple « végétarien » ou « 30 min ou moins ») ; ils ne sont pas conservés, et rien de ton suivi n'est envoyé. Un contenu importé devient une recette ou une routine <strong>personnelle</strong>, sur ton appareil, comme si tu l'avais créée. Si tu es connecté à ton compte, l'import est noté (quel contenu, quelle version, quand) ; cette information n'est jamais rendue publique.</p>
+  <p><strong>Publier demande un compte.</strong> Sont alors enregistrés sur le serveur :</p>
+  <ul>
+    <li>ton <strong>pseudonyme</strong> (3 à 24 caractères), que tu choisis — jamais ton e-mail ni ton nom affiché ;</li>
+    <li>la version des règles de la Communauté que tu as acceptée, et la date ;</li>
+    <li>chaque publication et chacune de ses versions, <strong>exactement ce que montre l'aperçu avant l'envoi</strong> : pour une recette, son nom, sa description, ses portions, ses temps, ses étapes et ses ingrédients avec leurs grammages ; pour une routine, ses exercices, séries, répétitions et temps de repos ; pour un programme, ses jours et ses routines ;</li>
+    <li>les décisions de modération qui la concernent, avec leur motif ;</li>
+    <li>tes demandes de réexamen.</li>
+  </ul>
+  <p><strong>Ce qui n'est jamais publié</strong> : ton adresse e-mail, ton journal, ton poids et tes pesées, tes charges, tes séances, tes records, tes notes privées. Une publication est construite à partir d'une <strong>liste fermée</strong> de champs : ce qui n'y figure pas ne quitte pas ton appareil. Les valeurs nutritionnelles sont recalculées par le serveur à partir des ingrédients.</p>
+  <p><strong>Ce qui est public</strong> : ton pseudonyme et le contenu <strong>approuvé</strong>, lisibles par toute personne qui utilise Basal, avec ou sans compte.</p>
+  <p><strong>Signalements et blocages.</strong> Quand tu signales un contenu, le serveur conserve le motif, ton commentaire éventuel et ton identifiant de compte ; <strong>l'auteur ne sait jamais qui l'a signalé</strong>. Tu peux suivre la suite donnée à tes signalements dans « Mes publications ». Bloquer un auteur est enregistré pour ne plus voir ses contenus ; il n'en est pas informé.</p>
+  <p><strong>Modération.</strong> L'éditeur examine les publications et les signalements. Chaque décision (validation, refus, masquage, suspension) est motivée, communiquée à la personne concernée et consignée dans un <strong>journal qui ne peut être ni modifié ni effacé</strong> : c'est ce qui permet de justifier une décision et de traiter une contestation.</p>
+  <p><strong>Conservation.</strong></p>
+  <ul>
+    <li>Une publication reste visible jusqu'à ce que tu la retires, ou qu'elle soit retirée par la modération.</li>
+    <li><strong>Supprimer ton compte</strong> supprime immédiatement ton pseudonyme, tes publications et leurs versions, tes blocages, tes imports et tes demandes de réexamen.</li>
+    <li>Tes signalements sont conservés <strong>sans lien avec toi</strong>, pour l'examen en cours ; le journal de modération garde ses décisions, <strong>anonymisées</strong> (sans ton identifiant).</li>
+    <li>Les copies que d'autres personnes ont déjà importées leur appartiennent : ce sont des recettes et routines personnelles, sur leurs appareils.</li>
+  </ul>
+  <p><strong>Hébergement</strong> : le même que celui du compte — Supabase, en Irlande (Union européenne).</p>
+
+  <h2>6. Diagnostic technique et compteurs d'usage anonymes</h2>
+  <p>L'application utilise <strong>Sentry</strong>, un service tiers de diagnostic technique, pour être informée automatiquement lorsqu'un bug ou un plantage se produit et pouvoir le corriger. Ce n'est pas un outil de suivi publicitaire : aucun profil n'est construit, rien n'est croisé avec d'autres services.</p>
+  <p>Le même outil reçoit aussi quelques <strong>compteurs d'usage anonymes</strong>, pour savoir si l'application remplit son rôle et améliorer ses parcours : par exemple « l'accueil a été terminé », « une étape de l'accueil a été franchie », « un premier repas a été noté », « l'écran Premium a été ouvert ou fermé », « un achat a été commencé, finalisé ou annulé » (avec la formule choisie : mensuelle ou annuelle), « les rappels ont été acceptés ou reportés ». Ces compteurs disent <strong>qu'une action a eu lieu, jamais sa valeur</strong> : aucun poids, aucune calorie, aucun aliment, aucun contenu saisi. Ils sont rattachés au même identifiant anonyme d'installation que les rapports de plantage, jamais à ton compte.</p>
   <p><strong>Ce qui est transmis à Sentry en cas d'erreur :</strong></p>
   <ul>
     <li>des informations techniques sur l'erreur elle-même (message d'erreur, trace de la pile d'appel, écran ou fonctionnalité concernée — ex. « recherche d'aliment », « export », jamais le contenu que tu as saisi) ;</li>
@@ -161,6 +188,8 @@
     <li><strong>Compte, sauvegarde et restitution de tes données</strong> — exécution du contrat : c'est le service que tu demandes en créant un compte (art. 6.1.b du RGPD).</li>
     <li><strong>Gestion d'un abonnement Premium</strong> — exécution du contrat (art. 6.1.b).</li>
     <li><strong>Rapports de plantage anonymes</strong> — intérêt légitime : maintenir l'application en état de fonctionner, sans identifier personne (art. 6.1.f).</li>
+    <li><strong>Communauté : pseudonyme, publications, imports</strong> — exécution du contrat : c'est le service que tu demandes en publiant (art. 6.1.b).</li>
+    <li><strong>Communauté : modération, signalements, blocages, journal des décisions</strong> — obligation légale, règlement européen sur les services numériques (art. 6.1.c), et intérêt légitime : garder une bibliothèque sûre et pouvoir justifier chaque décision (art. 6.1.f).</li>
   </ul>
   <p>Aucun traitement n'est fondé sur la publicité, le profilage ou la revente : il n'y en a tout simplement pas.</p>
   <h3>Tes droits</h3>
