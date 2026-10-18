@@ -485,3 +485,25 @@ footer p { font-size: 13.5px; margin: 0 0 8px; }
 /* Attribution des marques, exigée par les deux chartes dès lors qu’un badge est affiché.
    Volontairement discrète : c’est une mention légale, pas un message au lecteur. */
 footer .marques { font-size: 0.82em; opacity: 0.62; }
+
+/* ------------------------------------------------------------------ recettes (2026-10-18)
+   Pages générées par calorie-tracker/scripts/site/__tests__/recipePages.gen.test.ts :
+   ne pas les retoucher à la main, relancer le générateur. */
+.fil { font-size: 14px; color: var(--ink-soft); margin: 0 0 6px; }
+.fil a { color: inherit; }
+.recette-img { display: block; width: 100%; max-width: 420px; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 18px; margin: 22px 0 18px; }
+.faits { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 6px 0 10px; }
+.faits div { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 10px; text-align: center; }
+.faits span { display: block; font-size: 12.5px; color: var(--ink-soft); }
+.faits b { display: block; font-size: 18px; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.meta-recette { font-size: 15px; color: var(--ink-soft); margin: 0 0 8px; }
+.large-page { max-width: 940px; }
+.recettes-grille { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); margin: 10px 0 8px; }
+.recette-carte { display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: var(--ink); }
+.recette-carte img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 14px; transition: transform 160ms ease; }
+.recette-carte:hover img { transform: translateY(-3px); }
+.recette-carte .nom { font-size: 15px; font-weight: 600; line-height: 1.3; }
+.recette-carte .chiffres { font-size: 13px; color: var(--ink-soft); }
+@media (max-width: 560px) {
+  .faits { grid-template-columns: repeat(3, 1fr); }
+}
