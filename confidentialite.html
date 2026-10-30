@@ -9,6 +9,7 @@
 <link rel="alternate" hreflang="en" href="https://basal-app.fr/en/privacy.html">
 <meta name="description" content="Politique de confidentialité de l'application Basal (suivi nutritionnel, poids, métabolisme et activité).">
 <link rel="stylesheet" href="/style.css">
+<script data-goatcounter="https://basalapp.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 <a class="evitement" href="#contenu">Aller au contenu</a>
@@ -41,6 +42,7 @@
     <li>Aucun outil de suivi publicitaire, aucune publicité, aucun profilage. Seuls des <strong>compteurs d'usage anonymes</strong> (par exemple « l'écran Premium a été ouvert », « un premier repas a été noté ») sont transmis, sans jamais la moindre valeur saisie (section 6).</li>
     <li>La <strong>Communauté</strong> (recettes, routines et programmes partagés) se consulte sans compte. Publier demande un compte et un <strong>pseudonyme</strong> : seuls ce pseudonyme et ce que tu choisis de publier deviennent publics — jamais ton e-mail ni ton suivi (section 5 bis).</li>
     <li>Un outil de diagnostic technique (section 6) reçoit les rapports de plantage et ces compteurs d'usage anonymes. Il ne reçoit <strong>jamais</strong> tes données personnelles (poids, repas, objectifs...).</li>
+    <li>Le <strong>site</strong> basal-app.fr mesure son audience <strong>sans cookie</strong> avec GoatCounter, en totaux, sans conserver ton adresse IP (section 6 bis).</li>
     <li>Si tu prends un abonnement Premium, son état est géré par <strong>RevenueCat</strong>, hébergé aux États-Unis, qui reçoit ton historique d'achats et, si tu as un compte, son identifiant (section 5).</li>
   </ul>
 
@@ -93,7 +95,7 @@
   <p>Enfin, en cas d'erreur technique imprévue (bug, plantage), un rapport <strong>anonyme et purement technique</strong> — jamais tes données personnelles — peut être transmis à un service tiers de diagnostic (voir section 6).</p>
 
   <h2>5. Partage des données avec des tiers</h2>
-  <p><strong>L'éditeur de l'application ne vend, ne loue et ne partage aucune de tes données avec un tiers</strong>, à des fins publicitaires, commerciales ou autres. Aucun outil d'analyse d'audience (analytics comportemental), de publicité ni de suivi publicitaire (tracking) tiers n'est intégré.</p>
+  <p><strong>L'éditeur de l'application ne vend, ne loue et ne partage aucune de tes données avec un tiers</strong>, à des fins publicitaires, commerciales ou autres. Aucun outil d'analyse d'audience (analytics comportemental), de publicité ni de suivi publicitaire (tracking) tiers n'est intégré à l'application. Le site, lui, compte ses visites sans cookie (section 6 bis).</p>
   <p>L'application effectue un type d'appel réseau déclenché par toi-même — la <strong>recherche d'aliments et le scan de code-barres</strong> : lorsque tu tapes une recherche, le texte saisi est envoyé à la base de données publique et collaborative <strong>Open Food Facts</strong> ; lorsque tu scannes un code-barres, seul le numéro du code-barres lui est envoyé pour identifier le produit.</p>
   <p>Aucune autre information (ton profil, ton poids, tes repas déjà enregistrés) n'est transmise à cette occasion. Ces requêtes sont soumises à la politique de confidentialité d'Open Food Facts, un projet indépendant de l'éditeur de cette application.</p>
   <p>Un second type d'appel réseau existe, non déclenché par une action volontaire mais par une erreur technique imprévue : voir section 6 (diagnostic technique / Sentry).</p>
@@ -142,6 +144,16 @@
     <li>Cet outil est <strong>désactivé pendant le développement</strong> de l'application ; il n'est actif que dans les versions distribuées (bêta et version publiée du store).</li>
     <li>Les données sont hébergées par Sentry sur des serveurs situés dans l'<strong>Union européenne</strong> (Allemagne).</li>
     <li>Sentry agit comme <strong>sous-traitant technique</strong> de l'éditeur au sens du RGPD, pour cette seule finalité de diagnostic. Sa propre politique de confidentialité s'applique à l'hébergement de ces rapports techniques : voir <a href="https://sentry.io/privacy/">sentry.io/privacy</a>.</li>
+  </ul>
+
+  <h2>6 bis. Mesure d'audience du site basal-app.fr</h2>
+  <p>Cette section concerne le site, pas l'application. Le site compte ses visites avec <strong>GoatCounter</strong>, un outil de mesure d'audience <strong>sans cookie</strong> : rien n'est déposé ni lu dans ton navigateur (ni cookie, ni stockage local). Il sert à savoir quelles pages sont lues et combien de clics mènent vers les stores.</p>
+  <ul>
+    <li><strong>Ce qui est enregistré, uniquement sous forme de totaux :</strong> la page vue, le site d'où tu arrives, le navigateur et le système (sans leur identifiant complet), la largeur de l'écran, le pays (et la région pour quelques pays hors de l'Union européenne), et les clics sur les boutons Google Play et App Store.</li>
+    <li><strong>Ce qui n'est pas conservé :</strong> ton adresse IP (elle sert seulement à en déduire le pays) et aucun identifiant. Pour ne pas compter deux fois la même visite, un rapprochement temporaire est gardé en mémoire 8 heures au plus, puis effacé.</li>
+    <li>La page de gestion du compte (<code>compte.html</code>) n'est pas mesurée.</li>
+    <li>Les données sont hébergées par GoatCounter sur des serveurs situés dans l'<strong>Union européenne</strong> (Finlande et Allemagne) : voir <a href="https://www.goatcounter.com/help/privacy">sa politique de confidentialité</a>.</li>
+    <li>Base légale : l'intérêt légitime de l'éditeur à connaître la fréquentation de son site. Tu peux t'y opposer en bloquant le domaine <code>gc.zgo.at</code>, par exemple avec un bloqueur de contenus.</li>
   </ul>
 
   <h2>7. Notifications</h2>
