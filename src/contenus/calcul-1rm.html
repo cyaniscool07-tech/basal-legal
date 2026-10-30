@@ -1,0 +1,100 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="/calculateurs/">Calculateurs</a><span aria-hidden="true">›</span>1RM</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Calculateur gratuit</p>
+    <h1>Calculer son 1RM, la charge maximale sur une répétition</h1>
+    <p class="chapeau">Ta charge maximale estimée à partir d’une série que tu as réellement faite, sans tenter de maximum. C’est la formule d’Epley, celle qu’utilise l’application Basal pour suivre ta progression. Rien n’est envoyé.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="calc" novalidate>
+      <div class="champs">
+        <div class="champ"><label for="charge">Charge soulevée (kg)</label><input id="charge" type="number" inputmode="decimal" step="0.5" min="1" max="500" placeholder="80"></div>
+        <div class="champ"><label for="reps">Répétitions</label><input id="reps" type="number" inputmode="numeric" min="1" max="30" placeholder="8"></div>
+        <p class="aide large" style="margin:0">Prends une série menée près de l’échec, avec une technique propre. Une série d’une seule répétition est déjà ton maximum : le calcul la garde telle quelle.</p>
+      </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+      <p class="surtitre" id="res-t">Ton 1RM estimé</p>
+      <div class="grand"><span id="rm">—</span><small>kg</small></div>
+      <p id="message" style="margin:14px 0 0">Renseigne la charge et le nombre de répétitions.</p>
+      <p id="alerte" hidden style="margin:14px 0 0;color:#fb923c">Au-delà d’une dizaine de répétitions, l’estimation devient moins fiable : fatigue et endurance pèsent plus que la force.</p>
+    </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <h2>Tes charges de 1 à 12 répétitions</h2>
+      <div class="tableau">
+        <table>
+          <caption>Charges estimées à partir de ton 1RM</caption>
+          <thead><tr><th scope="col">Répétitions</th><th scope="col" class="n">Charge estimée</th><th scope="col" class="n">Part du 1RM</th></tr></thead>
+          <tbody id="table-charges"><tr><td colspan="3" class="vide">Le tableau se remplit avec ton résultat.</td></tr></tbody>
+        </table>
+        <p class="source">Formule d’Epley inversée : charge = 1RM ÷ (1 + répétitions ÷ 30). Arrondi à 0,5 kg.</p>
+      </div>
+
+      <h2>Le détail du calcul</h2>
+      <p class="formule"><code>1RM ≈ charge × (1 + répétitions ÷ 30)</code></p>
+      <div class="calcul" role="group" aria-label="Exemple">
+        <div class="titre">Exemple : 80 kg soulevés 8 fois</div>
+        <div class="ligne"><span>80 × (1 + 8 ÷ 30)</span><b>101,3 kg</b></div>
+        <div class="ligne"><span>100 kg soulevés 1 fois : déjà un maximum réel, gardé tel quel</span><b>100 kg</b></div>
+      </div>
+      <p>La formule d’Epley (1985) est la plus répandue. À une répétition, elle renverrait 1,033 fois la charge, alors que la charge soulevée est déjà le maximum : l’application et ce calculateur la gardent donc telle quelle, plutôt que de gonfler un record réel de 3 %.</p>
+
+      <h2>À quoi ça sert</h2>
+      <p>Un 1RM estimé permet de comparer des séances qui n’ont pas le même nombre de répétitions : 80 kg pour 8 et 90 kg pour 4 donnent presque le même 1RM (101,3 et 102 kg). C’est ainsi que l’application suit la progression d’un exercice d’une semaine à l’autre. Pour l’organiser, voir <a href="/series-par-muscle.html">combien de séries par muscle et par semaine</a>.</p>
+
+      <h2>Ce que ce calcul ne sait pas</h2>
+      <div class="inconnu">
+        <p><strong>C’est une estimation.</strong> Le rapport entre répétitions et charge maximale varie selon l’exercice, l’entraînement et la fatigue du jour.</p>
+        <p style="margin:0"><strong>Ce n’est pas une invitation à tester ton maximum.</strong> Une tentative à une répétition se fait échauffé, avec une technique maîtrisée, et avec une parade ou des sécurités sur les exercices qui l’exigent.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>Ta progression, séance après séance</strong><p>Basal note tes séries et tes charges, calcule ton 1RM estimé pour chaque exercice et montre tes records à côté de la tendance de ton poids.</p></div>
+        <a class="bouton vif" href="/#telecharger">Télécharger</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>Cet outil est informatif. Basal n’est pas un dispositif médical et ne remplace pas l’avis d’un professionnel de santé ou d’un entraîneur.</p>
+  </aside>
+</main>
+<script>
+// Même formule que l'application (services/strengthProgressService.ts, estimateOneRepMax) : Epley, et une seule
+// répétition gardée telle quelle. Exemple épinglé par services/__tests__/methodeSite.test.ts : 80 kg × 8 = 101,3 kg.
+(function () {
+  var val = function (id) { var v = document.getElementById(id).value.replace(',', '.'); return v === '' ? null : +v; };
+  var kg = function (x) { return x.toLocaleString('fr-FR', { maximumFractionDigits: 1 }); };
+  function epley(charge, reps) { return reps === 1 ? charge : charge * (1 + reps / 30); }
+
+  function calculer() {
+    var charge = val('charge'), reps = val('reps');
+    var rm = document.getElementById('rm'), message = document.getElementById('message'), alerte = document.getElementById('alerte');
+    var table = document.getElementById('table-charges');
+    if (charge === null || reps === null || charge <= 0 || charge > 500 || reps < 1 || reps > 30 || reps % 1 !== 0) {
+      rm.textContent = '—'; alerte.hidden = true; message.hidden = false;
+      message.textContent = charge === null || reps === null
+        ? 'Renseigne la charge et le nombre de répétitions.'
+        : 'Vérifie les valeurs : charge de 1 à 500 kg, de 1 à 30 répétitions entières.';
+      table.innerHTML = '<tr><td colspan="3" class="vide">Le tableau se remplit avec ton résultat.</td></tr>';
+      return;
+    }
+    var max = epley(charge, reps);
+    message.hidden = true; alerte.hidden = reps <= 10;
+    rm.textContent = kg(Math.round(max * 10) / 10);
+    var lignes = '';
+    for (var r = 1; r <= 12; r++) {
+      var c = r === 1 ? max : max / (1 + r / 30);
+      lignes += '<tr><td>' + r + '</td><td class="n">' + kg(Math.round(c * 2) / 2) + ' kg</td><td class="n">' + Math.round(c / max * 100) + ' %</td></tr>';
+    }
+    table.innerHTML = lignes;
+  }
+  document.getElementById('calc').addEventListener('input', calculer);
+  document.getElementById('calc').addEventListener('change', calculer);
+})();
+</script>

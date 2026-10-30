@@ -1,0 +1,127 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="/calculateurs/">Calculateurs</a><span aria-hidden="true">›</span>Protéines</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Calculateur gratuit</p>
+    <h1>Calculer ses besoins en protéines par jour</h1>
+    <p class="chapeau">Selon ton poids, ton objectif et ton entraînement, avec la grille qu’utilise l’application Basal. Elle s’applique à un poids de référence, qui évite de surestimer les besoins quand le poids est élevé. Rien n’est envoyé.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="calc" novalidate>
+      <div class="champs">
+        <div class="champ"><label for="poids">Poids (kg)</label><input id="poids" type="number" inputmode="decimal" step="0.1" min="30" max="300" placeholder="70"></div>
+        <div class="champ"><label for="taille">Taille (cm)</label><input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="175"></div>
+        <div class="champ">
+          <label for="objectif">Objectif</label>
+          <select id="objectif">
+            <option value="perte">Perdre du poids</option>
+            <option value="maintien" selected>Maintenir</option>
+            <option value="prise">Prendre du muscle</option>
+          </select>
+        </div>
+        <div class="champ large">
+          <span id="sport-t" style="font-weight:600;font-size:.9rem">Entraînement</span>
+          <div class="segment" role="radiogroup" aria-labelledby="sport-t">
+            <input type="radio" name="sport" id="peu" value="0" checked><label for="peu">Moins de 3 séances par semaine</label>
+            <input type="radio" name="sport" id="sportif" value="1"><label for="sportif">3 séances ou plus</label>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+      <p class="surtitre" id="res-t">Tes besoins en protéines</p>
+      <div class="grand"><span id="total">—</span><small>g / jour</small></div>
+      <p id="message" style="margin:14px 0 0">Renseigne ton poids et ta taille pour voir le résultat.</p>
+      <div id="sortie" hidden>
+        <div class="sous">
+          <div><b id="s-gkg">—</b><span>g par kg de poids de référence</span></div>
+          <div><b id="s-kcal">—</b><span>kcal apportées (4 kcal par gramme)</span></div>
+        </div>
+        <p id="reference" style="margin:0"></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <h2>La grille utilisée</h2>
+      <p class="formule"><code>protéines (g) = poids de référence × grammes par kilo</code></p>
+      <div class="tableau">
+        <table>
+          <caption>Grammes de protéines par kilo de poids de référence</caption>
+          <thead><tr><th scope="col">Objectif</th><th scope="col" class="n">Moins de 3 séances par semaine</th><th scope="col" class="n">3 séances ou plus</th></tr></thead>
+          <tbody>
+            <tr><td>Perdre du poids</td><td class="n">1,8</td><td class="n">2,2</td></tr>
+            <tr><td>Maintenir</td><td class="n">1,4</td><td class="n">1,8</td></tr>
+            <tr><td>Prendre du muscle</td><td class="n">1,6</td><td class="n">2,0</td></tr>
+          </tbody>
+        </table>
+        <p class="source">La grille de l’application Basal (version 1.4). Le besoin monte en déficit, là où les protéines protègent la masse musculaire.</p>
+      </div>
+      <div class="calcul" role="group" aria-label="Exemples">
+        <div class="titre">Exemples, pour 175 cm</div>
+        <div class="ligne"><span>70 kg, perte de poids, 3 séances ou plus : 70 × 2,2</span><b>154 g</b></div>
+        <div class="ligne"><span>70 kg, maintien, moins de 3 séances : 70 × 1,4</span><b>98 g</b></div>
+        <div class="ligne"><span>120 kg, perte de poids, 3 séances ou plus : 87,4 × 2,2</span><b>192 g</b></div>
+      </div>
+
+      <h2>Pourquoi un poids de référence</h2>
+      <p>Les besoins en protéines suivent la masse maigre, pas le poids total. Appliquer 2,2 g par kilo à 120 kg donnerait 264 g par jour, plus de 1 000 kcal avant même de compter le reste : aucune recommandation ne soutient un tel chiffre. Jusqu’à un IMC de 25, le poids de référence est donc ton poids réel ; au-delà, seul un quart de l’excédent compte. C’est la formule du poids ajusté, l’approximation standard quand la masse maigre n’est pas mesurée.</p>
+
+      <h2>Et le reste de l’assiette</h2>
+      <p>Les protéines ne sont qu’une partie du calcul. Le <a href="/calcul-macros.html">calculateur de macros</a> ajoute les lipides et les glucides, avec les mêmes règles, et les <a href="/recettes/">recettes calculées</a> affichent leurs protéines par portion. Pour la prise de muscle, voir aussi <a href="/prise-de-masse.html">prise de masse : calories, protéines et rythme</a>.</p>
+
+      <h2>Ce que ce calcul ne sait pas</h2>
+      <div class="inconnu">
+        <p><strong>C’est un ordre de grandeur.</strong> Il repose sur des fourchettes usuelles en nutrition sportive, pas sur une mesure de ta composition corporelle.</p>
+        <p style="margin:0"><strong>Certaines situations relèvent d’un professionnel de santé</strong> : maladie rénale, grossesse, régime prescrit, trouble du comportement alimentaire.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>Ton objectif de protéines, chaque jour</strong><p>Basal calcule tes protéines avec cette grille et les suit repas par repas, avec les protéines des jours d’entraînement et de repos en Premium. Le détail est sur la page <a href="/methode.html#macros">Méthode</a>.</p></div>
+        <a class="bouton vif" href="/#telecharger">Télécharger</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>Cet outil est informatif. Basal n’est pas un dispositif médical et ne remplace pas l’avis d’un professionnel de santé.</p>
+  </aside>
+</main>
+<script>
+// Mêmes règles que l'application (services/nutritionCalculator.ts) : grille g/kg, bonus de 0,4 g/kg à partir de
+// 3 séances par semaine, poids de référence au-delà d'un IMC de 25 (un quart de l'excédent). Exemples épinglés par
+// services/__tests__/methodeSite.test.ts : 154, 98 et 192 g.
+(function () {
+  var GRILLE = { perte: 1.8, maintien: 1.4, prise: 1.6 }, BONUS = 0.4, IMC_REF = 25, PART_EXCEDENT = 0.25;
+  var val = function (id) { var v = document.getElementById(id).value.replace(',', '.'); return v === '' ? null : +v; };
+  var ecrire = function (id, t) { document.getElementById(id).textContent = t; };
+  var dec = function (x) { return x.toLocaleString('fr-FR', { maximumFractionDigits: 1 }); };
+
+  function calculer() {
+    var poids = val('poids'), taille = val('taille');
+    var sortie = document.getElementById('sortie'), message = document.getElementById('message');
+    if (poids === null || taille === null || poids < 30 || poids > 300 || taille < 120 || taille > 230) {
+      ecrire('total', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = poids === null || taille === null
+        ? 'Renseigne ton poids et ta taille pour voir le résultat.'
+        : 'Vérifie les valeurs : poids de 30 à 300 kg, taille de 120 à 230 cm.';
+      return;
+    }
+    var seuil = IMC_REF * Math.pow(taille / 100, 2);
+    var reference = poids <= seuil ? poids : seuil + PART_EXCEDENT * (poids - seuil);
+    var gkg = GRILLE[document.getElementById('objectif').value] + (document.getElementById('sportif').checked ? BONUS : 0);
+    var total = Math.round(reference * gkg);
+    message.hidden = true; sortie.hidden = false;
+    ecrire('total', total);
+    ecrire('s-gkg', dec(gkg) + ' g');
+    ecrire('s-kcal', (total * 4).toLocaleString('fr-FR') + ' kcal');
+    ecrire('reference', poids <= seuil
+      ? 'Poids de référence : ton poids réel (IMC de 25 ou moins).'
+      : 'Poids de référence : ' + dec(reference) + ' kg. Au-delà d’un IMC de 25 (' + dec(seuil) + ' kg pour ta taille), seul un quart de l’excédent compte.');
+  }
+  document.getElementById('calc').addEventListener('input', calculer);
+  document.getElementById('calc').addEventListener('change', calculer);
+})();
+</script>
