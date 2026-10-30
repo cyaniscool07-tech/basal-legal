@@ -147,12 +147,16 @@ p { margin: 0 0 1em; }
 @media (max-width: 760px) { .offre { grid-template-columns: 1fr; } }
 
 .guides { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.guide { display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: inherit; border-top: 2px solid var(--encre); padding-top: 18px; }
+/* Carte entière cliquable : fond, bord et flèche disent « lien » sans dépendre du survol (mobile). */
+.guide { display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 22px 22px 20px; }
+.guide::after { content: "→"; margin-top: auto; align-self: flex-start; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--trait); border-radius: 50%; font-size: 1rem; color: var(--encre); }
 .guide h3 { font: 400 1.55rem/1.15 var(--serif); }
-.guide:hover h3 { color: var(--accent); }
+.guide:hover, .guide:focus-visible { border-color: var(--encre); box-shadow: var(--ombre); }
+.guide:hover h3, .guide:focus-visible h3 { color: var(--accent); }
+.guide:hover::after, .guide:focus-visible::after { background: var(--accent-vif); border-color: var(--accent-vif); color: #14110f; }
 .guide p { color: var(--texte-2); font-size: 0.95rem; margin: 0; }
 .guide .meta { font-size: 0.82rem; color: var(--texte-2); }
-@media (max-width: 860px) { .guides { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 860px) { .guides { grid-template-columns: 1fr; gap: 12px; } }
 
 .confiance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .confiance h3 { margin-bottom: 8px; }
@@ -298,8 +302,8 @@ td.n, th.n { text-align: right; }
 @media (max-width: 860px) { .outil { grid-template-columns: 1fr; } .champs { grid-template-columns: 1fr; } }
 
 @media (prefers-reduced-motion: no-preference) {
-  .pilier, .guide h3, .bouton { transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease; }
-  .pilier:hover { transform: translateY(-2px); }
+  .pilier, .guide, .guide h3, .guide::after, .bouton { transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease; }
+  .pilier:hover, .guide:hover { transform: translateY(-2px); }
 }
 
 /* ---------------------------------------------------------------------------------------------
