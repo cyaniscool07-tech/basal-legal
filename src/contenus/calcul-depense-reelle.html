@@ -1,0 +1,182 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="/calculateurs/">Calculateurs</a><span aria-hidden="true">›</span>Dépense réelle</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Calculateur gratuit</p>
+    <h1>Calculer sa dépense réelle à partir de son poids</h1>
+    <p class="chapeau">Une formule devine ta dépense d’après ton âge, ta taille et ton poids. Ici, on la déduit de ce que tu as réellement mangé et de l’évolution de ton poids : c’est la méthode qu’utilise l’application Basal. Le calcul se fait dans ton navigateur, rien n’est envoyé.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="calc" novalidate>
+      <div class="champs">
+        <div class="champ large">
+          <label for="apport">Apport moyen (kcal par jour)</label>
+          <input id="apport" type="number" inputmode="numeric" min="500" max="8000" placeholder="2100">
+          <span class="aide">La moyenne de tes calories sur toute la période, en ne comptant que les jours où tu as tout noté.</span>
+        </div>
+        <div class="champ"><label for="debut">Poids de départ (kg)</label><input id="debut" type="number" inputmode="decimal" step="0.1" min="30" max="300" placeholder="80,0"></div>
+        <div class="champ"><label for="fin">Poids d’arrivée (kg)</label><input id="fin" type="number" inputmode="decimal" step="0.1" min="30" max="300" placeholder="79,4"></div>
+        <div class="champ"><label for="jours">Jours entre les deux</label><input id="jours" type="number" inputmode="numeric" min="1" max="365" placeholder="21"></div>
+        <p class="aide large" style="margin:0">Pèse-toi chaque matin. Le poids de départ est la moyenne de ta première semaine, celui d’arrivée la moyenne de ta dernière : 4 semaines de suivi donnent 21 jours entre les deux.</p>
+        <details class="champ large">
+          <summary>Comparer avec la formule (facultatif)</summary>
+          <div class="champs" style="margin-top:14px">
+            <div class="champ large">
+              <span id="sexe-t" style="font-weight:600;font-size:.9rem">Sexe</span>
+              <div class="segment" role="radiogroup" aria-labelledby="sexe-t">
+                <input type="radio" name="sexe" id="h" value="h" checked><label for="h">Homme</label>
+                <input type="radio" name="sexe" id="f" value="f"><label for="f">Femme</label>
+              </div>
+            </div>
+            <div class="champ"><label for="age">Âge</label><input id="age" type="number" inputmode="numeric" min="15" max="100" placeholder="30"></div>
+            <div class="champ"><label for="taille">Taille (cm)</label><input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="175"></div>
+            <div class="champ">
+              <label for="activite">Activité</label>
+              <select id="activite">
+                <option value="1.2">Sédentaire</option>
+                <option value="1.375">Légèrement actif</option>
+                <option value="1.55" selected>Modérément actif</option>
+                <option value="1.725">Actif</option>
+                <option value="1.9">Très actif</option>
+              </select>
+            </div>
+          </div>
+        </details>
+      </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+      <p class="surtitre" id="res-t">Ta dépense réelle estimée</p>
+      <div class="grand"><span id="depense">—</span><small>kcal / jour</small></div>
+      <p id="message" style="margin:14px 0 0">Renseigne les quatre premiers champs pour voir le résultat.</p>
+      <div id="sortie" hidden>
+        <div class="sous">
+          <div><b id="s-maintien">—</b><span>pour maintenir ton poids</span></div>
+          <div><b id="s-perte">—</b><span id="s-perte-t">pour perdre à un rythme modéré (− 15 %)</span></div>
+        </div>
+        <p id="comparaison" hidden style="margin:0 0 8px"></p>
+        <p id="alerte" hidden style="margin:0;color:#fb923c"></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <h2>Le détail du calcul</h2>
+      <p class="formule"><code>dépense = apport moyen − (poids d’arrivée − poids de départ) × 7 700 ÷ jours</code></p>
+      <p>Un kilogramme de masse corporelle représente environ 7 700 kcal. Si tu as perdu du poids, c’est que tu as dépensé plus que tu n’as mangé : la différence, ramenée par jour, s’ajoute à ton apport.</p>
+      <div class="calcul" role="group" aria-label="Détail du calcul avec tes valeurs">
+        <div class="ligne"><span>Apport moyen</span><b id="d-apport">2 100 kcal</b></div>
+        <div class="ligne"><span id="d-var-t">Variation : 79,4 − 80,0 = − 0,6 kg en 21 jours</span><b id="d-var">− 0,6 kg</b></div>
+        <div class="ligne"><span id="d-jour-t">− 0,6 × 7 700 ÷ 21</span><b id="d-jour">− 220 kcal / jour</b></div>
+        <div class="ligne total"><span>Dépense réelle : apport moyen moins cette variation</span><b id="d-total">2 320 kcal / jour</b></div>
+      </div>
+      <p>L’exemple ci-dessus est celui que montre l’outil tant que tes valeurs ne sont pas saisies.</p>
+
+      <h2>Pourquoi c’est plus juste qu’une formule</h2>
+      <p>Une formule comme Mifflin-St Jeor rend la dépense moyenne des gens qui te ressemblent sur quatre critères, avec une erreur courante d’environ 10 %. Ton poids, lui, réagit à ce que tu dépenses vraiment. Sur quelques semaines, il dit si ton apport était au-dessus ou en dessous de ta dépense, et de combien. Voir <a href="/metabolisme-adaptatif.html">pourquoi une formule ne suffit pas</a>.</p>
+
+      <h2>Bien mesurer</h2>
+      <ul class="liste">
+        <li>Pèse-toi chaque matin, dans les mêmes conditions, et fais la moyenne par semaine : le poids d’un jour varie de plusieurs centaines de grammes avec l’eau et le sel.</li>
+        <li>Note tout ce que tu manges, y compris les journées ratées. Des repas oubliés font croire à une dépense plus basse qu’elle n’est.</li>
+        <li>Compte au moins trois à quatre semaines. En dessous de 10 jours, l’outil refuse de calculer : le bruit l’emporte sur le signal.</li>
+      </ul>
+
+      <h2>Ce que ce calcul ne sait pas</h2>
+      <div class="inconnu">
+        <p><strong>Le début d’un régime fausse le calcul.</strong> Les premiers jours, le corps perd surtout de l’eau et du glycogène, bien plus légers en calories que la graisse. Mesurer à partir de la deuxième semaine évite de surestimer ta dépense.</p>
+        <p><strong>Il ne vaut que ce que vaut ton journal.</strong> Une erreur régulière de 200 kcal dans tes repas se retrouve telle quelle dans le résultat.</p>
+        <p style="margin:0"><strong>Ce n’est pas un avis médical.</strong> Une dépense très éloignée de l’attendu peut avoir une cause à faire regarder par un médecin.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>Le même calcul, chaque semaine</strong><p>Basal le refait à chaque pesée, avec tes repas notés : moyenne glissante du poids, bornes de plausibilité et ajustement progressif. Le détail est sur la page <a href="/methode.html#adaptative">Méthode</a>.</p></div>
+        <a class="bouton vif" href="/#telecharger">Télécharger</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>Cet outil est informatif. Basal n’est pas un dispositif médical et ne remplace pas l’avis d’un professionnel de santé.</p>
+  </aside>
+</main>
+<script>
+// Même bilan énergétique que l'application (services/adaptiveTdeeService.ts : KCAL_PER_KG = 7700, observation
+// jugée plausible entre 0,8 et 1,6 fois la formule) et mêmes formules (services/nutritionCalculator.ts : Mifflin-St
+// Jeor, palier de perte modéré à − 15 %, plancher au métabolisme de base et à 800 kcal). Exemple épinglé par
+// services/__tests__/methodeSite.test.ts : 2 100 kcal, 80,0 → 79,4 kg en 21 jours = 2 320 kcal.
+(function () {
+  var KCAL_PAR_KG = 7700, JOURS_MIN = 10;
+  var val = function (id) { var v = document.getElementById(id).value.replace(',', '.'); return v === '' ? null : +v; };
+  var ecrire = function (id, t) { document.getElementById(id).textContent = t; };
+  var nb = function (x) { return Math.round(x).toLocaleString('fr-FR'); };
+  var dec = function (x) { return x.toLocaleString('fr-FR', { maximumFractionDigits: 1, minimumFractionDigits: 1 }); };
+  var signe = function (x) { return (x > 0 ? '+ ' : x < 0 ? '− ' : '') + dec(Math.abs(x)); };
+
+  function calculer() {
+    var apport = val('apport'), debut = val('debut'), fin = val('fin'), jours = val('jours');
+    var sortie = document.getElementById('sortie'), message = document.getElementById('message');
+    if (apport === null || debut === null || fin === null || jours === null) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Renseigne les quatre premiers champs pour voir le résultat.';
+      return;
+    }
+    if (apport < 500 || apport > 8000 || debut < 30 || debut > 300 || fin < 30 || fin > 300 || jours < 1) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Une des valeurs sort des bornes plausibles : vérifie l’apport (500 à 8 000 kcal) et les poids (30 à 300 kg).';
+      return;
+    }
+    if (jours < JOURS_MIN) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Il faut au moins ' + JOURS_MIN + ' jours entre les deux moyennes : en dessous, l’eau et le sel pèsent plus que la graisse.';
+      return;
+    }
+    var variation = fin - debut;
+    var parJour = variation * KCAL_PAR_KG / jours;
+    var depense = apport - parJour;
+    message.hidden = true; sortie.hidden = false;
+    ecrire('depense', nb(depense));
+
+    // Profil facultatif : formule, écart, plancher de l'objectif.
+    var age = val('age'), taille = val('taille'), k = +document.getElementById('activite').value;
+    var femme = document.getElementById('f').checked;
+    var bmr = null, formule = null;
+    if (age !== null && taille !== null) {
+      bmr = 10 * fin + 6.25 * taille - 5 * age + (femme ? -161 : 5);
+      formule = bmr * k;
+    }
+    var plancher = Math.max(bmr || 0, 800);
+    var perte = Math.max(depense * 0.85, plancher);
+    ecrire('s-maintien', nb(depense) + ' kcal');
+    // Plancher au-dessus de la maintenance mesurée : un objectif « de perte » serait plus haut que le maintien.
+    if (plancher >= depense) {
+      ecrire('s-perte', '—');
+      ecrire('s-perte-t', 'pas d’objectif de perte : la dépense mesurée est sous le plancher de sécurité, signe probable d’un journal incomplet');
+    } else {
+      ecrire('s-perte', nb(perte) + ' kcal');
+      ecrire('s-perte-t', perte > depense * 0.85 ? 'pour perdre : relevé au plancher de sécurité' : 'pour perdre à un rythme modéré (− 15 %)');
+    }
+
+    var comparaison = document.getElementById('comparaison'), alerte = document.getElementById('alerte');
+    comparaison.hidden = formule === null; alerte.hidden = true;
+    if (formule !== null) {
+      var ecart = (depense - formule) / formule * 100;
+      comparaison.textContent = 'La formule annonçait ' + nb(formule) + ' kcal : ta dépense réelle est ' + (ecart >= 0 ? 'supérieure' : 'inférieure') + ' de ' + Math.abs(Math.round(ecart)) + ' %.';
+      if (depense < formule * 0.8 || depense > formule * 1.6) {
+        alerte.hidden = false;
+        alerte.textContent = 'Cet écart sort des bornes que l’application accepte (0,8 à 1,6 fois la formule). La cause la plus fréquente est un journal incomplet.';
+      }
+    }
+
+    ecrire('d-apport', nb(apport) + ' kcal');
+    ecrire('d-var-t', 'Variation : ' + dec(fin) + ' − ' + dec(debut) + ' = ' + signe(variation) + ' kg en ' + jours + ' jours');
+    ecrire('d-var', signe(variation) + ' kg');
+    ecrire('d-jour-t', signe(variation) + ' × 7 700 ÷ ' + jours);
+    ecrire('d-jour', (parJour > 0 ? '+ ' : parJour < 0 ? '− ' : '') + nb(Math.abs(parJour)) + ' kcal / jour');
+    ecrire('d-total', nb(depense) + ' kcal / jour');
+  }
+  document.getElementById('calc').addEventListener('input', calculer);
+  document.getElementById('calc').addEventListener('change', calculer);
+})();
+</script>

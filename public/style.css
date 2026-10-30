@@ -394,3 +394,8 @@ code { font: 500 0.92em/1.5 ui-monospace, "Cascadia Mono", Menlo, monospace; bac
 
 /* Titre lu par les lecteurs d’écran, masqué à l’écran */
 .visuellement-masque { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Calculateur de dépense réelle */
+.outil .aide { font-size: 0.8rem; color: var(--texte-2); }
+.outil details summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--accent); }
+.outil details[open] summary { margin-bottom: 4px; }
