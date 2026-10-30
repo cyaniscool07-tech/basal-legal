@@ -3,6 +3,7 @@
 // d'audience) et le lien d'évitement. `tete` et `corps` sont le HTML propre à la page, repris
 // tel quel de l'ancien site (src/contenus/).
 import Entete from '../components/Entete.astro';
+import Pied from '../components/Pied.astro';
 
 interface Props {
   lang?: 'fr' | 'en';
@@ -24,6 +25,7 @@ const { lang = 'fr', tete, corps, actif, autreLangue, menu, mesure = true } = As
 <Fragment set:html={tete} />
 <link rel="icon" href="/favicon.ico" sizes="any">
 <meta name="theme-color" content="#12100E">
+<link rel="preload" href="/polices/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
 {mesure && <script is:inline data-goatcounter="https://basalapp.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>}
 </head>
@@ -31,5 +33,6 @@ const { lang = 'fr', tete, corps, actif, autreLangue, menu, mesure = true } = As
 <a class="evitement" href="#contenu">{lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>
 <Entete lang={lang} actif={actif} autreLangue={autreLangue} menu={menu} />
 <Fragment set:html={corps} />
+{menu !== false && <Pied lang={lang} />}
 </body>
 </html>

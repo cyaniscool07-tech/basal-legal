@@ -13,20 +13,20 @@ interface Props {
 }
 const { lang, actif, autreLangue = lang === 'fr' ? '/en/' : '/', menu = true } = Astro.props;
 const fr = lang === 'fr';
+// Menu sur les pages qui existent ; Guides, Calculateurs, Méthode et À propos arrivent au lot 5.
 const liens = fr
   ? [
-      ['/', 'Accueil'],
       ['/recettes/', 'Recettes'],
       ['/calcul-tdee.html', 'Calculateur'],
       ['/metabolisme-adaptatif.html', 'Métabolisme'],
       ['/nutrition-musculation.html', 'Musculation'],
       ['/comparatif-applications-nutrition.html', 'Comparatif'],
     ]
-  : [['/en/', 'Home'], ['/calcul-tdee.html', 'Calculator', 'fr'], ['/metabolisme-adaptatif.html', 'Metabolism', 'fr']];
+  : [['/calcul-tdee.html', 'Calculator', 'fr'], ['/metabolisme-adaptatif.html', 'Metabolism', 'fr']];
 ---
-<header class="topbar">
-  <div class="wrap topbar-in">
-    <a class="mark" href={fr ? '/' : '/en/'} aria-label={fr ? 'Basal, accueil' : 'Basal, home'}><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
+<header class="barre">
+  <div class="wrap barre-in">
+    <a class="logo" href={fr ? '/' : '/en/'} aria-label={fr ? 'Basal, accueil' : 'Basal, home'}><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg>Basal</a>
     {menu && (
       <nav aria-label={fr ? 'Menu principal' : 'Main menu'}>
         {liens.map(([href, nom, versFr]) => versFr
@@ -35,5 +35,6 @@ const liens = fr
         <a class="lang" href={autreLangue} hreflang={fr ? 'en' : 'fr'} lang={fr ? 'en' : 'fr'}>{fr ? 'EN' : 'FR'}</a>
       </nav>
     )}
+    {menu && <a class="bouton" href={fr ? '/#telecharger' : '/en/#download'}>{fr ? 'Télécharger' : 'Download'}</a>}
   </div>
 </header>

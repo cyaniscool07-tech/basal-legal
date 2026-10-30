@@ -1,0 +1,74 @@
+---
+// Pied de page commun (il existait en 22 variantes). Les mentions propres à une page restent dans
+// son contenu, en <aside class="note-page"> juste avant.
+interface Props { lang: 'fr' | 'en' }
+const fr = Astro.props.lang === 'fr';
+const colonnes = fr
+  ? [
+      ['Guides', [
+        ['/metabolisme-adaptatif.html', 'Le métabolisme adaptatif'],
+        ['/combien-de-calories-par-jour.html', 'Combien de calories par jour'],
+        ['/deficit-calorique.html', 'Le déficit calorique'],
+        ['/prise-de-masse.html', 'La prise de masse'],
+        ['/nutrition-musculation.html', 'Nutrition et musculation'],
+        ['/series-par-muscle.html', 'Séries par muscle'],
+        ['/variations-de-poids.html', 'Variations de poids'],
+        ['/preparer-sa-semaine.html', 'Préparer sa semaine'],
+      ]],
+      ['Outils et recettes', [
+        ['/calcul-tdee.html', 'Calculer sa dépense'],
+        ['/calcul-macros.html', 'Calculateur de macros'],
+        ['/recettes/', 'Recettes calculées'],
+        ['/comparatif-applications-nutrition.html', 'Comparatif des applications'],
+        ['/alternative-myfitnesspal.html', 'Alternative à MyFitnessPal'],
+        ['/compteur-calories-gratuit.html', 'Compteur de calories gratuit'],
+      ]],
+      ['Légal', [
+        ['/confidentialite.html', 'Politique de confidentialité'],
+        ['/cgu.html', 'Conditions d’utilisation'],
+        ['/mentions-legales.html', 'Mentions légales'],
+        ['/suppression-compte.html', 'Suppression de compte'],
+        ['/en/', 'English', 'en'],
+      ]],
+    ]
+  : [
+      ['Legal', [
+        ['/en/privacy.html', 'Privacy policy'],
+        ['/cgu.html', 'Terms of use', 'fr'],
+        ['/mentions-legales.html', 'Legal notice', 'fr'],
+        ['/suppression-compte.html', 'Account deletion', 'fr'],
+        ['/', 'Français', 'fr'],
+      ]],
+      ['In French', [
+        ['/calcul-tdee.html', 'Energy expenditure calculator', 'fr'],
+        ['/metabolisme-adaptatif.html', 'Adaptive metabolism', 'fr'],
+        ['/recettes/', 'Recipes', 'fr'],
+      ]],
+    ];
+---
+<footer class="pied">
+  <div class="wrap">
+    <div class="pied-grille">
+      <div>
+        <a class="logo" href={fr ? '/' : '/en/'} aria-label={fr ? 'Basal, accueil' : 'Basal, home'}><svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="21" fill="none" stroke="#f97316" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg>Basal</a>
+        {fr
+          ? <p style="margin-top:14px">Suivi nutritionnel, poids, métabolisme et musculation. Édité par Théo Serrano, entrepreneur individuel, sous le nom commercial Basal : <a href="mailto:contact@basal-app.fr">contact@basal-app.fr</a>.</p>
+          : <p style="margin-top:14px">Nutrition, weight, metabolism and strength tracking. Published by Théo Serrano, sole trader, trading as Basal: <a href="mailto:contact@basal-app.fr">contact@basal-app.fr</a>.</p>}
+      </div>
+      {colonnes.map(([titre, liens], i) => (
+        <nav aria-labelledby={`pied-${i}`}>
+          <h2 id={`pied-${i}`}>{titre}</h2>
+          <ul>{(liens as string[][]).map(([href, nom, langue]) => <li><a href={href} hreflang={langue} lang={langue}>{nom}</a></li>)}</ul>
+        </nav>
+      ))}
+    </div>
+    <div class="mentions">
+      {fr
+        ? <p style="margin:0">Basal est une application mobile. Elle n’est pas un dispositif médical et ne remplace pas l’avis d’un professionnel de santé.</p>
+        : <p style="margin:0">Basal is a mobile app. It is not a medical device and does not replace advice from a healthcare professional.</p>}
+      {fr
+        ? <p class="marques" style="margin:0">Google Play et le logo Google Play sont des marques de Google LLC. Apple et le logo App Store sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres pays.</p>
+        : <p class="marques" style="margin:0">Google Play and the Google Play logo are trademarks of Google LLC. Apple and the App Store logo are trademarks of Apple Inc., registered in the U.S. and other countries.</p>}
+    </div>
+  </div>
+</footer>

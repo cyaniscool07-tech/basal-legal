@@ -13,105 +13,127 @@
 <meta property="og:image" content="https://basal-app.fr/img/recettes/wrap-poulet.webp">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <meta name="theme-color" content="#12100E">
+<link rel="preload" href="/polices/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
 <script data-goatcounter="https://basalapp.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 <a class="evitement" href="#contenu">Aller au contenu</a>
-<header class="topbar">
-  <div class="wrap topbar-in">
-    <a class="mark" href="/" aria-label="Basal, accueil"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
+<header class="barre">
+  <div class="wrap barre-in">
+    <a class="logo" href="/" aria-label="Basal, accueil"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg>Basal</a>
     <nav aria-label="Menu principal">
-      <a href="/">Accueil</a>
-      <a href="/recettes/" >Recettes</a>
+      <a href="/recettes/">Recettes</a>
       <a href="/calcul-tdee.html">Calculateur</a>
       <a href="/metabolisme-adaptatif.html">Métabolisme</a>
       <a href="/nutrition-musculation.html">Musculation</a>
       <a href="/comparatif-applications-nutrition.html">Comparatif</a>
+      <a class="lang" href="/en/" hreflang="en" lang="en">EN</a>
     </nav>
+    <a class="bouton" href="/#telecharger">Télécharger</a>
   </div>
 </header>
 
-<div class="page recette" role="main">
-
-  <p class="fil"><a href="/recettes/">Recettes</a> › Déjeuner</p>
-  <h1 id="contenu">Wraps poulet et crudités</h1>
-  <p class="chapeau">Sauce au fromage blanc et moutarde, à emporter. 32 g de protéines par portion, prête en 18 min.</p>
-
-  <img class="recette-img" src="/img/recettes/wrap-poulet.webp" alt="Wraps poulet et crudités (illustration)" width="720" height="720" fetchpriority="high">
-
-  <div class="faits">
-    <div><span>Par portion</span><b>345 kcal</b></div>
-    <div><span>Protéines</span><b>32,3 g</b></div>
-    <div><span>Glucides</span><b>36,3 g</b></div>
-    <div><span>Lipides</span><b>6,9 g</b></div>
-    <div><span>Fibres</span><b>2,7 g</b></div>
-  </div>
-  <p class="meta-recette">2 portions · prête en 18 min (préparation 10 min, cuisson 8 min) · cuisine américaine</p>
-
-  <h2>Ingrédients (2 portions)</h2>
-  <ul>
-    <li>120 g de tortilla de blé</li>
-    <li>200 g de filet de poulet cru</li>
-    <li>60 g de laitue</li>
-    <li>120 g de tomate</li>
-    <li>80 g de fromage blanc 0 %</li>
-    <li>10 g de moutarde</li>
-  </ul>
-  <p class="note">Allergènes : Gluten, Lait, Moutarde. Déduits des ingrédients ; vérifie les étiquettes des produits que tu utilises.</p>
-
-  <h2>Préparation</h2>
-  <ol>
-    <li id="etape-1">Poêle le poulet en lanières 8 minutes.</li>
-    <li id="etape-2">Mélange le fromage blanc et la moutarde.</li>
-    <li id="etape-3">Garnis les tortillas de sauce, salade, tomate et poulet, puis roule-les.</li>
-  </ol>
-
-  <h2>Dans l’application</h2>
-  <p>
-    Cette recette fait partie du catalogue gratuit de Basal. Dans l’application, tu peux la
-    <strong>noter dans ton journal</strong> en un geste, changer le nombre de portions ou les
-    grammages (les calories et les macros se recalculent), la placer dans ton
-    <strong>planning de la semaine</strong> et en tirer ta <strong>liste de courses</strong>.
-  </p>
-  <div class="cta">
-    <a class="store-badge play" data-goatcounter-click="store-play-recettes" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Drecettes">
-      <img src="/img/google-play-fr.png" alt="Disponible sur Google Play" width="134" height="52" loading="lazy">
-    </a>
-    <a class="store-badge apple" data-goatcounter-click="store-apple-recettes" href="https://apps.apple.com/fr/app/basal/id6793001641">
-      <img src="/img/app-store-fr.svg" alt="Télécharger dans l’App Store" width="127" height="40" loading="lazy">
-    </a>
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="/recettes/">Recettes</a><span aria-hidden="true">›</span>Wraps poulet et crudités</nav>
+  <div class="recette-tete">
+    <figure>
+      <img src="/img/recettes/wrap-poulet.webp" alt="Wraps poulet et crudités (illustration)" width="720" height="720" fetchpriority="high">
+      <figcaption>Illustration générée par IA, non contractuelle.</figcaption>
+    </figure>
+    <div>
+      <p class="surtitre">Déjeuner</p>
+      <h1>Wraps poulet et crudités</h1>
+      <p class="chapeau">Sauce au fromage blanc et moutarde, à emporter. 32 g de protéines par portion, prête en 18 min.</p>
+      <div class="reperes"><span>2 portions</span><span>Préparation 10 min</span><span>Cuisson 8 min</span><span>Total 18 min</span><span>Cuisine américaine</span></div>
+      <div class="nutri" role="group" aria-label="Valeurs nutritionnelles pour une portion">
+        <div><b>345</b><span>kcal par portion</span></div>
+        <div><b>32,3</b><span>g protéines</span></div>
+        <div><b>36,3</b><span>g glucides</span></div>
+        <div><b>6,9</b><span>g lipides</span></div>
+        <div><b>2,7</b><span>g fibres</span></div>
+      </div>
+      <div class="repartition">
+        <div class="barre-macros" role="img" aria-label="Répartition de l’énergie : protéines 38 %, glucides 43 %, lipides 19 %"><span class="p" style="width:38%"></span><span class="g" style="width:43%"></span><span class="l" style="width:19%"></span></div>
+        <div class="legende"><span><i class="p"></i>Protéines 38 %</span><span><i class="g"></i>Glucides 43 %</span><span><i class="l"></i>Lipides 19 %</span></div>
+      </div>
+    </div>
   </div>
 
-  <h2>Autres recettes</h2>
-  <ul class="liste">
-    <li><a href="/recettes/tortilla-espagnole.html">Tortilla espagnole</a> — 341 kcal, 16 g de protéines</li>
-    <li><a href="/recettes/salade-lentilles.html">Salade de lentilles vertes</a> — 355 kcal, 20 g de protéines</li>
-    <li><a href="/recettes/ratatouille.html">Ratatouille</a> — 161 kcal, 4 g de protéines</li>
-    <li><a href="/recettes/quiche-lorraine.html">Quiche lorraine</a> — 332 kcal, 14 g de protéines</li>
-  </ul>
+  <div class="recette-corps">
+    <section aria-labelledby="ingredients">
+      <h2 id="ingredients">Ingrédients</h2>
+      <p class="discret" style="font-size:.9rem">Pour 2 portions.</p>
+      <ul class="ingredients">
+        <li><label><input type="checkbox"><b>120 g</b><span>tortilla de blé</span></label></li>
+        <li><label><input type="checkbox"><b>200 g</b><span>filet de poulet cru</span></label></li>
+        <li><label><input type="checkbox"><b>60 g</b><span>laitue</span></label></li>
+        <li><label><input type="checkbox"><b>120 g</b><span>tomate</span></label></li>
+        <li><label><input type="checkbox"><b>80 g</b><span>fromage blanc 0 %</span></label></li>
+        <li><label><input type="checkbox"><b>10 g</b><span>moutarde</span></label></li>
+      </ul>
+      <p class="note">Allergènes : Gluten, Lait, Moutarde. Déduits des ingrédients ; vérifie les étiquettes des produits que tu utilises.</p>
+    </section>
+    <section aria-labelledby="preparation">
+      <h2 id="preparation">Préparation</h2>
+      <ol class="etapes">
+        <li id="etape-1"><p>Poêle le poulet en lanières 8 minutes.</p></li>
+        <li id="etape-2"><p>Mélange le fromage blanc et la moutarde.</p></li>
+        <li id="etape-3"><p>Garnis les tortillas de sauce, salade, tomate et poulet, puis roule-les.</p></li>
+      </ol>
+      <div class="appel-contexte">
+        <div><strong>Dans l’application</strong><p>Cette recette fait partie du catalogue gratuit de Basal : note-la dans ton journal en un geste, ajuste portions et grammages (les calories et les macros se recalculent), place-la dans ton planning de la semaine et tires-en ta liste de courses.</p></div>
+        <div class="stores">
+      <a data-goatcounter-click="store-play-recettes" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Drecettes"><img src="/img/google-play-fr.png" alt="Disponible sur Google Play" width="134" height="52" loading="lazy"></a>
+      <a data-goatcounter-click="store-apple-recettes" href="https://apps.apple.com/fr/app/basal/id6793001641"><img src="/img/app-store-fr.svg" alt="Télécharger dans l’App Store" width="127" height="40" loading="lazy"></a>
+    </div>
+      </div>
+    </section>
+  </div>
 
-  <footer>
-    <nav aria-label="Pied de page">
-      <a href="/">Accueil</a>
-      <a href="/recettes/">Recettes</a>
-      <a href="/calcul-macros.html">Calculateur de macros</a>
-      <a href="/calcul-tdee.html">Calculer sa dépense</a>
-      <a href="/nutrition-musculation.html">Nutrition et musculation</a>
-      <a href="/confidentialite.html">Politique de confidentialité</a>
-      <a href="/mentions-legales.html">Mentions légales</a>
-    </nav>
+  <section class="section" style="padding-bottom:0" aria-labelledby="autres">
+    <h2 id="autres" style="font-size:1.9rem;margin-bottom:22px">Autres recettes</h2>
+    <div class="voisines">
+      <a class="voisine" href="/recettes/tortilla-espagnole.html"><img src="/img/recettes/min/tortilla-espagnole-240.webp" alt="" width="76" height="76" loading="lazy"><div><b>Tortilla espagnole</b><span>341 kcal · 16 g de protéines · 40 min</span></div></a>
+      <a class="voisine" href="/recettes/salade-lentilles.html"><img src="/img/recettes/min/salade-lentilles-240.webp" alt="" width="76" height="76" loading="lazy"><div><b>Salade de lentilles vertes</b><span>355 kcal · 20 g de protéines · 35 min</span></div></a>
+      <a class="voisine" href="/recettes/ratatouille.html"><img src="/img/recettes/min/ratatouille-240.webp" alt="" width="76" height="76" loading="lazy"><div><b>Ratatouille</b><span>161 kcal · 4 g de protéines · 1 h 05</span></div></a>
+      <a class="voisine" href="/recettes/quiche-lorraine.html"><img src="/img/recettes/min/quiche-lorraine-240.webp" alt="" width="76" height="76" loading="lazy"><div><b>Quiche lorraine</b><span>332 kcal · 14 g de protéines · 50 min</span></div></a>
+    </div>
+  </section>
+
+  <aside class="note-page">
     <p>Valeurs nutritionnelles calculées pour les quantités indiquées à partir de la table de
     composition nutritionnelle <a href="https://ciqual.anses.fr/">Ciqual 2025 de l'ANSES</a>, réutilisée
     sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence/">licence ouverte Etalab 2.0</a>.
-    Illustrations générées par IA, non contractuelles. Basal n'est pas un dispositif médical et ne
-    remplace pas l'avis d'un professionnel de santé.</p>
-    <p class="marques">Google Play et le logo Google Play sont des marques de Google LLC. Apple et
-    le logo App Store sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres
-    pays.</p>
-  </footer>
-
-</div>
+    Illustrations générées par IA, non contractuelles.</p>
+  </aside>
+</main>
+<footer class="pied">
+  <div class="wrap">
+    <div class="pied-grille">
+      <div>
+        <a class="logo" href="/" aria-label="Basal, accueil"><svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="21" fill="none" stroke="#f97316" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg>Basal</a>
+        <p style="margin-top:14px">Suivi nutritionnel, poids, métabolisme et musculation. Édité par Théo Serrano, entrepreneur individuel, sous le nom commercial Basal : <a href="mailto:contact@basal-app.fr">contact@basal-app.fr</a>.</p>
+      </div>
+      <nav aria-labelledby="pied-0">
+        <h2 id="pied-0">Guides</h2>
+        <ul><li><a href="/metabolisme-adaptatif.html">Le métabolisme adaptatif</a></li><li><a href="/combien-de-calories-par-jour.html">Combien de calories par jour</a></li><li><a href="/deficit-calorique.html">Le déficit calorique</a></li><li><a href="/prise-de-masse.html">La prise de masse</a></li><li><a href="/nutrition-musculation.html">Nutrition et musculation</a></li><li><a href="/series-par-muscle.html">Séries par muscle</a></li><li><a href="/variations-de-poids.html">Variations de poids</a></li><li><a href="/preparer-sa-semaine.html">Préparer sa semaine</a></li></ul>
+      </nav>
+      <nav aria-labelledby="pied-1">
+        <h2 id="pied-1">Outils et recettes</h2>
+        <ul><li><a href="/calcul-tdee.html">Calculer sa dépense</a></li><li><a href="/calcul-macros.html">Calculateur de macros</a></li><li><a href="/recettes/">Recettes calculées</a></li><li><a href="/comparatif-applications-nutrition.html">Comparatif des applications</a></li><li><a href="/alternative-myfitnesspal.html">Alternative à MyFitnessPal</a></li><li><a href="/compteur-calories-gratuit.html">Compteur de calories gratuit</a></li></ul>
+      </nav>
+      <nav aria-labelledby="pied-2">
+        <h2 id="pied-2">Légal</h2>
+        <ul><li><a href="/confidentialite.html">Politique de confidentialité</a></li><li><a href="/cgu.html">Conditions d’utilisation</a></li><li><a href="/mentions-legales.html">Mentions légales</a></li><li><a href="/suppression-compte.html">Suppression de compte</a></li><li><a href="/en/" hreflang="en" lang="en">English</a></li></ul>
+      </nav>
+    </div>
+    <div class="mentions">
+      <p style="margin:0">Basal est une application mobile. Elle n’est pas un dispositif médical et ne remplace pas l’avis d’un professionnel de santé.</p>
+      <p class="marques" style="margin:0">Google Play et le logo Google Play sont des marques de Google LLC. Apple et le logo App Store sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres pays.</p>
+    </div>
+  </div>
+</footer>
 
 <script type="application/ld+json">
 [
