@@ -16,10 +16,11 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
 <header class="topbar">
   <div class="wrap topbar-in">
-    <a class="mark" href="/"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
-    <nav>
+    <a class="mark" href="/" aria-label="Basal, accueil"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
+    <nav aria-label="Menu principal">
       <a href="/">Accueil</a>
       <a href="/recettes/" aria-current="page">Recettes</a>
       <a href="/calcul-tdee.html">Calculateur</a>
@@ -30,9 +31,9 @@
   </div>
 </header>
 
-<div class="page large-page">
+<div class="page large-page" role="main">
 
-  <h1>Recettes équilibrées, avec leurs calories et leurs macros</h1>
+  <h1 id="contenu">Recettes équilibrées, avec leurs calories et leurs macros</h1>
   <p class="chapeau">
     50 recettes du quotidien, classées par repas et par teneur en protéines. Pour
     chacune : les ingrédients au gramme près, les étapes, et les valeurs par portion — calories,
@@ -43,52 +44,52 @@
   <h2>Petit-déjeuner</h2>
   <div class="recettes-grille">
     <a class="recette-carte" href="/recettes/omelette-epinards-feta.html">
-      <img src="/img/recettes/omelette-epinards-feta.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/omelette-epinards-feta-240.webp" srcset="/img/recettes/min/omelette-epinards-feta-240.webp 240w, /img/recettes/min/omelette-epinards-feta-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240">
       <span class="nom">Omelette épinards et feta</span>
       <span class="chiffres">367 kcal · 26 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/fromage-blanc-fruits-rouges.html">
-      <img src="/img/recettes/fromage-blanc-fruits-rouges.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/fromage-blanc-fruits-rouges-240.webp" srcset="/img/recettes/min/fromage-blanc-fruits-rouges-240.webp 240w, /img/recettes/min/fromage-blanc-fruits-rouges-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240">
       <span class="nom">Fromage blanc, fruits rouges et avoine</span>
       <span class="chiffres">335 kcal · 23 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/overnight-oats-mangue.html">
-      <img src="/img/recettes/overnight-oats-mangue.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/overnight-oats-mangue-240.webp" srcset="/img/recettes/min/overnight-oats-mangue-240.webp 240w, /img/recettes/min/overnight-oats-mangue-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240">
       <span class="nom">Overnight oats chia et mangue</span>
       <span class="chiffres">421 kcal · 20 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/porridge-banane-cacahuete.html">
-      <img src="/img/recettes/porridge-banane-cacahuete.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/porridge-banane-cacahuete-240.webp" srcset="/img/recettes/min/porridge-banane-cacahuete-240.webp 240w, /img/recettes/min/porridge-banane-cacahuete-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240">
       <span class="nom">Porridge banane et beurre de cacahuète</span>
       <span class="chiffres">527 kcal · 19 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/shakshuka.html">
-      <img src="/img/recettes/shakshuka.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/shakshuka-240.webp" srcset="/img/recettes/min/shakshuka-240.webp 240w, /img/recettes/min/shakshuka-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Shakshuka</span>
       <span class="chiffres">280 kcal · 16 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/muesli-maison.html">
-      <img src="/img/recettes/muesli-maison.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/muesli-maison-240.webp" srcset="/img/recettes/min/muesli-maison-240.webp 240w, /img/recettes/min/muesli-maison-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Muesli maison pomme et amandes</span>
       <span class="chiffres">474 kcal · 16 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/pancakes-avoine.html">
-      <img src="/img/recettes/pancakes-avoine.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/pancakes-avoine-240.webp" srcset="/img/recettes/min/pancakes-avoine-240.webp 240w, /img/recettes/min/pancakes-avoine-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Pancakes à l'avoine et fromage blanc</span>
       <span class="chiffres">293 kcal · 15 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/tartine-avocat-oeuf.html">
-      <img src="/img/recettes/tartine-avocat-oeuf.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/tartine-avocat-oeuf-240.webp" srcset="/img/recettes/min/tartine-avocat-oeuf-240.webp 240w, /img/recettes/min/tartine-avocat-oeuf-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Tartine avocat et œuf</span>
       <span class="chiffres">377 kcal · 14 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/smoothie-banane-fraise.html">
-      <img src="/img/recettes/smoothie-banane-fraise.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/smoothie-banane-fraise-240.webp" srcset="/img/recettes/min/smoothie-banane-fraise-240.webp 240w, /img/recettes/min/smoothie-banane-fraise-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Smoothie banane et fraise</span>
       <span class="chiffres">309 kcal · 11 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/muffins-oeufs-legumes.html">
-      <img src="/img/recettes/muffins-oeufs-legumes.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/muffins-oeufs-legumes-240.webp" srcset="/img/recettes/min/muffins-oeufs-legumes-240.webp 240w, /img/recettes/min/muffins-oeufs-legumes-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Muffins aux œufs et légumes</span>
       <span class="chiffres">107 kcal · 9 g prot.</span>
     </a>
@@ -97,167 +98,167 @@
   <h2>Déjeuner</h2>
   <div class="recettes-grille">
     <a class="recette-carte" href="/recettes/pates-pesto-poulet.html">
-      <img src="/img/recettes/pates-pesto-poulet.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/pates-pesto-poulet-240.webp" srcset="/img/recettes/min/pates-pesto-poulet-240.webp 240w, /img/recettes/min/pates-pesto-poulet-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Pâtes au pesto maison et poulet</span>
       <span class="chiffres">791 kcal · 49 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/poulet-riz-brocoli.html">
-      <img src="/img/recettes/poulet-riz-brocoli.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/poulet-riz-brocoli-240.webp" srcset="/img/recettes/min/poulet-riz-brocoli-240.webp 240w, /img/recettes/min/poulet-riz-brocoli-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Poulet, riz et brocoli</span>
       <span class="chiffres">542 kcal · 46 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/salade-grecque-poulet.html">
-      <img src="/img/recettes/salade-grecque-poulet.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/salade-grecque-poulet-240.webp" srcset="/img/recettes/min/salade-grecque-poulet-240.webp 240w, /img/recettes/min/salade-grecque-poulet-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Salade grecque au poulet</span>
       <span class="chiffres">492 kcal · 45 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/pates-bolognaise.html">
-      <img src="/img/recettes/pates-bolognaise.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/pates-bolognaise-240.webp" srcset="/img/recettes/min/pates-bolognaise-240.webp 240w, /img/recettes/min/pates-bolognaise-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Pâtes à la bolognaise</span>
       <span class="chiffres">634 kcal · 40 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/poke-saumon.html">
-      <img src="/img/recettes/poke-saumon.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/poke-saumon-240.webp" srcset="/img/recettes/min/poke-saumon-240.webp 240w, /img/recettes/min/poke-saumon-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Poke bowl au saumon</span>
       <span class="chiffres">703 kcal · 39 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/saumon-patate-douce.html">
-      <img src="/img/recettes/saumon-patate-douce.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/saumon-patate-douce-240.webp" srcset="/img/recettes/min/saumon-patate-douce-240.webp 240w, /img/recettes/min/saumon-patate-douce-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Saumon au four, patate douce et haricots verts</span>
       <span class="chiffres">604 kcal · 38 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/pates-thon-tomate.html">
-      <img src="/img/recettes/pates-thon-tomate.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/pates-thon-tomate-240.webp" srcset="/img/recettes/min/pates-thon-tomate-240.webp 240w, /img/recettes/min/pates-thon-tomate-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Pâtes au thon et à la tomate</span>
       <span class="chiffres">634 kcal · 37 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/curry-poulet-coco.html">
-      <img src="/img/recettes/curry-poulet-coco.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/curry-poulet-coco-240.webp" srcset="/img/recettes/min/curry-poulet-coco-240.webp 240w, /img/recettes/min/curry-poulet-coco-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Curry de poulet au lait de coco</span>
       <span class="chiffres">573 kcal · 37 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/couscous-poulet.html">
-      <img src="/img/recettes/couscous-poulet.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/couscous-poulet-240.webp" srcset="/img/recettes/min/couscous-poulet-240.webp 240w, /img/recettes/min/couscous-poulet-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Couscous au poulet et légumes</span>
       <span class="chiffres">466 kcal · 36 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/cabillaud-riz-legumes.html">
-      <img src="/img/recettes/cabillaud-riz-legumes.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/cabillaud-riz-legumes-240.webp" srcset="/img/recettes/min/cabillaud-riz-legumes-240.webp 240w, /img/recettes/min/cabillaud-riz-legumes-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Cabillaud, riz et légumes du soleil</span>
       <span class="chiffres">507 kcal · 36 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/pad-thai-crevettes.html">
-      <img src="/img/recettes/pad-thai-crevettes.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/pad-thai-crevettes-240.webp" srcset="/img/recettes/min/pad-thai-crevettes-240.webp 240w, /img/recettes/min/pad-thai-crevettes-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Pad thaï aux crevettes</span>
       <span class="chiffres">614 kcal · 36 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/chili-con-carne.html">
-      <img src="/img/recettes/chili-con-carne.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/chili-con-carne-240.webp" srcset="/img/recettes/min/chili-con-carne-240.webp 240w, /img/recettes/min/chili-con-carne-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Chili con carne</span>
       <span class="chiffres">492 kcal · 34 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/steak-pommes-de-terre.html">
-      <img src="/img/recettes/steak-pommes-de-terre.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/steak-pommes-de-terre-240.webp" srcset="/img/recettes/min/steak-pommes-de-terre-240.webp 240w, /img/recettes/min/steak-pommes-de-terre-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Steak haché, pommes de terre rôties et salade</span>
       <span class="chiffres">440 kcal · 33 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/wrap-poulet.html">
-      <img src="/img/recettes/wrap-poulet.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/wrap-poulet-240.webp" srcset="/img/recettes/min/wrap-poulet-240.webp 240w, /img/recettes/min/wrap-poulet-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Wraps poulet et crudités</span>
       <span class="chiffres">345 kcal · 32 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/fajitas-poulet.html">
-      <img src="/img/recettes/fajitas-poulet.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/fajitas-poulet-240.webp" srcset="/img/recettes/min/fajitas-poulet-240.webp 240w, /img/recettes/min/fajitas-poulet-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Fajitas de poulet</span>
       <span class="chiffres">389 kcal · 31 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/hachis-parmentier.html">
-      <img src="/img/recettes/hachis-parmentier.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/hachis-parmentier-240.webp" srcset="/img/recettes/min/hachis-parmentier-240.webp 240w, /img/recettes/min/hachis-parmentier-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Hachis parmentier</span>
       <span class="chiffres">392 kcal · 31 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/dinde-champignons.html">
-      <img src="/img/recettes/dinde-champignons.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/dinde-champignons-240.webp" srcset="/img/recettes/min/dinde-champignons-240.webp 240w, /img/recettes/min/dinde-champignons-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Dinde à la crème de champignons</span>
       <span class="chiffres">407 kcal · 30 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/wok-boeuf-legumes.html">
-      <img src="/img/recettes/wok-boeuf-legumes.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/wok-boeuf-legumes-240.webp" srcset="/img/recettes/min/wok-boeuf-legumes-240.webp 240w, /img/recettes/min/wok-boeuf-legumes-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Wok de bœuf et légumes aux nouilles de riz</span>
       <span class="chiffres">428 kcal · 30 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/salade-nicoise.html">
-      <img src="/img/recettes/salade-nicoise.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/salade-nicoise-240.webp" srcset="/img/recettes/min/salade-nicoise-240.webp 240w, /img/recettes/min/salade-nicoise-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Salade niçoise</span>
       <span class="chiffres">379 kcal · 29 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/filet-mignon-moutarde.html">
-      <img src="/img/recettes/filet-mignon-moutarde.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/filet-mignon-moutarde-240.webp" srcset="/img/recettes/min/filet-mignon-moutarde-240.webp 240w, /img/recettes/min/filet-mignon-moutarde-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Filet mignon à la moutarde</span>
       <span class="chiffres">360 kcal · 28 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/buddha-bowl-tofu.html">
-      <img src="/img/recettes/buddha-bowl-tofu.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/buddha-bowl-tofu-240.webp" srcset="/img/recettes/min/buddha-bowl-tofu-240.webp 240w, /img/recettes/min/buddha-bowl-tofu-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Buddha bowl au tofu</span>
       <span class="chiffres">647 kcal · 25 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/dahl-lentilles-corail.html">
-      <img src="/img/recettes/dahl-lentilles-corail.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/dahl-lentilles-corail-240.webp" srcset="/img/recettes/min/dahl-lentilles-corail-240.webp 240w, /img/recettes/min/dahl-lentilles-corail-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Dahl de lentilles corail au lait de coco</span>
       <span class="chiffres">636 kcal · 25 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/riz-cantonais.html">
-      <img src="/img/recettes/riz-cantonais.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/riz-cantonais-240.webp" srcset="/img/recettes/min/riz-cantonais-240.webp 240w, /img/recettes/min/riz-cantonais-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Riz cantonais</span>
       <span class="chiffres">454 kcal · 25 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/chili-sin-carne.html">
-      <img src="/img/recettes/chili-sin-carne.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/chili-sin-carne-240.webp" srcset="/img/recettes/min/chili-sin-carne-240.webp 240w, /img/recettes/min/chili-sin-carne-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Chili sin carne</span>
       <span class="chiffres">503 kcal · 22 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/salade-lentilles.html">
-      <img src="/img/recettes/salade-lentilles.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/salade-lentilles-240.webp" srcset="/img/recettes/min/salade-lentilles-240.webp 240w, /img/recettes/min/salade-lentilles-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Salade de lentilles vertes</span>
       <span class="chiffres">355 kcal · 20 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/tartines-sardines.html">
-      <img src="/img/recettes/tartines-sardines.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/tartines-sardines-240.webp" srcset="/img/recettes/min/tartines-sardines-240.webp 240w, /img/recettes/min/tartines-sardines-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Tartines de sardines à la tomate</span>
       <span class="chiffres">290 kcal · 20 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/tortilla-espagnole.html">
-      <img src="/img/recettes/tortilla-espagnole.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/tortilla-espagnole-240.webp" srcset="/img/recettes/min/tortilla-espagnole-240.webp 240w, /img/recettes/min/tortilla-espagnole-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Tortilla espagnole</span>
       <span class="chiffres">341 kcal · 16 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/quiche-lorraine.html">
-      <img src="/img/recettes/quiche-lorraine.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/quiche-lorraine-240.webp" srcset="/img/recettes/min/quiche-lorraine-240.webp 240w, /img/recettes/min/quiche-lorraine-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Quiche lorraine</span>
       <span class="chiffres">332 kcal · 14 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/taboule-quinoa.html">
-      <img src="/img/recettes/taboule-quinoa.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/taboule-quinoa-240.webp" srcset="/img/recettes/min/taboule-quinoa-240.webp 240w, /img/recettes/min/taboule-quinoa-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Taboulé de quinoa aux pois chiches</span>
       <span class="chiffres">369 kcal · 13 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/risotto-champignons.html">
-      <img src="/img/recettes/risotto-champignons.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/risotto-champignons-240.webp" srcset="/img/recettes/min/risotto-champignons-240.webp 240w, /img/recettes/min/risotto-champignons-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Risotto aux champignons</span>
       <span class="chiffres">391 kcal · 11 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/veloute-butternut.html">
-      <img src="/img/recettes/veloute-butternut.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/veloute-butternut-240.webp" srcset="/img/recettes/min/veloute-butternut-240.webp 240w, /img/recettes/min/veloute-butternut-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Velouté butternut et lentilles corail</span>
       <span class="chiffres">212 kcal · 9 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/soupe-poireaux.html">
-      <img src="/img/recettes/soupe-poireaux.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/soupe-poireaux-240.webp" srcset="/img/recettes/min/soupe-poireaux-240.webp 240w, /img/recettes/min/soupe-poireaux-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Soupe poireaux et pommes de terre</span>
       <span class="chiffres">158 kcal · 5 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/ratatouille.html">
-      <img src="/img/recettes/ratatouille.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/ratatouille-240.webp" srcset="/img/recettes/min/ratatouille-240.webp 240w, /img/recettes/min/ratatouille-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Ratatouille</span>
       <span class="chiffres">161 kcal · 4 g prot.</span>
     </a>
@@ -266,17 +267,17 @@
   <h2>Collation</h2>
   <div class="recettes-grille">
     <a class="recette-carte" href="/recettes/fromage-blanc-cacahuete.html">
-      <img src="/img/recettes/fromage-blanc-cacahuete.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/fromage-blanc-cacahuete-240.webp" srcset="/img/recettes/min/fromage-blanc-cacahuete-240.webp 240w, /img/recettes/min/fromage-blanc-cacahuete-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Fromage blanc, banane et beurre de cacahuète</span>
       <span class="chiffres">246 kcal · 19 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/houmous-carottes.html">
-      <img src="/img/recettes/houmous-carottes.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/houmous-carottes-240.webp" srcset="/img/recettes/min/houmous-carottes-240.webp 240w, /img/recettes/min/houmous-carottes-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Houmous maison et bâtonnets de carotte</span>
       <span class="chiffres">174 kcal · 6 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/energy-balls.html">
-      <img src="/img/recettes/energy-balls.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/energy-balls-240.webp" srcset="/img/recettes/min/energy-balls-240.webp 240w, /img/recettes/min/energy-balls-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Energy balls dattes, amandes et cacao</span>
       <span class="chiffres">129 kcal · 3 g prot.</span>
     </a>
@@ -285,22 +286,22 @@
   <h2>Dessert</h2>
   <div class="recettes-grille">
     <a class="recette-carte" href="/recettes/mousse-chocolat.html">
-      <img src="/img/recettes/mousse-chocolat.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/mousse-chocolat-240.webp" srcset="/img/recettes/min/mousse-chocolat-240.webp 240w, /img/recettes/min/mousse-chocolat-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Mousse au chocolat</span>
       <span class="chiffres">228 kcal · 9 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/banana-bread.html">
-      <img src="/img/recettes/banana-bread.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/banana-bread-240.webp" srcset="/img/recettes/min/banana-bread-240.webp 240w, /img/recettes/min/banana-bread-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Banana bread</span>
       <span class="chiffres">229 kcal · 5 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/crumble-pommes.html">
-      <img src="/img/recettes/crumble-pommes.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/crumble-pommes-240.webp" srcset="/img/recettes/min/crumble-pommes-240.webp 240w, /img/recettes/min/crumble-pommes-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Crumble aux pommes et à l'avoine</span>
       <span class="chiffres">222 kcal · 2 g prot.</span>
     </a>
     <a class="recette-carte" href="/recettes/salade-fruits.html">
-      <img src="/img/recettes/salade-fruits.webp" alt="" width="240" height="240" loading="lazy">
+      <img src="/img/recettes/min/salade-fruits-240.webp" srcset="/img/recettes/min/salade-fruits-240.webp 240w, /img/recettes/min/salade-fruits-480.webp 480w" sizes="(max-width: 560px) 45vw, 240px" alt="" width="240" height="240" loading="lazy">
       <span class="nom">Salade de fruits frais à la menthe</span>
       <span class="chiffres">113 kcal · 2 g prot.</span>
     </a>
@@ -318,7 +319,7 @@
     geste, portions ajustables, planning de la semaine et liste de courses.
   </p>
   <div class="cta">
-    <a class="store-badge play" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker">
+    <a class="store-badge play" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Drecettes">
       <img src="/img/google-play-fr.png" alt="Disponible sur Google Play" width="134" height="52" loading="lazy">
     </a>
     <a class="store-badge apple" href="https://apps.apple.com/fr/app/basal/id6793001641">
@@ -327,7 +328,7 @@
   </div>
 
   <footer>
-    <nav>
+    <nav aria-label="Pied de page">
       <a href="/">Accueil</a>
       <a href="/recettes/">Recettes</a>
       <a href="/calcul-macros.html">Calculateur de macros</a>
@@ -336,9 +337,11 @@
       <a href="/confidentialite.html">Politique de confidentialité</a>
       <a href="/mentions-legales.html">Mentions légales</a>
     </nav>
-    <p>Valeurs nutritionnelles calculées à partir de la table de composition Ciqual (ANSES) pour
-    les quantités indiquées. Illustration non contractuelle. Basal n'est pas un dispositif médical
-    et ne remplace pas l'avis d'un professionnel de santé.</p>
+    <p>Valeurs nutritionnelles calculées pour les quantités indiquées à partir de la table de
+    composition nutritionnelle <a href="https://ciqual.anses.fr/">Ciqual 2025 de l'ANSES</a>, réutilisée
+    sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence/">licence ouverte Etalab 2.0</a>.
+    Illustrations générées par IA, non contractuelles. Basal n'est pas un dispositif médical et ne
+    remplace pas l'avis d'un professionnel de santé.</p>
     <p class="marques">Google Play et le logo Google Play sont des marques de Google LLC. Apple et
     le logo App Store sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres
     pays.</p>

@@ -16,10 +16,11 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
 <header class="topbar">
   <div class="wrap topbar-in">
-    <a class="mark" href="/"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
-    <nav>
+    <a class="mark" href="/" aria-label="Basal, accueil"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
+    <nav aria-label="Menu principal">
       <a href="/">Accueil</a>
       <a href="/recettes/">Recettes</a>
       <a href="/calcul-tdee.html">Calculateur</a>
@@ -31,9 +32,9 @@
   </div>
 </header>
 
-<div class="page">
+<div class="page" role="main">
 
-  <h1>Comparatif : MyFitnessPal, Yazio, Foodvisor et Basal</h1>
+  <h1 id="contenu">Comparatif : MyFitnessPal, Yazio, Foodvisor et Basal</h1>
   <p class="chapeau">
     Cette page est écrite par le développeur de Basal, donc par quelqu'un qui a un intérêt dans
     la réponse. Je l'ai écrite quand même, en essayant de la rendre utile à quelqu'un qui ne
@@ -124,8 +125,9 @@
   <h2>Et ce que Basal ne fait pas</h2>
   <p>
     Pour que cette page garde une valeur, il faut aussi la fin de la liste. Basal n'existe
-    <strong>qu'en français et en anglais</strong>, n'a pas de reconnaissance photo des repas, n'a aucune
-    communauté, et ne permet pas d'importer un historique venu d'une autre application. Sa base
+    <strong>qu'en français et en anglais</strong>, n'a pas de reconnaissance photo des repas, n'a ni fil
+    d'actualité ni messagerie (sa Communauté sert seulement à partager des recettes, des routines
+    et des programmes), et ne permet pas d'importer un historique venu d'une autre application. Sa base
     d'aliments combine la table Ciqual de l'ANSES pour les aliments courants et Open Food Facts,
     une base ouverte et collaborative, pour les produits emballés : très fournie sur les produits
     courants, plus clairsemée sur les références rares.
@@ -165,7 +167,7 @@
   </ul>
 
   <div class="cta">
-    <a class="store-badge play" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker">
+    <a class="store-badge play" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Dcomparatif-applications-nutrition">
       <img src="img/google-play-fr.png" alt="Disponible sur Google Play" width="134" height="52" loading="lazy">
     </a>
     <a class="store-badge apple" href="https://apps.apple.com/fr/app/basal/id6793001641">
@@ -174,7 +176,7 @@
   </div>
 
   <footer>
-    <nav>
+    <nav aria-label="Pied de page">
       <a href="/">Accueil</a>
       <a href="/calcul-tdee.html">Calculer sa dépense</a>
       <a href="/calcul-macros.html">Calculateur de macros</a>

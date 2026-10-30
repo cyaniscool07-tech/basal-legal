@@ -12,10 +12,11 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a class="evitement" href="#contenu">Skip to content</a>
 <header class="topbar">
   <div class="wrap topbar-in">
     <a class="mark" href="/en/"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
-    <nav>
+    <nav aria-label="Main menu">
       <a href="/en/">Home</a>
       <a class="lang" href="/confidentialite.html" hreflang="fr" lang="fr">FR</a>
     </nav>
@@ -26,10 +27,10 @@
      version française doit être reportée ici le même jour : une politique anglaise qui décrit
      autre chose que la française est pire que pas de politique anglaise du tout. -->
 
-<div class="page">
+<div class="page" role="main">
 
-  <h1>Privacy policy — Basal</h1>
-  <p class="updated">Last updated: 18 October 2026</p>
+  <h1 id="contenu">Privacy policy — Basal</h1>
+  <p class="updated">Last updated: 30 October 2026</p>
 
   <p>This is a translation of the <a href="/confidentialite.html" hreflang="fr" lang="fr">French privacy policy</a>. If the two versions ever differ, the French version prevails.</p>
 
@@ -42,6 +43,7 @@
     <li>No advertising tracker, no advertising, no profiling. Only <strong>anonymous usage counters</strong> (for example “the Premium screen was opened”, “a first meal was logged”) are sent, never any value you entered (section 6).</li>
     <li>The <strong>Community</strong> (shared recipes, routines and programmes) can be browsed without an account. Publishing requires an account and a <strong>username</strong>: only that username and what you choose to publish become public — never your email address or your tracking (section 5a).</li>
     <li>A technical diagnostic tool (section 6) receives crash reports and these anonymous usage counters. It <strong>never</strong> receives your personal data (weight, meals, goals…).</li>
+    <li>If you take out a Premium subscription, its status is managed by <strong>RevenueCat</strong>, hosted in the United States, which receives your purchase history and, if you have an account, its identifier (section 5).</li>
   </ul>
 
   <h2>2. Data you record in the app</h2>
@@ -100,6 +102,8 @@
   <p>Finally, <strong>if you have created an account</strong>, the app communicates with <strong>Supabase</strong>, our hosting and authentication provider, to back up your data there and check your identity when you sign in. Supabase acts solely on our behalf and on our instructions; it does not use your data for its own purposes. The servers used are located in Ireland, in the European Union. Without an account, no such communication takes place.</p>
   <p><strong>Account emails</strong> (confirming your address, forgotten password) are sent by <strong>Brevo</strong> (Sendinblue SAS, France), our email delivery provider. It only receives your email address and the content of that email, acts solely on our behalf and processes this data in the European Union. Links in these emails go through a Brevo click counter set to anonymous mode: a click is never linked to your address. No marketing email is ever sent.</p>
 
+  <p><strong>Premium subscriptions</strong> are charged by Apple (App Store) or Google (Google Play), which remain responsible for the payment: the app never sees your card. To know whether your subscription is active, the app uses <strong>RevenueCat</strong> (RevenueCat, Inc.), our subscription management provider. It receives your purchase history on the store, a subscriber identifier and, <strong>if you have created an account</strong>, that account's identifier, so that your subscription follows you from one device to another. If you entered a creator code, it is also linked to your subscription. RevenueCat acts solely on our behalf. Its servers are located in the <strong>United States</strong>: this transfer outside the European Union is covered by the European Commission's <strong>standard contractual clauses</strong>, provided for in its data processing addendum (<a href="https://www.revenuecat.com/dpa">revenuecat.com/dpa</a>). Without a purchase, it receives no information about you.</p>
+
   <h2>5a. Community</h2>
   <p>The Community is a library of recipes, routines and programmes shared by people who use Basal, <strong>checked before they become visible</strong>. It is not a social network: no messaging, no followers, no detailed profile.</p>
   <p><strong>Browsing and importing</strong> do not require an account. The app then queries the server (Supabase, Ireland) with your search and filters (for example “vegetarian” or “30 min or less”); they are not stored, and nothing from your tracking is sent. Imported content becomes a <strong>personal</strong> recipe or routine on your device, as if you had created it. If you are signed in, the import is recorded (which content, which version, when); this information is never made public.</p>
@@ -127,6 +131,7 @@
   <h2>6. Technical diagnostics and anonymous usage counters</h2>
   <p>The app uses <strong>Sentry</strong>, a third-party technical diagnostic service, to be notified automatically when a bug or crash occurs so that it can be fixed. It is not an ad tracking tool: no profile is built, nothing is cross-referenced with other services.</p>
   <p>The same tool also receives a few <strong>anonymous usage counters</strong>, to know whether the app does its job and to improve its flows: for example “onboarding was completed”, “an onboarding step was completed”, “a first meal was logged”, “the Premium screen was opened or closed”, “a purchase was started, completed or cancelled” (with the chosen plan: monthly or yearly), “reminders were accepted or postponed”. These counters say <strong>that an action happened, never its value</strong>: no weight, no calories, no food, no content you entered. They are linked to the same anonymous installation identifier as crash reports, never to your account.</p>
+  <p>For about <strong>one session in five</strong>, the app also sends <strong>performance measurements</strong>: how long it took to start, how long each screen took to appear and how long network exchanges took. They are used to spot slowdowns. They are durations, never what you entered.</p>
   <p><strong>What is sent to Sentry when an error occurs:</strong></p>
   <ul>
     <li>technical information about the error itself (error message, stack trace, screen or feature involved — e.g. "food search", "export", never the content you entered);</li>
@@ -155,7 +160,7 @@
   <h2>9. Permissions requested by the app</h2>
   <p>The app requests up to three permissions on your device, each tied to a specific feature, <strong>never turned on by default without your consent</strong>, and which can be turned off at any time in your phone's settings:</p>
   <ul>
-    <li><strong>Camera</strong>: used only to scan the barcode of a food product in order to pre-fill its nutrition information. No photo or video is taken, saved or sent — the camera is only used to read the barcode live, while the scan screen is open. The app does not request microphone access.</li>
+    <li><strong>Camera</strong>: used only to scan the barcode of a food product in order to pre-fill its nutrition information. The camera reads the barcode live, while the scan screen is open. If the code is hard to read and you tap “Decode a photo”, the app takes <strong>one photo</strong> to look for the barcode in it: it is analysed on your device, is <strong>never sent</strong> and is not added to your photo library (it stays in the app's cache, which your phone clears by itself). No video is recorded. The app does not request microphone access.</li>
     <li><strong>Notifications</strong>: used only for the local reminders you set up yourself (weigh-in, meals, end-of-day summary). These notifications are generated and scheduled entirely on your device; they do not go through any remote push notification service.</li>
     <li><strong>Health data (daily steps)</strong>: only if you turn on syncing yourself from Settings → Health sync, the app reads your daily step count already recorded by <strong>Health Connect</strong> on Android or by the <strong>Health app</strong> on iPhone. Always <strong>read-only</strong>: it never writes anything to Health, and reads no other category — no heart rate, sleep, weight or workouts. This permission stays off by default and can be revoked at any time from your phone's settings. On iPhone, the value read is the aggregated total from the Health app: it may therefore include steps measured by an Apple Watch or by another app, if you use one.</li>
   </ul>

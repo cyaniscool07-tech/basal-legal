@@ -9,10 +9,11 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
 <header class="topbar">
   <div class="wrap topbar-in">
-    <a class="mark" href="/"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
-    <nav>
+    <a class="mark" href="/" aria-label="Basal, accueil"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
+    <nav aria-label="Menu principal">
       <a href="/">Accueil</a>
       <a href="/recettes/">Recettes</a>
       <a href="/calcul-tdee.html">Calculateur</a>
@@ -24,9 +25,9 @@
   </div>
 </header>
 
-<div class="page">
+<div class="page" role="main">
 
-  <h1>Supprimer ton compte — Basal</h1>
+  <h1 id="contenu">Supprimer ton compte — Basal</h1>
   <p class="updated">Dernière mise à jour : 7 août 2026</p>
 
   <p>Cette page explique comment supprimer ton compte de l'application <strong>Basal</strong> (suivi nutritionnel, poids, métabolisme et activité) et les données qui y sont associées. Deux chemins existent : depuis l'application, ou par e-mail si tu ne l'as plus.</p>

@@ -27,10 +27,11 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
 <header class="topbar">
   <div class="wrap topbar-in">
-    <a class="mark" href="/"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
-    <nav>
+    <a class="mark" href="/" aria-label="Basal, accueil"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
+    <nav aria-label="Menu principal">
       <a href="/" aria-current="page">Accueil</a>
       <a href="/recettes/">Recettes</a>
       <a href="/calcul-tdee.html">Calculateur</a>
@@ -63,7 +64,7 @@
         <circle cx="32" cy="32" r="18" fill="none" stroke="url(#anneau)" stroke-width="7"
                 stroke-linecap="round" stroke-dasharray="88 25" transform="rotate(-115 32 32)"/>
       </svg>
-      <h1>Basal</h1>
+      <h1 id="contenu">Basal</h1>
     </div>
     <p class="tagline">
       Le suivi nutritionnel dont les calculs <strong>s'adaptent à toi</strong>, plutôt que
@@ -71,7 +72,7 @@
     </p>
 
     <div class="cta">
-      <a class="store-badge play" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker">
+      <a class="store-badge play" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Daccueil">
         <img src="img/google-play-fr.png" alt="Disponible sur Google Play" width="134" height="52">
       </a>
       <a class="store-badge apple" href="https://apps.apple.com/fr/app/basal/id6793001641">
@@ -81,7 +82,7 @@
   </div>
 </header>
 
-<div class="wrap">
+<div class="wrap" role="main">
 
   <section>
     <h2>Ce que fait l'application</h2>
@@ -112,9 +113,10 @@
       <article class="carte">
         <h3>La nutrition croisée avec l'entraînement</h3>
         <p>
-          Basal connaît les deux et les rapproche : le volume reçu par chaque groupe
-          musculaire, les protéines des jours d'entraînement comparées aux jours de repos, et
-          le signe qu'une perte de poids ne se fait pas au détriment du muscle.
+          Basal connaît les deux et les rapproche : tes charges et tes records à côté de la
+          tendance de ton poids, pour voir si tes performances tiennent pendant une sèche. Avec
+          Premium, le volume reçu par chaque groupe musculaire et les protéines des jours
+          d'entraînement comparées aux jours de repos.
         </p>
       </article>
       <article class="carte">
@@ -130,16 +132,17 @@
   <section>
     <h2>À quoi ça ressemble</h2>
     <div class="shots">
-      <figure><img src="img/kcal.jpg" alt="Suivi des calories du jour" width="420" height="910" loading="lazy"><figcaption>Le budget du jour</figcaption></figure>
-      <figure><img src="img/tdee.jpg" alt="Courbe du métabolisme appris" width="420" height="910" loading="lazy"><figcaption>Le métabolisme appris</figcaption></figure>
-      <figure><img src="img/bilan.jpg" alt="Bilan hebdomadaire" width="420" height="910" loading="lazy"><figcaption>Le bilan de la semaine</figcaption></figure>
-      <figure><img src="img/activite.jpg" alt="Suivi de l'activité et des pas" width="420" height="910" loading="lazy"><figcaption>L'activité et les pas</figcaption></figure>
-      <figure><img src="img/musculation.jpg" alt="Séances de musculation et routines" width="420" height="910" loading="lazy"><figcaption>Les séances et les routines</figcaption></figure>
-      <figure><img src="img/recherche.jpg" alt="Recherche d'un aliment" width="420" height="910" loading="lazy"><figcaption>La recherche d'aliments</figcaption></figure>
-      <figure><img src="img/recette.jpg" alt="Création d'une recette" width="420" height="910" loading="lazy"><figcaption>Les recettes</figcaption></figure>
-      <figure><img src="img/resto.jpg" alt="Estimation d'un plat au restaurant" width="420" height="910" loading="lazy"><figcaption>Les plats au restaurant</figcaption></figure>
-      <figure><img src="img/sombre.jpg" alt="L'application en thème sombre" width="420" height="910" loading="lazy"><figcaption>Le thème sombre</figcaption></figure>
+      <figure><img src="img/app/fr/01-kcal-420.webp" srcset="img/app/fr/01-kcal-420.webp 420w, img/app/fr/01-kcal-840.webp 840w" sizes="(max-width: 680px) 90vw, 260px" alt="Écran Kcal : budget du jour, calories restantes et macros" width="420" height="913" loading="lazy"><figcaption>Le budget du jour</figcaption></figure>
+      <figure><img src="img/app/fr/02-metabolisme-420.webp" srcset="img/app/fr/02-metabolisme-420.webp 420w, img/app/fr/02-metabolisme-840.webp 840w" sizes="(max-width: 680px) 90vw, 260px" alt="Dépense estimée, recalculée à chaque pesée, avec sa courbe" width="420" height="913" loading="lazy"><figcaption>Le métabolisme appris</figcaption></figure>
+      <figure><img src="img/app/fr/03-musculation-420.webp" srcset="img/app/fr/03-musculation-420.webp 420w, img/app/fr/03-musculation-840.webp 840w" sizes="(max-width: 680px) 90vw, 260px" alt="Onglet Activité : routines de musculation, progression et historique" width="420" height="913" loading="lazy"><figcaption>Les séances et les routines</figcaption></figure>
+      <figure><img src="img/app/fr/04-bilan-420.webp" srcset="img/app/fr/04-bilan-420.webp 420w, img/app/fr/04-bilan-840.webp 840w" sizes="(max-width: 680px) 90vw, 260px" alt="Bilan hebdomadaire : rythme, protéines, volume et charges" width="420" height="913" loading="lazy"><figcaption>Le bilan de la semaine (Premium)</figcaption></figure>
+      <figure><img src="img/app/fr/05-repas-suggestions-420.webp" srcset="img/app/fr/05-repas-suggestions-420.webp 420w, img/app/fr/05-repas-suggestions-840.webp 840w" sizes="(max-width: 680px) 90vw, 260px" alt="Onglet Repas : recettes suggérées selon ce qu'il reste dans la journée" width="420" height="913" loading="lazy"><figcaption>Quoi manger aujourd'hui</figcaption></figure>
+      <figure><img src="img/app/fr/06-recette-420.webp" srcset="img/app/fr/06-recette-420.webp 420w, img/app/fr/06-recette-840.webp 840w" sizes="(max-width: 680px) 90vw, 260px" alt="Fiche recette : calories et macros par portion, calculées sur la table Ciqual" width="420" height="913" loading="lazy"><figcaption>Une recette calculée</figcaption></figure>
+      <figure><img src="img/app/fr/07-resto-420.webp" srcset="img/app/fr/07-resto-420.webp 420w, img/app/fr/07-resto-840.webp 840w" sizes="(max-width: 680px) 90vw, 260px" alt="Estimation d'un plat au restaurant par catégorie" width="420" height="913" loading="lazy"><figcaption>Les plats au restaurant</figcaption></figure>
+      <figure><img src="img/app/fr/08-donnees-420.webp" srcset="img/app/fr/08-donnees-420.webp 420w, img/app/fr/08-donnees-840.webp 840w" sizes="(max-width: 680px) 90vw, 260px" alt="Export JSON ou CSV et sauvegarde de tes données" width="420" height="913" loading="lazy"><figcaption>Tes données exportables</figcaption></figure>
+      <figure><img src="img/app/fr/09-communaute-420.webp" srcset="img/app/fr/09-communaute-420.webp 420w, img/app/fr/09-communaute-840.webp 840w" sizes="(max-width: 680px) 90vw, 260px" alt="Recettes, routines et programmes partagés par la Communauté" width="420" height="913" loading="lazy"><figcaption>La Communauté</figcaption></figure>
     </div>
+    <p class="note">Captures réalisées avec des données de démonstration fictives.</p>
   </section>
 
   <section>
@@ -159,7 +162,7 @@
        premier écran. Le nom de l'éditeur et le contact restent, ce sont eux qui rattachent le
        site à l'organisation. -->
   <footer>
-    <nav>
+    <nav aria-label="Pied de page">
       <a href="calcul-tdee.html">Calculateur TDEE</a>
       <a href="metabolisme-adaptatif.html">Le métabolisme adaptatif</a>
       <a href="confidentialite.html">Politique de confidentialité</a>
@@ -197,6 +200,41 @@
   "author": { "@type": "Person", "name": "Theo Serrano" },
   "publisher": { "@type": "Organization", "name": "Basal", "email": "contact@basal-app.fr" }
 }
+</script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://basal-app.fr/#organisation",
+    "name": "Basal",
+    "url": "https://basal-app.fr/",
+    "logo": "https://basal-app.fr/img/apple-touch-icon.png",
+    "email": "contact@basal-app.fr",
+    "founder": {
+      "@type": "Person",
+      "name": "Théo Serrano"
+    },
+    "sameAs": [
+      "https://apps.apple.com/fr/app/basal/id6793001641",
+      "https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://basal-app.fr/#site",
+    "name": "Basal",
+    "url": "https://basal-app.fr/",
+    "inLanguage": [
+      "fr",
+      "en"
+    ],
+    "publisher": {
+      "@id": "https://basal-app.fr/#organisation"
+    }
+  }
+]
 </script>
 <script>
 // Liens d'e-mail de compte envoyés avant la page dédiée : renvoyés vers /compte.html, jeton compris.

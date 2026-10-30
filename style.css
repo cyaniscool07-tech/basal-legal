@@ -20,7 +20,7 @@
   --ink: #1c1c1e;
   --ink-soft: #55555a;
   --line: #e2e2e6;
-  --accent: #c2540a;
+  --accent: #b04c09; /* 5,0:1 sur --card et 5,4:1 sur blanc ; #c2540a tombait à 4,26 sur les cartes */
   --card: #f7f6f4;
   /* Le noir chaud de l'écran de démarrage de l'application, réutilisé tel quel. */
   --nuit: #12100E;
@@ -418,9 +418,11 @@ footer p { font-size: 13.5px; margin: 0 0 8px; }
 */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
+    /* Glissement seul, sans fondu : un texte en cours d'apparition à demi transparent passait sous
+       le contraste minimal (4,04:1 mesuré par Lighthouse le 30/10). */
     @keyframes apparait {
-      from { opacity: 0; transform: translateY(26px); }
-      to   { opacity: 1; transform: none; }
+      from { transform: translateY(26px); }
+      to   { transform: none; }
     }
     section {
       animation: apparait linear both;
@@ -484,7 +486,11 @@ footer p { font-size: 13.5px; margin: 0 0 8px; }
 
 /* Attribution des marques, exigée par les deux chartes dès lors qu’un badge est affiché.
    Volontairement discrète : c’est une mention légale, pas un message au lecteur. */
-footer .marques { font-size: 0.82em; opacity: 0.62; }
+footer .marques { font-size: 0.82em; } /* sans opacité : à 0,62 le contraste tombait à 2,95:1 */
+
+/* Lien d'évitement : invisible tant qu'on ne navigue pas au clavier. */
+.evitement { position: absolute; left: -9999px; top: 0; }
+.evitement:focus { left: 16px; top: 12px; z-index: 10; padding: 10px 16px; background: var(--bg); color: var(--ink); border: 2px solid var(--accent); border-radius: 8px; }
 
 /* ------------------------------------------------------------------ recettes (2026-10-18)
    Pages générées par calorie-tracker/scripts/site/__tests__/recipePages.gen.test.ts :

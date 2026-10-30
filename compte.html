@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
+<!-- Page qui change un mot de passe : seules ces sources peuvent s'y exécuter ou être contactées. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://ncpmassgjiztymanexgk.supabase.co wss://ncpmassgjiztymanexgk.supabase.co; img-src 'self' data:; base-uri 'none'; form-action 'self'; object-src 'none'">
 <title>Ton compte — Basal</title>
 <link rel="canonical" href="https://basal-app.fr/compte.html">
 <link rel="stylesheet" href="/style.css">
@@ -20,19 +22,20 @@
 </style>
 </head>
 <body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
 <header class="topbar">
   <div class="wrap topbar-in">
-    <a class="mark" href="/"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
+    <a class="mark" href="/" aria-label="Basal, accueil"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
   </div>
 </header>
 
-<div class="page">
+<div class="page" role="main">
   <!-- Page de retour des e-mails de compte (Supabase « Site URL ») : confirmation d'adresse et
        mot de passe oublié. Sans elle, ces liens menaient à l'accueil du site, et la
        réinitialisation du mot de passe était impossible. -->
 
   <section class="etat actif" id="chargement" aria-live="polite">
-    <h1 data-fr="Un instant…" data-en="One moment…">Un instant…</h1>
+    <h1 id="contenu" data-fr="Un instant…" data-en="One moment…">Un instant…</h1>
   </section>
 
   <section class="etat" id="a-confirmer">
@@ -79,7 +82,7 @@
   <p class="updated"><a href="/" data-fr="Retour au site" data-en="Back to the website">Retour au site</a> · <a href="mailto:contact@basal-app.fr">contact@basal-app.fr</a></p>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" integrity="sha384-0w2KAL2YHP6wKOkUDzkCDGgVvfmHnj02DHeQ6XcHOgTfFsGyonKOpShMH1x6nk9o" crossorigin="anonymous"></script>
 <script>
 (function () {
   // Langue : anglais seulement si le navigateur le préfère au français (même règle que l'app).

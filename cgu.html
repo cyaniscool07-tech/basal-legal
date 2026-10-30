@@ -9,10 +9,11 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
 <header class="topbar">
   <div class="wrap topbar-in">
-    <a class="mark" href="/"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
-    <nav>
+    <a class="mark" href="/" aria-label="Basal, accueil"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
+    <nav aria-label="Menu principal">
       <a href="/">Accueil</a>
       <a href="/recettes/">Recettes</a>
       <a href="/calcul-tdee.html">Calculateur</a>
@@ -24,9 +25,9 @@
   </div>
 </header>
 
-<div class="page">
+<div class="page" role="main">
 
-  <h1>Conditions générales d'utilisation — Basal</h1>
+  <h1 id="contenu">Conditions générales d'utilisation — Basal</h1>
   <p class="updated">Dernière mise à jour : 18 octobre 2026</p>
 
   <p>Les présentes conditions générales d'utilisation (CGU) régissent l'accès et l'utilisation de l'application mobile <strong>Basal</strong>, éditée par Théo Serrano (voir les <a href="./mentions-legales.html">mentions légales</a> pour l'identité complète de l'éditeur). Basal est une application de suivi nutritionnel, de poids et d'activité physique.</p>

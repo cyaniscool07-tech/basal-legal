@@ -16,10 +16,11 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
 <header class="topbar">
   <div class="wrap topbar-in">
-    <a class="mark" href="/"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
-    <nav>
+    <a class="mark" href="/" aria-label="Basal, accueil"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
+    <nav aria-label="Menu principal">
       <a href="/">Accueil</a>
       <a href="/recettes/">Recettes</a>
       <a href="/calcul-tdee.html">Calculateur</a>
@@ -31,9 +32,9 @@
   </div>
 </header>
 
-<div class="page">
+<div class="page" role="main">
 
-  <h1>Le métabolisme adaptatif : pourquoi une formule ne suffit pas</h1>
+  <h1 id="contenu">Le métabolisme adaptatif : pourquoi une formule ne suffit pas</h1>
   <p class="chapeau">
     Presque toutes les applications de nutrition estiment ta dépense énergétique avec la même
     équation. Elle a un défaut structurel — et il est réparable.
@@ -89,7 +90,7 @@
   <p>
     C'est le principe du métabolisme adaptatif : partir de l'estimation théorique, puis la
     corriger progressivement à mesure que les données s'accumulent. Au bout de quelques semaines,
-    ce n'est plus une moyenne de population, c'est ta dépense.
+    l'estimation s'appuie sur tes propres données plutôt que sur une moyenne de population.
   </p>
 
   <h2>Ce que cette méthode ne peut pas faire</h2>
@@ -138,7 +139,7 @@
       soutenir. Le suivi est gratuit et ne demande aucun compte.
     </p>
     <div class="cta">
-      <a class="store-badge play" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker">
+      <a class="store-badge play" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Dmetabolisme-adaptatif">
         <img src="img/google-play-fr.png" alt="Disponible sur Google Play" width="134" height="52" loading="lazy">
       </a>
       <a class="store-badge apple" href="https://apps.apple.com/fr/app/basal/id6793001641">
@@ -156,7 +157,7 @@
     <!-- Le calculateur pointait vers cet article sans réciprocité : maillage à sens unique,
          qui perd du référencement et laisse le lecteur sans porte de sortie utile en fin de
          page. Placé en tête, comme sur le pied de page du calculateur. -->
-    <nav>
+    <nav aria-label="Pied de page">
       <a href="/">Accueil</a>
       <a href="/calcul-tdee.html">Calculer sa dépense</a>
       <a href="/nutrition-musculation.html">Nutrition et musculation</a>

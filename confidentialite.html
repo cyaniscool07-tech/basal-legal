@@ -11,10 +11,11 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
 <header class="topbar">
   <div class="wrap topbar-in">
-    <a class="mark" href="/"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
-    <nav>
+    <a class="mark" href="/" aria-label="Basal, accueil"><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg><span>Basal</span></a>
+    <nav aria-label="Menu principal">
       <a href="/">Accueil</a>
       <a href="/recettes/">Recettes</a>
       <a href="/calcul-tdee.html">Calculateur</a>
@@ -26,10 +27,10 @@
   </div>
 </header>
 
-<div class="page">
+<div class="page" role="main">
 
-  <h1>Politique de confidentialité — Basal</h1>
-  <p class="updated">Dernière mise à jour : 18 octobre 2026 — <a href="/en/privacy.html" hreflang="en" lang="en">English version</a></p>
+  <h1 id="contenu">Politique de confidentialité — Basal</h1>
+  <p class="updated">Dernière mise à jour : 30 octobre 2026 — <a href="/en/privacy.html" hreflang="en" lang="en">English version</a></p>
 
   <p>Cette politique décrit précisément ce que fait l'application <strong>Basal</strong> aujourd'hui, sans anticiper de fonctionnalités non encore disponibles.</p>
 
@@ -40,6 +41,7 @@
     <li>Aucun outil de suivi publicitaire, aucune publicité, aucun profilage. Seuls des <strong>compteurs d'usage anonymes</strong> (par exemple « l'écran Premium a été ouvert », « un premier repas a été noté ») sont transmis, sans jamais la moindre valeur saisie (section 6).</li>
     <li>La <strong>Communauté</strong> (recettes, routines et programmes partagés) se consulte sans compte. Publier demande un compte et un <strong>pseudonyme</strong> : seuls ce pseudonyme et ce que tu choisis de publier deviennent publics — jamais ton e-mail ni ton suivi (section 5 bis).</li>
     <li>Un outil de diagnostic technique (section 6) reçoit les rapports de plantage et ces compteurs d'usage anonymes. Il ne reçoit <strong>jamais</strong> tes données personnelles (poids, repas, objectifs...).</li>
+    <li>Si tu prends un abonnement Premium, son état est géré par <strong>RevenueCat</strong>, hébergé aux États-Unis, qui reçoit ton historique d'achats et, si tu as un compte, son identifiant (section 5).</li>
   </ul>
 
   <h2>2. Données que tu enregistres dans l'application</h2>
@@ -98,6 +100,8 @@
   <p>Enfin, <strong>si tu as créé un compte</strong>, l'application communique avec <strong>Supabase</strong>, notre prestataire d'hébergement et d'authentification, pour y sauvegarder tes données et vérifier ton identité à la connexion. Supabase agit uniquement pour notre compte et selon nos instructions ; il n'exploite pas tes données pour son propre usage. Les serveurs utilisés se situent en Irlande, dans l'Union européenne. Sans compte, aucune communication de ce type n'a lieu.</p>
   <p>Les <strong>e-mails de compte</strong> (confirmation de ton adresse, mot de passe oublié) sont envoyés par <strong>Brevo</strong> (Sendinblue SAS, France), notre prestataire d'envoi d'e-mails. Il ne reçoit que ton adresse e-mail et le contenu de cet e-mail, agit uniquement pour notre compte et traite ces données dans l'Union européenne. Les liens de ces e-mails passent par un compteur de clics de Brevo, réglé en mode anonyme : un clic n'est jamais rattaché à ton adresse. Aucun e-mail publicitaire n'est envoyé.</p>
 
+  <p>Les <strong>abonnements Premium</strong> sont encaissés par Apple (App Store) ou Google (Google Play), qui restent responsables du paiement : l'application ne voit jamais ta carte bancaire. Pour savoir si ton abonnement est actif, l'application passe par <strong>RevenueCat</strong> (RevenueCat, Inc.), notre prestataire de gestion des abonnements. Il reçoit ton historique d'achats sur le store, un identifiant d'abonné et, <strong>si tu as créé un compte</strong>, l'identifiant de ce compte, pour que ton abonnement te suive d'un appareil à l'autre. Si tu as saisi un code créateur, il est aussi associé à ton abonnement. RevenueCat agit uniquement pour notre compte. Ses serveurs se situent aux <strong>États-Unis</strong> : ce transfert hors de l'Union européenne est encadré par les <strong>clauses contractuelles types</strong> de la Commission européenne, prévues par son accord de traitement des données (<a href="https://www.revenuecat.com/dpa">revenuecat.com/dpa</a>). Sans achat, il ne reçoit aucune information te concernant.</p>
+
   <h2>5 bis. Communauté</h2>
   <p>La Communauté est une bibliothèque de recettes, de routines et de programmes partagés par les personnes qui utilisent Basal, <strong>vérifiés avant d'être visibles</strong>. Ce n'est pas un réseau social : pas de messagerie, pas d'abonnés, pas de profil détaillé.</p>
   <p><strong>La consulter et importer</strong> ne demande pas de compte. L'application interroge alors le serveur (Supabase, Irlande) avec ta recherche et tes filtres (par exemple « végétarien » ou « 30 min ou moins ») ; ils ne sont pas conservés, et rien de ton suivi n'est envoyé. Un contenu importé devient une recette ou une routine <strong>personnelle</strong>, sur ton appareil, comme si tu l'avais créée. Si tu es connecté à ton compte, l'import est noté (quel contenu, quelle version, quand) ; cette information n'est jamais rendue publique.</p>
@@ -125,6 +129,7 @@
   <h2>6. Diagnostic technique et compteurs d'usage anonymes</h2>
   <p>L'application utilise <strong>Sentry</strong>, un service tiers de diagnostic technique, pour être informée automatiquement lorsqu'un bug ou un plantage se produit et pouvoir le corriger. Ce n'est pas un outil de suivi publicitaire : aucun profil n'est construit, rien n'est croisé avec d'autres services.</p>
   <p>Le même outil reçoit aussi quelques <strong>compteurs d'usage anonymes</strong>, pour savoir si l'application remplit son rôle et améliorer ses parcours : par exemple « l'accueil a été terminé », « une étape de l'accueil a été franchie », « un premier repas a été noté », « l'écran Premium a été ouvert ou fermé », « un achat a été commencé, finalisé ou annulé » (avec la formule choisie : mensuelle ou annuelle), « les rappels ont été acceptés ou reportés ». Ces compteurs disent <strong>qu'une action a eu lieu, jamais sa valeur</strong> : aucun poids, aucune calorie, aucun aliment, aucun contenu saisi. Ils sont rattachés au même identifiant anonyme d'installation que les rapports de plantage, jamais à ton compte.</p>
+  <p>Pour environ <strong>une session sur cinq</strong>, l'application envoie aussi des <strong>mesures de performance</strong> : la durée de son démarrage, le temps d'affichage de chaque écran et la durée des échanges réseau. Elles servent à repérer les lenteurs. Ce sont des durées, jamais ce que tu as saisi.</p>
   <p><strong>Ce qui est transmis à Sentry en cas d'erreur :</strong></p>
   <ul>
     <li>des informations techniques sur l'erreur elle-même (message d'erreur, trace de la pile d'appel, écran ou fonctionnalité concernée — ex. « recherche d'aliment », « export », jamais le contenu que tu as saisi) ;</li>
@@ -153,7 +158,7 @@
   <h2>9. Autorisations demandées par l'application</h2>
   <p>L'application demande jusqu'à trois autorisations sur ton appareil, chacune liée à une fonctionnalité précise, <strong>jamais activée par défaut sans ton accord</strong>, et désactivable à tout moment dans les réglages de ton téléphone :</p>
   <ul>
-    <li><strong>Caméra</strong> : utilisée uniquement pour scanner le code-barres d'un produit alimentaire afin de préremplir ses informations nutritionnelles. Aucune photo ni vidéo n'est prise, enregistrée ou transmise — la caméra sert uniquement à lire le code-barres en direct, pendant que l'écran de scan est ouvert. L'application ne demande pas l'accès au microphone.</li>
+    <li><strong>Caméra</strong> : utilisée uniquement pour scanner le code-barres d'un produit alimentaire afin de préremplir ses informations nutritionnelles. La caméra lit le code-barres en direct, pendant que l'écran de scan est ouvert. Si le code est difficile à lire et que tu appuies sur « Décoder une photo », l'application prend <strong>une photo</strong> pour y chercher le code-barres : elle est analysée sur ton appareil, n'est <strong>jamais transmise</strong> et n'est pas ajoutée à ta galerie (elle reste dans le cache de l'application, que ton téléphone vide de lui-même). Aucune vidéo n'est enregistrée. L'application ne demande pas l'accès au microphone.</li>
     <li><strong>Notifications</strong> : utilisées uniquement pour les rappels locaux que tu configures toi-même (pesée, repas, récapitulatif de journée). Ces notifications sont générées et planifiées entièrement sur ton appareil ; elles ne transitent par aucun service d'envoi de notifications push distant.</li>
     <li><strong>Données de santé (pas quotidiens)</strong> : uniquement si tu actives toi-même la synchronisation depuis Réglages → Synchronisation Santé, l'application lit ton nombre de pas quotidien déjà enregistré par <strong>Health Connect</strong> sur Android ou par l'<strong>app Santé</strong> sur iPhone. Toujours en <strong>lecture seule</strong> : elle n'écrit jamais rien dans Santé, et ne lit aucune autre catégorie — ni fréquence cardiaque, ni sommeil, ni poids, ni séances. Cette autorisation reste désactivée par défaut et se révoque à tout moment depuis les réglages de ton téléphone. Sur iPhone, la donnée lue est le total agrégé de l'app Santé : elle peut donc inclure les pas mesurés par une Apple Watch ou par une autre application, si tu en utilises.</li>
   </ul>
