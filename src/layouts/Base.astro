@@ -26,6 +26,14 @@ const { lang = 'fr', tete, corps, autreLangue, menu, mesure = true } = Astro.pro
 <meta name="theme-color" content="#12100E">
 <link rel="preload" href="/polices/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
+<script is:inline>
+// Thème clair/sombre : choix enregistré, sinon réglage de l'appareil ; appliqué avant l'affichage (pas de flash).
+(function () { var d = document.documentElement, t; try { t = localStorage.getItem('theme'); } catch (e) {}
+  d.dataset.theme = t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.addEventListener('click', function (e) { if (!e.target.closest || !e.target.closest('.theme')) return;
+    d.dataset.theme = d.dataset.theme === 'dark' ? 'light' : 'dark'; try { localStorage.setItem('theme', d.dataset.theme); } catch (e) {} });
+})();
+</script>
 {mesure && <script is:inline data-goatcounter="https://basalapp.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>}
 </head>
 <body>

@@ -15,6 +15,14 @@
 <meta name="theme-color" content="#12100E">
 <link rel="preload" href="/polices/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
+<script>
+// Thème clair/sombre : choix enregistré, sinon réglage de l'appareil ; appliqué avant l'affichage (pas de flash).
+(function () { var d = document.documentElement, t; try { t = localStorage.getItem('theme'); } catch (e) {}
+  d.dataset.theme = t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.addEventListener('click', function (e) { if (!e.target.closest || !e.target.closest('.theme')) return;
+    d.dataset.theme = d.dataset.theme === 'dark' ? 'light' : 'dark'; try { localStorage.setItem('theme', d.dataset.theme); } catch (e) {} });
+})();
+</script>
 <script data-goatcounter="https://basalapp.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -30,6 +38,7 @@
       <a href="/a-propos.html">À propos</a>
       <a class="lang" href="/en/" hreflang="en" lang="en">EN</a>
     </nav>
+    <button type="button" class="theme" aria-label="Basculer entre mode clair et mode sombre"><svg class="lune" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="soleil" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg></button>
     <a class="bouton" href="/#telecharger">Télécharger</a>
   </div>
 </header>

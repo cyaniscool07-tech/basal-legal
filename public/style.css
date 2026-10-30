@@ -76,6 +76,10 @@ p { margin: 0 0 1em; }
 .barre nav a:hover { color: var(--encre); background: var(--surface-2); }
 .barre nav a[aria-current] { color: var(--encre); background: var(--surface-2); }
 .barre .lang { font-size: 0.85rem; }
+.theme { flex: none; width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--trait); border-radius: 50%; background: transparent; color: var(--encre); cursor: pointer; }
+.theme:hover { background: var(--surface-2); }
+.theme .soleil, :root[data-theme="dark"] .theme .lune { display: none; }
+:root[data-theme="dark"] .theme .soleil { display: block; }
 .bouton { display: inline-flex; align-items: center; gap: 8px; background: var(--encre); color: var(--papier); text-decoration: none; font: 600 0.95rem/1 var(--sans); padding: 12px 18px; border-radius: 999px; border: 0; cursor: pointer; white-space: nowrap; }
 .bouton:hover { text-decoration: none; opacity: 0.9; }
 .bouton.vif { background: var(--accent-vif); color: #14110f; }
@@ -83,6 +87,8 @@ p { margin: 0 0 1em; }
 @media (max-width: 860px) {
   .barre-in { flex-wrap: wrap; gap: 8px 16px; padding-top: 10px; }
   .barre .bouton { margin-left: auto; padding: 10px 14px; }
+  .barre .theme { margin-left: auto; }
+  .barre .theme + .bouton { margin-left: 0; }
   .barre nav { order: 3; width: 100%; margin: 0 -8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; }
 }
 
