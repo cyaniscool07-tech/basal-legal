@@ -52,7 +52,11 @@
         <div><p class="surtitre">What it looks like</p><h2>The app, screen by screen.</h2></div>
         <p>Screenshots taken with fictitious demo data.</p>
       </div>
-      <div class="galerie">
+      <div class="galerie-nav">
+        <button type="button" class="galerie-fleche" data-sens="-1" aria-controls="galerie" aria-label="Previous screens"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button type="button" class="galerie-fleche" data-sens="1" aria-controls="galerie" aria-label="Next screens"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="galerie" id="galerie" role="region" tabindex="0" aria-label="App screenshots">
         <figure><img src="/img/app/en-GB/01-kcal-420.webp" alt="Kcal screen: daily budget, calories left and macros" width="420" height="913" loading="lazy"><figcaption>Daily budget</figcaption></figure>
         <figure><img src="/img/app/en-GB/02-metabolisme-420.webp" alt="Estimated expenditure, recalculated at each weigh-in, with its curve" width="420" height="913" loading="lazy"><figcaption>Learned metabolism</figcaption></figure>
         <figure><img src="/img/app/en-GB/03-musculation-420.webp" alt="Activity tab: strength routines, progress and history" width="420" height="913" loading="lazy"><figcaption>Workouts and routines</figcaption></figure>
@@ -175,4 +179,25 @@
     }
   }
 ]
+</script>
+<script>
+// Galerie de captures : flèches pour la souris (le doigt et le pavé tactile font défiler directement).
+(function () {
+  var g = document.getElementById('galerie');
+  if (!g) return;
+  var fleches = [].slice.call(document.querySelectorAll('.galerie-fleche'));
+  function maj() {
+    var fin = g.scrollWidth - g.clientWidth - 4;
+    fleches[0].disabled = g.scrollLeft <= 4;
+    fleches[1].disabled = g.scrollLeft >= fin;
+    g.classList.toggle('suite-gauche', !fleches[0].disabled);
+    g.classList.toggle('suite-droite', !fleches[1].disabled);
+  }
+  fleches.forEach(function (f) {
+    f.addEventListener('click', function () { g.scrollBy({ left: +f.dataset.sens * g.clientWidth * 0.8, behavior: 'smooth' }); });
+  });
+  g.addEventListener('scroll', maj, { passive: true });
+  window.addEventListener('resize', maj);
+  maj();
+})();
 </script>

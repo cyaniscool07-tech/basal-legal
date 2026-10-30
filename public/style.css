@@ -386,11 +386,33 @@ code { font: 500 0.92em/1.5 ui-monospace, "Cascadia Mono", Menlo, monospace; bac
 @media (max-width: 560px) { .recettes-grille { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
 @media (max-width: 600px) { .appel-contexte .stores { justify-content: flex-start; } }
 
-/* Galerie de captures de l'accueil */
-.galerie { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(180px, 220px); gap: 16px; overflow-x: auto; padding: 4px 2px 18px; scroll-snap-type: x mandatory; }
+/* Galerie de captures de l'accueil : défilement horizontal aimanté, sans barre visible, bords en fondu,
+   flèches pour la souris. */
+.galerie { display: grid; grid-auto-flow: column; grid-auto-columns: 232px; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none; overscroll-behavior-x: contain; padding: 10px 2px 28px; margin: 0 -2px; }
+/* Fondu seulement du côté où il reste des écrans (classes posées par le script de la page). */
+.galerie.suite-droite { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 72px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 72px), transparent); }
+.galerie.suite-gauche { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 72px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 72px), transparent); }
+.galerie.suite-gauche.suite-droite { -webkit-mask-image: linear-gradient(to right, transparent, #000 72px, #000 calc(100% - 72px), transparent); mask-image: linear-gradient(to right, transparent, #000 72px, #000 calc(100% - 72px), transparent); }
+.galerie::-webkit-scrollbar { display: none; }
+.galerie:focus-visible { outline: 3px solid var(--accent-vif); outline-offset: 4px; border-radius: 12px; }
 .galerie figure { margin: 0; scroll-snap-align: start; }
-.galerie img { border-radius: 18px; border: 1px solid var(--trait); }
-.galerie figcaption { font-size: 0.85rem; color: var(--texte-2); margin-top: 8px; }
+.galerie img { border-radius: 26px; border: 1px solid var(--trait); box-shadow: 0 12px 30px rgb(20 17 15 / 0.12); }
+.galerie figcaption { font-size: 0.88rem; color: var(--texte-2); margin-top: 12px; padding-left: 4px; }
+.galerie-nav { display: flex; justify-content: flex-end; gap: 10px; margin: -8px 0 8px; }
+.galerie-fleche { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--trait);
+  background: var(--surface); color: var(--encre); cursor: pointer; box-shadow: var(--ombre); }
+.galerie-fleche:hover:not(:disabled) { border-color: var(--accent-vif); color: var(--accent); }
+.galerie-fleche:disabled { opacity: 0.35; cursor: default; box-shadow: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .galerie { scroll-behavior: smooth; }
+  .galerie img { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .galerie figure:hover img { transform: translateY(-6px); box-shadow: 0 20px 40px rgb(20 17 15 / 0.18); }
+}
+@media (max-width: 760px) {
+  .galerie { grid-auto-columns: 64vw; gap: 14px; }
+  .galerie-nav { display: none; }
+}
 
 /* Titre lu par les lecteurs d’écran, masqué à l’écran */
 .visuellement-masque { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

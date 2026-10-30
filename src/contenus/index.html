@@ -75,7 +75,11 @@
         <div><p class="surtitre">À quoi ça ressemble</p><h2>L’application, écran par écran.</h2></div>
         <p>Captures réalisées avec des données de démonstration fictives.</p>
       </div>
-      <div class="galerie">
+      <div class="galerie-nav">
+        <button type="button" class="galerie-fleche" data-sens="-1" aria-controls="galerie" aria-label="Écrans précédents"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button type="button" class="galerie-fleche" data-sens="1" aria-controls="galerie" aria-label="Écrans suivants"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="galerie" id="galerie" role="region" tabindex="0" aria-label="Captures de l’application">
         <figure><img src="/img/app/fr/01-kcal-420.webp" alt="Écran Kcal : budget du jour, calories restantes et macros" width="420" height="913" loading="lazy"><figcaption>Le budget du jour</figcaption></figure>
         <figure><img src="/img/app/fr/02-metabolisme-420.webp" alt="Dépense estimée, recalculée à chaque pesée, avec sa courbe" width="420" height="913" loading="lazy"><figcaption>Le métabolisme appris</figcaption></figure>
         <figure><img src="/img/app/fr/03-musculation-420.webp" alt="Onglet Activité : routines de musculation, progression et historique" width="420" height="913" loading="lazy"><figcaption>Les séances et les routines</figcaption></figure>
@@ -216,4 +220,25 @@
 <script>
 // Liens d'e-mail de compte envoyés avant la page dédiée : renvoyés vers /compte.html, jeton compris.
 if (/(access_token|error_code|type=(signup|recovery))/.test(location.hash)) location.replace('/compte.html' + location.hash);
+</script>
+<script>
+// Galerie de captures : flèches pour la souris (le doigt et le pavé tactile font défiler directement).
+(function () {
+  var g = document.getElementById('galerie');
+  if (!g) return;
+  var fleches = [].slice.call(document.querySelectorAll('.galerie-fleche'));
+  function maj() {
+    var fin = g.scrollWidth - g.clientWidth - 4;
+    fleches[0].disabled = g.scrollLeft <= 4;
+    fleches[1].disabled = g.scrollLeft >= fin;
+    g.classList.toggle('suite-gauche', !fleches[0].disabled);
+    g.classList.toggle('suite-droite', !fleches[1].disabled);
+  }
+  fleches.forEach(function (f) {
+    f.addEventListener('click', function () { g.scrollBy({ left: +f.dataset.sens * g.clientWidth * 0.8, behavior: 'smooth' }); });
+  });
+  g.addEventListener('scroll', maj, { passive: true });
+  window.addEventListener('resize', maj);
+  maj();
+})();
 </script>
