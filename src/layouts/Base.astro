@@ -1,0 +1,35 @@
+---
+// Squelette commun : ce qui était recopié dans chaque <head> (police, feuille de style, mesure
+// d'audience) et le lien d'évitement. `tete` et `corps` sont le HTML propre à la page, repris
+// tel quel de l'ancien site (src/contenus/).
+import Entete from '../components/Entete.astro';
+
+interface Props {
+  lang?: 'fr' | 'en';
+  tete: string;
+  corps: string;
+  actif?: string;
+  autreLangue?: string;
+  menu?: boolean;
+  /** Faux sur compte.html : le lien de réinitialisation porte un jeton, et la page a sa CSP. */
+  mesure?: boolean;
+}
+const { lang = 'fr', tete, corps, actif, autreLangue, menu, mesure = true } = Astro.props;
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<Fragment set:html={tete} />
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta name="theme-color" content="#12100E">
+<link rel="stylesheet" href="/style.css">
+{mesure && <script is:inline data-goatcounter="https://basalapp.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>}
+</head>
+<body>
+<a class="evitement" href="#contenu">{lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>
+<Entete lang={lang} actif={actif} autreLangue={autreLangue} menu={menu} />
+<Fragment set:html={corps} />
+</body>
+</html>

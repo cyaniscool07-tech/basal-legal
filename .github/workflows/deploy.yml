@@ -1,0 +1,34 @@
+# Workflow officiel Astro pour GitHub Pages (docs.astro.build/en/guides/deploy/github/, lu le 2026-10-30).
+# ORDRE OBLIGATOIRE à la mise en ligne : régler Settings > Pages > Source sur « GitHub Actions »
+# AVANT de fusionner sur main. Sinon Pages sert la racine du dépôt, qui n'a plus de pages (src/).
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v7
+      - name: Install, build, and upload your site
+        uses: withastro/action@v6
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
