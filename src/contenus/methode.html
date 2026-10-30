@@ -1,0 +1,210 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span>Méthode</nav>
+  <header class="article-tete">
+    <p class="surtitre">Méthode</p>
+    <h1>Comment Basal calcule</h1>
+    <p class="chapeau">Toutes les formules de l’application, avec leurs constantes, leurs sources et leurs limites. Les exemples chiffrés de cette page sont recalculés par le code de l’app lui-même : si une formule change, un test le signale et la page est mise à jour.</p>
+    <div class="signature">
+      <span class="avatar" aria-hidden="true">TS</span>
+      <span>Par <b>Théo Serrano</b>, créateur de Basal</span>
+      <span aria-hidden="true">·</span>
+      <span>Publié le <time datetime="2026-10-30">30 octobre 2026</time></span>
+      <span aria-hidden="true">·</span>
+      <span>Application version 1.4</span>
+    </div>
+  </header>
+
+  <div class="article">
+    <aside class="sommaire" aria-labelledby="sommaire-t">
+      <p id="sommaire-t">Sommaire</p>
+      <ol>
+        <li><a href="#metabolisme-de-base">Métabolisme de base</a></li>
+        <li><a href="#depense">Dépense journalière</a></li>
+        <li><a href="#objectif">Objectif calorique</a></li>
+        <li><a href="#macros">Protéines, lipides, glucides</a></li>
+        <li><a href="#adaptative">Dépense adaptative</a></li>
+        <li><a href="#tendance">Tendance du poids</a></li>
+        <li><a href="#seances">Dépense des séances</a></li>
+        <li><a href="#1rm">Maximum en musculation</a></li>
+        <li><a href="#recettes">Valeurs des recettes</a></li>
+        <li><a href="#limites">Ce que ces calculs ne font pas</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ol>
+    </aside>
+
+    <article class="corps">
+      <div class="en-bref">
+        <p class="surtitre">En bref</p>
+        <p>Basal part d’une formule publiée (Mifflin-St Jeor) pour estimer ta dépense, en déduit un objectif et des macros ancrées à ton poids, puis corrige la dépense avec ce que tu manges et l’évolution réelle de ton poids. Chaque correction est bornée et progressive, et l’app n’affiche rien tant que les données ne suffisent pas.</p>
+      </div>
+
+      <h2 id="metabolisme-de-base">Métabolisme de base</h2>
+      <p>C’est l’énergie dépensée au repos complet. Basal utilise l’équation de Mifflin-St Jeor, publiée en 1990 et la plus utilisée aujourd’hui :</p>
+      <ul>
+        <li>homme : <code>10 × poids (kg) + 6,25 × taille (cm) − 5 × âge + 5</code></li>
+        <li>femme : <code>10 × poids (kg) + 6,25 × taille (cm) − 5 × âge − 161</code></li>
+      </ul>
+      <div class="calcul" role="group" aria-label="Exemple de métabolisme de base">
+        <div class="titre">Exemple : homme, 30 ans, 175 cm, 70 kg</div>
+        <div class="ligne"><span>10 × 70 + 6,25 × 175 − 5 × 30 + 5</span><b>1 648,75 kcal</b></div>
+        <div class="ligne"><span>La même personne, en femme (− 161 au lieu de + 5)</span><b>1 482,75 kcal</b></div>
+      </div>
+      <p>Cette valeur n’est jamais modifiée par la suite : elle reste la référence théorique, et sert de plancher à l’objectif calorique.</p>
+
+      <h2 id="depense">Dépense journalière</h2>
+      <p>La dépense totale d’une journée est le métabolisme de base multiplié par un coefficient d’activité, choisi à l’inscription. Les repères en pas affichés dans l’app servent à te situer ; ils n’entrent dans aucun calcul.</p>
+      <div class="tableau">
+        <table>
+          <caption>Coefficients d’activité de l’application</caption>
+          <thead><tr><th scope="col">Niveau</th><th scope="col">Repère</th><th scope="col" class="n">Coefficient</th><th scope="col" class="n">Exemple (1 648,75 kcal)</th></tr></thead>
+          <tbody>
+            <tr><td>Sédentaire</td><td>peu ou pas de sport · moins de 5 000 pas par jour</td><td class="n">× 1,2</td><td class="n">1 979 kcal</td></tr>
+            <tr><td>Légèrement actif</td><td>1 à 3 séances par semaine · 5 000 à 7 500 pas</td><td class="n">× 1,375</td><td class="n">2 267 kcal</td></tr>
+            <tr><td>Modérément actif</td><td>3 à 5 séances par semaine · 7 500 à 10 000 pas</td><td class="n">× 1,55</td><td class="n">2 556 kcal</td></tr>
+            <tr><td>Actif</td><td>6 à 7 séances par semaine · 10 000 à 12 500 pas</td><td class="n">× 1,725</td><td class="n">2 844 kcal</td></tr>
+            <tr><td>Très actif</td><td>sport intense quotidien · plus de 12 500 pas</td><td class="n">× 1,9</td><td class="n">3 133 kcal</td></tr>
+          </tbody>
+        </table>
+        <p class="source">Arrondi au kcal. C’est le point faible de toute formule : entre « sédentaire » et « modérément actif », l’écart dépasse 500 kcal par jour.</p>
+      </div>
+
+      <h2 id="objectif">Objectif calorique</h2>
+      <p>L’objectif est un pourcentage de la dépense, pas un nombre de calories fixe : retirer 500 kcal à tout le monde représente un déficit raisonnable pour les uns et sévère pour les autres.</p>
+      <div class="tableau">
+        <table>
+          <caption>Paliers d’objectif</caption>
+          <thead><tr><th scope="col">Objectif</th><th scope="col" class="n">Doux</th><th scope="col" class="n">Modéré (par défaut)</th><th scope="col" class="n">Intense</th></tr></thead>
+          <tbody>
+            <tr><td>Perte de poids</td><td class="n">− 10 %</td><td class="n">− 15 %</td><td class="n">− 20 %</td></tr>
+            <tr><td>Prise de poids</td><td class="n">+ 5 %</td><td class="n">+ 10 %</td><td class="n">+ 15 %</td></tr>
+          </tbody>
+        </table>
+        <p class="source">Le surplus de prise est volontairement plus faible que le déficit de perte : un gros surplus ajoute surtout de la masse grasse.</p>
+      </div>
+      <p><strong>Plancher de sécurité.</strong> L’objectif ne descend jamais sous le métabolisme de base, ni sous 800 kcal par jour. Quand ce plancher s’applique, l’app le signale au lieu de corriger en silence.</p>
+      <div class="calcul" role="group" aria-label="Exemple d’objectif">
+        <div class="titre">Exemple : même profil, modérément actif, perte modérée</div>
+        <div class="ligne"><span>Dépense : 1 648,75 × 1,55</span><b>2 555,6 kcal</b></div>
+        <div class="ligne total"><span>Objectif : 2 555,6 × (1 − 0,15)</span><b>2 172 kcal / jour</b></div>
+      </div>
+
+      <h2 id="macros">Protéines, lipides, glucides</h2>
+      <p>Les protéines et les lipides sont ancrés au poids, et les glucides prennent le reste. L’inverse (un pourcentage fixe des calories) donnait des protéines insuffisantes sur les objectifs bas.</p>
+      <div class="tableau">
+        <table>
+          <caption>Protéines, en grammes par kilo de poids de référence</caption>
+          <thead><tr><th scope="col">Objectif</th><th scope="col" class="n">Peu ou pas sportif</th><th scope="col" class="n">3 séances par semaine ou plus</th></tr></thead>
+          <tbody>
+            <tr><td>Perte</td><td class="n">1,8</td><td class="n">2,2</td></tr>
+            <tr><td>Maintien</td><td class="n">1,4</td><td class="n">1,8</td></tr>
+            <tr><td>Prise</td><td class="n">1,6</td><td class="n">2,0</td></tr>
+          </tbody>
+        </table>
+        <p class="source">« Sportif » à partir du niveau « modérément actif ». Le besoin monte en déficit, là où les protéines protègent la masse musculaire.</p>
+      </div>
+      <ul>
+        <li><strong>Poids de référence.</strong> Les besoins suivent la masse maigre, pas le poids total. Jusqu’à un IMC de 25, c’est le poids réel. Au-delà, seul un quart de l’excédent compte (formule du poids ajusté). Exemple : 120 kg pour 175 cm donnent un poids de référence de 87,4 kg.</li>
+        <li><strong>Lipides.</strong> Le plus grand de deux nombres : 0,8 g par kilo de poids de référence (plancher), ou 30 % des calories.</li>
+        <li><strong>Glucides.</strong> Ce qui reste après les protéines (4 kcal/g) et les lipides (9 kcal/g), divisé par 4. Jamais négatif.</li>
+        <li><strong>Fibres.</strong> 14 g pour 1 000 kcal.</li>
+      </ul>
+      <div class="calcul" role="group" aria-label="Exemple de macros">
+        <div class="titre">Exemple : 70 kg, 175 cm, sportif, objectif de 2 172 kcal en perte</div>
+        <div class="ligne"><span>Protéines : 70 × 2,2</span><b>154 g</b></div>
+        <div class="ligne"><span>Lipides : le plus grand de 70 × 0,8 = 56 g et 2 172 × 0,3 ÷ 9 = 72,4 g</span><b>72 g</b></div>
+        <div class="ligne"><span>Glucides : (2 172 − 154 × 4 − 72 × 9) ÷ 4</span><b>227 g</b></div>
+        <div class="ligne"><span>Fibres : 2 172 ÷ 1 000 × 14</span><b>30 g</b></div>
+      </div>
+
+      <h2 id="adaptative">Dépense adaptative</h2>
+      <p>C’est la correction de la formule par tes données. Sur une fenêtre glissante de 28 jours, Basal compare tes apports à l’évolution de ton poids lissé :</p>
+      <p><code>dépense observée = apport moyen − (variation du poids lissé × 7 700) ÷ nombre de jours</code></p>
+      <p>7 700 kcal est l’équivalent énergétique usuel d’un kilogramme de masse corporelle. L’estimation n’est calculée que si la fenêtre contient :</p>
+      <ul>
+        <li>au moins 4 pesées, réparties sur au moins 10 jours ;</li>
+        <li>au moins 8 journées de repas enregistrées, couvrant au moins 60 % de la période.</li>
+      </ul>
+      <p>Sinon, l’app affiche « données insuffisantes ». Une journée sans aucun aliment noté est ignorée : elle ne compte pas comme un jeûne.</p>
+      <p><strong>Trois garde-fous</strong> empêchent une semaine atypique de faire dérailler le chiffre :</p>
+      <ul>
+        <li><strong>bornes de plausibilité</strong> : l’observation est ramenée entre 0,8 et 1,6 fois la dépense théorique du moment, ce qui protège d’un journal très sous-déclaré ;</li>
+        <li><strong>lissage</strong> : à chaque pesée exploitable, l’estimation ne parcourt que 30 % de l’écart avec l’observation ;</li>
+        <li><strong>pas maximal</strong> : jamais plus de 150 kcal de variation par recalcul.</li>
+      </ul>
+      <div class="calcul" role="group" aria-label="Exemple de dépense adaptative">
+        <div class="titre">Exemple : la formule annonce 2 556 kcal</div>
+        <div class="ligne"><span>Apport moyen enregistré</span><b>2 100 kcal / jour</b></div>
+        <div class="ligne"><span>Poids lissé : − 0,6 kg en 21 jours, soit 0,6 × 7 700 ÷ 21</span><b>220 kcal / jour</b></div>
+        <div class="ligne"><span>Dépense observée : 2 100 + 220</span><b>2 320 kcal</b></div>
+        <div class="ligne"><span>1er recalcul : 2 556 + 0,3 × (2 320 − 2 556)</span><b>2 485 kcal</b></div>
+        <div class="ligne"><span>2e recalcul, si l’observation reste à 2 320 kcal</span><b>2 436 kcal</b></div>
+        <div class="ligne total"><span>3e recalcul : l’estimation rejoint l’observation sans à-coup</span><b>2 401 kcal</b></div>
+      </div>
+      <p>Pour les pauses « à maintenance » d’une stratégie, l’app utilise cette dépense mesurée plutôt que la formule, à condition qu’elle repose sur au moins 5 recalculs et que le dernier date de moins de 21 jours.</p>
+
+      <h2 id="tendance">Tendance du poids</h2>
+      <p>Le poids affiché comme tendance est la moyenne des pesées des 7 derniers jours. L’eau, le sel, le glycogène et la digestion font varier le poids d’un jour à l’autre bien plus que la graisse ; c’est cette moyenne, pas la pesée du jour, qui alimente la dépense adaptative. Voir <a href="/variations-de-poids.html">pourquoi ton poids change du jour au lendemain</a>.</p>
+
+      <h2 id="seances">Dépense des séances</h2>
+      <p>Les calories d’une séance sont calculées, jamais saisies : <code>kcal = MET × poids (kg) × durée (heures)</code>. Le MET (équivalent métabolique) dépend de l’activité et de l’intensité ressentie. Exemple : 1 h de musculation modérée à 70 kg donne 5,0 × 70 × 1 = 350 kcal.</p>
+      <div class="tableau">
+        <table>
+          <caption>Valeurs MET utilisées par l’application</caption>
+          <thead><tr><th scope="col">Activité</th><th scope="col" class="n">Légère</th><th scope="col" class="n">Modérée</th><th scope="col" class="n">Intense</th></tr></thead>
+          <tbody>
+            <tr><td>Musculation</td><td class="n">3,5</td><td class="n">5,0</td><td class="n">6,0</td></tr>
+            <tr><td>Course à pied</td><td class="n">8,0</td><td class="n">9,8</td><td class="n">12,8</td></tr>
+            <tr><td>Marche</td><td class="n">2,8</td><td class="n">3,5</td><td class="n">5,0</td></tr>
+            <tr><td>Vélo</td><td class="n">4,0</td><td class="n">8,0</td><td class="n">10,0</td></tr>
+            <tr><td>Natation</td><td class="n">5,8</td><td class="n">8,3</td><td class="n">10,0</td></tr>
+            <tr><td>Football</td><td class="n">5,0</td><td class="n">7,0</td><td class="n">10,0</td></tr>
+            <tr><td>Basketball</td><td class="n">4,5</td><td class="n">6,5</td><td class="n">8,0</td></tr>
+            <tr><td>Tennis</td><td class="n">5,0</td><td class="n">7,3</td><td class="n">8,0</td></tr>
+            <tr><td>CrossFit</td><td class="n">5,0</td><td class="n">8,0</td><td class="n">10,0</td></tr>
+            <tr><td>HIIT</td><td class="n">6,0</td><td class="n">8,5</td><td class="n">10,5</td></tr>
+            <tr><td>Yoga</td><td class="n">2,5</td><td class="n">3,0</td><td class="n">4,0</td></tr>
+            <tr><td>Escalade</td><td class="n">5,8</td><td class="n">7,5</td><td class="n">9,0</td></tr>
+            <tr><td>Danse</td><td class="n">3,0</td><td class="n">4,8</td><td class="n">7,8</td></tr>
+            <tr><td>Autre</td><td class="n">3,0</td><td class="n">4,5</td><td class="n">6,0</td></tr>
+          </tbody>
+        </table>
+        <p class="source">Compendium of Physical Activities (Ainsworth et al., 2011, mis à jour en 2024). CrossFit et HIIT, absents du Compendium, sont calés sur des mesures de séances complètes, repos compris (Feito et al., 2018 ; Nalcakan, 2014 ; Kliszczewicz et al., 2014). Les paliers de l’escalade et du yoga « modéré » sont des interpolations, faute de codes distincts.</p>
+      </div>
+
+      <h2 id="1rm">Maximum en musculation</h2>
+      <p>Le maximum estimé sur une répétition (1RM) suit la formule d’Epley : <code>1RM ≈ charge × (1 + répétitions ÷ 30)</code>. Exemple : 80 kg soulevés 8 fois donnent un 1RM estimé de 101,3 kg. Une série d’une seule répétition est déjà un maximum réel : l’app garde alors la charge telle quelle, au lieu de la gonfler de 3 %.</p>
+
+      <h2 id="recettes">Valeurs des recettes</h2>
+      <p>Les calories et les macros des <a href="/recettes/">recettes</a> sont calculées ingrédient par ingrédient, au gramme, à partir de la table de composition Ciqual 2025 de l’ANSES. La répartition affichée sur chaque recette rapporte l’énergie des protéines (4 kcal/g), des glucides (4 kcal/g) et des lipides (9 kcal/g) à leur total.</p>
+
+      <h2 id="limites">Ce que ces calculs ne font pas</h2>
+      <div class="inconnu">
+        <p><strong>Ce sont des estimations.</strong> Une formule de dépense se trompe couramment d’environ 10 % sur une population, davantage sur les profils atypiques. La dépense adaptative réduit cet écart, mais elle dépend de la qualité de ton journal.</p>
+        <p><strong>L’app ne mesure pas ta composition corporelle.</strong> Le poids de référence des macros est une approximation standard, pas une mesure de ta masse maigre.</p>
+        <p style="margin:0"><strong>Ce n’est pas un avis médical.</strong> Basal n’est pas un dispositif médical. Une dépense très éloignée de l’attendu, une grossesse, une maladie ou un trouble du comportement alimentaire relèvent d’un professionnel de santé.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>Ces calculs, sur tes données.</strong><p>Basal les refait pour toi, chaque semaine, à partir de tes repas et de tes pesées. Gratuit, sans compte.</p></div>
+        <a class="bouton vif" href="/#telecharger">Télécharger</a>
+      </div>
+
+      <h2 id="sources">Sources</h2>
+      <ol class="sources">
+        <li>Mifflin MD, St Jeor ST et al. « A new predictive equation for resting energy expenditure in healthy individuals ». <i>American Journal of Clinical Nutrition</i>, 1990, 51(2), p. 241-247.</li>
+        <li>Frankenfield D, Roth-Yousey L, Compher C. « Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review ». <i>Journal of the American Dietetic Association</i>, 2005, 105(5), p. 775-789.</li>
+        <li>Wishnofsky M. « Caloric equivalents of gained or lost weight ». <i>American Journal of Clinical Nutrition</i>, 1958, 6(5), p. 542-546.</li>
+        <li>Ainsworth BE et al. « 2011 Compendium of Physical Activities: a second update of codes and MET values ». <i>Medicine &amp; Science in Sports &amp; Exercise</i>, 2011, 43(8), p. 1575-1581 ; mise à jour 2024 : <a href="https://pacompendium.com/">pacompendium.com</a>.</li>
+        <li>Epley B. <i>Poundage Chart</i>. Boyd Epley Workout, 1985.</li>
+        <li>Institute of Medicine. <i>Dietary Reference Intakes for Energy, Carbohydrate, Fiber, Fat, Fatty Acids, Cholesterol, Protein, and Amino Acids</i>. National Academies Press, 2005 (fibres : 14 g pour 1 000 kcal).</li>
+        <li>ANSES. <a href="https://ciqual.anses.fr/">Table de composition nutritionnelle des aliments Ciqual 2025</a>, licence ouverte Etalab 2.0.</li>
+      </ol>
+
+      <h2 style="font-size:1.5rem;margin-top:48px">Pour aller plus loin</h2>
+      <div class="guides" style="grid-template-columns:1fr 1fr">
+        <a class="guide" href="/metabolisme-adaptatif.html"><span class="surtitre" style="margin:0">Guide</span><h3>Le métabolisme adaptatif</h3><p>Pourquoi une formule ne suffit pas, et comment la corriger.</p></a>
+        <a class="guide" href="/calculateurs/"><span class="surtitre" style="margin:0">Outils</span><h3>Les calculateurs</h3><p>Dépense et macros, avec les mêmes formules que l’application.</p></a>
+      </div>
+    </article>
+  </div>
+</main>

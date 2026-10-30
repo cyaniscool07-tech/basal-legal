@@ -9,13 +9,12 @@ interface Props {
   lang?: 'fr' | 'en';
   tete: string;
   corps: string;
-  actif?: string;
   autreLangue?: string;
   menu?: boolean;
   /** Faux sur compte.html : le lien de réinitialisation porte un jeton, et la page a sa CSP. */
   mesure?: boolean;
 }
-const { lang = 'fr', tete, corps, actif, autreLangue, menu, mesure = true } = Astro.props;
+const { lang = 'fr', tete, corps, autreLangue, menu, mesure = true } = Astro.props;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -31,7 +30,7 @@ const { lang = 'fr', tete, corps, actif, autreLangue, menu, mesure = true } = As
 </head>
 <body>
 <a class="evitement" href="#contenu">{lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>
-<Entete lang={lang} actif={actif} autreLangue={autreLangue} menu={menu} />
+<Entete lang={lang} autreLangue={autreLangue} menu={menu} />
 <Fragment set:html={corps} />
 {menu !== false && <Pied lang={lang} />}
 </body>

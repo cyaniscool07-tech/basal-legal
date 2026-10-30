@@ -74,7 +74,7 @@ p { margin: 0 0 1em; }
 .barre nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .barre nav a { color: var(--texte-2); text-decoration: none; font-size: 0.95rem; line-height: 1.2; padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
 .barre nav a:hover { color: var(--encre); background: var(--surface-2); }
-.barre nav a[aria-current="page"] { color: var(--encre); background: var(--surface-2); }
+.barre nav a[aria-current] { color: var(--encre); background: var(--surface-2); }
 .barre .lang { font-size: 0.85rem; }
 .bouton { display: inline-flex; align-items: center; gap: 8px; background: var(--encre); color: var(--papier); text-decoration: none; font: 600 0.95rem/1 var(--sans); padding: 12px 18px; border-radius: 999px; border: 0; cursor: pointer; white-space: nowrap; }
 .bouton:hover { text-decoration: none; opacity: 0.9; }
@@ -355,10 +355,10 @@ code { font: 500 0.92em/1.5 ui-monospace, "Cascadia Mono", Menlo, monospace; bac
 .resultat { margin-top: 24px; border: 1px solid var(--trait); border-radius: var(--rayon-s); overflow: hidden; background: var(--papier); }
 .resultat .ligne { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 18px; }
 .resultat .ligne + .ligne { border-top: 1px solid var(--trait); }
-.ligne span { font-size: 0.92rem; color: var(--texte-2); }
-.ligne b { font: 400 1.7rem/1.1 var(--serif); font-variant-numeric: tabular-nums; }
-.ligne.total { background: color-mix(in srgb, var(--accent-vif) 10%, var(--surface)); }
-.ligne.total b { font-size: 2.2rem; color: var(--accent); }
+.resultat .ligne span { font-size: 0.92rem; color: var(--texte-2); }
+.resultat .ligne b { font: 400 1.7rem/1.1 var(--serif); font-variant-numeric: tabular-nums; }
+.resultat .ligne.total { background: color-mix(in srgb, var(--accent-vif) 10%, var(--surface)); }
+.resultat .ligne.total b { font-size: 2.2rem; color: var(--accent); }
 .resultat .vide { padding: 14px 18px; }
 
 /* Notes propres à une page, reprises de son ancien pied de page */
@@ -391,3 +391,6 @@ code { font: 500 0.92em/1.5 ui-monospace, "Cascadia Mono", Menlo, monospace; bac
 .galerie figure { margin: 0; scroll-snap-align: start; }
 .galerie img { border-radius: 18px; border: 1px solid var(--trait); }
 .galerie figcaption { font-size: 0.85rem; color: var(--texte-2); margin-top: 8px; }
+
+/* Titre lu par les lecteurs d’écran, masqué à l’écran */
+.visuellement-masque { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

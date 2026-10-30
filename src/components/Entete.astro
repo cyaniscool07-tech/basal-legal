@@ -1,27 +1,30 @@
 ---
-// Barre du haut, commune à toutes les pages (elle existait en 11 copies écrites à la main).
-// shortcut: les pages recettes gardent la leur, écrite par recipePages.gen.test.ts ; à reprendre
-// quand les recettes passeront par Astro.
+// Barre du haut, commune à toutes les pages. Recopiée dans recipePages.gen.test.ts (calorie-tracker)
+// pour les pages recettes : la modifier aux deux endroits.
 interface Props {
   lang: 'fr' | 'en';
-  /** Lien du menu marqué comme page courante. */
-  actif?: string;
   /** Page équivalente dans l'autre langue. */
   autreLangue?: string;
   /** Faux sur compte.html, qui n'affiche que le logo. */
   menu?: boolean;
 }
-const { lang, actif, autreLangue = lang === 'fr' ? '/en/' : '/', menu = true } = Astro.props;
+const { lang, autreLangue = lang === 'fr' ? '/en/' : '/', menu = true } = Astro.props;
 const fr = lang === 'fr';
-// Menu sur les pages qui existent ; Guides, Calculateurs, Méthode et À propos arrivent au lot 5.
+// La rubrique active se déduit de l'adresse : « page » pour la page même, « true » pour une page de la rubrique.
+const chemin = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/');
+const rubriques: Record<string, string[]> = {
+  '/guides/': ['/combien-de-calories-par-jour', '/metabolisme-adaptatif', '/variations-de-poids', '/deficit-calorique', '/prise-de-masse',
+    '/nutrition-musculation', '/series-par-muscle', '/preparer-sa-semaine', '/comparatif-applications-nutrition',
+    '/alternative-myfitnesspal', '/compteur-calories-gratuit'],
+  '/calculateurs/': ['/calcul-tdee', '/calcul-macros'],
+};
+const courant = (href: string) => {
+  const cible = href.replace(/\.html$/, '');
+  if (chemin === cible) return 'page';
+  return rubriques[href]?.includes(chemin) ? 'true' : undefined;
+};
 const liens = fr
-  ? [
-      ['/recettes/', 'Recettes'],
-      ['/calcul-tdee.html', 'Calculateur'],
-      ['/metabolisme-adaptatif.html', 'Métabolisme'],
-      ['/nutrition-musculation.html', 'Musculation'],
-      ['/comparatif-applications-nutrition.html', 'Comparatif'],
-    ]
+  ? [['/guides/', 'Guides'], ['/recettes/', 'Recettes'], ['/calculateurs/', 'Calculateurs'], ['/methode.html', 'Méthode'], ['/a-propos.html', 'À propos']]
   : [['/calcul-tdee.html', 'Calculator', 'fr'], ['/metabolisme-adaptatif.html', 'Metabolism', 'fr']];
 ---
 <header class="barre">
@@ -31,7 +34,7 @@ const liens = fr
       <nav aria-label={fr ? 'Menu principal' : 'Main menu'}>
         {liens.map(([href, nom, versFr]) => versFr
           ? <a href={href} hreflang="fr" lang="fr">{nom} <span aria-hidden="true">·FR</span></a>
-          : <a href={href} aria-current={href === actif ? 'page' : undefined}>{nom}</a>)}
+          : <a href={href} aria-current={courant(href)}>{nom}</a>)}
         <a class="lang" href={autreLangue} hreflang={fr ? 'en' : 'fr'} lang={fr ? 'en' : 'fr'}>{fr ? 'EN' : 'FR'}</a>
       </nav>
     )}
