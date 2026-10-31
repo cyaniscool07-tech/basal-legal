@@ -12,7 +12,7 @@
   {
     "id": "compte",
     "question": "Faut-il créer un compte ?",
-    "reponse": "<p>Non. Toute l’application fonctionne sans compte, sans e-mail ni inscription : tes données restent sur ton téléphone.</p><p>Un compte, facultatif, sert à retrouver tes données sur un autre téléphone (elles sont alors synchronisées sur un serveur hébergé en Irlande) et à publier dans la Communauté.</p>"
+    "reponse": "<p>Non. Toute l’application fonctionne sans compte, sans e-mail ni inscription : tes données restent sur ton téléphone.</p><p>Un compte, facultatif, sert à retrouver tes données sur un autre téléphone (elles sont alors synchronisées sur un serveur hébergé en Irlande) et à publier dans la Communauté. Le détail est dans <a href=\"/appli-calories-sans-compte.html\">une appli de calories sans compte</a>.</p>"
   },
   {
     "id": "programme",
