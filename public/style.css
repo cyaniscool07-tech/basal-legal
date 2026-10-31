@@ -199,6 +199,8 @@ p { margin: 0 0 1em; }
 .faq-q summary:hover { color: var(--accent); }
 .faq-r { padding: 0 0 20px; color: var(--texte-2); max-width: var(--lecture); }
 .faq-r p:last-child { margin-bottom: 0; }
+.pied-faq .faq { margin: 0; max-width: none; font-size: 0.95rem; }
+.pied-faq .faq-q summary { color: var(--encre); font-size: 1rem; padding: 16px 0; }
 @media (max-width: 860px) { .pied-faq { grid-template-columns: 1fr; } .pied .pied-faq h2 { grid-row: auto; } }
 .pied .mentions { border-top: 1px solid var(--trait); margin-top: 40px; padding-top: 22px; font-size: 0.82rem; display: grid; gap: 6px; }
 @media (max-width: 860px) { .pied-grille { grid-template-columns: 1fr 1fr; } .pied-grille > :first-child { grid-column: 1 / -1; } }

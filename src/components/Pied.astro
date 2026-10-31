@@ -1,8 +1,13 @@
 ---
+import faq from '../donnees/faq.json';
 // Pied de page commun (il existait en 22 variantes). Les mentions propres à une page restent dans
 // son contenu, en <aside class="note-page"> juste avant.
 interface Props { lang: 'fr' | 'en' }
 const fr = Astro.props.lang === 'fr';
+// Encart « Questions fréquentes » : réponses dépliables sur l'accueil seulement (ailleurs, des liens), pour ne pas
+// répéter le même texte sur toutes les pages. Une seule source : src/donnees/faq.json.
+const accueil = Astro.url.pathname === '/' || Astro.url.pathname === '/index.html';
+const questionsPied = ['gratuit', 'compte', 'montre', 'photo', 'sauvegarde', 'hors-ligne'].map((id) => faq.find((q) => q.id === id)!);
 const colonnes = fr
   ? [
       ['Guides', [
@@ -60,14 +65,9 @@ const colonnes = fr
     {fr && (
       <section class="pied-faq" aria-labelledby="pied-faq-t">
         <h2 id="pied-faq-t">Questions fréquentes</h2>
-        <ul>
-          <li><a href="/questions-frequentes.html#gratuit">Basal est-il vraiment gratuit ?</a></li>
-          <li><a href="/questions-frequentes.html#compte">Faut-il créer un compte ?</a></li>
-          <li><a href="/questions-frequentes.html#montre">Basal fonctionne-t-il avec une montre connectée ?</a></li>
-          <li><a href="/questions-frequentes.html#photo">Peut-on ajouter un repas en le prenant en photo ?</a></li>
-          <li><a href="/questions-frequentes.html#sauvegarde">Mes données sont-elles sauvegardées ?</a></li>
-          <li><a href="/questions-frequentes.html#hors-ligne">L’application fonctionne-t-elle sans internet ?</a></li>
-        </ul>
+        {accueil
+          ? <div class="faq">{questionsPied.map((q) => <details class="faq-q"><summary>{q.question}</summary><div class="faq-r" set:html={q.reponse} /></details>)}</div>
+          : <ul>{questionsPied.map((q) => <li><a href={`/questions-frequentes.html#${q.id}`}>{q.question}</a></li>)}</ul>}
         <a class="pied-faq-tout" href="/questions-frequentes.html">Toutes les questions <span aria-hidden="true">→</span></a>
       </section>
     )}
