@@ -124,6 +124,19 @@ p { margin: 0 0 1em; }
 .section + .section { border-top: 1px solid var(--trait); }
 .section-tete { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; margin-bottom: 40px; }
 .section-tete p { color: var(--texte-2); margin: 0; max-width: 36em; }
+/* Avis des stores (accueil) : tous les avis écrits, verbatim, datés, avec leur provenance (art. L111-7-2 C. conso). */
+.avis-notes { display: grid; gap: 6px; justify-self: end; }
+.avis-notes p { color: var(--encre); font-size: 0.95rem; }
+.avis-notes b { font: 400 1.9rem/1 var(--serif); margin-right: 4px; }
+.avis-notes span { color: var(--accent-vif); margin-right: 8px; }
+.avis-liste { columns: 3 280px; column-gap: 16px; }
+.avis-carte { break-inside: avoid; margin: 0 0 16px; background: var(--surface); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 20px 22px; }
+.avis-etoiles { color: var(--accent-vif); letter-spacing: 2px; margin: 0 0 10px; }
+.avis-carte blockquote { margin: 0 0 12px; font-size: 0.98rem; }
+.avis-carte blockquote p { margin: 0; }
+.avis-carte figcaption { font-size: 0.82rem; color: var(--texte-2); }
+.avis-mention { font-size: 0.82rem; color: var(--texte-2); max-width: 70ch; margin: 8px 0 0; }
+@media (max-width: 860px) { .avis-notes { justify-self: start; } }
 @media (max-width: 760px) { .section { padding: 60px 0; } .section-tete { grid-template-columns: 1fr; gap: 14px; } }
 
 .piliers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
