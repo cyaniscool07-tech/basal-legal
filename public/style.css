@@ -131,26 +131,41 @@ p { margin: 0 0 1em; }
 .avis-tete .surtitre { margin: 0; }
 .avis-notes { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0; color: var(--encre); font-size: 0.92rem; }
 .avis-notes b { font: 400 1.5rem/1 var(--serif); margin-right: 3px; }
-.avis-notes i { font-style: normal; color: var(--accent-vif); margin-right: 6px; }
-.avis-pause { margin-left: auto; font: 500 0.85rem/1 var(--sans); color: var(--encre); background: transparent; border: 1px solid var(--trait); border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+.avis-notes i { font-style: normal; color: var(--accent); margin-right: 6px; }
+.avis-pause { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; font: 500 0.85rem/1 var(--sans); color: var(--encre); background: transparent; border: 1px solid var(--trait); border-radius: 999px; padding: 0 16px; cursor: pointer; }
+.avis-pause::before { content: "❚❚" / ""; font-size: 0.7rem; letter-spacing: -1px; }
+.avis-pause[aria-pressed="true"]::before { content: "▶" / ""; font-size: 0.75rem; }
 .avis-pause:hover { background: var(--surface-2); }
-.avis-bande { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+/* Bande : coupée à l'horizontale seulement, pour qu'une carte dépliée déborde vers le bas sans pousser la page.
+   Les fondus des bords sont des calques (un masque couperait aussi le débordement). */
+.avis-bande { position: relative; height: 184px; overflow-x: clip; overflow-y: visible; }
+.avis-bande::before, .avis-bande::after { content: ""; position: absolute; top: 0; bottom: 0; width: 6%; z-index: 3; pointer-events: none; }
+.avis-bande::before { left: 0; background: linear-gradient(90deg, var(--papier), transparent); }
+.avis-bande::after { right: 0; background: linear-gradient(270deg, var(--papier), transparent); }
 .avis-piste { display: flex; align-items: flex-start; gap: 14px; width: max-content; animation: avis-defile 90s linear infinite; }
 .avis-bande:hover .avis-piste, .avis-bande:focus-within .avis-piste, .avis-bande.en-pause .avis-piste { animation-play-state: paused; }
 @keyframes avis-defile { to { transform: translateX(calc(-50% - 7px)); } }
-.avis-carte { flex: none; width: 300px; margin: 0; background: var(--surface); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 16px 18px; }
-.avis-etoiles { color: var(--accent-vif); letter-spacing: 2px; margin: 0 0 8px; font-size: 0.85rem; }
-.avis-carte blockquote { margin: 0 0 10px; font-size: 0.9rem; line-height: 1.5; }
+.avis-carte { position: relative; flex: none; display: flex; flex-direction: column; width: 300px; height: 184px; margin: 0; background: var(--surface); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 16px 18px; }
+.avis-carte:hover, .avis-carte:focus { height: auto; min-height: 184px; z-index: 2; box-shadow: var(--ombre); border-color: var(--encre); }
+.avis-etoiles { color: var(--accent); letter-spacing: 2px; margin: 0 0 8px; font-size: 0.85rem; }
+.avis-carte blockquote { margin: 0 0 12px; font-size: 0.9rem; line-height: 1.5; }
 .avis-carte blockquote p { margin: 0; }
 /* Cartes à 4 lignes ; l'avis complet s'affiche au survol ou au focus (le texte entier reste dans la page). */
 .avis-carte blockquote p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
 .avis-carte:hover blockquote p, .avis-carte:focus blockquote p { -webkit-line-clamp: unset; }
 .avis-carte:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.avis-carte figcaption { font-size: 0.78rem; color: var(--texte-2); }
+.avis-carte figcaption { margin-top: auto; font-size: 0.78rem; color: var(--texte-2); }
 .avis-mention { font-size: 0.78rem; color: var(--texte-2); max-width: 80ch; margin: 18px 0 0; }
+@media (max-width: 860px) {
+  .avis-notes { order: 2; flex-basis: 100%; flex-direction: column; gap: 4px; }
+  .avis-carte { width: 260px; }
+}
 /* Animations réduites : bande fixe qu'on fait défiler soi-même, sans la copie. */
 @media (prefers-reduced-motion: reduce) {
-  .avis-bande { overflow-x: auto; mask-image: none; }
+  .avis-bande { overflow-x: auto; height: auto; }
+  .avis-bande::before, .avis-bande::after { display: none; }
+  .avis-carte { height: auto; }
+  .avis-carte blockquote p { -webkit-line-clamp: unset; }
   .avis-piste { animation: none; }
   .avis-carte[aria-hidden="true"], .avis-pause { display: none; }
 }
