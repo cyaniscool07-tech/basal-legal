@@ -1,194 +1,200 @@
 
-<div class="page" role="main">
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="/calculateurs/">Calculateurs</a><span aria-hidden="true">›</span>Macros</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Calculateur gratuit</p>
+    <h1>Calcule tes macros</h1>
+    <p class="chapeau">Les mêmes règles que l'application : protéines et lipides ancrés à ton poids corporel, les
+    glucides en complément. Rien n'est envoyé nulle part — le calcul se fait dans ton navigateur.</p>
+  </header>
 
-  <h1 id="contenu">Calcule tes macros</h1>
-  <p class="chapeau">
-    Les mêmes règles que l'application : protéines et lipides ancrés à ton poids corporel, les
-    glucides en complément. Rien n'est envoyé nulle part — le calcul se fait dans ton navigateur.
-  </p>
+  <div class="outil">
+    <form class="carte" id="f" novalidate>
+      <div class="champs">
+            <div class="champ">
+              <label for="sexe">Sexe</label>
+              <select id="sexe">
+                <option value="male">Homme</option>
+                <option value="female">Femme</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="age">Âge</label>
+              <input id="age" type="number" inputmode="numeric" min="18" max="100" placeholder="31">
+            </div>
+            <div class="champ">
+              <label for="taille">Taille (cm)</label>
+              <input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="178">
+            </div>
+            <div class="champ">
+              <label for="poids">Poids (kg)</label>
+              <input id="poids" type="number" inputmode="decimal" min="30" max="300" step="0.1" placeholder="75">
+            </div>
+            <div class="champ large">
+              <label for="activite">Niveau d'activité</label>
+              <select id="activite">
+                <option value="1.2">Sédentaire — peu ou pas de sport · moins de 5 000 pas/jour</option>
+                <option value="1.375">Légèrement actif — 1 à 3 séances par semaine · 5 000 à 7 500 pas/jour</option>
+                <option value="1.55" selected>Modérément actif — 3 à 5 séances par semaine · 7 500 à 10 000 pas/jour</option>
+                <option value="1.725">Actif — 6 à 7 séances par semaine · 10 000 à 12 500 pas/jour</option>
+                <option value="1.9">Très actif — travail physique ou double entraînement · 12 500+ pas/jour</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="objectif">Objectif</label>
+              <select id="objectif">
+                <option value="lose">Perte de poids</option>
+                <option value="maintain" selected>Maintien</option>
+                <option value="gain">Prise de muscle</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="rythme">Rythme</label>
+              <select id="rythme"></select>
+            </div>
+          </div>
+    </form>
 
-  <form id="f" novalidate>
-    <div class="champs">
-      <div>
-        <label for="sexe">Sexe</label>
-        <select id="sexe">
-          <option value="male">Homme</option>
-          <option value="female">Femme</option>
-        </select>
-      </div>
-      <div>
-        <label for="age">Âge</label>
-        <input id="age" type="number" inputmode="numeric" min="18" max="100" placeholder="31">
-      </div>
-      <div>
-        <label for="taille">Taille (cm)</label>
-        <input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="178">
-      </div>
-      <div>
-        <label for="poids">Poids (kg)</label>
-        <input id="poids" type="number" inputmode="decimal" min="30" max="300" step="0.1" placeholder="75">
-      </div>
-      <div class="large">
-        <label for="activite">Niveau d'activité</label>
-        <select id="activite">
-          <option value="1.2">Sédentaire — peu ou pas de sport · moins de 5 000 pas/jour</option>
-          <option value="1.375">Légèrement actif — 1 à 3 séances par semaine · 5 000 à 7 500 pas/jour</option>
-          <option value="1.55" selected>Modérément actif — 3 à 5 séances par semaine · 7 500 à 10 000 pas/jour</option>
-          <option value="1.725">Actif — 6 à 7 séances par semaine · 10 000 à 12 500 pas/jour</option>
-          <option value="1.9">Très actif — travail physique ou double entraînement · 12 500+ pas/jour</option>
-        </select>
-      </div>
-      <div>
-        <label for="objectif">Objectif</label>
-        <select id="objectif">
-          <option value="lose">Perte de poids</option>
-          <option value="maintain" selected>Maintien</option>
-          <option value="gain">Prise de muscle</option>
-        </select>
-      </div>
-      <div>
-        <label for="rythme">Rythme</label>
-        <select id="rythme"></select>
-      </div>
-    </div>
-
-    <div class="resultat" aria-live="polite">
-      <p class="vide" id="vide">Renseigne les quatre champs chiffrés pour voir le résultat.</p>
-      <div id="sortie" hidden>
-        <div class="ligne total">
-          <span>Objectif calorique</span><b id="kcal">—</b>
-        </div>
-        <div class="ligne">
-          <span>Protéines <em id="protDetail"></em></span><b id="prot">—</b>
-        </div>
-        <div class="ligne">
-          <span>Glucides</span><b id="gluc">—</b>
-        </div>
-        <div class="ligne">
-          <span>Lipides <em id="lipDetail"></em></span><b id="lip">—</b>
-        </div>
-        <div class="ligne">
-          <span>Fibres</span><b id="fib">—</b>
-        </div>
-        <p class="note" id="plancher" hidden></p>
-      </div>
-    </div>
-  </form>
-
-  <div class="encadre">
-    <p>
-      <strong>Ce sont des points de départ, pas une ordonnance.</strong> Le calcul repose sur une
-      estimation de dépense dont les études de validation rapportent couramment 10 % d'écart —
-      soit 250 kcal par jour sur une dépense de 2 500. Tes macros héritent de cette incertitude.
-      Ce qui les corrige n'est pas une formule plus fine, c'est l'observation de tes données sur
-      plusieurs semaines.
-    </p>
+    <section class="carte resultat" aria-live="polite">
+          <p class="vide" id="vide">Renseigne les quatre champs chiffrés pour voir le résultat.</p>
+          <div id="sortie" hidden>
+            <div class="ligne total">
+              <span>Objectif calorique</span><b id="kcal">—</b>
+            </div>
+            <div class="ligne">
+              <span>Protéines <em id="protDetail"></em></span><b id="prot">—</b>
+            </div>
+            <div class="ligne">
+              <span>Glucides</span><b id="gluc">—</b>
+            </div>
+            <div class="ligne">
+              <span>Lipides <em id="lipDetail"></em></span><b id="lip">—</b>
+            </div>
+            <div class="ligne">
+              <span>Fibres</span><b id="fib">—</b>
+            </div>
+            <p class="note" id="plancher" hidden></p>
+          </div>
+        </section>
   </div>
 
-  <h2>Pourquoi pas un simple pourcentage</h2>
-  <p>
-    La méthode la plus répandue répartit les calories en parts fixes — par exemple 30 % de
-    protéines, 40 % de glucides, 30 % de lipides. Elle a un défaut qui ne se voit que dans les
-    cas où elle compte vraiment : <strong>elle fait dépendre tes besoins de ton objectif
-    calorique</strong>, alors qu'ils dépendent de ton corps.
-  </p>
-  <p>
-    Sur un objectif bas, 30 % de 1 100 kcal donnent environ 82 g de protéines et 37 g de lipides.
-    Les deux sont insuffisants, et ils le deviennent précisément au moment où ils importent le
-    plus — pendant une perte de poids, quand il s'agit de préserver la masse musculaire et
-    l'équilibre hormonal.
-  </p>
-  <p>
-    D'où l'ordre retenu ici : les protéines et les lipides sont fixés d'abord, à partir du poids
-    corporel. Les glucides prennent ce qui reste.
-  </p>
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <div class="encadre">
+        <p>
+          <strong>Ce sont des points de départ, pas une ordonnance.</strong> Le calcul repose sur une
+          estimation de dépense dont les études de validation rapportent couramment 10 % d'écart —
+          soit 250 kcal par jour sur une dépense de 2 500. Tes macros héritent de cette incertitude.
+          Ce qui les corrige n'est pas une formule plus fine, c'est l'observation de tes données sur
+          plusieurs semaines.
+        </p>
+      </div>
 
-  <h2>Le détail du calcul</h2>
+      <h2>Pourquoi pas un simple pourcentage</h2>
+      <p>
+        La méthode la plus répandue répartit les calories en parts fixes — par exemple 30 % de
+        protéines, 40 % de glucides, 30 % de lipides. Elle a un défaut qui ne se voit que dans les
+        cas où elle compte vraiment : <strong>elle fait dépendre tes besoins de ton objectif
+        calorique</strong>, alors qu'ils dépendent de ton corps.
+      </p>
+      <p>
+        Sur un objectif bas, 30 % de 1 100 kcal donnent environ 82 g de protéines et 37 g de lipides.
+        Les deux sont insuffisants, et ils le deviennent précisément au moment où ils importent le
+        plus — pendant une perte de poids, quand il s'agit de préserver la masse musculaire et
+        l'équilibre hormonal.
+      </p>
+      <p>
+        D'où l'ordre retenu ici : les protéines et les lipides sont fixés d'abord, à partir du poids
+        corporel. Les glucides prennent ce qui reste.
+      </p>
 
-  <h3>Les protéines</h3>
-  <p>
-    En grammes par kilogramme, selon l'objectif, avec un supplément à partir de trois séances par
-    semaine — seuil à partir duquel l'entraînement crée un besoin supplémentaire réel.
-  </p>
-  <ul class="liste">
-    <li><strong>Perte</strong> — 1,8 g/kg, ou 2,2 g/kg si tu t'entraînes.</li>
-    <li><strong>Maintien</strong> — 1,4 g/kg, ou 1,8 g/kg si tu t'entraînes.</li>
-    <li><strong>Prise de muscle</strong> — 1,6 g/kg, ou 2,0 g/kg si tu t'entraînes.</li>
-  </ul>
-  <p>
-    Ces valeurs se situent dans la fourchette que la littérature sur l'entraînement en résistance
-    rapporte couramment, soit 1,6 à 2,2 g/kg, avec des rendements qui s'aplatissent au-delà.
-  </p>
+      <h2>Le détail du calcul</h2>
 
-  <h3>Le poids de référence, et pourquoi il n'est pas toujours ton poids</h3>
-  <p>
-    Multiplier par le poids total pose un problème au-delà d'une certaine corpulence : le tissu
-    adipeux excédentaire n'a pas les mêmes besoins protéiques que le reste du corps. Le calcul
-    utilise donc le poids réel jusqu'à un IMC de 25, puis ne compte que
-    <strong>le quart de l'excédent</strong> au-delà.
-  </p>
-  <p>
-    C'est le facteur de la formule clinique du poids ajusté, employée exactement là où le poids
-    total fausse une prescription. Le seuil est placé au <em>haut</em> de la fourchette dite
-    normale, pas au milieu : un seuil bas rognerait les protéines de gens qui n'ont rien à se
-    voir rogner. En pratique, une personne de corpulence ordinaire ne voit aucune différence.
-  </p>
+      <h3>Les protéines</h3>
+      <p>
+        En grammes par kilogramme, selon l'objectif, avec un supplément à partir de trois séances par
+        semaine — seuil à partir duquel l'entraînement crée un besoin supplémentaire réel.
+      </p>
+      <ul class="liste">
+        <li><strong>Perte</strong> — 1,8 g/kg, ou 2,2 g/kg si tu t'entraînes.</li>
+        <li><strong>Maintien</strong> — 1,4 g/kg, ou 1,8 g/kg si tu t'entraînes.</li>
+        <li><strong>Prise de muscle</strong> — 1,6 g/kg, ou 2,0 g/kg si tu t'entraînes.</li>
+      </ul>
+      <p>
+        Ces valeurs se situent dans la fourchette que la littérature sur l'entraînement en résistance
+        rapporte couramment, soit 1,6 à 2,2 g/kg, avec des rendements qui s'aplatissent au-delà.
+      </p>
 
-  <h3>Les lipides</h3>
-  <p>
-    On retient la plus grande de deux valeurs : <strong>0,8 g par kilogramme de poids de
-    référence</strong>, ou <strong>30 % des calories</strong>. Le premier terme est un plancher
-    indépendant du total calorique — en dessous, le risque de carence en acides gras essentiels
-    et de perturbation hormonale est documenté, quel que soit l'objectif.
-  </p>
+      <h3>Le poids de référence, et pourquoi il n'est pas toujours ton poids</h3>
+      <p>
+        Multiplier par le poids total pose un problème au-delà d'une certaine corpulence : le tissu
+        adipeux excédentaire n'a pas les mêmes besoins protéiques que le reste du corps. Le calcul
+        utilise donc le poids réel jusqu'à un IMC de 25, puis ne compte que
+        <strong>le quart de l'excédent</strong> au-delà.
+      </p>
+      <p>
+        C'est le facteur de la formule clinique du poids ajusté, employée exactement là où le poids
+        total fausse une prescription. Le seuil est placé au <em>haut</em> de la fourchette dite
+        normale, pas au milieu : un seuil bas rognerait les protéines de gens qui n'ont rien à se
+        voir rogner. En pratique, une personne de corpulence ordinaire ne voit aucune différence.
+      </p>
 
-  <h3>Les glucides et les fibres</h3>
-  <p>
-    Les glucides absorbent ce qui reste une fois les protéines et les lipides servis, sans jamais
-    descendre sous zéro : dans un cas extrême — poids très élevé et objectif très bas — la
-    priorité va à la sécurité des deux autres plutôt qu'à l'exactitude du total. Les fibres
-    suivent la recommandation standard de 14 g pour 1 000 kcal.
-  </p>
+      <h3>Les lipides</h3>
+      <p>
+        On retient la plus grande de deux valeurs : <strong>0,8 g par kilogramme de poids de
+        référence</strong>, ou <strong>30 % des calories</strong>. Le premier terme est un plancher
+        indépendant du total calorique — en dessous, le risque de carence en acides gras essentiels
+        et de perturbation hormonale est documenté, quel que soit l'objectif.
+      </p>
 
-  <h3>Le plancher calorique</h3>
-  <p>
-    L'objectif calorique ne descend jamais sous ton métabolisme de base, ni sous 800 kcal. Ce
-    n'est pas un minimum arbitraire : c'est un seuil physiologique individualisé, calculé à partir
-    de ton sexe, ton âge, ton poids et ta taille. Si le rythme choisi l'amenait plus bas, le
-    calculateur te le dit au lieu de corriger en silence.
-  </p>
+      <h3>Les glucides et les fibres</h3>
+      <p>
+        Les glucides absorbent ce qui reste une fois les protéines et les lipides servis, sans jamais
+        descendre sous zéro : dans un cas extrême — poids très élevé et objectif très bas — la
+        priorité va à la sécurité des deux autres plutôt qu'à l'exactitude du total. Les fibres
+        suivent la recommandation standard de 14 g pour 1 000 kcal.
+      </p>
 
-  <div class="appel">
-    <p class="appel-t">Suivre ces macros au quotidien</p>
-    <p>
-      Basal applique exactement ces règles, puis corrige l'objectif calorique à mesure qu'il
-      compare ce que tu enregistres à l'évolution réelle de ton poids. Le suivi des calories, des
-      macros, du poids et des séances est gratuit, sans limite et sans compte obligatoire.
-    </p>
-    <div class="cta">
-      <a class="store-badge play" data-goatcounter-click="store-play-calcul-macros" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Dcalcul-macros">
-        <img src="img/google-play-fr.png" alt="Disponible sur Google Play" width="148" height="44" loading="lazy">
-      </a>
-      <a class="store-badge apple" data-goatcounter-click="store-apple-calcul-macros" href="https://apps.apple.com/fr/app/basal/id6793001641">
-        <img src="img/app-store-fr.svg" alt="Télécharger dans l’App Store" width="139" height="44" loading="lazy">
-      </a>
+      <h3>Le plancher calorique</h3>
+      <p>
+        L'objectif calorique ne descend jamais sous ton métabolisme de base, ni sous 800 kcal. Ce
+        n'est pas un minimum arbitraire : c'est un seuil physiologique individualisé, calculé à partir
+        de ton sexe, ton âge, ton poids et ta taille. Si le rythme choisi l'amenait plus bas, le
+        calculateur te le dit au lieu de corriger en silence.
+      </p>
+
+      <div class="appel">
+        <p class="appel-t">Suivre ces macros au quotidien</p>
+        <p>
+          Basal applique exactement ces règles, puis corrige l'objectif calorique à mesure qu'il
+          compare ce que tu enregistres à l'évolution réelle de ton poids. Le suivi des calories, des
+          macros, du poids et des séances est gratuit, sans limite et sans compte obligatoire.
+        </p>
+        <div class="cta">
+          <a class="store-badge play" data-goatcounter-click="store-play-calcul-macros" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Dcalcul-macros">
+            <img src="img/google-play-fr.png" alt="Disponible sur Google Play" width="148" height="44" loading="lazy">
+          </a>
+          <a class="store-badge apple" data-goatcounter-click="store-apple-calcul-macros" href="https://apps.apple.com/fr/app/basal/id6793001641">
+            <img src="img/app-store-fr.svg" alt="Télécharger dans l’App Store" width="139" height="44" loading="lazy">
+          </a>
+        </div>
+      </div>
+
+      <h2>Pour aller plus loin</h2>
+      <ul class="liste">
+        <li><a href="/calcul-tdee.html">Calculer sa dépense énergétique</a> — le chiffre dont tout le
+        reste découle.</li>
+        <li><a href="/metabolisme-adaptatif.html">Pourquoi une formule ne suffit pas</a>.</li>
+        <li><a href="/nutrition-musculation.html">Manges-tu assez pour ce que tu soulèves ?</a></li>
+      </ul>
     </div>
   </div>
-
-  <h2>Pour aller plus loin</h2>
-  <ul class="liste">
-    <li><a href="/calcul-tdee.html">Calculer sa dépense énergétique</a> — le chiffre dont tout le
-    reste découle.</li>
-    <li><a href="/metabolisme-adaptatif.html">Pourquoi une formule ne suffit pas</a>.</li>
-    <li><a href="/nutrition-musculation.html">Manges-tu assez pour ce que tu soulèves ?</a></li>
-  </ul>
 
   <aside class="note-page">
     <p>Cet outil est informatif. Basal n'est pas un dispositif médical et ne remplace pas l'avis
     d'un professionnel de santé. Réservé aux personnes majeures.</p>
   </aside>
-
-</div>
+</main>
 
 <script>
 // Les MÊMES règles que l'application (services/nutritionCalculator.ts, branche de référence) :
@@ -332,7 +338,42 @@
   "url": "https://basal-app.fr/calcul-macros.html",
   "inLanguage": "fr",
   "description": "Calcul des macronutriments a partir de la depense energetique : proteines et lipides ancres au poids corporel, glucides en complement.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
-  "publisher": { "@type": "Organization", "name": "Basal", "email": "contact@basal-app.fr" }
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "publisher": {
+    "@id": "https://basal-app.fr/#organisation"
+  }
 }
+</script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://basal-app.fr/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculateurs",
+        "item": "https://basal-app.fr/calculateurs/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Macros",
+        "item": "https://basal-app.fr/calcul-macros.html"
+      }
+    ]
+  }
+]
 </script>

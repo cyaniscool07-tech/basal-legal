@@ -260,6 +260,7 @@ p { margin: 0 0 1em; }
 .signature { display: flex; align-items: center; gap: 12px; font-size: 0.88rem; color: var(--texte-2); flex-wrap: wrap; }
 .signature .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--encre); color: var(--papier); display: grid; place-items: center; font: 600 0.8rem/1 var(--sans); }
 .signature b { color: var(--encre); font-weight: 600; }
+@media (max-width: 600px) { .signature { gap: 4px 12px; } .signature > span[aria-hidden="true"] { display: none; } }
 .article { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 64px; padding-top: 44px; }
 .sommaire { position: sticky; top: 96px; align-self: start; font-size: 0.88rem; }
 .sommaire p { font-weight: 600; margin-bottom: 10px; }
@@ -271,6 +272,10 @@ p { margin: 0 0 1em; }
 .corps h2:first-child { margin-top: 0; }
 .corps ul, .corps ol { padding-left: 1.2em; }
 .corps li { margin-bottom: 0.4em; }
+.corps h3 { margin: 28px 0 10px; }
+.corps figure { margin: 28px 0; }
+.corps figure img { border-radius: var(--rayon); }
+.corps figcaption { font-size: 0.85rem; color: var(--texte-2); margin-top: 8px; }
 @media (max-width: 980px) { .article { grid-template-columns: minmax(0, 1fr); gap: 0; } .sommaire { display: none; } }
 
 .en-bref { background: var(--surface-2); border-radius: var(--rayon); padding: 22px 26px; margin: 0 0 36px; }
@@ -371,6 +376,13 @@ td.n, th.n { text-align: right; }
 .carte.resultat .sous span, .carte.resultat p { font-size: 0.85rem; color: var(--nuit-texte-2); }
 .formule { font-size: 0.92rem; }
 .formule code { font: 500 0.92rem/1.6 ui-monospace, "Cascadia Mono", Menlo, monospace; background: var(--surface-2); padding: 2px 6px; border-radius: 6px; }
+/* Lignes de résultat (calculateurs de dépense et de macros) dans la carte sombre. */
+.carte.resultat .ligne { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; }
+.carte.resultat .ligne + .ligne { border-top: 1px solid rgb(255 255 255 / 0.1); }
+.carte.resultat .ligne span { font-size: 0.92rem; color: var(--nuit-texte-2); }
+.carte.resultat .ligne b { font: 400 1.7rem/1.1 var(--serif); font-variant-numeric: tabular-nums; color: var(--nuit-texte); white-space: nowrap; }
+.carte.resultat .vide { color: var(--nuit-texte-2); }
+.carte.resultat .note { background: rgb(255 255 255 / 0.06); color: var(--nuit-texte-2); }
 @media (max-width: 860px) { .outil { grid-template-columns: 1fr; } .champs { grid-template-columns: 1fr; } }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -434,6 +446,8 @@ code { font: 500 0.92em/1.5 ui-monospace, "Cascadia Mono", Menlo, monospace; bac
 .resultat .ligne b { font: 400 1.7rem/1.1 var(--serif); font-variant-numeric: tabular-nums; }
 .resultat .ligne.total { background: color-mix(in srgb, var(--accent-vif) 10%, var(--surface)); }
 .resultat .ligne.total b { font-size: 2.2rem; color: var(--accent); }
+.carte.resultat .ligne.total { background: none; }
+.carte.resultat .ligne.total b { font-size: 2.6rem; color: #fb923c; }
 .resultat .vide { padding: 14px 18px; }
 
 /* Notes propres à une page, reprises de son ancien pied de page */
