@@ -89,7 +89,8 @@ p { margin: 0 0 1em; }
   .barre .bouton { margin-left: auto; padding: 10px 14px; }
   .barre .theme { margin-left: auto; }
   .barre .theme + .bouton { margin-left: 0; }
-  .barre nav { order: 3; width: 100%; margin: 0 -8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; }
+  .barre nav { order: 3; width: 100%; margin: 0 -8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; padding-right: 40px;
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent); }
 }
 
 /* Bandeau sombre de l'accueil */
@@ -97,6 +98,10 @@ p { margin: 0 0 1em; }
 .nuit .surtitre { color: #fb923c; }
 .nuit h1 em { color: #fb923c; }
 .nuit .discret { color: var(--nuit-texte-2); }
+.note-stores { font-size: 0.9rem; color: var(--nuit-texte); margin: 16px 0 0; }
+.note-stores span { color: #fb923c; }
+.note-stores a { color: #fb923c; }
+.offre-stores { justify-content: center; margin-top: 32px; }
 .anneau-fond { position: absolute; right: -160px; top: -120px; width: 620px; opacity: 0.16; pointer-events: none; }
 .nuit > .wrap { position: relative; z-index: 1; }
 .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; padding: 72px 20px 0; }
@@ -176,7 +181,7 @@ p { margin: 0 0 1em; }
 .pilier .num { font: 400 1.6rem/1 var(--serif); color: var(--accent); }
 .pilier p { color: var(--texte-2); font-size: 0.95rem; margin: 0; flex: 1; }
 .pilier a { font-weight: 600; font-size: 0.92rem; text-decoration: none; }
-.pilier a::after { content: " →"; }
+.pilier a::after { content: " a0→"; }
 @media (max-width: 980px) { .piliers { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .piliers { grid-template-columns: 1fr; } }
 
@@ -273,6 +278,23 @@ p { margin: 0 0 1em; }
 .corps ul, .corps ol { padding-left: 1.2em; }
 .corps li { margin-bottom: 0.4em; }
 .corps h3 { margin: 28px 0 10px; }
+/* Sommaire repliable (copié par /site.js), visible seulement quand le sommaire latéral est masqué. */
+.sommaire-mobile { display: none; }
+@media (max-width: 980px) {
+  .sommaire-mobile { display: block; background: var(--surface); border: 1px solid var(--trait); border-radius: var(--rayon); margin: 0 0 32px; font-size: 0.95rem; }
+  .sommaire-mobile summary { display: flex; justify-content: space-between; align-items: center; min-height: 48px; padding: 0 18px; font-weight: 600; cursor: pointer; list-style: none; }
+  .sommaire-mobile summary::-webkit-details-marker { display: none; }
+  .sommaire-mobile summary::after { content: "+"; font-size: 1.3rem; color: var(--texte-2); }
+  .sommaire-mobile[open] summary::after { content: "−"; }
+  .sommaire-mobile ol { list-style: none; margin: 0; padding: 0 18px 12px; display: grid; }
+  .sommaire-mobile li { margin: 0; }
+  .sommaire-mobile a { display: block; padding: 9px 0; color: var(--texte-2); text-decoration: none; border-top: 1px solid var(--trait); }
+}
+/* Résultat flottant des calculateurs (créé par /site.js), sur mobile uniquement. */
+.resultat-flottant { position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 30; min-height: 52px; padding: 0 18px; border: 1px solid rgb(255 255 255 / 0.14); border-radius: 999px; background: var(--nuit); color: var(--nuit-texte); font: 600 1rem/1 var(--sans); box-shadow: 0 10px 30px rgb(0 0 0 / 0.3); cursor: pointer; }
+.resultat-flottant::after { content: "  ↓"; color: #fb923c; }
+.resultat-flottant[hidden] { display: none; }
+@media (min-width: 861px) { .resultat-flottant { display: none; } }
 .corps figure { margin: 28px 0; }
 .corps figure img { border-radius: var(--rayon); }
 .corps figcaption { font-size: 0.85rem; color: var(--texte-2); margin-top: 8px; }
@@ -465,6 +487,14 @@ code { font: 500 0.92em/1.5 ui-monospace, "Cascadia Mono", Menlo, monospace; bac
 .recette-corps .appel-contexte .stores { justify-content: flex-start; }
 .appel-contexte a { color: #fb923c; }
 .hub-repas { margin-top: 48px; }
+.hub-repas h2 { scroll-margin-top: 150px; }
+/* Raccourcis du hub des recettes : collés sous la barre sur ordinateur, défilables au doigt sur mobile. */
+.hub-raccourcis { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 8px 0 0; padding: 12px 0; position: sticky; top: 64px; z-index: 10; background: var(--papier); border-bottom: 1px solid var(--trait); }
+.hub-raccourcis::-webkit-scrollbar { display: none; }
+.hub-raccourcis a { flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 16px; border: 1px solid var(--trait); border-radius: 999px; background: var(--surface); color: var(--encre); font-size: 0.92rem; font-weight: 500; text-decoration: none; }
+.hub-raccourcis a span { color: var(--texte-2); font-size: 0.82rem; }
+.hub-raccourcis a:hover { border-color: var(--encre); }
+@media (max-width: 860px) { .hub-raccourcis { position: static; border-bottom: 0; } }
 .hub-repas h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 18px; }
 .recettes-grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
 .recette-carte { display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--trait); border-radius: var(--rayon); overflow: hidden; padding-bottom: 14px; }

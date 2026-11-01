@@ -34,6 +34,7 @@ const { lang = 'fr', tete, corps, autreLangue, menu, mesure = true } = Astro.pro
     d.dataset.theme = d.dataset.theme === 'dark' ? 'light' : 'dark'; try { localStorage.setItem('theme', d.dataset.theme); } catch (e) {} });
 })();
 </script>
+<script is:inline src="/site.js" defer></script>
 {mesure && <script is:inline data-goatcounter="https://basalapp.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>}
 </head>
 <body>
