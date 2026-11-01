@@ -196,6 +196,9 @@
   fleches.forEach(function (f) {
     f.addEventListener('click', function () { g.scrollBy({ left: +f.dataset.sens * g.clientWidth * 0.8, behavior: 'smooth' }); });
   });
+  function aimanter() { g.classList.add('aimantee'); }
+  ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach(function (t) { g.addEventListener(t, aimanter, { once: true, passive: true }); });
+  fleches.forEach(function (f) { f.addEventListener('click', aimanter); });
   g.addEventListener('scroll', maj, { passive: true });
   window.addEventListener('resize', maj);
   maj();
