@@ -316,6 +316,14 @@ caption { text-align: left; font-weight: 600; font-size: 0.92rem; padding-bottom
 th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--trait); }
 th { font-weight: 600; font-size: 0.82rem; color: var(--texte-2); text-transform: uppercase; letter-spacing: 0.05em; }
 td.n, th.n { text-align: right; }
+@media (max-width: 600px) {
+  table { font-size: 0.88rem; }
+  th, td { padding: 9px 6px; }
+  th { letter-spacing: 0; font-size: 0.74rem; }
+  th:first-child, td:first-child { padding-left: 0; }
+  th:last-child, td:last-child { padding-right: 0; }
+}
+@media (max-width: 400px) { th { text-transform: none; font-size: 0.8rem; } }
 .tableau .source { font-size: 0.82rem; color: var(--texte-2); margin-top: 8px; }
 .inconnu { border-left: 3px solid var(--accent-vif); padding: 4px 0 4px 22px; margin: 28px 0; }
 .sources { font-size: 0.88rem; color: var(--texte-2); padding-left: 1.2em; }
@@ -383,7 +391,7 @@ td.n, th.n { text-align: right; }
 .champ input:focus, .champ select:focus { outline: none; border-color: var(--accent-vif); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-vif) 25%, transparent); }
 .champ .aide { font-size: 0.8rem; color: var(--texte-2); }
 .segment { display: grid; grid-template-columns: 1fr 1fr; background: var(--papier); border: 1px solid var(--trait); border-radius: var(--rayon-s); padding: 3px; }
-.segment input { position: absolute; opacity: 0; pointer-events: none; }
+.segment input { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
 .segment label { text-align: center; padding: 9px; border-radius: 7px; cursor: pointer; font-weight: 500; }
 .segment input:checked + label { background: var(--encre); color: var(--papier); }
 .segment input:focus-visible + label { outline: 3px solid var(--accent-vif); outline-offset: 1px; }
