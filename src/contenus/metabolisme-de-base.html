@@ -1,0 +1,124 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="/guides/">Guides</a><span aria-hidden="true">›</span>Métabolisme de base</nav>
+  <header class="article-tete">
+    <p class="surtitre">Calories et dépense</p>
+    <h1>Métabolisme de base : ce que c’est, et ce qui le fait varier</h1>
+    <p class="chapeau">Le métabolisme de base est l’énergie que ton corps dépense au repos complet, pour respirer, faire battre le cœur et maintenir sa température. Chez un adulte peu actif, c’est la plus grosse part de la dépense de la journée. Voici comment on l’estime, ce qui le change vraiment, et ce qu’une formule ne peut pas savoir de toi.</p>
+    <div class="signature">
+      <span class="avatar" aria-hidden="true">TS</span>
+      <span>Par <b>Théo Serrano</b>, créateur de Basal</span>
+      <span aria-hidden="true">·</span>
+      <span>Publié le <time datetime="2026-11-02">2 novembre 2026</time></span>
+    </div>
+  </header>
+
+  <div class="article">
+    <aside class="sommaire" aria-labelledby="sommaire-t">
+      <p id="sommaire-t">Sommaire</p>
+      <ol>
+        <li><a href="#definition">Définition</a></li>
+        <li><a href="#part">Sa part dans la dépense</a></li>
+        <li><a href="#estimer">Comment on l’estime</a></li>
+        <li><a href="#exemples">Exemples chiffrés</a></li>
+        <li><a href="#varier">Ce qui le fait varier</a></li>
+        <li><a href="#age">L’âge, vraiment ?</a></li>
+        <li><a href="#manger-dessous">Manger moins que son métabolisme de base</a></li>
+        <li><a href="#inconnu">Ce qu’on ne sait pas</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ol>
+    </aside>
+
+    <article class="corps">
+      <div class="en-bref">
+        <p class="surtitre">En bref</p>
+        <p>Le métabolisme de base se situe le plus souvent entre 1 200 et 2 000 kcal par jour chez l’adulte. Il dépend d’abord de ta masse maigre (muscles et organes), donc de ton poids et de ta taille, bien plus que de ton âge. Une formule comme Mifflin-St Jeor l’estime à environ 10 % près pour la plupart des gens, mais peut se tromper davantage pour toi.</p>
+      </div>
+
+      <h2 id="definition">Définition</h2>
+      <p>Le <strong>métabolisme de base</strong> (en anglais BMR, <i>basal metabolic rate</i>) est la dépense d’énergie d’une personne éveillée, allongée, au repos complet, à jeun depuis douze heures, dans une pièce à température neutre. C’est le coût de fonctionnement du corps : cœur, respiration, cerveau, foie, reins, renouvellement des cellules, maintien de la température.</p>
+      <p>Mesuré en laboratoire, on parle plutôt de <strong>dépense de repos</strong> (RMR, <i>resting metabolic rate</i>), un peu moins stricte sur les conditions et souvent un peu plus élevée. Les formules courantes, dont celle utilisée par Basal, estiment en réalité cette dépense de repos. La différence est faible et le langage courant confond les deux.</p>
+
+      <h2 id="part">Sa part dans la dépense</h2>
+      <p>Ta dépense de la journée se compose de trois blocs :</p>
+      <ul>
+        <li><strong>le métabolisme de base</strong>, environ 60 à 70 % de la dépense chez une personne peu active ;</li>
+        <li><strong>la digestion</strong> (effet thermique des aliments), environ 10 % ;</li>
+        <li><strong>l’activité</strong> : le sport, mais surtout tous les mouvements du quotidien (marcher, rester debout, bouger). C’est le bloc qui varie le plus d’une personne à l’autre.</li>
+      </ul>
+      <p>C’est pour cela que le métabolisme de base n’est pas ce que tu dois manger : c’est le point de départ. Pour obtenir ta dépense totale, on le multiplie par un coefficient d’activité, de 1,2 pour une personne sédentaire à 1,9 pour un sport intense quotidien. Le <a href="/calcul-tdee.html">calculateur de dépense</a> fait les deux étapes.</p>
+
+      <h2 id="estimer">Comment on l’estime</h2>
+      <p>La mesure directe passe par la calorimétrie indirecte : un appareil analyse l’oxygène consommé et le gaz carbonique rejeté pendant vingt à trente minutes. On la trouve à l’hôpital ou dans certains laboratoires, rarement ailleurs.</p>
+      <p>Au quotidien, on utilise une équation. Basal utilise celle de <strong>Mifflin-St Jeor</strong> (1990), que la revue systématique de l’American Dietetic Association (Frankenfield, 2005) a jugée la plus fiable des équations courantes chez l’adulte, y compris en surpoids :</p>
+      <ul>
+        <li>homme : <code>10 × poids (kg) + 6,25 × taille (cm) − 5 × âge + 5</code></li>
+        <li>femme : <code>10 × poids (kg) + 6,25 × taille (cm) − 5 × âge − 161</code></li>
+      </ul>
+      <p>L’ancienne équation de Harris-Benedict (1919) surestime en moyenne la dépense des populations actuelles. Si tu connais ta masse maigre, par exemple grâce à une mesure DEXA, l’équation de Katch-McArdle (<code>370 + 21,6 × masse maigre en kg</code>) en tient compte directement. Les balances à impédance donnent une masse maigre trop imprécise pour en profiter.</p>
+
+      <h2 id="exemples">Exemples chiffrés</h2>
+      <p>Ces résultats sont calculés par le code de l’application lui-même : un test vérifie qu’ils restent exacts si la formule change.</p>
+      <div class="calcul" role="group" aria-label="Exemples de métabolisme de base">
+        <div class="titre">Avec Mifflin-St Jeor</div>
+        <div class="ligne"><span>Femme, 45 ans, 165 cm, 60 kg</span><b>1 245 kcal</b></div>
+        <div class="ligne"><span>Femme, 30 ans, 175 cm, 70 kg</span><b>1 483 kcal</b></div>
+        <div class="ligne"><span>Homme, 30 ans, 175 cm, 70 kg</span><b>1 649 kcal</b></div>
+        <div class="ligne"><span>Le même homme à 50 ans</span><b>1 549 kcal</b></div>
+        <div class="ligne"><span>Homme, 55 ans, 180 cm, 90 kg</span><b>1 755 kcal</b></div>
+      </div>
+      <p>À taille, poids et âge égaux, la formule donne 166 kcal de moins à une femme : c’est l’écart moyen de masse maigre entre les sexes, pas une différence de « vitesse » du métabolisme. Pour ton propre chiffre, le <a href="/calcul-tdee.html">calculateur</a> affiche ton métabolisme de base et ta dépense journalière, sans rien envoyer.</p>
+
+      <h2 id="varier">Ce qui le fait varier</h2>
+      <p>Une étude sur 150 adultes, dont le métabolisme de base a été mesuré (Johnstone, 2005), a cherché ce qui explique les écarts entre les personnes :</p>
+      <ul>
+        <li><strong>la masse maigre</strong> explique à elle seule environ 63 % des différences ;</li>
+        <li><strong>la masse grasse</strong>, environ 6 % : elle dépense peu, mais elle dépense ;</li>
+        <li><strong>l’âge</strong>, environ 2 % ;</li>
+        <li>environ un quart des écarts restent inexpliqués.</li>
+      </ul>
+      <p>Une fois la masse maigre prise en compte, le sexe n’ajoute presque rien. Le muscle compte, mais moins qu’on le dit souvent : un kilo de muscle au repos dépense de l’ordre de 13 kcal par jour, alors que le foie, le cerveau, le cœur et les reins, qui pèsent peu, dépensent beaucoup plus. Prendre 2 kg de muscle relève le métabolisme de base de quelques dizaines de kcal, pas de plusieurs centaines.</p>
+      <p>La perte de poids, elle, le fait baisser : un corps plus léger dépense moins. Une partie de cette baisse dépasse ce que la perte de poids explique, c’est l’<a href="/metabolisme-adaptatif.html">adaptation métabolique</a>, et c’est pour cela qu’une formule calculée une fois ne suffit pas pendant un régime.</p>
+
+      <h2 id="age">L’âge, vraiment ?</h2>
+      <p>La formule retire 5 kcal par année d’âge : c’est une moyenne observée sur des groupes, qui mélange l’âge et la perte de muscle qui l’accompagne souvent. Une grande étude sur plus de 6 400 personnes (Pontzer, 2021) a trouvé que la dépense, une fois corrigée de la taille et de la composition du corps, reste <strong>stable entre 20 et 60 ans</strong>, puis baisse d’environ 0,7 % par an.</p>
+      <p>Autrement dit, « le métabolisme ralentit à 40 ans » est surtout vrai quand on perd du muscle et qu’on bouge moins. Garder une activité et de la musculation limite l’essentiel de la baisse.</p>
+
+      <h2 id="manger-dessous">Manger moins que son métabolisme de base</h2>
+      <p>Comme la dépense totale est plus élevée que le métabolisme de base, manger un peu en dessous ne veut pas dire que le corps « s’arrête ». Mais un apport aussi bas laisse peu de place aux protéines, aux fibres et aux micronutriments, et accentue la fatigue et la perte de muscle.</p>
+      <p>Basal applique donc une règle simple : l’objectif calorique proposé ne descend <strong>jamais sous ton métabolisme de base</strong> estimé. C’est un choix de prudence de l’application, pas une loi physiologique. Le guide du <a href="/deficit-calorique.html">déficit calorique</a> détaille le rythme de perte raisonnable.</p>
+
+      <h2 id="inconnu">Ce qu’on ne sait pas</h2>
+      <div class="inconnu">
+        <p><strong>Ton chiffre exact.</strong> Une formule donne la moyenne des personnes qui te ressemblent sur le papier. Pour une partie des gens, l’écart avec la mesure dépasse 10 %, soit 150 kcal ou plus.</p>
+        <p><strong>Ta masse maigre.</strong> Elle explique l’essentiel des différences, mais aucune formule fondée sur le poids et la taille ne la connaît.</p>
+        <p style="margin:0"><strong>L’effet du sommeil, du stress ou du froid sur ta journée.</strong> Il existe, mais il est faible et difficile à chiffrer chez une personne donnée.</p>
+      </div>
+      <p>La seule façon de corriger l’estimation sans laboratoire est de comparer ce que tu manges à l’évolution réelle de ton poids sur quelques semaines. C’est ce que fait le <a href="/calcul-depense-reelle.html">calcul de dépense réelle</a>, et ce que fait l’application en continu.</p>
+
+      <div class="appel-contexte">
+        <div><strong>Ton métabolisme, recalculé sur tes données</strong><p>Basal part de Mifflin-St Jeor, puis corrige ta dépense avec ce que tu manges et ton poids réel. Le suivi est gratuit et sans compte.</p></div>
+        <a class="bouton vif" href="/#telecharger">Télécharger</a>
+      </div>
+
+      <h2 id="sources">Sources</h2>
+      <ol class="sources">
+        <li>Mifflin MD, St Jeor ST et al. « A new predictive equation for resting energy expenditure in healthy individuals ». <i>American Journal of Clinical Nutrition</i>, 1990, 51(2), p. 241-247.</li>
+        <li>Frankenfield D, Roth-Yousey L, Compher C. « Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review ». <i>Journal of the American Dietetic Association</i>, 2005, 105(5), p. 775-789.</li>
+        <li>Johnstone AM et al. « Factors influencing variation in basal metabolic rate include fat-free mass, fat mass, age, and circulating thyroxine but not sex, circulating leptin, or triiodothyronine ». <i>American Journal of Clinical Nutrition</i>, 2005, 82(5), p. 941-948.</li>
+        <li>Pontzer H et al. « Daily energy expenditure through the human life course ». <i>Science</i>, 2021, 373(6556), p. 808-812.</li>
+        <li>Wang Z et al. « Specific metabolic rates of major organs and tissues across adulthood: evaluation by mechanistic model of resting energy expenditure ». <i>American Journal of Clinical Nutrition</i>, 2010, 92(6), p. 1369-1377.</li>
+      </ol>
+      <p>La formule et les coefficients de l’application sont détaillés sur la page <a href="/methode.html">Méthode</a>.</p>
+
+      <h2 style="font-size:1.5rem;margin-top:48px">Pour aller plus loin</h2>
+      <div class="guides" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <a class="guide" href="/combien-de-calories-par-jour.html"><span class="surtitre" style="margin:0">Guide</span><h3>Combien de calories par jour ?</h3><p>Du métabolisme de base à ton besoin réel, avec des exemples chiffrés.</p></a>
+        <a class="guide" href="/metabolisme-adaptatif.html"><span class="surtitre" style="margin:0">Guide</span><h3>Le métabolisme adaptatif</h3><p>Pourquoi une formule ne suffit pas, et comment la corriger.</p></a>
+      </div>
+    </article>
+  </div>
+
+  <aside class="note-page">
+    <p>Cet article est informatif. Basal n’est pas un dispositif médical et ne remplace pas l’avis d’un professionnel de santé.</p>
+  </aside>
+</main>
