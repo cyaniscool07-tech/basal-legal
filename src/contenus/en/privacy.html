@@ -6,7 +6,7 @@
 <div class="page" role="main">
 
   <h1 id="contenu">Privacy policy — Basal</h1>
-  <p class="updated">Last updated: 30 October 2026</p>
+  <p class="updated">Last updated: 7 November 2026</p>
 
   <p>This is a translation of the <a href="/confidentialite.html" hreflang="fr" lang="fr">French privacy policy</a>. If the two versions ever differ, the French version prevails.</p>
 
@@ -18,7 +18,7 @@
     <li><strong>If — and only if — you create an account</strong> (see section 3), your data is backed up on a server located in <strong>Ireland, in the European Union</strong>, so that you can get it back on another device. You can delete this account at any time, which also erases this data from the server (section 10). Some information still stays specific to each device and is <strong>never</strong> sent — the list is in section 4.</li>
     <li>No advertising tracker, no advertising, no profiling. Only <strong>anonymous usage counters</strong> (for example “the Premium screen was opened”, “a first meal was logged”) are sent, never any value you entered (section 6).</li>
     <li>The <strong>Community</strong> (shared recipes, routines and programmes) can be browsed without an account. Publishing requires an account and a <strong>username</strong>: only that username and what you choose to publish become public — never your email address or your tracking (section 5a).</li>
-    <li>A technical diagnostic tool (section 6) receives crash reports and these anonymous usage counters. It <strong>never</strong> receives your personal data (weight, meals, goals…).</li>
+    <li>A technical diagnostic tool (section 6) receives crash reports and these anonymous usage counters. It <strong>never</strong> receives your personal data (weight, meals, goals…), except anything you write yourself in the optional message described in section 6.</li>
     <li>The basal-app.fr <strong>website</strong> measures its audience <strong>without cookies</strong> using GoatCounter, as totals, without keeping your IP address (section 6a).</li>
     <li>If you take out a Premium subscription, its status is managed by <strong>RevenueCat</strong>, hosted in the United States, which receives your purchase history and, if you have an account, its identifier (section 5).</li>
   </ul>
@@ -75,7 +75,7 @@
   <p><strong>The publisher of the app does not sell, rent or share any of your data with a third party</strong>, for advertising, commercial or any other purposes. No third-party audience analytics (behavioural analytics), advertising or ad tracking tool is built into the app. The website counts its visits without cookies (section 6a).</p>
   <p>The app makes one kind of network request triggered by you — <strong>food search and barcode scanning</strong>: when you type a search, the text you typed is sent to the public, collaborative <strong>Open Food Facts</strong> database; when you scan a barcode, only the barcode number is sent to it to identify the product.</p>
   <p>No other information (your profile, your weight, the meals you have already logged) is sent on these occasions. These requests are subject to the privacy policy of Open Food Facts, a project independent from the publisher of this app.</p>
-  <p>A second kind of network request exists, triggered not by a deliberate action but by an unexpected technical error: see section 6 (technical diagnostics / Sentry).</p>
+  <p>A second kind of network request exists, triggered not by a deliberate action but by an unexpected technical error: see section 6 (technical diagnostics / Sentry). A message you choose to send from the review card goes through the same service (section 6).</p>
   <p>Finally, <strong>if you have created an account</strong>, the app communicates with <strong>Supabase</strong>, our hosting and authentication provider, to back up your data there and check your identity when you sign in. Supabase acts solely on our behalf and on our instructions; it does not use your data for its own purposes. The servers used are located in Ireland, in the European Union. Without an account, no such communication takes place.</p>
   <p><strong>Account emails</strong> (confirming your address, forgotten password) are sent by <strong>Brevo</strong> (Sendinblue SAS, France), our email delivery provider. It only receives your email address and the content of that email, acts solely on our behalf and processes this data in the European Union. Links in these emails go through a Brevo click counter set to anonymous mode: a click is never linked to your address. No marketing email is ever sent.</p>
 
@@ -109,13 +109,14 @@
   <p>The app uses <strong>Sentry</strong>, a third-party technical diagnostic service, to be notified automatically when a bug or crash occurs so that it can be fixed. It is not an ad tracking tool: no profile is built, nothing is cross-referenced with other services.</p>
   <p>The same tool also receives a few <strong>anonymous usage counters</strong>, to know whether the app does its job and to improve its flows: for example “onboarding was completed”, “an onboarding step was completed”, “a first meal was logged”, “the Premium screen was opened or closed”, “a purchase was started, completed or cancelled” (with the chosen plan: monthly or yearly), “reminders were accepted or postponed”. These counters say <strong>that an action happened, never its value</strong>: no weight, no calories, no food, no content you entered. They are linked to the same anonymous installation identifier as crash reports, never to your account.</p>
   <p>For about <strong>one session in five</strong>, the app also sends <strong>performance measurements</strong>: how long it took to start, how long each screen took to appear and how long network exchanges took. They are used to spot slowdowns. They are durations, never what you entered.</p>
+  <p><strong>Optional message from the review card.</strong> The app may offer you the choice of leaving a review on the store or saying what bothers you. In the second case, and only if you tap “Send”, Sentry receives <strong>the topics you ticked and the text you wrote</strong> (1,000 characters at most), with the technical information and the anonymous identifier described below. This is the only content you enter that can reach it. The message is not linked to your account and the publisher cannot reply to it. The matching usage counter only says that a message was sent, with its topics. The text is used only to understand what is wrong and to improve the app. <strong>Please avoid including personal or health information.</strong> If that happens, write to the address in section 14 quoting the message and it will be deleted. Otherwise, Sentry keeps it under its retention policy, then deletes it automatically.</p>
   <p><strong>What is sent to Sentry when an error occurs:</strong></p>
   <ul>
     <li>technical information about the error itself (error message, stack trace, screen or feature involved — e.g. "food search", "export", never the content you entered);</li>
     <li>standard technical information about the device (app version, operating system, device model) — the same kind of information shown in the native iOS/Android crash reports;</li>
     <li>an <strong>anonymous, randomly generated</strong> identifier created when the app is installed, separate from any account you may have, which cannot be linked to your identity or your email address — it is only used to link several reports from the same device, to check whether a fix actually solves the problem.</li>
   </ul>
-  <p><strong>What is never sent to Sentry:</strong> your profile, your weight, your meals, your goals, your workouts, your account information, or any other data described in sections 2 and 3 — nor your IP address (the tool's default collection of personal data is explicitly turned off in its configuration). No photo or location data is collected.</p>
+  <p><strong>What is never sent to Sentry</strong> (apart from anything you write yourself in the optional message above)<strong>:</strong> your profile, your weight, your meals, your goals, your workouts, your account information, or any other data described in sections 2 and 3 — nor your IP address (the tool's default collection of personal data is explicitly turned off in its configuration). No photo or location data is collected.</p>
   <p><strong>Where and when:</strong></p>
   <ul>
     <li>This tool is <strong>turned off during development</strong> of the app; it is only active in distributed versions (beta and the version published on the stores).</li>
@@ -183,6 +184,7 @@
     <li><strong>Account, backup and return of your data</strong> — performance of a contract: it is the service you request by creating an account (Art. 6(1)(b) GDPR).</li>
     <li><strong>Managing a Premium subscription</strong> — performance of a contract (Art. 6(1)(b)).</li>
     <li><strong>Anonymous crash reports</strong> — legitimate interest: keeping the app in working order, without identifying anyone (Art. 6(1)(f)).</li>
+    <li><strong>Optional message from the review card</strong> — legitimate interest: understanding what bothers people and improving the app, from a message you choose to send (Art. 6(1)(f)).</li>
     <li><strong>Community: username, publications, imports</strong> — performance of a contract: it is the service you request by publishing (Art. 6(1)(b)).</li>
     <li><strong>Community: moderation, reports, blocks, decision log</strong> — legal obligation under the EU Digital Services Act (Art. 6(1)(c)), and legitimate interest: keeping the library safe and being able to justify every decision (Art. 6(1)(f)).</li>
   </ul>
@@ -197,7 +199,7 @@
     <li><strong>objection</strong>: you can stop using the account at any time and go back to local mode, which remains fully functional.</li>
   </ul>
   <p>For any question or complaint, the contact address is in section 14. You also have the right to lodge a complaint with the CNIL, the French data protection authority.</p>
-  <p>The only exception, limited to the anonymous technical reports described in section 6: as they are attached to no identity (even if you have created an account, this anonymous identifier is never linked to it), they cannot be traced back to you specifically to exercise an individual right of access or erasure — they are kept by Sentry under its own retention policy, then deleted automatically.</p>
+  <p>The only exception, limited to the anonymous technical reports and messages described in section 6 (for a message, quoting it is enough to ask for its deletion): as they are attached to no identity (even if you have created an account, this anonymous identifier is never linked to it), they cannot be traced back to you specifically to exercise an individual right of access or erasure — they are kept by Sentry under its own retention policy, then deleted automatically.</p>
 
   <h2>13. Future changes</h2>
   <p>If an additional health sync (Garmin, Fitbit) or any other processing involving a new transfer of data were to be offered, this policy would be updated beforehand to describe it precisely, and the feature would be presented to you as optional — exactly as the account described in section 3 already is.</p>
