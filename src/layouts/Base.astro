@@ -6,7 +6,7 @@ import Entete from '../components/Entete.astro';
 import Pied from '../components/Pied.astro';
 
 interface Props {
-  lang?: 'fr' | 'en';
+  lang?: 'fr' | 'en' | 'es' | 'de';
   tete: string;
   corps: string;
   autreLangue?: string;
@@ -38,7 +38,7 @@ const { lang = 'fr', tete, corps, autreLangue, menu, mesure = true } = Astro.pro
 {mesure && <script is:inline data-goatcounter="https://basalapp.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>}
 </head>
 <body>
-<a class="evitement" href="#contenu">{lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}</a>
+<a class="evitement" href="#contenu">{{ fr: 'Aller au contenu', en: 'Skip to content', es: 'Ir al contenido', de: 'Zum Inhalt' }[lang]}</a>
 <Entete lang={lang} autreLangue={autreLangue} menu={menu} />
 <Fragment set:html={corps} />
 {menu !== false && <Pied lang={lang} />}

@@ -2,7 +2,7 @@
 // Barre du haut, commune à toutes les pages. Recopiée dans recipePages.gen.test.ts (calorie-tracker)
 // pour les pages recettes : la modifier aux deux endroits.
 interface Props {
-  lang: 'fr' | 'en';
+  lang: 'fr' | 'en' | 'es' | 'de';
   /** Page équivalente dans l'autre langue. */
   autreLangue?: string;
   /** Faux sur compte.html, qui n'affiche que le logo. */
@@ -10,6 +10,10 @@ interface Props {
 }
 const { lang, autreLangue = lang === 'fr' ? '/en/' : '/', menu = true } = Astro.props;
 const fr = lang === 'fr';
+// es et de : quelques pages seulement (2026-11), le reste du site renvoie au français.
+const extra = lang === 'es' || lang === 'de';
+const t = { es: { accueil: 'Basal, inicio', menu: 'Menú principal', calc: 'Calculadora', theme: 'Cambiar entre modo claro y oscuro', dl: 'Descargar' },
+  de: { accueil: 'Basal, Startseite', menu: 'Hauptmenü', calc: 'Kalorienrechner', theme: 'Zwischen hellem und dunklem Modus wechseln', dl: 'Herunterladen' } }[lang as 'es' | 'de'];
 // La rubrique active se déduit de l'adresse : « page » pour la page même, « true » pour une page de la rubrique.
 const chemin = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/');
 const rubriques: Record<string, string[]> = {
@@ -23,22 +27,24 @@ const courant = (href: string) => {
   if (chemin === cible) return 'page';
   return rubriques[href]?.includes(chemin) ? 'true' : undefined;
 };
-const liens = fr
+const liens = extra
+  ? [[lang === 'es' ? '/es/calculadora-calorias.html' : '/de/kalorienrechner.html', t!.calc]]
+  : fr
   ? [['/guides/', 'Guides'], ['/recettes/', 'Recettes'], ['/calculateurs/', 'Calculateurs'], ['/methode.html', 'Méthode'], ['/a-propos.html', 'À propos']]
   : [['/calcul-tdee.html', 'Calculator', 'fr'], ['/metabolisme-adaptatif.html', 'Metabolism', 'fr']];
 ---
 <header class="barre">
   <div class="wrap barre-in">
-    <a class="logo" href={fr ? '/' : '/en/'} aria-label={fr ? 'Basal, accueil' : 'Basal, home'}><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg>Basal</a>
+    <a class="logo" href={fr ? '/' : `/${lang}/`} aria-label={extra ? t!.accueil : fr ? 'Basal, accueil' : 'Basal, home'}><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg>Basal</a>
     {menu && (
-      <nav aria-label={fr ? 'Menu principal' : 'Main menu'}>
+      <nav aria-label={extra ? t!.menu : fr ? 'Menu principal' : 'Main menu'}>
         {liens.map(([href, nom, versFr]) => versFr
           ? <a href={href} hreflang="fr" lang="fr">{nom} <span aria-hidden="true">·FR</span></a>
           : <a href={href} aria-current={courant(href)}>{nom}</a>)}
         <a class="lang" href={autreLangue} hreflang={fr ? 'en' : 'fr'} lang={fr ? 'en' : 'fr'}>{fr ? 'EN' : 'FR'}</a>
       </nav>
     )}
-    <button type="button" class="theme" aria-label={fr ? 'Basculer entre mode clair et mode sombre' : 'Switch between light and dark mode'}><svg class="lune" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="soleil" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg></button>
-    {menu && <a class="bouton" href={fr ? '/#telecharger' : '/en/#download'}>{fr ? 'Télécharger' : 'Download'}</a>}
+    <button type="button" class="theme" aria-label={extra ? t!.theme : fr ? 'Basculer entre mode clair et mode sombre' : 'Switch between light and dark mode'}><svg class="lune" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="soleil" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg></button>
+    {menu && <a class="bouton" href={fr ? '/#telecharger' : `/${lang}/#download`}>{extra ? t!.dl : fr ? 'Télécharger' : 'Download'}</a>}
   </div>
 </header>

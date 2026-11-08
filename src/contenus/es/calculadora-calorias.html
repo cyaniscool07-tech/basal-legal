@@ -1,0 +1,196 @@
+
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Ruta de navegación"><a href="/es/">Inicio</a><span aria-hidden="true">›</span>Calculadora de calorías</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Calculadora gratis</p>
+    <h1>Calculadora de calorías: metabolismo basal y gasto diario</h1>
+    <p class="chapeau">Con la ecuación de Mifflin-St Jeor, la misma que usa la app. No se envía nada: el cálculo
+    se hace en tu navegador.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="f" novalidate>
+      <div class="champs">
+            <div class="champ">
+              <label for="sexe">Sexo</label>
+              <select id="sexe">
+                <option value="male">Hombre</option>
+                <option value="female">Mujer</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="age">Edad</label>
+              <input id="age" type="number" inputmode="numeric" min="14" max="100" placeholder="31">
+            </div>
+            <div class="champ">
+              <label for="taille">Altura (cm)</label>
+              <input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="178">
+            </div>
+            <div class="champ">
+              <label for="poids">Peso (kg)</label>
+              <input id="poids" type="number" inputmode="decimal" min="30" max="300" step="0.1" placeholder="75">
+            </div>
+            <div class="champ large">
+              <label for="activite">Nivel de actividad</label>
+              <!-- Mêmes coefficients et mêmes équivalences en pas que la page française (calcul-tdee). -->
+              <select id="activite">
+                <option value="1.2">Sedentario — poco o ningún deporte · menos de 5.000 pasos/día</option>
+                <option value="1.375">Ligeramente activo — 1 a 3 sesiones por semana · 5.000 a 7.500 pasos/día</option>
+                <option value="1.55" selected>Moderadamente activo — 3 a 5 sesiones por semana · 7.500 a 10.000 pasos/día</option>
+                <option value="1.725">Activo — 6 a 7 sesiones por semana · 10.000 a 12.500 pasos/día</option>
+                <option value="1.9">Muy activo — trabajo físico o doble entrenamiento · más de 12.500 pasos/día</option>
+              </select>
+            </div>
+          </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite">
+          <p class="vide" id="vide">Rellena los cuatro campos para ver el resultado.</p>
+          <div id="sortie" hidden>
+            <div class="ligne">
+              <span>Metabolismo basal — en reposo completo</span><b id="bmr">—</b>
+            </div>
+            <div class="ligne total">
+              <span>Gasto diario estimado (mantenimiento)</span><b id="tdee" data-flottant="Gasto diario">—</b>
+            </div>
+          </div>
+        </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <div class="en-bref">
+        <p class="surtitre">En resumen</p>
+        <p>Tu gasto diario (TDEE) es tu metabolismo basal multiplicado por un coeficiente de actividad de 1,2 a 1,9. El metabolismo basal se calcula con Mifflin-St Jeor: 10 × peso + 6,25 × altura − 5 × edad, +5 en un hombre y −161 en una mujer. El resultado son tus calorías de mantenimiento, con un margen de error habitual de un 10 %.</p>
+      </div>
+
+      <div class="encadre">
+        <p>
+          <strong>Esta cifra es una estimación, no una medida.</strong> Da el gasto medio de las
+          personas que se parecen a ti en cuatro variables. Ignora tu masa muscular, tu tiroides y tu
+          historial de dietas. Los estudios de validación suelen indicar un 10 % de desviación, es
+          decir, 250 kcal al día sobre un gasto de 2.500.
+        </p>
+      </div>
+
+      <h2>Cómo hacerla exacta</h2>
+      <p>
+        La única forma de conocer tu gasto real es observarlo: comparar lo que comes con la
+        evolución efectiva de tu peso durante varias semanas. Es lo que hace Basal, partiendo de este
+        mismo cálculo y corrigiéndolo a medida que llegan los datos.
+      </p>
+      <div class="appel">
+        <p class="appel-t">Sigue esta cifra en el tiempo</p>
+        <p>
+          Basal parte de la misma fórmula y la corrige con lo que registras y con la evolución real
+          de tu peso. El seguimiento de calorías, peso y entrenamientos es gratis y no pide ninguna
+          cuenta.
+        </p>
+        <div class="cta">
+          <a class="store-badge play" data-goatcounter-click="store-play-es-calculadora" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;hl=es&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Des-calculadora">
+            <img src="/img/google-play-en.png" alt="Disponible en Google Play" width="148" height="44" loading="lazy">
+          </a>
+          <a class="store-badge apple" data-goatcounter-click="store-apple-es-calculadora" href="https://apps.apple.com/es/app/basal/id6793001641">
+            <img src="/img/app-store-en.svg" alt="Descargar en la App Store" width="132" height="44" loading="lazy">
+          </a>
+        </div>
+      </div>
+
+      <h2>El detalle del cálculo</h2>
+      <p>
+        Mifflin-St Jeor da el metabolismo basal: <code>10 × peso + 6,25 × altura − 5 × edad</code>,
+        y luego <code>+ 5</code> para un hombre y <code>− 161</code> para una mujer. El gasto diario es
+        ese resultado multiplicado por el coeficiente de actividad, de 1,2 a 1,9.
+      </p>
+      <p>
+        Ese coeficiente es el eslabón débil: entre «sedentario» y «moderadamente activo», la
+        diferencia supera las 500 kcal al día. Por eso el selector indica equivalencias en pasos: una
+        referencia observable vale más que una impresión. No entran en ningún cálculo: sirven para
+        situarte, no para clasificarte.
+      </p>
+
+      <h2>¿Y después?</h2>
+      <p>
+        Esta cifra es tu mantenimiento. Para saber qué hacer con ella:
+        <a href="/es/cuantas-calorias-al-dia.html">cuántas calorías al día</a> según tu perfil, o
+        <a href="/es/deficit-calorico.html">cuánto restar para adelgazar</a>.
+      </p>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>Esta herramienta es informativa. Basal no es un dispositivo médico y no sustituye el consejo
+    de un profesional sanitario.</p>
+  </aside>
+</main>
+
+<script>
+// Les MÊMES formules que l'application et que /calcul-tdee.html : toute modification se fait aux trois endroits.
+(function () {
+  var f = document.getElementById('f');
+  var vide = document.getElementById('vide');
+  var sortie = document.getElementById('sortie');
+  function nb(id) {
+    var v = parseFloat(document.getElementById(id).value);
+    return isFinite(v) ? v : null;
+  }
+  function calcule() {
+    var poids = nb('poids'), taille = nb('taille'), age = nb('age');
+    var sexe = document.getElementById('sexe').value;
+    var coef = parseFloat(document.getElementById('activite').value);
+    var ok = poids > 25 && poids < 350 && taille > 100 && taille < 250 && age > 10 && age < 110;
+    vide.hidden = ok;
+    sortie.hidden = !ok;
+    if (!ok) return;
+    var bmr = 10 * poids + 6.25 * taille - 5 * age + (sexe === 'male' ? 5 : -161);
+    var tdee = bmr * coef;
+    document.getElementById('bmr').textContent = Math.round(bmr).toLocaleString('es-ES') + ' kcal';
+    document.getElementById('tdee').textContent = Math.round(tdee).toLocaleString('es-ES') + ' kcal';
+  }
+  f.addEventListener('input', calcule);
+  f.addEventListener('change', calcule);
+  f.addEventListener('submit', function (e) { e.preventDefault(); });
+  calcule();
+})();
+</script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de calorías: metabolismo basal y gasto diario",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Todos",
+    "url": "https://basal-app.fr/es/calculadora-calorias.html",
+    "inLanguage": "es",
+    "description": "Cálculo del metabolismo basal y del gasto energético diario con la ecuación de Mifflin-St Jeor.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "publisher": { "@id": "https://basal-app.fr/#organisation" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cómo se calculan las calorías de mantenimiento?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Se calcula el metabolismo basal con la ecuación de Mifflin-St Jeor (10 × peso en kg + 6,25 × altura en cm − 5 × edad, +5 en un hombre y −161 en una mujer) y se multiplica por un coeficiente de actividad de 1,2 (sedentario) a 1,9 (muy activo)." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Es exacto el resultado de una calculadora de calorías?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No del todo: es una estimación con un margen de error habitual de un 10 %, unas 250 kcal al día sobre un gasto de 2.500. La forma de conocer el gasto real es comparar lo que se come con la tendencia del peso durante varias semanas." }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://basal-app.fr/es/" },
+      { "@type": "ListItem", "position": 2, "name": "Calculadora de calorías", "item": "https://basal-app.fr/es/calculadora-calorias.html" }
+    ]
+  }
+]
+</script>

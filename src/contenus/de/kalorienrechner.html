@@ -1,0 +1,196 @@
+
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Brotkrümelnavigation"><a href="/de/">Startseite</a><span aria-hidden="true">›</span>Kalorienrechner</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Kostenloser Rechner</p>
+    <h1>Kalorienrechner: Grundumsatz und Kalorienbedarf berechnen</h1>
+    <p class="chapeau">Mit der Mifflin-St-Jeor-Formel, derselben wie in der App. Es wird nichts gesendet: Die
+    Berechnung läuft in deinem Browser.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="f" novalidate>
+      <div class="champs">
+            <div class="champ">
+              <label for="sexe">Geschlecht</label>
+              <select id="sexe">
+                <option value="male">Mann</option>
+                <option value="female">Frau</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="age">Alter</label>
+              <input id="age" type="number" inputmode="numeric" min="14" max="100" placeholder="31">
+            </div>
+            <div class="champ">
+              <label for="taille">Größe (cm)</label>
+              <input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="178">
+            </div>
+            <div class="champ">
+              <label for="poids">Gewicht (kg)</label>
+              <input id="poids" type="number" inputmode="decimal" min="30" max="300" step="0.1" placeholder="75">
+            </div>
+            <div class="champ large">
+              <label for="activite">Aktivitätsniveau</label>
+              <!-- Mêmes coefficients et mêmes équivalences en pas que la page française (calcul-tdee). -->
+              <select id="activite">
+                <option value="1.2">Sitzend — wenig oder kein Sport · unter 5.000 Schritte/Tag</option>
+                <option value="1.375">Leicht aktiv — 1 bis 3 Einheiten pro Woche · 5.000 bis 7.500 Schritte/Tag</option>
+                <option value="1.55" selected>Mäßig aktiv — 3 bis 5 Einheiten pro Woche · 7.500 bis 10.000 Schritte/Tag</option>
+                <option value="1.725">Aktiv — 6 bis 7 Einheiten pro Woche · 10.000 bis 12.500 Schritte/Tag</option>
+                <option value="1.9">Sehr aktiv — körperliche Arbeit oder doppeltes Training · über 12.500 Schritte/Tag</option>
+              </select>
+            </div>
+          </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite">
+          <p class="vide" id="vide">Fülle die vier Felder aus, um das Ergebnis zu sehen.</p>
+          <div id="sortie" hidden>
+            <div class="ligne">
+              <span>Grundumsatz — in völliger Ruhe</span><b id="bmr">—</b>
+            </div>
+            <div class="ligne total">
+              <span>Geschätzter Tagesbedarf (Erhaltung)</span><b id="tdee" data-flottant="Tagesbedarf">—</b>
+            </div>
+          </div>
+        </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <div class="en-bref">
+        <p class="surtitre">Kurz gesagt</p>
+        <p>Dein Kalorienbedarf (TDEE) ist dein Grundumsatz mal einem Aktivitätsfaktor von 1,2 bis 1,9. Der Grundumsatz wird mit Mifflin-St Jeor berechnet: 10 × Gewicht + 6,25 × Größe − 5 × Alter, +5 bei Männern und −161 bei Frauen. Das Ergebnis ist dein Erhaltungsbedarf, mit einer üblichen Fehlerspanne von etwa 10 %.</p>
+      </div>
+
+      <div class="encadre">
+        <p>
+          <strong>Diese Zahl ist eine Schätzung, keine Messung.</strong> Sie gibt den durchschnittlichen
+          Verbrauch von Menschen wieder, die dir in vier Merkmalen ähneln. Sie kennt weder deine
+          Muskelmasse noch deine Schilddrüse noch deine Diätgeschichte. Validierungsstudien berichten
+          häufig von 10 % Abweichung, also 250 kcal pro Tag bei einem Verbrauch von 2.500.
+        </p>
+      </div>
+
+      <h2>So wird sie genau</h2>
+      <p>
+        Den echten Verbrauch erfährst du nur durch Beobachtung: Vergleiche über mehrere Wochen, was du
+        isst, mit der tatsächlichen Entwicklung deines Gewichts. Genau das macht Basal: Die App startet
+        mit derselben Berechnung und korrigiert sie, sobald Daten hinzukommen.
+      </p>
+      <div class="appel">
+        <p class="appel-t">Diese Zahl über die Zeit verfolgen</p>
+        <p>
+          Basal startet mit derselben Formel und korrigiert sie anhand dessen, was du einträgst, und
+          der tatsächlichen Entwicklung deines Gewichts. Kalorien, Gewicht und Training zu tracken ist
+          kostenlos und braucht keine Anmeldung.
+        </p>
+        <div class="cta">
+          <a class="store-badge play" data-goatcounter-click="store-play-de-kalorienrechner" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;hl=de&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Dde-kalorienrechner">
+            <img src="/img/google-play-en.png" alt="Jetzt bei Google Play" width="148" height="44" loading="lazy">
+          </a>
+          <a class="store-badge apple" data-goatcounter-click="store-apple-de-kalorienrechner" href="https://apps.apple.com/de/app/basal/id6793001641">
+            <img src="/img/app-store-en.svg" alt="Laden im App Store" width="132" height="44" loading="lazy">
+          </a>
+        </div>
+      </div>
+
+      <h2>Die Berechnung im Detail</h2>
+      <p>
+        Mifflin-St Jeor liefert den Grundumsatz: <code>10 × Gewicht + 6,25 × Größe − 5 × Alter</code>,
+        dann <code>+ 5</code> für Männer und <code>− 161</code> für Frauen. Der Tagesbedarf ist dieses
+        Ergebnis mal dem Aktivitätsfaktor, von 1,2 bis 1,9.
+      </p>
+      <p>
+        Dieser Faktor ist das schwächste Glied: Zwischen „sitzend“ und „mäßig aktiv“ liegen über
+        500 kcal pro Tag. Deshalb zeigt die Auswahl Schritt-Äquivalente an: Ein beobachtbarer
+        Anhaltspunkt ist besser als ein Bauchgefühl. Sie fließen in keine Berechnung ein: Sie helfen
+        dir, dich einzuordnen, nicht, dich einzustufen.
+      </p>
+
+      <h2>Und dann?</h2>
+      <p>
+        Diese Zahl ist dein Erhaltungsbedarf. Zum Abnehmen ziehst du üblicherweise 10 bis 20 % ab, für
+        Muskelaufbau legst du 5 bis 10 % drauf. Halte die Zahl zwei bis drei Wochen, bevor du sie
+        beurteilst, und passe sie dann in kleinen Schritten von 100 bis 150 kcal an.
+      </p>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>Dieses Tool dient der Information. Basal ist kein Medizinprodukt und ersetzt nicht den Rat
+    einer medizinischen Fachkraft.</p>
+  </aside>
+</main>
+
+<script>
+// Les MÊMES formules que l'application et que /calcul-tdee.html : toute modification se fait à tous les endroits.
+(function () {
+  var f = document.getElementById('f');
+  var vide = document.getElementById('vide');
+  var sortie = document.getElementById('sortie');
+  function nb(id) {
+    var v = parseFloat(document.getElementById(id).value);
+    return isFinite(v) ? v : null;
+  }
+  function calcule() {
+    var poids = nb('poids'), taille = nb('taille'), age = nb('age');
+    var sexe = document.getElementById('sexe').value;
+    var coef = parseFloat(document.getElementById('activite').value);
+    var ok = poids > 25 && poids < 350 && taille > 100 && taille < 250 && age > 10 && age < 110;
+    vide.hidden = ok;
+    sortie.hidden = !ok;
+    if (!ok) return;
+    var bmr = 10 * poids + 6.25 * taille - 5 * age + (sexe === 'male' ? 5 : -161);
+    var tdee = bmr * coef;
+    document.getElementById('bmr').textContent = Math.round(bmr).toLocaleString('de-DE') + ' kcal';
+    document.getElementById('tdee').textContent = Math.round(tdee).toLocaleString('de-DE') + ' kcal';
+  }
+  f.addEventListener('input', calcule);
+  f.addEventListener('change', calcule);
+  f.addEventListener('submit', function (e) { e.preventDefault(); });
+  calcule();
+})();
+</script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Kalorienrechner: Grundumsatz und Kalorienbedarf",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Alle",
+    "url": "https://basal-app.fr/de/kalorienrechner.html",
+    "inLanguage": "de",
+    "description": "Berechnung des Grundumsatzes und des täglichen Energiebedarfs mit der Mifflin-St-Jeor-Formel.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "publisher": { "@id": "https://basal-app.fr/#organisation" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wie berechne ich meinen Kalorienbedarf?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Berechne den Grundumsatz mit der Mifflin-St-Jeor-Formel (10 × Gewicht in kg + 6,25 × Größe in cm − 5 × Alter, +5 bei Männern und −161 bei Frauen) und multipliziere ihn mit einem Aktivitätsfaktor von 1,2 (sitzend) bis 1,9 (sehr aktiv)." }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie genau ist ein Kalorienrechner?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Es ist eine Schätzung mit einer üblichen Fehlerspanne von etwa 10 %, also rund 250 kcal pro Tag bei einem Verbrauch von 2.500. Den echten Bedarf zeigt der Vergleich von Kalorienaufnahme und Gewichtstrend über mehrere Wochen." }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://basal-app.fr/de/" },
+      { "@type": "ListItem", "position": 2, "name": "Kalorienrechner", "item": "https://basal-app.fr/de/kalorienrechner.html" }
+    ]
+  }
+]
+</script>

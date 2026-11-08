@@ -1,0 +1,22 @@
+# Basal
+
+> Basal is a mobile app (iPhone and Android) for tracking calories, macros, weight and strength training. It estimates a person's real daily energy expenditure by comparing what they eat with the trend of their body weight, starting from the Mifflin-St Jeor equation. Basic tracking is free, without ads and without an account; an optional Premium subscription adds a weekly review and advanced analysis. Published by Théo Serrano (sole trader, France). The app interface exists in French, English, Spanish and German; its food database is the French Ciqual table (ANSES).
+
+## Calculators
+- [Calcul du métabolisme de base et du TDEE (fr)](https://basal-app.fr/calcul-tdee.html): Mifflin-St Jeor, activity factor 1.2 to 1.9, runs in the browser.
+- [Calculadora de calorías (es)](https://basal-app.fr/es/calculadora-calorias.html): same calculation, in Spanish.
+- [Kalorienrechner (de)](https://basal-app.fr/de/kalorienrechner.html): same calculation, in German.
+- [Calculateur de macros (fr)](https://basal-app.fr/calcul-macros.html)
+- [Calculer sa dépense réelle (fr)](https://basal-app.fr/calcul-depense-reelle.html): expenditure from intake and weight trend.
+
+## Guides
+- [Combien de calories par jour (fr)](https://basal-app.fr/combien-de-calories-par-jour.html) · [¿Cuántas calorías al día? (es)](https://basal-app.fr/es/cuantas-calorias-al-dia.html)
+- [Déficit calorique (fr)](https://basal-app.fr/deficit-calorique.html) · [Déficit calórico (es)](https://basal-app.fr/es/deficit-calorico.html)
+- [Métabolisme adaptatif (fr)](https://basal-app.fr/metabolisme-adaptatif.html): why a formula is only a starting point.
+- [Protéines par jour (fr)](https://basal-app.fr/proteines-par-jour.html)
+- [Méthode de calcul de Basal (fr)](https://basal-app.fr/methode.html): every formula the app uses, with sources.
+
+## App
+- [Basal (fr)](https://basal-app.fr/) · [English](https://basal-app.fr/en/) · [Español](https://basal-app.fr/es/) · [Deutsch](https://basal-app.fr/de/)
+- [Questions fréquentes (fr)](https://basal-app.fr/questions-frequentes.html)
+- [Privacy policy (en)](https://basal-app.fr/en/privacy.html)

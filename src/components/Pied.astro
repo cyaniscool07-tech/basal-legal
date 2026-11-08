@@ -2,13 +2,29 @@
 import faq from '../donnees/faq.json';
 // Pied de page commun (il existait en 22 variantes). Les mentions propres à une page restent dans
 // son contenu, en <aside class="note-page"> juste avant.
-interface Props { lang: 'fr' | 'en' }
-const fr = Astro.props.lang === 'fr';
+interface Props { lang: 'fr' | 'en' | 'es' | 'de' }
+const lang = Astro.props.lang;
+const fr = lang === 'fr';
+// es et de : pied court, textes propres à la langue ; le reste du site est en français.
+const x = {
+  es: { desc: 'Seguimiento de nutrición, peso, metabolismo y musculación. Editado por Théo Serrano, empresario individual, con el nombre comercial Basal:', med: 'Basal es una aplicación móvil. No es un dispositivo médico y no sustituye el consejo de un profesional sanitario.', marques: 'Google Play y el logotipo de Google Play son marcas de Google LLC. Apple y el logotipo de App Store son marcas de Apple Inc., registradas en EE. UU. y otros países.', accueil: 'Basal, inicio' },
+  de: { desc: 'Ernährungs-, Gewichts-, Stoffwechsel- und Krafttrainings-Tracking. Herausgegeben von Théo Serrano, Einzelunternehmer, unter dem Handelsnamen Basal:', med: 'Basal ist eine mobile App. Sie ist kein Medizinprodukt und ersetzt nicht den Rat einer medizinischen Fachkraft.', marques: 'Google Play und das Google-Play-Logo sind Marken von Google LLC. Apple und das App-Store-Logo sind Marken von Apple Inc., eingetragen in den USA und anderen Ländern.', accueil: 'Basal, Startseite' },
+}[lang as 'es' | 'de'];
 // Encart « Questions fréquentes » : réponses dépliables sur l'accueil seulement (ailleurs, des liens), pour ne pas
 // répéter le même texte sur toutes les pages. Une seule source : src/donnees/faq.json.
 const accueil = Astro.url.pathname === '/' || Astro.url.pathname === '/index.html';
 const questionsPied = ['gratuit', 'compte', 'montre', 'photo', 'sauvegarde', 'hors-ligne'].map((id) => faq.find((q) => q.id === id)!);
-const colonnes = fr
+const colonnes = lang === 'es'
+  ? [
+      ['Basal en español', [['/es/', 'Inicio'], ['/es/calculadora-calorias.html', 'Calculadora de calorías'], ['/es/cuantas-calorias-al-dia.html', '¿Cuántas calorías al día?'], ['/es/deficit-calorico.html', 'Déficit calórico']]],
+      ['Legal', [['/en/privacy.html', 'Privacy policy (English)', 'en'], ['/mentions-legales.html', 'Mentions légales', 'fr'], ['/', 'Français', 'fr'], ['/en/', 'English', 'en'], ['/de/', 'Deutsch', 'de']]],
+    ]
+  : lang === 'de'
+  ? [
+      ['Basal auf Deutsch', [['/de/', 'Startseite'], ['/de/kalorienrechner.html', 'Kalorienrechner']]],
+      ['Rechtliches', [['/en/privacy.html', 'Privacy policy (English)', 'en'], ['/mentions-legales.html', 'Mentions légales', 'fr'], ['/', 'Français', 'fr'], ['/en/', 'English', 'en'], ['/es/', 'Español', 'es']]],
+    ]
+  : fr
   ? [
       ['Guides', [
         ['/guides/', 'Tous les guides'],
@@ -45,6 +61,8 @@ const colonnes = fr
         ['/mentions-legales.html', 'Mentions légales'],
         ['/suppression-compte.html', 'Suppression de compte'],
         ['/en/', 'English', 'en'],
+        ['/es/', 'Español', 'es'],
+        ['/de/', 'Deutsch', 'de'],
       ]],
     ]
   : [
@@ -54,6 +72,8 @@ const colonnes = fr
         ['/mentions-legales.html', 'Legal notice', 'fr'],
         ['/suppression-compte.html', 'Account deletion', 'fr'],
         ['/', 'Français', 'fr'],
+        ['/es/', 'Español', 'es'],
+        ['/de/', 'Deutsch', 'de'],
       ]],
       ['In French', [
         ['/calcul-tdee.html', 'Energy expenditure calculator', 'fr'],
@@ -76,8 +96,8 @@ const colonnes = fr
     )}
     <div class="pied-grille">
       <div>
-        <a class="logo" href={fr ? '/' : '/en/'} aria-label={fr ? 'Basal, accueil' : 'Basal, home'}><svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="21" fill="none" stroke="#f97316" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg>Basal</a>
-        {fr
+        <a class="logo" href={fr ? '/' : `/${lang}/`} aria-label={x ? x.accueil : fr ? 'Basal, accueil' : 'Basal, home'}><svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="21" fill="none" stroke="#f97316" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg>Basal</a>
+        {x ? <p style="margin-top:14px">{x.desc} <a href="mailto:contact@basal-app.fr">contact@basal-app.fr</a>.</p> : fr
           ? <p style="margin-top:14px">Suivi nutritionnel, poids, métabolisme et musculation. Édité par Théo Serrano, entrepreneur individuel, sous le nom commercial Basal : <a href="mailto:contact@basal-app.fr">contact@basal-app.fr</a>.</p>
           : <p style="margin-top:14px">Nutrition, weight, metabolism and strength tracking. Published by Théo Serrano, sole trader, trading as Basal: <a href="mailto:contact@basal-app.fr">contact@basal-app.fr</a>.</p>}
       </div>
@@ -89,10 +109,10 @@ const colonnes = fr
       ))}
     </div>
     <div class="mentions">
-      {fr
+      {x ? <p style="margin:0">{x.med}</p> : fr
         ? <p style="margin:0">Basal est une application mobile. Elle n’est pas un dispositif médical et ne remplace pas l’avis d’un professionnel de santé.</p>
         : <p style="margin:0">Basal is a mobile app. It is not a medical device and does not replace advice from a healthcare professional.</p>}
-      {fr
+      {x ? <p class="marques" style="margin:0">{x.marques}</p> : fr
         ? <p class="marques" style="margin:0">Google Play et le logo Google Play sont des marques de Google LLC. Apple et le logo App Store sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres pays.</p>
         : <p class="marques" style="margin:0">Google Play and the Google Play logo are trademarks of Google LLC. Apple and the App Store logo are trademarks of Apple Inc., registered in the U.S. and other countries.</p>}
     </div>
