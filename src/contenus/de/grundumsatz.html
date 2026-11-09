@@ -1,0 +1,130 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Brotkrümelnavigation"><a href="/de/">Startseite</a><span aria-hidden="true">›</span>Grundumsatz</nav>
+  <header class="article-tete">
+    <p class="surtitre">Kalorien und Verbrauch</p>
+    <h1>Grundumsatz: was er ist und was ihn verändert</h1>
+    <p class="chapeau">Der Grundumsatz ist die Energie, die dein Körper in völliger Ruhe verbraucht, um zu atmen, das Herz schlagen zu lassen und die Körpertemperatur zu halten. Bei einem wenig aktiven Erwachsenen ist er der größte Teil des Tagesverbrauchs. So wird er geschätzt, das verändert ihn wirklich, und das kann eine Formel nicht über dich wissen.</p>
+    <div class="signature">
+      <span class="avatar" aria-hidden="true">TS</span>
+      <span>Von <b>Théo Serrano</b>, Entwickler von Basal</span>
+      <span aria-hidden="true">·</span>
+      <span>Veröffentlicht am <time datetime="2026-11-09">9. November 2026</time></span>
+    </div>
+  </header>
+
+  <div class="article">
+    <aside class="sommaire" aria-labelledby="sommaire-t">
+      <p id="sommaire-t">Inhalt</p>
+      <ol>
+        <li><a href="#definition">Definition</a></li>
+        <li><a href="#anteil">Sein Anteil am Verbrauch</a></li>
+        <li><a href="#schaetzen">Wie man ihn schätzt</a></li>
+        <li><a href="#beispiele">Rechenbeispiele</a></li>
+        <li><a href="#einfluss">Was ihn verändert</a></li>
+        <li><a href="#alter">Und das Alter?</a></li>
+        <li><a href="#darunter">Weniger essen als der Grundumsatz</a></li>
+        <li><a href="#unbekannt">Was man nicht weiß</a></li>
+        <li><a href="#quellen">Quellen</a></li>
+      </ol>
+    </aside>
+
+    <article class="corps">
+      <div class="en-bref">
+        <p class="surtitre">Kurz gesagt</p>
+        <p>Der Grundumsatz liegt bei Erwachsenen meist zwischen 1.200 und 2.000 kcal pro Tag. Er hängt vor allem von deiner fettfreien Masse ab (Muskeln und Organe), also von Gewicht und Größe, viel stärker als vom Alter. Eine Formel wie Mifflin-St Jeor schätzt ihn für die meisten Menschen auf etwa 10 % genau, kann bei dir aber stärker danebenliegen.</p>
+      </div>
+
+      <h2 id="definition">Definition</h2>
+      <p>Der <strong>Grundumsatz</strong> (englisch BMR, <i>basal metabolic rate</i>) ist der Energieverbrauch eines wachen Menschen, der liegt, völlig ruht, seit zwölf Stunden nüchtern ist und sich in einem Raum mit neutraler Temperatur befindet. Er ist der Betriebsaufwand des Körpers: Herz, Atmung, Gehirn, Leber, Nieren, Erneuerung der Zellen und Halten der Körpertemperatur.</p>
+      <p>Im Labor gemessen spricht man eher vom <strong>Ruheumsatz</strong> (RMR, <i>resting metabolic rate</i>), mit etwas weniger strengen Bedingungen und oft einem etwas höheren Wert. Die gängigen Formeln, auch die von Basal, schätzen eigentlich diesen Ruheumsatz. Der Unterschied ist gering, und im Alltag werden beide Begriffe vermischt.</p>
+
+      <h2 id="anteil">Sein Anteil am Verbrauch</h2>
+      <p>Dein Tagesverbrauch besteht aus drei Blöcken:</p>
+      <ul>
+        <li><strong>dem Grundumsatz</strong>, etwa 60 bis 70 % des Verbrauchs bei einer wenig aktiven Person;</li>
+        <li><strong>der Verdauung</strong> (thermischer Effekt der Nahrung), etwa 10 %;</li>
+        <li><strong>der Aktivität</strong>: Sport, vor allem aber alle Bewegungen im Alltag (Gehen, Stehen, sich Bewegen). Dieser Block unterscheidet sich am stärksten von Person zu Person.</li>
+      </ul>
+      <p>Deshalb ist der Grundumsatz nicht das, was du essen solltest, sondern der Ausgangspunkt. Für deinen Gesamtumsatz wird er mit einem Aktivitätsfaktor multipliziert, von 1,2 bei sitzender Lebensweise bis 1,9 bei täglichem intensivem Sport. Der <a href="/de/kalorienrechner.html">Kalorienrechner</a> erledigt beide Schritte.</p>
+
+      <h2 id="schaetzen">Wie man ihn schätzt</h2>
+      <p>Direkt gemessen wird er mit indirekter Kalorimetrie: Ein Gerät analysiert zwanzig bis dreißig Minuten lang den verbrauchten Sauerstoff und das ausgeatmete Kohlendioxid. Das gibt es in Kliniken und manchen Laboren, sonst selten.</p>
+      <p>Im Alltag nutzt man eine Gleichung. Basal verwendet die von <strong>Mifflin-St Jeor</strong> (1990), die die systematische Übersichtsarbeit der American Dietetic Association (Frankenfield, 2005) als die zuverlässigste der gängigen Gleichungen für Erwachsene bewertet hat, auch bei Übergewicht:</p>
+      <ul>
+        <li>Mann: <code>10 × Gewicht (kg) + 6,25 × Größe (cm) − 5 × Alter + 5</code></li>
+        <li>Frau: <code>10 × Gewicht (kg) + 6,25 × Größe (cm) − 5 × Alter − 161</code></li>
+      </ul>
+      <p>Die ältere Harris-Benedict-Formel (1919) überschätzt im Mittel den Verbrauch heutiger Bevölkerungen. Wenn du deine fettfreie Masse kennst, etwa aus einer DEXA-Messung, berücksichtigt die Katch-McArdle-Gleichung (<code>370 + 21,6 × fettfreie Masse in kg</code>) sie direkt. Körperfettwaagen mit Bioimpedanz liefern dafür eine zu ungenaue fettfreie Masse.</p>
+
+      <h2 id="beispiele">Rechenbeispiele</h2>
+      <p>Diese Ergebnisse berechnet der Code der App selbst: Ein automatischer Test prüft, dass sie stimmen, falls sich die Formel ändert.</p>
+      <div class="calcul" role="group" aria-label="Beispiele für den Grundumsatz">
+        <div class="titre">Mit Mifflin-St Jeor</div>
+        <div class="ligne"><span>Frau, 45 Jahre, 165 cm, 60 kg</span><b>1.245 kcal</b></div>
+        <div class="ligne"><span>Frau, 30 Jahre, 175 cm, 70 kg</span><b>1.483 kcal</b></div>
+        <div class="ligne"><span>Mann, 30 Jahre, 175 cm, 70 kg</span><b>1.649 kcal</b></div>
+        <div class="ligne"><span>Derselbe Mann mit 50 Jahren</span><b>1.549 kcal</b></div>
+        <div class="ligne"><span>Mann, 55 Jahre, 180 cm, 90 kg</span><b>1.755 kcal</b></div>
+      </div>
+      <p>Bei gleicher Größe, gleichem Gewicht und Alter ergibt die Formel für eine Frau 166 kcal weniger: Das ist der durchschnittliche Unterschied an fettfreier Masse zwischen den Geschlechtern, kein „langsamerer“ Stoffwechsel. Für deinen eigenen Wert zeigt der <a href="/de/kalorienrechner.html">Rechner</a> Grundumsatz und Tagesverbrauch an, ohne etwas zu senden.</p>
+
+      <h2 id="einfluss">Was ihn verändert</h2>
+      <p>Eine Studie mit 150 Erwachsenen, deren Grundumsatz gemessen wurde (Johnstone, 2005), hat untersucht, was die Unterschiede zwischen Menschen erklärt:</p>
+      <ul>
+        <li><strong>die fettfreie Masse</strong> erklärt allein etwa 63 % der Unterschiede;</li>
+        <li><strong>die Fettmasse</strong> etwa 6 %: Sie verbraucht wenig, aber sie verbraucht;</li>
+        <li><strong>das Alter</strong> etwa 2 %;</li>
+        <li>etwa ein Viertel der Unterschiede bleibt unerklärt.</li>
+      </ul>
+      <p>Ist die fettfreie Masse berücksichtigt, fügt das Geschlecht kaum etwas hinzu. Muskeln zählen, aber weniger als oft behauptet: Ein Kilo Muskel verbraucht in Ruhe etwa 13 kcal pro Tag, während Leber, Gehirn, Herz und Nieren, die wenig wiegen, viel mehr verbrauchen. 2 kg mehr Muskeln heben den Grundumsatz um einige Dutzend kcal, nicht um mehrere Hundert.</p>
+      <p>Abnehmen senkt ihn dagegen: Ein leichterer Körper verbraucht weniger. Ein Teil dieses Rückgangs geht über das hinaus, was der Gewichtsverlust erklärt: Das ist die metabolische Anpassung, und deshalb reicht eine einmal berechnete Formel während einer Diät nicht aus.</p>
+
+      <h2 id="alter">Und das Alter?</h2>
+      <p>Die Formel zieht 5 kcal pro Lebensjahr ab: ein Mittelwert aus Gruppen, der das Alter mit dem oft damit einhergehenden Muskelverlust vermischt. Eine große Studie mit über 6.400 Personen (Pontzer, 2021) fand, dass der Verbrauch, bereinigt um Körpergröße und Körperzusammensetzung, <strong>zwischen 20 und 60 Jahren stabil bleibt</strong> und danach um etwa 0,7 % pro Jahr sinkt.</p>
+      <p>Anders gesagt: „Mit 40 wird der Stoffwechsel langsamer“ stimmt vor allem, wenn man Muskeln verliert und sich weniger bewegt. Aktiv bleiben und Krafttraining begrenzen den größten Teil des Rückgangs.</p>
+
+      <h2 id="darunter">Weniger essen als der Grundumsatz</h2>
+      <p>Da der Gesamtverbrauch höher ist als der Grundumsatz, bedeutet etwas weniger zu essen nicht, dass der Körper „abschaltet“. Eine so niedrige Zufuhr lässt aber wenig Platz für Eiweiß, Ballaststoffe und Mikronährstoffe und verstärkt Müdigkeit und Muskelabbau.</p>
+      <p>Basal hält sich deshalb an eine einfache Regel: Das vorgeschlagene Kalorienziel liegt <strong>nie unter deinem geschätzten Grundumsatz</strong>. Das ist eine Vorsichtsentscheidung der App, kein physiologisches Gesetz.</p>
+
+      <h2 id="unbekannt">Was man nicht weiß</h2>
+      <div class="inconnu">
+        <p><strong>Deinen genauen Wert.</strong> Eine Formel liefert den Durchschnitt der Menschen, die dir auf dem Papier ähneln. Bei einem Teil der Menschen weicht die Messung um mehr als 10 % ab, also 150 kcal oder mehr.</p>
+        <p><strong>Deine fettfreie Masse.</strong> Sie erklärt den Großteil der Unterschiede, aber keine Formel auf Basis von Gewicht und Größe kennt sie.</p>
+        <p style="margin:0"><strong>Den Einfluss von Schlaf, Stress oder Kälte auf deinen Tag.</strong> Es gibt ihn, aber er ist gering und bei einer einzelnen Person schwer zu beziffern.</p>
+      </div>
+      <p>Ohne Labor lässt sich die Schätzung nur korrigieren, indem man über einige Wochen vergleicht, was man isst und wie sich das Gewicht tatsächlich entwickelt. Genau das macht die App fortlaufend.</p>
+
+      <div class="appel">
+        <p class="appel-t">Dein Stoffwechsel, mit deinen Daten neu berechnet</p>
+        <p>Basal startet mit Mifflin-St Jeor und korrigiert deinen Verbrauch dann mit dem, was du isst, und deinem tatsächlichen Gewicht. Das Tracking ist kostenlos und braucht kein Konto.</p>
+        <div class="cta">
+          <a class="store-badge play" data-goatcounter-click="store-play-de-grundumsatz" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;hl=de&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Dde-grundumsatz">
+            <img src="/img/google-play-en.png" alt="Jetzt bei Google Play" width="148" height="44" loading="lazy">
+          </a>
+          <a class="store-badge apple" data-goatcounter-click="store-apple-de-grundumsatz" href="https://apps.apple.com/de/app/basal/id6793001641">
+            <img src="/img/app-store-en.svg" alt="Laden im App Store" width="132" height="44" loading="lazy">
+          </a>
+        </div>
+      </div>
+
+      <h2 id="quellen">Quellen</h2>
+      <ol class="sources">
+        <li>Mifflin MD, St Jeor ST et al. „A new predictive equation for resting energy expenditure in healthy individuals“. <i>American Journal of Clinical Nutrition</i>, 1990, 51(2), S. 241–247.</li>
+        <li>Frankenfield D, Roth-Yousey L, Compher C. „Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review“. <i>Journal of the American Dietetic Association</i>, 2005, 105(5), S. 775–789.</li>
+        <li>Johnstone AM et al. „Factors influencing variation in basal metabolic rate include fat-free mass, fat mass, age, and circulating thyroxine but not sex, circulating leptin, or triiodothyronine“. <i>American Journal of Clinical Nutrition</i>, 2005, 82(5), S. 941–948.</li>
+        <li>Pontzer H et al. „Daily energy expenditure through the human life course“. <i>Science</i>, 2021, 373(6556), S. 808–812.</li>
+        <li>Wang Z et al. „Specific metabolic rates of major organs and tissues across adulthood: evaluation by mechanistic model of resting energy expenditure“. <i>American Journal of Clinical Nutrition</i>, 2010, 92(6), S. 1369–1377.</li>
+      </ol>
+
+      <h2 style="font-size:1.5rem;margin-top:48px">Weiterlesen</h2>
+      <div class="guides" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <a class="guide" href="/de/kalorienrechner.html"><span class="surtitre" style="margin:0">Rechner</span><h3>Kalorienrechner</h3><p>Grundumsatz und Kalorienbedarf in einem Schritt berechnen.</p></a>
+      </div>
+    </article>
+  </div>
+
+  <aside class="note-page">
+    <p>Dieser Artikel dient nur der Information. Basal ist kein Medizinprodukt und ersetzt nicht den Rat medizinischen Fachpersonals.</p>
+  </aside>
+</main>

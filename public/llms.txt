@@ -4,6 +4,7 @@
 
 ## Calculators
 - [Calcul du métabolisme de base et du TDEE (fr)](https://basal-app.fr/calcul-tdee.html): Mifflin-St Jeor, activity factor 1.2 to 1.9, runs in the browser.
+- [Calorie calculator (en)](https://basal-app.fr/en/calorie-calculator.html): same calculation, in English.
 - [Calculadora de calorías (es)](https://basal-app.fr/es/calculadora-calorias.html): same calculation, in Spanish.
 - [Kalorienrechner (de)](https://basal-app.fr/de/kalorienrechner.html): same calculation, in German.
 - [Calculateur de macros (fr)](https://basal-app.fr/calcul-macros.html)
@@ -13,6 +14,7 @@
 - [Combien de calories par jour (fr)](https://basal-app.fr/combien-de-calories-par-jour.html) · [¿Cuántas calorías al día? (es)](https://basal-app.fr/es/cuantas-calorias-al-dia.html)
 - [Déficit calorique (fr)](https://basal-app.fr/deficit-calorique.html) · [Déficit calórico (es)](https://basal-app.fr/es/deficit-calorico.html)
 - [Métabolisme adaptatif (fr)](https://basal-app.fr/metabolisme-adaptatif.html): why a formula is only a starting point.
+- [Métabolisme de base (fr)](https://basal-app.fr/metabolisme-de-base.html) · [Metabolismo basal (es)](https://basal-app.fr/es/metabolismo-basal.html) · [Grundumsatz (de)](https://basal-app.fr/de/grundumsatz.html)
 - [Protéines par jour (fr)](https://basal-app.fr/proteines-par-jour.html)
 - [Méthode de calcul de Basal (fr)](https://basal-app.fr/methode.html): every formula the app uses, with sources.
 
