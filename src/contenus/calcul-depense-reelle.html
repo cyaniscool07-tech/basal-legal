@@ -28,7 +28,7 @@
                 <input type="radio" name="sexe" id="f" value="f"><label for="f">Femme</label>
               </div>
             </div>
-            <div class="champ"><label for="age">Âge</label><input id="age" type="number" inputmode="numeric" min="15" max="100" placeholder="30"></div>
+            <div class="champ"><label for="age">Âge</label><input id="age" type="number" inputmode="numeric" min="18" max="100" placeholder="30"></div>
             <div class="champ"><label for="taille">Taille (cm)</label><input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="175"></div>
             <div class="champ">
               <label for="activite">Activité</label>
@@ -140,6 +140,11 @@
 
     // Profil facultatif : formule, écart, plancher de l'objectif.
     var age = val('age'), taille = val('taille'), k = +document.getElementById('activite').value;
+    if (age !== null && age < 18) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Basal est réservée aux personnes majeures et ne calcule pas de besoins caloriques avant 18 ans : à cet âge, ils se déterminent avec un professionnel de santé.';
+      return;
+    }
     var femme = document.getElementById('f').checked;
     var bmr = null, formule = null;
     if (age !== null && taille !== null) {

@@ -20,7 +20,7 @@
             </div>
             <div class="champ">
               <label for="age">Alter</label>
-              <input id="age" type="number" inputmode="numeric" min="14" max="100" placeholder="31">
+              <input id="age" type="number" inputmode="numeric" min="18" max="100" placeholder="31">
             </div>
             <div class="champ">
               <label for="taille">Größe (cm)</label>
@@ -138,7 +138,10 @@
     var poids = nb('poids'), taille = nb('taille'), age = nb('age');
     var sexe = document.getElementById('sexe').value;
     var coef = parseFloat(document.getElementById('activite').value);
-    var ok = poids > 25 && poids < 350 && taille > 100 && taille < 250 && age > 10 && age < 110;
+    var ok = poids > 25 && poids < 350 && taille > 100 && taille < 250 && age >= 18 && age < 110;
+    var vEl = document.getElementById('vide'); vEl.dataset.t = vEl.dataset.t || vEl.textContent;
+    // Comme l'app (constants/inputBounds.ts) et la politique de confidentialité : pas de calcul avant 18 ans.
+    vEl.textContent = age !== null && age > 0 && age < 18 ? 'Basal ist Volljährigen vorbehalten und berechnet vor 18 Jahren keinen Kalorienbedarf: In diesem Alter bestimmt man ihn mit medizinischem Fachpersonal.' : vEl.dataset.t;
     vide.hidden = ok;
     sortie.hidden = !ok;
     if (!ok) return;
