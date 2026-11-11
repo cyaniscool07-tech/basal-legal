@@ -75,7 +75,15 @@ p { margin: 0 0 1em; }
 .barre nav a { color: var(--texte-2); text-decoration: none; font-size: 0.95rem; line-height: 1.2; padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
 .barre nav a:hover { color: var(--encre); background: var(--surface-2); }
 .barre nav a[aria-current] { color: var(--encre); background: var(--surface-2); }
-.barre .lang { font-size: 0.85rem; }
+.langues { position: relative; flex: none; }
+.langues summary { list-style: none; display: flex; align-items: center; gap: 6px; height: 38px; padding: 0 12px; border: 1px solid var(--trait); border-radius: 999px; color: var(--encre); font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+.langues summary::-webkit-details-marker { display: none; }
+.langues summary:hover, .langues[open] summary { background: var(--surface-2); }
+.langues ul { position: absolute; right: 0; top: calc(100% + 8px); z-index: 30; min-width: 180px; margin: 0; padding: 6px; list-style: none; background: var(--papier); border: 1px solid var(--trait); border-radius: 14px; box-shadow: 0 12px 30px rgb(0 0 0 / 0.18); }
+.langues a { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding: 0 12px; border-radius: 10px; color: var(--encre); text-decoration: none; font-size: 0.95rem; }
+.langues a span { color: var(--texte-2); font-size: 0.8rem; }
+.langues a:hover { background: var(--surface-2); }
+.langues a[aria-current] { font-weight: 700; background: var(--surface-2); }
 .theme { flex: none; width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--trait); border-radius: 50%; background: transparent; color: var(--encre); cursor: pointer; }
 .theme:hover { background: var(--surface-2); }
 .theme .soleil, :root[data-theme="dark"] .theme .lune { display: none; }
@@ -85,9 +93,15 @@ p { margin: 0 0 1em; }
 .bouton.vif { background: var(--accent-vif); color: #14110f; }
 .bouton.fantome { background: transparent; color: inherit; box-shadow: inset 0 0 0 1px currentColor; }
 @media (max-width: 860px) {
-  .barre-in { flex-wrap: wrap; gap: 8px 16px; padding-top: 10px; }
+  .barre-in { flex-wrap: wrap; gap: 8px 6px; padding-top: 10px; }
   .barre .bouton { margin-left: auto; padding: 10px 14px; }
-  .barre .theme { margin-left: auto; }
+  .barre .langues { margin-left: auto; }
+  /* Rond comme le bouton de thème : avec le code de langue, « Télécharger » passait à la ligne à 375 px. */
+  .langues summary { width: 38px; padding: 0; justify-content: center; }
+  .langues summary span { display: none; }
+  /* Centré sous le globe : aligné à droite, il sortait de l'écran par la gauche à 375 px. */
+  .langues ul { right: auto; left: 50%; transform: translateX(-50%); }
+  .barre .theme { margin-left: 0; }
   .barre .theme + .bouton { margin-left: 0; }
   .barre nav { order: 3; width: 100%; margin: 0 -8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; padding-right: 40px;
     -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent); }

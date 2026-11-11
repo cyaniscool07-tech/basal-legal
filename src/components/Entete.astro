@@ -3,12 +3,20 @@
 // pour les pages recettes : la modifier aux deux endroits.
 interface Props {
   lang: 'fr' | 'en' | 'es' | 'de';
-  /** Page équivalente dans l'autre langue. */
+  /** Page équivalente dans l'autre langue (pages sans hreflang : vers le français ou l'anglais). */
   autreLangue?: string;
+  /** Traductions de la page (lues dans ses hreflang par Base) ; une langue absente mène à son accueil. */
+  equivalents?: Partial<Record<'fr' | 'en' | 'es' | 'de', string>>;
   /** Faux sur compte.html, qui n'affiche que le logo. */
   menu?: boolean;
 }
-const { lang, autreLangue = lang === 'fr' ? '/en/' : '/', menu = true } = Astro.props;
+const { lang, autreLangue, equivalents = {}, menu = true } = Astro.props;
+// Sélecteur de langue : nom dans sa propre langue, page équivalente si elle existe, sinon l'accueil.
+const LANGUES = [['fr', 'Français', '/'], ['en', 'English', '/en/'], ['es', 'Español', '/es/'], ['de', 'Deutsch', '/de/']] as const;
+const versLangue = (code: string, accueil: string) =>
+  code === lang ? Astro.url.pathname :
+  equivalents[code as 'fr'] ?? (autreLangue && code === (lang === 'fr' ? 'en' : 'fr') ? autreLangue : accueil);
+const libelleLangue = { fr: 'Langue', en: 'Language', es: 'Idioma', de: 'Sprache' }[lang];
 const fr = lang === 'fr';
 // es et de : quelques pages seulement (2026-11), le reste du site renvoie au français.
 const extra = lang === 'es' || lang === 'de';
@@ -31,7 +39,7 @@ const liens = extra
   ? [[lang === 'es' ? '/es/calculadora-calorias.html' : '/de/kalorienrechner.html', t!.calc]]
   : fr
   ? [['/guides/', 'Guides'], ['/recettes/', 'Recettes'], ['/calculateurs/', 'Calculateurs'], ['/methode.html', 'Méthode'], ['/a-propos.html', 'À propos']]
-  : [['/en/calorie-calculator.html', 'Calculator'], ['/metabolisme-adaptatif.html', 'Metabolism', 'fr']];
+  : [['/en/calorie-calculator.html', 'Calculator']];
 ---
 <header class="barre">
   <div class="wrap barre-in">
@@ -41,9 +49,19 @@ const liens = extra
         {liens.map(([href, nom, versFr]) => versFr
           ? <a href={href} hreflang="fr" lang="fr">{nom} <span aria-hidden="true">·FR</span></a>
           : <a href={href} aria-current={courant(href)}>{nom}</a>)}
-        <a class="lang" href={autreLangue} hreflang={fr ? 'en' : 'fr'} lang={fr ? 'en' : 'fr'}>{fr ? 'EN' : 'FR'}</a>
       </nav>
     )}
+    <details class="langues">
+      <summary aria-label={`${libelleLangue} : ${LANGUES.find(([c]) => c === lang)![1]}`}>
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9s1.3-6.3 3.8-9z"/></g></svg>
+        <span aria-hidden="true">{lang.toUpperCase()}</span>
+      </summary>
+      <ul>
+        {LANGUES.map(([code, nom, accueil]) => (
+          <li><a href={versLangue(code, accueil)} hreflang={code} lang={code} aria-current={code === lang ? 'true' : undefined}>{nom}<span aria-hidden="true">{code.toUpperCase()}</span></a></li>
+        ))}
+      </ul>
+    </details>
     <button type="button" class="theme" aria-label={extra ? t!.theme : fr ? 'Basculer entre mode clair et mode sombre' : 'Switch between light and dark mode'}><svg class="lune" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="soleil" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg></button>
     {menu && <a class="bouton" href={fr ? '/#telecharger' : `/${lang}/#download`}>{extra ? t!.dl : fr ? 'Télécharger' : 'Download'}</a>}
   </div>

@@ -15,6 +15,8 @@ interface Props {
   mesure?: boolean;
 }
 const { lang = 'fr', tete, corps, autreLangue, menu, mesure = true } = Astro.props;
+// Traductions de la page, lues dans ses hreflang : le sélecteur de langue mène à la même page.
+const equivalents = Object.fromEntries([...tete.matchAll(/hreflang="(fr|en|es|de)" href="https:\/\/basal-app\.fr([^"]*)"/g)].map((m) => [m[1], m[2]]));
 ---
 <!doctype html>
 <html lang={lang}>
@@ -39,7 +41,7 @@ const { lang = 'fr', tete, corps, autreLangue, menu, mesure = true } = Astro.pro
 </head>
 <body>
 <a class="evitement" href="#contenu">{{ fr: 'Aller au contenu', en: 'Skip to content', es: 'Ir al contenido', de: 'Zum Inhalt' }[lang]}</a>
-<Entete lang={lang} autreLangue={autreLangue} menu={menu} />
+<Entete lang={lang} autreLangue={autreLangue} equivalents={equivalents} menu={menu} />
 <Fragment set:html={corps} />
 {menu !== false && <Pied lang={lang} />}
 </body>

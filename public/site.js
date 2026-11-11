@@ -11,6 +11,15 @@
     corps.insertBefore(plie, corps.firstChild);
   }
 
+  // Sélecteur de langue : se referme au clic ailleurs et sur Échap (le focus revient sur le bouton).
+  var langues = document.querySelector('.langues');
+  if (langues) {
+    document.addEventListener('click', function (e) { if (langues.open && !langues.contains(e.target)) langues.open = false; });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && langues.open) { langues.open = false; langues.querySelector('summary').focus(); }
+    });
+  }
+
   // Calculateurs, sur mobile : tant que la carte résultat est plus bas que l'écran, une barre en bas de l'écran
   // affiche le chiffre principal (marqué data-flottant) ; un toucher y fait défiler.
   var valeur = document.querySelector('[data-flottant]'), carte = valeur && valeur.closest('.carte.resultat');
