@@ -16,12 +16,12 @@ const accueil = Astro.url.pathname === '/' || Astro.url.pathname === '/index.htm
 const questionsPied = ['gratuit', 'compte', 'montre', 'photo', 'sauvegarde', 'hors-ligne'].map((id) => faq.find((q) => q.id === id)!);
 const colonnes = lang === 'es'
   ? [
-      ['Basal en español', [['/es/', 'Inicio'], ['/es/calculadora-calorias.html', 'Calculadora de calorías'], ['/es/cuantas-calorias-al-dia.html', '¿Cuántas calorías al día?'], ['/es/deficit-calorico.html', 'Déficit calórico'], ['/es/metabolismo-basal.html', 'Metabolismo basal']]],
+      ['Basal en español', [['/es/', 'Inicio'], ['/es/calculadora-calorias.html', 'Calculadora de calorías'], ['/es/cuantas-calorias-al-dia.html', '¿Cuántas calorías al día?'], ['/es/deficit-calorico.html', 'Déficit calórico'], ['/es/metabolismo-basal.html', 'Metabolismo basal'], ['/es/recetas/', 'Recetas']]],
       ['Legal', [['/en/privacy.html', 'Privacy policy (English)', 'en'], ['/mentions-legales.html', 'Mentions légales', 'fr'], ['/', 'Français', 'fr'], ['/en/', 'English', 'en'], ['/de/', 'Deutsch', 'de']]],
     ]
   : lang === 'de'
   ? [
-      ['Basal auf Deutsch', [['/de/', 'Startseite'], ['/de/kalorienrechner.html', 'Kalorienrechner'], ['/de/grundumsatz.html', 'Grundumsatz']]],
+      ['Basal auf Deutsch', [['/de/', 'Startseite'], ['/de/kalorienrechner.html', 'Kalorienrechner'], ['/de/grundumsatz.html', 'Grundumsatz'], ['/de/rezepte/', 'Rezepte']]],
       ['Rechtliches', [['/en/privacy.html', 'Privacy policy (English)', 'en'], ['/mentions-legales.html', 'Mentions légales', 'fr'], ['/', 'Français', 'fr'], ['/en/', 'English', 'en'], ['/es/', 'Español', 'es']]],
     ]
   : fr
@@ -69,6 +69,7 @@ const colonnes = lang === 'es'
       ['Basal in English', [
         ['/en/', 'Home'],
         ['/en/calorie-calculator.html', 'Calorie calculator'],
+        ['/en/recipes/', 'Recipes'],
       ]],
       ['Legal', [
         ['/en/privacy.html', 'Privacy policy'],

@@ -1,0 +1,16 @@
+---
+// Pages recettes (es) : contenu écrit par le générateur de l'app (calorie-tracker,
+// scripts/site/__tests__/recipePages.gen.test.ts), habillé ici comme toutes les pages.
+import Base from '../../../layouts/Base.astro';
+const pages = import.meta.glob('../../../contenus/recettes/es/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+export function getStaticPaths() {
+  const fichiers = import.meta.glob('../../../contenus/recettes/es/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+  return Object.keys(fichiers)
+    .map((f) => f.split('/').pop()!.replace(/\.html$/, ''))
+    .filter((s) => s !== 'index' && !s.endsWith('.tete'))
+    .map((slug) => ({ params: { slug } }));
+}
+const { slug } = Astro.params;
+const dossier = '../../../contenus/recettes/es/';
+---
+<Base lang="es" tete={pages[`${dossier}${slug}.tete.html`]} corps={pages[`${dossier}${slug}.html`]} />

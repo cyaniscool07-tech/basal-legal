@@ -1,4 +1,5 @@
 ---
+import { existe, RUBRIQUES } from '../donnees/routes';
 // Barre du haut, commune à toutes les pages. Recopiée dans recipePages.gen.test.ts (calorie-tracker)
 // pour les pages recettes : la modifier aux deux endroits.
 interface Props {
@@ -30,25 +31,28 @@ const rubriques: Record<string, string[]> = {
     '/alternative-myfitnesspal', '/compteur-calories-gratuit', '/appli-calories-sans-compte'],
   '/calculateurs/': ['/calcul-tdee', '/calcul-macros', '/calcul-depense-reelle', '/calcul-proteines', '/calcul-1rm'],
 };
+// Une page de rubrique (recette, guide…) marque sa rubrique : même dossier, dans toutes les langues.
+const dansRubrique = (href: string) => href.endsWith('/') && href !== '/' && chemin.startsWith(href) && chemin !== href.replace(/\/$/, '/');
 const courant = (href: string) => {
   const cible = href.replace(/\.html$/, '');
   if (chemin === cible) return 'page';
-  return rubriques[href]?.includes(chemin) ? 'true' : undefined;
+  return rubriques[href]?.includes(chemin) || dansRubrique(href) ? 'true' : undefined;
 };
-const liens = extra
-  ? [[lang === 'es' ? '/es/calculadora-calorias.html' : '/de/kalorienrechner.html', t!.calc]]
-  : fr
-  ? [['/guides/', 'Guides'], ['/recettes/', 'Recettes'], ['/calculateurs/', 'Calculateurs'], ['/methode.html', 'Méthode'], ['/a-propos.html', 'À propos']]
-  : [['/en/calorie-calculator.html', 'Calculator']];
+// Menu : les rubriques de la table commune qui existent déjà dans la langue. Tant que le hub des
+// calculateurs manque dans une langue, son calculateur de calories le remplace.
+const calculateurSeul = { en: ['/en/calorie-calculator.html', 'Calculator'], es: ['/es/calculadora-calorias.html', 'Calculadora'], de: ['/de/kalorienrechner.html', 'Kalorienrechner'] } as const;
+const liens: string[][] = RUBRIQUES.flatMap((r) => {
+  if (existe(r.chemin[lang])) return [[r.chemin[lang], r.nom[lang]]];
+  if (r.cle === 'calculateurs' && !fr) return [[...calculateurSeul[lang as 'en']]];
+  return [];
+});
 ---
 <header class="barre">
   <div class="wrap barre-in">
     <a class="logo" href={fr ? '/' : `/${lang}/`} aria-label={extra ? t!.accueil : fr ? 'Basal, accueil' : 'Basal, home'}><svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="100%" stop-color="#c2540a"/></linearGradient></defs><circle cx="32" cy="32" r="21" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-dasharray="103 29" transform="rotate(-115 32 32)"/></svg>Basal</a>
     {menu && (
       <nav aria-label={extra ? t!.menu : fr ? 'Menu principal' : 'Main menu'}>
-        {liens.map(([href, nom, versFr]) => versFr
-          ? <a href={href} hreflang="fr" lang="fr">{nom} <span aria-hidden="true">·FR</span></a>
-          : <a href={href} aria-current={courant(href)}>{nom}</a>)}
+        {liens.map(([href, nom]) => <a href={href} aria-current={courant(href)}>{nom}</a>)}
       </nav>
     )}
     <details class="langues">
