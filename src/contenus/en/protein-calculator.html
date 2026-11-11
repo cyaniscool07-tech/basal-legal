@@ -1,0 +1,176 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Breadcrumb"><a href="/en/">Home</a><span aria-hidden="true">›</span><a href="/en/calculators/">Calculators</a><span aria-hidden="true">›</span>Protein</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Free calculator</p>
+    <h1>Work out your daily protein needs</h1>
+    <p class="chapeau">Based on your weight, goal and training, with the grid the Basal app uses. It applies to a reference weight, which avoids overestimating needs when weight is high. Nothing is sent.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="calc" novalidate>
+      <div class="champs">
+        <div class="champ"><label for="poids">Weight (kg)</label><input id="poids" type="number" inputmode="decimal" step="0.1" min="30" max="300" placeholder="70"></div>
+        <div class="champ"><label for="taille">Height (cm)</label><input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="175"></div>
+        <div class="champ">
+          <label for="objectif">Goal</label>
+          <select id="objectif">
+            <option value="perte">Lose weight</option>
+            <option value="maintien" selected>Maintain</option>
+            <option value="prise">Build muscle</option>
+          </select>
+        </div>
+        <div class="champ large">
+          <span id="sport-t" style="font-weight:600;font-size:.9rem">Training</span>
+          <div class="segment" role="radiogroup" aria-labelledby="sport-t">
+            <input type="radio" name="sport" id="peu" value="0" checked><label for="peu">Fewer than 3 sessions a week</label>
+            <input type="radio" name="sport" id="sportif" value="1"><label for="sportif">3 sessions or more</label>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+      <p class="surtitre" id="res-t">Your protein needs</p>
+      <div class="grand"><span id="total" data-flottant="Protein">—</span><small>g / day</small></div>
+      <p id="message" style="margin:14px 0 0">Enter your weight and height to see the result.</p>
+      <div id="sortie" hidden>
+        <div class="sous">
+          <div><b id="s-gkg">—</b><span>g per kg of reference weight</span></div>
+          <div><b id="s-kcal">—</b><span>kcal supplied (4 kcal per gram)</span></div>
+        </div>
+        <p id="reference" style="margin:0"></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <h2>The grid used</h2>
+      <p class="formule"><code>protein (g) = reference weight × grams per kilo</code></p>
+      <div class="tableau">
+        <table>
+          <caption>Grams of protein per kilo of reference weight</caption>
+          <thead><tr><th scope="col">Goal</th><th scope="col" class="n">Fewer than 3 sessions a week</th><th scope="col" class="n">3 sessions or more</th></tr></thead>
+          <tbody>
+            <tr><td>Lose weight</td><td class="n">1.8</td><td class="n">2.2</td></tr>
+            <tr><td>Maintain</td><td class="n">1.4</td><td class="n">1.8</td></tr>
+            <tr><td>Build muscle</td><td class="n">1.6</td><td class="n">2.0</td></tr>
+          </tbody>
+        </table>
+        <p class="source">The grid of the Basal app (version 1.4). Needs go up in a deficit, where protein protects muscle mass.</p>
+      </div>
+      <div class="calcul" role="group" aria-label="Examples">
+        <div class="titre">Examples, for 175 cm</div>
+        <div class="ligne"><span>70 kg, weight loss, 3 sessions or more: 70 × 2.2</span><b>154 g</b></div>
+        <div class="ligne"><span>70 kg, maintenance, fewer than 3 sessions: 70 × 1.4</span><b>98 g</b></div>
+        <div class="ligne"><span>120 kg, weight loss, 3 sessions or more: 87.4 × 2.2</span><b>192 g</b></div>
+      </div>
+
+      <h2>Why a reference weight</h2>
+      <p>Protein needs follow lean mass, not total weight. Applying 2.2 g per kilo at 120 kg would give 264 g a day, over 1,000 kcal before counting anything else: no recommendation supports such a figure. Up to a BMI of 25, the reference weight is therefore your actual weight; above it, only a quarter of the excess counts. This is the adjusted-weight formula, the standard approximation when lean mass is not measured.</p>
+
+      <h2>And the rest of the plate</h2>
+      <p>Protein is only part of the calculation. The <a href="/en/macro-calculator.html">macro calculator</a> adds fat and carbs, with the same rules, and the <a href="/en/recipes/">calculated recipes</a> show their protein per serving.</p>
+
+      <h2>What this calculation does not know</h2>
+      <div class="inconnu">
+        <p><strong>It is an order of magnitude.</strong> It rests on the usual ranges in sports nutrition, not on a measurement of your body composition.</p>
+        <p style="margin:0"><strong>Some situations call for a health professional</strong>: kidney disease, pregnancy, a prescribed diet, an eating disorder.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>Your protein target, every day</strong><p>Basal calculates your protein with this grid and tracks it meal by meal, with separate protein for training and rest days in Premium.</p></div>
+        <a class="bouton vif" href="/en/#download">Download</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>This tool is for information only. Basal is not a medical device and does not replace advice from a health professional.</p>
+  </aside>
+</main>
+
+<script>
+// Mêmes règles que l'application (services/nutritionCalculator.ts) : grille g/kg, bonus de 0,4 g/kg à partir de
+// 3 séances par semaine, poids de référence au-delà d'un IMC de 25 (un quart de l'excédent). Exemples épinglés par
+// services/__tests__/methodeSite.test.ts : 154, 98 et 192 g.
+(function () {
+  var GRILLE = { perte: 1.8, maintien: 1.4, prise: 1.6 }, BONUS = 0.4, IMC_REF = 25, PART_EXCEDENT = 0.25;
+  var val = function (id) { var v = document.getElementById(id).value.replace(',', '.'); return v === '' ? null : +v; };
+  var ecrire = function (id, t) { document.getElementById(id).textContent = t; };
+  var dec = function (x) { return x.toLocaleString('en-GB', { maximumFractionDigits: 1 }); };
+
+  function calculer() {
+    var poids = val('poids'), taille = val('taille');
+    var sortie = document.getElementById('sortie'), message = document.getElementById('message');
+    if (poids === null || taille === null || poids < 30 || poids > 300 || taille < 120 || taille > 230) {
+      ecrire('total', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = poids === null || taille === null
+        ? 'Enter your weight and height to see the result.'
+        : 'Check the values: weight from 30 to 300 kg, height from 120 to 230 cm.';
+      return;
+    }
+    var seuil = IMC_REF * Math.pow(taille / 100, 2);
+    var reference = poids <= seuil ? poids : seuil + PART_EXCEDENT * (poids - seuil);
+    var gkg = GRILLE[document.getElementById('objectif').value] + (document.getElementById('sportif').checked ? BONUS : 0);
+    var total = Math.round(reference * gkg);
+    message.hidden = true; sortie.hidden = false;
+    ecrire('total', total);
+    ecrire('s-gkg', dec(gkg) + ' g');
+    ecrire('s-kcal', (total * 4).toLocaleString('en-GB') + ' kcal');
+    ecrire('reference', poids <= seuil
+      ? 'Reference weight: your actual weight (BMI of 25 or less).'
+      : 'Reference weight: ' + dec(reference) + ' kg. Above a BMI of 25 (' + dec(seuil) + ' kg for your height), only a quarter of the excess counts.');
+  }
+  document.getElementById('calc').addEventListener('input', calculer);
+  document.getElementById('calc').addEventListener('change', calculer);
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Protein calculator: how much protein per day",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "url": "https://basal-app.fr/en/protein-calculator.html",
+  "inLanguage": "en",
+  "description": "Daily protein needs from weight, goal and training, on a reference weight.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "publisher": {
+    "@id": "https://basal-app.fr/#organisation"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://basal-app.fr/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://basal-app.fr/en/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Protein",
+      "item": "https://basal-app.fr/en/protein-calculator.html"
+    }
+  ]
+}
+</script>

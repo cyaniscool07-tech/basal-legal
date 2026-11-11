@@ -1,0 +1,372 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Ruta de navegación"><a href="/es/">Inicio</a><span aria-hidden="true">›</span><a href="/es/calculadoras/">Calculadoras</a><span aria-hidden="true">›</span>Macros</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Calculadora gratis</p>
+    <h1>Calcula tus macros</h1>
+    <p class="chapeau">Las mismas reglas que la aplicación: proteínas y grasas ancladas a tu peso corporal, los
+    hidratos para completar. No se envía nada — el cálculo se hace en tu navegador.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="f" novalidate>
+      <div class="champs">
+            <div class="champ">
+              <label for="sexe">Sexo</label>
+              <select id="sexe">
+                <option value="male">Hombre</option>
+                <option value="female">Mujer</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="age">Edad</label>
+              <input id="age" type="number" inputmode="numeric" min="18" max="100" placeholder="31">
+            </div>
+            <div class="champ">
+              <label for="taille">Altura (cm)</label>
+              <input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="178">
+            </div>
+            <div class="champ">
+              <label for="poids">Peso (kg)</label>
+              <input id="poids" type="number" inputmode="decimal" min="30" max="300" step="0.1" placeholder="75">
+            </div>
+            <div class="champ large">
+              <label for="activite">Nivel de actividad</label>
+              <select id="activite">
+                <option value="1.2">Sedentario — poco o ningún deporte · menos de 5.000 pasos/día</option>
+                <option value="1.375">Ligeramente activo — 1 a 3 sesiones por semana · 5.000 a 7.500 pasos/día</option>
+                <option value="1.55" selected>Moderadamente activo — 3 a 5 sesiones por semana · 7.500 a 10.000 pasos/día</option>
+                <option value="1.725">Activo — 6 a 7 sesiones por semana · 10.000 a 12.500 pasos/día</option>
+                <option value="1.9">Muy activo — trabajo físico o doble entrenamiento · más de 12.500 pasos/día</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="objectif">Objetivo</label>
+              <select id="objectif">
+                <option value="lose">Perder peso</option>
+                <option value="maintain" selected>Mantenimiento</option>
+                <option value="gain">Ganar músculo</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="rythme">Ritmo</label>
+              <select id="rythme"></select>
+            </div>
+          </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite">
+          <p class="vide" id="vide">Rellena los cuatro campos numéricos para ver el resultado.</p>
+          <div id="sortie" hidden>
+            <div class="ligne total">
+              <span>Objetivo calórico</span><b id="kcal" data-flottant="Objetivo">—</b>
+            </div>
+            <div class="ligne">
+              <span>Proteínas <em id="protDetail"></em></span><b id="prot">—</b>
+            </div>
+            <div class="ligne">
+              <span>Hidratos</span><b id="gluc">—</b>
+            </div>
+            <div class="ligne">
+              <span>Grasas <em id="lipDetail"></em></span><b id="lip">—</b>
+            </div>
+            <div class="ligne">
+              <span>Fibra</span><b id="fib">—</b>
+            </div>
+            <p class="note" id="plancher" hidden></p>
+          </div>
+        </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <div class="encadre">
+        <p>
+          <strong>Son puntos de partida, no una receta médica.</strong> El cálculo se apoya en una
+          estimación del gasto cuyos estudios de validación suelen indicar un 10 % de desviación — es
+          decir, 250 kcal al día sobre un gasto de 2.500. Tus macros heredan esa incertidumbre. Lo que
+          los corrige no es una fórmula más fina, sino observar tus datos durante varias semanas.
+        </p>
+      </div>
+
+      <h2>Por qué no un simple porcentaje</h2>
+      <p>
+        El método más extendido reparte las calorías en partes fijas — por ejemplo 30 % de proteínas,
+        40 % de hidratos y 30 % de grasas. Tiene un defecto que solo se ve en los casos donde de verdad
+        importa: <strong>hace depender tus necesidades de tu objetivo calórico</strong>, cuando dependen de tu cuerpo.
+      </p>
+      <p>
+        Con un objetivo bajo, el 30 % de 1.100 kcal da unos 82 g de proteínas y 37 g de grasas. Las dos
+        cifras se quedan cortas, y justo en el momento en que más importan — durante una pérdida de peso,
+        cuando se trata de conservar la masa muscular y el equilibrio hormonal.
+      </p>
+      <p>
+        De ahí el orden que se sigue aquí: las proteínas y las grasas se fijan primero, a partir del peso
+        corporal. Los hidratos ocupan lo que queda.
+      </p>
+
+      <h2>El detalle del cálculo</h2>
+
+      <h3>Las proteínas</h3>
+      <p>
+        En gramos por kilo, según el objetivo, con un suplemento a partir de tres sesiones por semana —
+        umbral a partir del cual el entrenamiento crea una necesidad adicional real.
+      </p>
+      <ul class="liste">
+        <li><strong>Pérdida</strong> — 1,8 g/kg, o 2,2 g/kg si entrenas.</li>
+        <li><strong>Mantenimiento</strong> — 1,4 g/kg, o 1,8 g/kg si entrenas.</li>
+        <li><strong>Ganar músculo</strong> — 1,6 g/kg, o 2,0 g/kg si entrenas.</li>
+      </ul>
+      <p>
+        Estos valores están dentro del rango que suele indicar la literatura sobre entrenamiento de fuerza,
+        de 1,6 a 2,2 g/kg, con beneficios que se aplanan por encima.
+      </p>
+
+      <h3>El peso de referencia, y por qué no siempre es tu peso</h3>
+      <p>
+        Multiplicar por el peso total plantea un problema a partir de cierta corpulencia: el tejido graso
+        sobrante no tiene las mismas necesidades de proteínas que el resto del cuerpo. El cálculo usa por
+        tanto el peso real hasta un IMC de 25 y, por encima, solo cuenta <strong>la cuarta parte del exceso</strong>.
+      </p>
+      <p>
+        Es el factor de la fórmula clínica del peso ajustado, que se usa justo cuando el peso total
+        falsearía una pauta. El umbral está en la parte <em>alta</em> del rango llamado normal, no en medio:
+        un umbral bajo recortaría las proteínas de personas a las que no hay nada que recortar. En la
+        práctica, una persona de complexión normal no ve ninguna diferencia.
+      </p>
+
+      <h3>Las grasas</h3>
+      <p>
+        Se toma el mayor de dos valores: <strong>0,8 g por kilo de peso de referencia</strong>, o
+        <strong>el 30 % de las calorías</strong>. El primero es un mínimo independiente del total calórico —
+        por debajo, el riesgo de carencia de ácidos grasos esenciales y de alteración hormonal está
+        documentado, sea cual sea el objetivo.
+      </p>
+
+      <h3>Los hidratos y la fibra</h3>
+      <p>
+        Los hidratos ocupan lo que queda una vez cubiertas las proteínas y las grasas, sin bajar nunca de
+        cero: en un caso extremo — peso muy alto y objetivo muy bajo — la prioridad es la seguridad de las
+        otras dos antes que la exactitud del total. La fibra sigue la recomendación habitual de 14 g por cada 1.000 kcal.
+      </p>
+
+      <h3>El mínimo calórico</h3>
+      <p>
+        El objetivo calórico nunca baja de tu metabolismo basal, ni de 800 kcal. No es un mínimo
+        arbitrario: es un umbral fisiológico individual, calculado a partir de tu sexo, tu edad, tu peso y
+        tu altura. Si el ritmo elegido te llevara más abajo, la calculadora te lo dice en lugar de corregirlo
+        en silencio.
+      </p>
+
+      <div class="appel">
+        <p class="appel-t">Sigue estos macros a diario</p>
+        <p>
+          Basal aplica exactamente estas reglas y luego corrige el objetivo calórico a medida que compara lo
+          que registras con la evolución real de tu peso. El seguimiento de calorías, macros, peso y
+          entrenamientos es gratis, sin límite y sin cuenta obligatoria.
+        </p>
+        <div class="cta">
+          <a class="store-badge play" data-goatcounter-click="store-play-es-calculadora-macros" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;hl=es&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Des-calculadora-macros">
+            <img src="/img/google-play-en.png" alt="Disponible en Google Play" width="148" height="44" loading="lazy">
+          </a>
+          <a class="store-badge apple" data-goatcounter-click="store-apple-es-calculadora-macros" href="https://apps.apple.com/es/app/basal/id6793001641">
+            <img src="/img/app-store-en.svg" alt="Descargar en la App Store" width="132" height="44" loading="lazy">
+          </a>
+        </div>
+      </div>
+
+      <h2>Para saber más</h2>
+      <ul class="liste">
+        <li><a href="/es/calculadora-calorias.html">Calcula tu gasto energético</a> — la cifra de la que sale todo lo demás.</li>
+        <li><a href="/es/calculadora-proteinas.html">Cuántas proteínas necesitas</a>.</li>
+        <li><a href="/es/recetas/">Recetas con sus calorías y sus macros</a>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>Esta herramienta es informativa. Basal no es un dispositivo médico y no sustituye el consejo de
+    un profesional sanitario. Reservada a personas mayores de edad.</p>
+  </aside>
+</main>
+
+<script>
+// Les MÊMES règles que l'application (services/nutritionCalculator.ts, branche de référence) :
+// PROTEIN_G_PER_KG, SPORTY_PROTEIN_BONUS_G_PER_KG, FAT_FLOOR_G_PER_KG, FAT_PERCENT_OF_CALORIES,
+// MACRO_REFERENCE_BMI, EXCESS_WEIGHT_FACTOR, GOAL_TIERS et applyCalorieSafetyFloor.
+// Duplication assumée — le site est un dépôt séparé — mais elle doit rester EXACTE : un visiteur
+// qui obtient 158 g ici et un autre chiffre dans l'app cesserait de croire les deux.
+// Toute modification de ces constantes dans l'app doit être reportée ici le même jour.
+(function () {
+  var PROTEINE_G_PAR_KG = { lose: 1.8, maintain: 1.4, gain: 1.6 };
+  var BONUS_SPORTIF = 0.4;
+  var COEF_SPORTIF_MIN = 1.55; // « modérément actif » et au-dessus
+  var LIPIDES_PLANCHER_G_PAR_KG = 0.8;
+  var LIPIDES_PART_CALORIES = 0.3;
+  var IMC_REFERENCE = 25;
+  var FACTEUR_EXCEDENT = 0.25;
+  var KCAL_MIN_ABSOLU = 800;
+
+  var PALIERS = {
+    lose: [
+      { v: -0.10, t: 'Suave — ≈10 % por debajo de tu gasto' },
+      { v: -0.15, t: 'Moderado — ≈15 % por debajo de tu gasto' },
+      { v: -0.20, t: 'Intenso — ≈20 % por debajo de tu gasto' }
+    ],
+    maintain: [{ v: 0, t: 'Mantenimiento — igual a tu gasto' }],
+    gain: [
+      { v: 0.05, t: 'Suave — ≈5 % por encima de tu gasto' },
+      { v: 0.10, t: 'Moderado — ≈10 % por encima de tu gasto' },
+      { v: 0.15, t: 'Intenso — ≈15 % por encima de tu gasto' }
+    ]
+  };
+
+  var f = document.getElementById('f');
+  var objectifEl = document.getElementById('objectif');
+  var rythmeEl = document.getElementById('rythme');
+
+  function nb(id) {
+    var v = parseFloat(document.getElementById(id).value);
+    return isFinite(v) ? v : null;
+  }
+
+  // Le sélecteur de rythme dépend de l'objectif : le maintien n'en a qu'un.
+  function remplitRythmes() {
+    var paliers = PALIERS[objectifEl.value];
+    var choixPrecedent = rythmeEl.value;
+    rythmeEl.innerHTML = '';
+    paliers.forEach(function (p, i) {
+      var o = document.createElement('option');
+      o.value = String(p.v);
+      o.textContent = p.t;
+      // « Modérée » par défaut, comme dans l'app.
+      if (paliers.length === 1 || i === 1) o.selected = true;
+      rythmeEl.appendChild(o);
+    });
+    // On retrouve le palier précédent s'il existe encore, pour ne pas réinitialiser le choix
+    // de l'utilisateur quand il compare deux objectifs.
+    if (paliers.some(function (p) { return String(p.v) === choixPrecedent; })) rythmeEl.value = choixPrecedent;
+    rythmeEl.disabled = paliers.length === 1;
+  }
+
+  // Poids réel jusqu'à un IMC de 25, puis un quart de l'excédent seulement.
+  function poidsReference(poids, taille) {
+    if (!isFinite(taille) || taille <= 0) return poids;
+    var seuil = IMC_REFERENCE * Math.pow(taille / 100, 2);
+    if (poids <= seuil) return poids;
+    return seuil + FACTEUR_EXCEDENT * (poids - seuil);
+  }
+
+  function g(n) { return Math.round(n).toLocaleString('es-ES') + ' g'; }
+
+  function calcule() {
+    var poids = nb('poids'), taille = nb('taille'), age = nb('age');
+    var sexe = document.getElementById('sexe').value;
+    var coef = parseFloat(document.getElementById('activite').value);
+    var objectif = objectifEl.value;
+    var ecart = parseFloat(rythmeEl.value) || 0;
+
+    var ok = poids > 25 && poids < 350 && taille > 100 && taille < 250 && age >= 18 && age < 110;
+    var vEl = document.getElementById('vide'); vEl.dataset.t = vEl.dataset.t || vEl.textContent;
+    // Comme l'app (constants/inputBounds.ts) et la politique de confidentialité : pas de calcul avant 18 ans.
+    vEl.textContent = age !== null && age > 0 && age < 18 ? 'Basal está reservada a personas mayores de edad y no calcula necesidades calóricas antes de los 18 años: a esa edad se determinan con un profesional de la salud.' : vEl.dataset.t;
+    document.getElementById('vide').hidden = ok;
+    document.getElementById('sortie').hidden = !ok;
+    if (!ok) return;
+
+    var bmr = 10 * poids + 6.25 * taille - 5 * age + (sexe === 'male' ? 5 : -161);
+    var tdee = bmr * coef;
+
+    // Plancher de sécurité : jamais sous le métabolisme de base, jamais sous 800 kcal.
+    var brut = tdee * (1 + ecart);
+    var plancher = Math.max(bmr, KCAL_MIN_ABSOLU);
+    var kcal = Math.round(Math.max(brut, plancher));
+    var plancherApplique = brut < plancher;
+
+    var ref = poidsReference(poids, taille);
+    var protParKg = PROTEINE_G_PAR_KG[objectif] + (coef >= COEF_SPORTIF_MIN ? BONUS_SPORTIF : 0);
+    var prot = Math.round(ref * protParKg);
+
+    var lipPlancher = LIPIDES_PLANCHER_G_PAR_KG * ref;
+    var lipPart = (kcal * LIPIDES_PART_CALORIES) / 9;
+    var lip = Math.round(Math.max(lipPlancher, lipPart));
+
+    var gluc = Math.round(Math.max(kcal - prot * 4 - lip * 9, 0) / 4);
+    var fib = Math.round((kcal / 1000) * 14);
+
+    document.getElementById('kcal').textContent = kcal.toLocaleString('es-ES') + ' kcal';
+    document.getElementById('prot').textContent = g(prot);
+    document.getElementById('gluc').textContent = g(gluc);
+    document.getElementById('lip').textContent = g(lip);
+    document.getElementById('fib').textContent = g(fib);
+
+    document.getElementById('protDetail').textContent =
+      '— ' + protParKg.toLocaleString('es-ES', { minimumFractionDigits: 1 }) + ' g/kg';
+    document.getElementById('lipDetail').textContent =
+      lipPlancher >= lipPart ? '— mínimo aplicado' : '— 30 % de las calorías';
+
+    var note = document.getElementById('plancher');
+    note.hidden = !plancherApplique;
+    if (plancherApplique) {
+      note.textContent =
+        'El ritmo elegido bajaría de tu metabolismo basal (' +
+        Math.round(bmr).toLocaleString('es-ES') + ' kcal). El objetivo se ha subido a ese umbral: un déficit por debajo no se sostiene en el tiempo.';
+    }
+  }
+
+  objectifEl.addEventListener('change', function () { remplitRythmes(); calcule(); });
+  f.addEventListener('input', calcule);
+  f.addEventListener('change', calcule);
+  f.addEventListener('submit', function (e) { e.preventDefault(); });
+
+  remplitRythmes();
+  calcule();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de macros: proteínas, hidratos y grasas",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "url": "https://basal-app.fr/es/calculadora-macros.html",
+  "inLanguage": "es",
+  "description": "Cálculo de los macronutrientes a partir del gasto energético: proteínas y grasas ancladas al peso corporal, hidratos para completar.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "publisher": {
+    "@id": "https://basal-app.fr/#organisation"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://basal-app.fr/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculadoras",
+      "item": "https://basal-app.fr/es/calculadoras/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Macros",
+      "item": "https://basal-app.fr/es/calculadora-macros.html"
+    }
+  ]
+}
+</script>

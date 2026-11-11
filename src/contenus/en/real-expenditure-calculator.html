@@ -1,0 +1,236 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Breadcrumb"><a href="/en/">Home</a><span aria-hidden="true">›</span><a href="/en/calculators/">Calculators</a><span aria-hidden="true">›</span>Real expenditure</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Free calculator</p>
+    <h1>Work out your real expenditure from your weight</h1>
+    <p class="chapeau">A formula guesses your expenditure from your age, height and weight. Here it is worked out from what you actually ate and how your weight changed: the method the Basal app uses. The calculation runs in your browser, nothing is sent.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="calc" novalidate>
+      <div class="champs">
+        <div class="champ large">
+          <label for="apport">Average intake (kcal per day)</label>
+          <input id="apport" type="number" inputmode="numeric" min="500" max="8000" placeholder="2100">
+          <span class="aide">The average of your calories over the whole period, counting only the days you logged everything.</span>
+        </div>
+        <div class="champ"><label for="debut">Starting weight (kg)</label><input id="debut" type="number" inputmode="decimal" step="0.1" min="30" max="300" placeholder="80.0"></div>
+        <div class="champ"><label for="fin">End weight (kg)</label><input id="fin" type="number" inputmode="decimal" step="0.1" min="30" max="300" placeholder="79.4"></div>
+        <div class="champ"><label for="jours">Days between the two</label><input id="jours" type="number" inputmode="numeric" min="1" max="365" placeholder="21"></div>
+        <p class="aide large" style="margin:0">Weigh yourself every morning. The starting weight is the average of your first week, the end weight the average of your last: 4 weeks of tracking give 21 days between them.</p>
+        <details class="champ large">
+          <summary>Compare with the formula (optional)</summary>
+          <div class="champs" style="margin-top:14px">
+            <div class="champ large">
+              <span id="sexe-t" style="font-weight:600;font-size:.9rem">Sex</span>
+              <div class="segment" role="radiogroup" aria-labelledby="sexe-t">
+                <input type="radio" name="sexe" id="h" value="h" checked><label for="h">Male</label>
+                <input type="radio" name="sexe" id="f" value="f"><label for="f">Female</label>
+              </div>
+            </div>
+            <div class="champ"><label for="age">Age</label><input id="age" type="number" inputmode="numeric" min="18" max="100" placeholder="30"></div>
+            <div class="champ"><label for="taille">Height (cm)</label><input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="175"></div>
+            <div class="champ">
+              <label for="activite">Activity</label>
+              <select id="activite">
+                <option value="1.2">Sedentary</option>
+                <option value="1.375">Lightly active</option>
+                <option value="1.55" selected>Moderately active</option>
+                <option value="1.725">Active</option>
+                <option value="1.9">Very active</option>
+              </select>
+            </div>
+          </div>
+        </details>
+      </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+      <p class="surtitre" id="res-t">Your estimated real expenditure</p>
+      <div class="grand"><span id="depense" data-flottant="Real expenditure">—</span><small>kcal / day</small></div>
+      <p id="message" style="margin:14px 0 0">Fill in the first four fields to see the result.</p>
+      <div id="sortie" hidden>
+        <div class="sous">
+          <div><b id="s-maintien">—</b><span>to maintain your weight</span></div>
+          <div><b id="s-perte">—</b><span id="s-perte-t">to lose at a moderate pace (− 15%)</span></div>
+        </div>
+        <p id="comparaison" hidden style="margin:0 0 8px"></p>
+        <p id="alerte" hidden style="margin:0;color:#fb923c"></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <h2>The calculation in detail</h2>
+      <p class="formule"><code>expenditure = average intake − (end weight − starting weight) × 7,700 ÷ days</code></p>
+      <p>One kilogram of body mass represents about 7,700 kcal. If you lost weight, you spent more than you ate: the difference, spread per day, is added to your intake.</p>
+      <div class="calcul" role="group" aria-label="The calculation with your values">
+        <div class="ligne"><span>Average intake</span><b id="d-apport">2,100 kcal</b></div>
+        <div class="ligne"><span id="d-var-t">Change: 79.4 − 80.0 = − 0.6 kg in 21 days</span><b id="d-var">− 0.6 kg</b></div>
+        <div class="ligne"><span id="d-jour-t">− 0.6 × 7,700 ÷ 21</span><b id="d-jour">− 220 kcal / day</b></div>
+        <div class="ligne total"><span>Real expenditure: average intake minus this change</span><b id="d-total">2,320 kcal / day</b></div>
+      </div>
+      <p>The example above is the one the tool shows until you enter your own values.</p>
+
+      <h2>Why it is more accurate than a formula</h2>
+      <p>A formula like Mifflin-St Jeor gives the average expenditure of people who resemble you on four criteria, with a typical error of about 10%. Your weight, on the other hand, reacts to what you actually spend. Over a few weeks, it tells you whether your intake was above or below your expenditure, and by how much.</p>
+
+      <h2>Measuring well</h2>
+      <ul class="liste">
+        <li>Weigh yourself every morning, under the same conditions, and average by week: a single day’s weight moves by several hundred grams with water and salt.</li>
+        <li>Log everything you eat, including the off days. Forgotten meals make your expenditure look lower than it is.</li>
+        <li>Count at least three to four weeks. Below 10 days, the tool refuses to calculate: noise outweighs the signal.</li>
+      </ul>
+
+      <h2>What this calculation does not know</h2>
+      <div class="inconnu">
+        <p><strong>The start of a diet skews the calculation.</strong> In the first days the body mostly loses water and glycogen, far lighter in calories than fat. Measuring from the second week avoids overestimating your expenditure.</p>
+        <p><strong>It is only as good as your log.</strong> A steady 200 kcal error in your meals ends up as is in the result.</p>
+        <p style="margin:0"><strong>It is not medical advice.</strong> An expenditure far from what you would expect can have a cause worth showing a doctor.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>The same calculation, every week</strong><p>Basal redoes it at every weigh-in, with your logged meals: rolling weight average, plausibility bounds and gradual adjustment.</p></div>
+        <a class="bouton vif" href="/en/#download">Download</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>This tool is for information only. Basal is not a medical device and does not replace advice from a health professional.</p>
+  </aside>
+</main>
+
+<script>
+// Même bilan énergétique que l'application (services/adaptiveTdeeService.ts : KCAL_PER_KG = 7700, observation
+// jugée plausible entre 0,8 et 1,6 fois la formule) et mêmes formules (services/nutritionCalculator.ts : Mifflin-St
+// Jeor, palier de perte modéré à − 15 %, plancher au métabolisme de base et à 800 kcal). Exemple épinglé par
+// services/__tests__/methodeSite.test.ts : 2 100 kcal, 80,0 → 79,4 kg en 21 jours = 2 320 kcal.
+(function () {
+  var KCAL_PAR_KG = 7700, JOURS_MIN = 10;
+  var val = function (id) { var v = document.getElementById(id).value.replace(',', '.'); return v === '' ? null : +v; };
+  var ecrire = function (id, t) { document.getElementById(id).textContent = t; };
+  var nb = function (x) { return Math.round(x).toLocaleString('en-GB'); };
+  var dec = function (x) { return x.toLocaleString('en-GB', { maximumFractionDigits: 1, minimumFractionDigits: 1 }); };
+  var signe = function (x) { return (x > 0 ? '+ ' : x < 0 ? '− ' : '') + dec(Math.abs(x)); };
+
+  function calculer() {
+    var apport = val('apport'), debut = val('debut'), fin = val('fin'), jours = val('jours');
+    var sortie = document.getElementById('sortie'), message = document.getElementById('message');
+    if (apport === null || debut === null || fin === null || jours === null) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Fill in the first four fields to see the result.';
+      return;
+    }
+    if (apport < 500 || apport > 8000 || debut < 30 || debut > 300 || fin < 30 || fin > 300 || jours < 1) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'One of the values is outside plausible bounds: check the intake (500 to 8,000 kcal) and the weights (30 to 300 kg).';
+      return;
+    }
+    if (jours < JOURS_MIN) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'You need at least ' + JOURS_MIN + ' days between the two averages: below that, water and salt weigh more than fat.';
+      return;
+    }
+    var variation = fin - debut;
+    var parJour = variation * KCAL_PAR_KG / jours;
+    var depense = apport - parJour;
+    message.hidden = true; sortie.hidden = false;
+    ecrire('depense', nb(depense));
+
+    // Profil facultatif : formule, écart, plancher de l'objectif.
+    var age = val('age'), taille = val('taille'), k = +document.getElementById('activite').value;
+    if (age !== null && age < 18) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Basal is for adults only and does not calculate calorie needs under 18: at that age, they should be set with a health professional.';
+      return;
+    }
+    var femme = document.getElementById('f').checked;
+    var bmr = null, formule = null;
+    if (age !== null && taille !== null) {
+      bmr = 10 * fin + 6.25 * taille - 5 * age + (femme ? -161 : 5);
+      formule = bmr * k;
+    }
+    var plancher = Math.max(bmr || 0, 800);
+    var perte = Math.max(depense * 0.85, plancher);
+    ecrire('s-maintien', nb(depense) + ' kcal');
+    // Plancher au-dessus de la maintenance mesurée : un objectif « de perte » serait plus haut que le maintien.
+    if (plancher >= depense) {
+      ecrire('s-perte', '—');
+      ecrire('s-perte-t', 'no weight-loss target: the measured expenditure is below the safety floor, probably a sign of an incomplete log');
+    } else {
+      ecrire('s-perte', nb(perte) + ' kcal');
+      ecrire('s-perte-t', perte > depense * 0.85 ? 'to lose: raised to the safety floor' : 'to lose at a moderate pace (− 15%)');
+    }
+
+    var comparaison = document.getElementById('comparaison'), alerte = document.getElementById('alerte');
+    comparaison.hidden = formule === null; alerte.hidden = true;
+    if (formule !== null) {
+      var ecart = (depense - formule) / formule * 100;
+      comparaison.textContent = 'The formula predicted ' + nb(formule) + ' kcal: your real expenditure is ' + (ecart >= 0 ? 'higher' : 'lower') + ' by ' + Math.abs(Math.round(ecart)) + '%.';
+      if (depense < formule * 0.8 || depense > formule * 1.6) {
+        alerte.hidden = false;
+        alerte.textContent = 'This gap is outside the bounds the app accepts (0.8 to 1.6 times the formula). The most common cause is an incomplete log.';
+      }
+    }
+
+    ecrire('d-apport', nb(apport) + ' kcal');
+    ecrire('d-var-t', 'Change: ' + dec(fin) + ' − ' + dec(debut) + ' = ' + signe(variation) + ' kg in ' + jours + ' days');
+    ecrire('d-var', signe(variation) + ' kg');
+    ecrire('d-jour-t', signe(variation) + ' × 7,700 ÷ ' + jours);
+    ecrire('d-jour', (parJour > 0 ? '+ ' : parJour < 0 ? '− ' : '') + nb(Math.abs(parJour)) + ' kcal / day');
+    ecrire('d-total', nb(depense) + ' kcal / day');
+  }
+  document.getElementById('calc').addEventListener('input', calculer);
+  document.getElementById('calc').addEventListener('change', calculer);
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Real expenditure calculator",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "url": "https://basal-app.fr/en/real-expenditure-calculator.html",
+  "inLanguage": "en",
+  "description": "Real energy expenditure from average intake and weight change (energy balance, 7,700 kcal per kg).",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "publisher": {
+    "@id": "https://basal-app.fr/#organisation"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://basal-app.fr/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://basal-app.fr/en/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Real expenditure",
+      "item": "https://basal-app.fr/en/real-expenditure-calculator.html"
+    }
+  ]
+}
+</script>

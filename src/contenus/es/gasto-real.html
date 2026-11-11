@@ -1,0 +1,236 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Ruta de navegación"><a href="/es/">Inicio</a><span aria-hidden="true">›</span><a href="/es/calculadoras/">Calculadoras</a><span aria-hidden="true">›</span>Gasto real</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Calculadora gratis</p>
+    <h1>Calcula tu gasto real a partir de tu peso</h1>
+    <p class="chapeau">Una fórmula adivina tu gasto a partir de tu edad, tu altura y tu peso. Aquí se deduce de lo que has comido de verdad y de la evolución de tu peso: es el método que usa la aplicación Basal. El cálculo se hace en tu navegador, no se envía nada.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="calc" novalidate>
+      <div class="champs">
+        <div class="champ large">
+          <label for="apport">Ingesta media (kcal al día)</label>
+          <input id="apport" type="number" inputmode="numeric" min="500" max="8000" placeholder="2100">
+          <span class="aide">La media de tus calorías en todo el periodo, contando solo los días en que lo registraste todo.</span>
+        </div>
+        <div class="champ"><label for="debut">Peso inicial (kg)</label><input id="debut" type="number" inputmode="decimal" step="0.1" min="30" max="300" placeholder="80,0"></div>
+        <div class="champ"><label for="fin">Peso final (kg)</label><input id="fin" type="number" inputmode="decimal" step="0.1" min="30" max="300" placeholder="79,4"></div>
+        <div class="champ"><label for="jours">Días entre ambos</label><input id="jours" type="number" inputmode="numeric" min="1" max="365" placeholder="21"></div>
+        <p class="aide large" style="margin:0">Pésate cada mañana. El peso inicial es la media de tu primera semana y el final la media de la última: 4 semanas de seguimiento dan 21 días entre ambos.</p>
+        <details class="champ large">
+          <summary>Comparar con la fórmula (opcional)</summary>
+          <div class="champs" style="margin-top:14px">
+            <div class="champ large">
+              <span id="sexe-t" style="font-weight:600;font-size:.9rem">Sexo</span>
+              <div class="segment" role="radiogroup" aria-labelledby="sexe-t">
+                <input type="radio" name="sexe" id="h" value="h" checked><label for="h">Hombre</label>
+                <input type="radio" name="sexe" id="f" value="f"><label for="f">Mujer</label>
+              </div>
+            </div>
+            <div class="champ"><label for="age">Edad</label><input id="age" type="number" inputmode="numeric" min="18" max="100" placeholder="30"></div>
+            <div class="champ"><label for="taille">Altura (cm)</label><input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="175"></div>
+            <div class="champ">
+              <label for="activite">Actividad</label>
+              <select id="activite">
+                <option value="1.2">Sedentario</option>
+                <option value="1.375">Ligeramente activo</option>
+                <option value="1.55" selected>Moderadamente activo</option>
+                <option value="1.725">Activo</option>
+                <option value="1.9">Muy activo</option>
+              </select>
+            </div>
+          </div>
+        </details>
+      </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+      <p class="surtitre" id="res-t">Tu gasto real estimado</p>
+      <div class="grand"><span id="depense" data-flottant="Gasto real">—</span><small>kcal / día</small></div>
+      <p id="message" style="margin:14px 0 0">Rellena los cuatro primeros campos para ver el resultado.</p>
+      <div id="sortie" hidden>
+        <div class="sous">
+          <div><b id="s-maintien">—</b><span>para mantener tu peso</span></div>
+          <div><b id="s-perte">—</b><span id="s-perte-t">para perder a un ritmo moderado (− 15 %)</span></div>
+        </div>
+        <p id="comparaison" hidden style="margin:0 0 8px"></p>
+        <p id="alerte" hidden style="margin:0;color:#fb923c"></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <h2>El detalle del cálculo</h2>
+      <p class="formule"><code>gasto = ingesta media − (peso final − peso inicial) × 7.700 ÷ días</code></p>
+      <p>Un kilo de masa corporal representa unas 7.700 kcal. Si has perdido peso, has gastado más de lo que has comido: la diferencia, repartida por día, se suma a tu ingesta.</p>
+      <div class="calcul" role="group" aria-label="El cálculo con tus valores">
+        <div class="ligne"><span>Ingesta media</span><b id="d-apport">2.100 kcal</b></div>
+        <div class="ligne"><span id="d-var-t">Variación: 79,4 − 80,0 = − 0,6 kg en 21 días</span><b id="d-var">− 0,6 kg</b></div>
+        <div class="ligne"><span id="d-jour-t">− 0,6 × 7.700 ÷ 21</span><b id="d-jour">− 220 kcal / día</b></div>
+        <div class="ligne total"><span>Gasto real: ingesta media menos esta variación</span><b id="d-total">2.320 kcal / día</b></div>
+      </div>
+      <p>El ejemplo de arriba es el que muestra la herramienta mientras no introduces tus valores.</p>
+
+      <h2>Por qué es más exacto que una fórmula</h2>
+      <p>Una fórmula como Mifflin-St Jeor da el gasto medio de las personas que se parecen a ti en cuatro criterios, con un error habitual de un 10 %. Tu peso, en cambio, reacciona a lo que gastas de verdad. En unas semanas, dice si tu ingesta estaba por encima o por debajo de tu gasto, y cuánto.</p>
+
+      <h2>Medir bien</h2>
+      <ul class="liste">
+        <li>Pésate cada mañana, en las mismas condiciones, y haz la media por semana: el peso de un día varía varios cientos de gramos con el agua y la sal.</li>
+        <li>Registra todo lo que comes, incluidos los días malos. Las comidas olvidadas hacen creer que el gasto es más bajo de lo que es.</li>
+        <li>Cuenta al menos tres o cuatro semanas. Por debajo de 10 días, la herramienta no calcula: el ruido supera a la señal.</li>
+      </ul>
+
+      <h2>Lo que este cálculo no sabe</h2>
+      <div class="inconnu">
+        <p><strong>El inicio de una dieta falsea el cálculo.</strong> Los primeros días, el cuerpo pierde sobre todo agua y glucógeno, mucho más ligeros en calorías que la grasa. Medir a partir de la segunda semana evita sobrestimar tu gasto.</p>
+        <p><strong>Solo vale lo que vale tu registro.</strong> Un error constante de 200 kcal en tus comidas se traslada tal cual al resultado.</p>
+        <p style="margin:0"><strong>No es un consejo médico.</strong> Un gasto muy alejado de lo esperado puede tener una causa que conviene consultar con un médico.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>El mismo cálculo, cada semana</strong><p>Basal lo rehace en cada pesada, con tus comidas registradas: media móvil del peso, límites de plausibilidad y ajuste progresivo.</p></div>
+        <a class="bouton vif" href="/es/#download">Descargar</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>Esta herramienta es informativa. Basal no es un dispositivo médico y no sustituye el consejo de un profesional sanitario.</p>
+  </aside>
+</main>
+
+<script>
+// Même bilan énergétique que l'application (services/adaptiveTdeeService.ts : KCAL_PER_KG = 7700, observation
+// jugée plausible entre 0,8 et 1,6 fois la formule) et mêmes formules (services/nutritionCalculator.ts : Mifflin-St
+// Jeor, palier de perte modéré à − 15 %, plancher au métabolisme de base et à 800 kcal). Exemple épinglé par
+// services/__tests__/methodeSite.test.ts : 2 100 kcal, 80,0 → 79,4 kg en 21 jours = 2 320 kcal.
+(function () {
+  var KCAL_PAR_KG = 7700, JOURS_MIN = 10;
+  var val = function (id) { var v = document.getElementById(id).value.replace(',', '.'); return v === '' ? null : +v; };
+  var ecrire = function (id, t) { document.getElementById(id).textContent = t; };
+  var nb = function (x) { return Math.round(x).toLocaleString('es-ES'); };
+  var dec = function (x) { return x.toLocaleString('es-ES', { maximumFractionDigits: 1, minimumFractionDigits: 1 }); };
+  var signe = function (x) { return (x > 0 ? '+ ' : x < 0 ? '− ' : '') + dec(Math.abs(x)); };
+
+  function calculer() {
+    var apport = val('apport'), debut = val('debut'), fin = val('fin'), jours = val('jours');
+    var sortie = document.getElementById('sortie'), message = document.getElementById('message');
+    if (apport === null || debut === null || fin === null || jours === null) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Rellena los cuatro primeros campos para ver el resultado.';
+      return;
+    }
+    if (apport < 500 || apport > 8000 || debut < 30 || debut > 300 || fin < 30 || fin > 300 || jours < 1) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Uno de los valores está fuera de los límites plausibles: revisa la ingesta (500 a 8.000 kcal) y los pesos (30 a 300 kg).';
+      return;
+    }
+    if (jours < JOURS_MIN) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Hacen falta al menos ' + JOURS_MIN + ' días entre las dos medias: por debajo, el agua y la sal pesan más que la grasa.';
+      return;
+    }
+    var variation = fin - debut;
+    var parJour = variation * KCAL_PAR_KG / jours;
+    var depense = apport - parJour;
+    message.hidden = true; sortie.hidden = false;
+    ecrire('depense', nb(depense));
+
+    // Profil facultatif : formule, écart, plancher de l'objectif.
+    var age = val('age'), taille = val('taille'), k = +document.getElementById('activite').value;
+    if (age !== null && age < 18) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Basal está reservada a personas mayores de edad y no calcula necesidades calóricas antes de los 18 años: a esa edad se determinan con un profesional de la salud.';
+      return;
+    }
+    var femme = document.getElementById('f').checked;
+    var bmr = null, formule = null;
+    if (age !== null && taille !== null) {
+      bmr = 10 * fin + 6.25 * taille - 5 * age + (femme ? -161 : 5);
+      formule = bmr * k;
+    }
+    var plancher = Math.max(bmr || 0, 800);
+    var perte = Math.max(depense * 0.85, plancher);
+    ecrire('s-maintien', nb(depense) + ' kcal');
+    // Plancher au-dessus de la maintenance mesurée : un objectif « de perte » serait plus haut que le maintien.
+    if (plancher >= depense) {
+      ecrire('s-perte', '—');
+      ecrire('s-perte-t', 'sin objetivo de pérdida: el gasto medido está por debajo del mínimo de seguridad, probablemente por un registro incompleto');
+    } else {
+      ecrire('s-perte', nb(perte) + ' kcal');
+      ecrire('s-perte-t', perte > depense * 0.85 ? 'para perder: subido al mínimo de seguridad' : 'para perder a un ritmo moderado (− 15 %)');
+    }
+
+    var comparaison = document.getElementById('comparaison'), alerte = document.getElementById('alerte');
+    comparaison.hidden = formule === null; alerte.hidden = true;
+    if (formule !== null) {
+      var ecart = (depense - formule) / formule * 100;
+      comparaison.textContent = 'La fórmula anunciaba ' + nb(formule) + ' kcal: tu gasto real es ' + (ecart >= 0 ? 'superior' : 'inferior') + ' en un ' + Math.abs(Math.round(ecart)) + ' %.';
+      if (depense < formule * 0.8 || depense > formule * 1.6) {
+        alerte.hidden = false;
+        alerte.textContent = 'Esta diferencia está fuera de los límites que acepta la aplicación (0,8 a 1,6 veces la fórmula). La causa más frecuente es un registro incompleto.';
+      }
+    }
+
+    ecrire('d-apport', nb(apport) + ' kcal');
+    ecrire('d-var-t', 'Variación: ' + dec(fin) + ' − ' + dec(debut) + ' = ' + signe(variation) + ' kg en ' + jours + ' días');
+    ecrire('d-var', signe(variation) + ' kg');
+    ecrire('d-jour-t', signe(variation) + ' × 7.700 ÷ ' + jours);
+    ecrire('d-jour', (parJour > 0 ? '+ ' : parJour < 0 ? '− ' : '') + nb(Math.abs(parJour)) + ' kcal / día');
+    ecrire('d-total', nb(depense) + ' kcal / día');
+  }
+  document.getElementById('calc').addEventListener('input', calculer);
+  document.getElementById('calc').addEventListener('change', calculer);
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de gasto real",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "url": "https://basal-app.fr/es/gasto-real.html",
+  "inLanguage": "es",
+  "description": "Gasto energético real a partir de la ingesta media y la variación de peso (balance energético, 7.700 kcal por kg).",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "publisher": {
+    "@id": "https://basal-app.fr/#organisation"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://basal-app.fr/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculadoras",
+      "item": "https://basal-app.fr/es/calculadoras/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Gasto real",
+      "item": "https://basal-app.fr/es/gasto-real.html"
+    }
+  ]
+}
+</script>

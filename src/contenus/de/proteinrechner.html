@@ -1,0 +1,176 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Brotkrümelnavigation"><a href="/de/">Startseite</a><span aria-hidden="true">›</span><a href="/de/rechner/">Rechner</a><span aria-hidden="true">›</span>Eiweiß</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Kostenloser Rechner</p>
+    <h1>Proteinbedarf pro Tag berechnen</h1>
+    <p class="chapeau">Nach deinem Gewicht, deinem Ziel und deinem Training, mit der Tabelle der Basal-App. Sie gilt für ein Referenzgewicht, das den Bedarf bei hohem Gewicht nicht überschätzt. Es wird nichts gesendet.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="calc" novalidate>
+      <div class="champs">
+        <div class="champ"><label for="poids">Gewicht (kg)</label><input id="poids" type="number" inputmode="decimal" step="0.1" min="30" max="300" placeholder="70"></div>
+        <div class="champ"><label for="taille">Größe (cm)</label><input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="175"></div>
+        <div class="champ">
+          <label for="objectif">Ziel</label>
+          <select id="objectif">
+            <option value="perte">Abnehmen</option>
+            <option value="maintien" selected>Gewicht halten</option>
+            <option value="prise">Muskeln aufbauen</option>
+          </select>
+        </div>
+        <div class="champ large">
+          <span id="sport-t" style="font-weight:600;font-size:.9rem">Training</span>
+          <div class="segment" role="radiogroup" aria-labelledby="sport-t">
+            <input type="radio" name="sport" id="peu" value="0" checked><label for="peu">Weniger als 3 Einheiten pro Woche</label>
+            <input type="radio" name="sport" id="sportif" value="1"><label for="sportif">3 Einheiten oder mehr</label>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+      <p class="surtitre" id="res-t">Dein Eiweißbedarf</p>
+      <div class="grand"><span id="total" data-flottant="Eiweiß">—</span><small>g / Tag</small></div>
+      <p id="message" style="margin:14px 0 0">Gib Gewicht und Größe ein, um das Ergebnis zu sehen.</p>
+      <div id="sortie" hidden>
+        <div class="sous">
+          <div><b id="s-gkg">—</b><span>g pro kg Referenzgewicht</span></div>
+          <div><b id="s-kcal">—</b><span>kcal geliefert (4 kcal pro Gramm)</span></div>
+        </div>
+        <p id="reference" style="margin:0"></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <h2>Die verwendete Tabelle</h2>
+      <p class="formule"><code>Eiweiß (g) = Referenzgewicht × Gramm pro Kilo</code></p>
+      <div class="tableau">
+        <table>
+          <caption>Gramm Eiweiß pro Kilo Referenzgewicht</caption>
+          <thead><tr><th scope="col">Ziel</th><th scope="col" class="n">Weniger als 3 Einheiten pro Woche</th><th scope="col" class="n">3 Einheiten oder mehr</th></tr></thead>
+          <tbody>
+            <tr><td>Abnehmen</td><td class="n">1,8</td><td class="n">2,2</td></tr>
+            <tr><td>Gewicht halten</td><td class="n">1,4</td><td class="n">1,8</td></tr>
+            <tr><td>Muskeln aufbauen</td><td class="n">1,6</td><td class="n">2,0</td></tr>
+          </tbody>
+        </table>
+        <p class="source">Die Tabelle der Basal-App (Version 1.4). Der Bedarf steigt im Defizit, wo Eiweiß die Muskelmasse schützt.</p>
+      </div>
+      <div class="calcul" role="group" aria-label="Beispiele">
+        <div class="titre">Beispiele, für 175 cm</div>
+        <div class="ligne"><span>70 kg, Abnehmen, 3 Einheiten oder mehr: 70 × 2,2</span><b>154 g</b></div>
+        <div class="ligne"><span>70 kg, Gewicht halten, weniger als 3 Einheiten: 70 × 1,4</span><b>98 g</b></div>
+        <div class="ligne"><span>120 kg, Abnehmen, 3 Einheiten oder mehr: 87,4 × 2,2</span><b>192 g</b></div>
+      </div>
+
+      <h2>Warum ein Referenzgewicht</h2>
+      <p>Der Eiweißbedarf folgt der fettfreien Masse, nicht dem Gesamtgewicht. 2,2 g pro Kilo bei 120 kg ergäben 264 g pro Tag, über 1.000 kcal, bevor der Rest überhaupt zählt: Keine Empfehlung stützt eine solche Zahl. Bis zu einem BMI von 25 ist das Referenzgewicht daher dein tatsächliches Gewicht; darüber zählt nur ein Viertel des Überschusses. Das ist die Formel des angepassten Gewichts, die übliche Näherung, wenn die fettfreie Masse nicht gemessen wird.</p>
+
+      <h2>Und der Rest auf dem Teller</h2>
+      <p>Eiweiß ist nur ein Teil der Rechnung. Der <a href="/de/makrorechner.html">Makrorechner</a> ergänzt Fett und Kohlenhydrate nach denselben Regeln, und die <a href="/de/rezepte/">berechneten Rezepte</a> zeigen ihr Eiweiß pro Portion.</p>
+
+      <h2>Was diese Berechnung nicht weiß</h2>
+      <div class="inconnu">
+        <p><strong>Es ist eine Größenordnung.</strong> Sie beruht auf den üblichen Bereichen der Sporternährung, nicht auf einer Messung deiner Körperzusammensetzung.</p>
+        <p style="margin:0"><strong>Manche Situationen gehören in fachliche Hände</strong>: Nierenerkrankung, Schwangerschaft, verordnete Diät, Essstörung.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>Dein Eiweißziel, jeden Tag</strong><p>Basal berechnet dein Eiweiß mit dieser Tabelle und verfolgt es Mahlzeit für Mahlzeit, mit eigenem Eiweißziel für Trainings- und Ruhetage in Premium.</p></div>
+        <a class="bouton vif" href="/de/#download">Herunterladen</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>Dieses Werkzeug dient nur der Information. Basal ist kein Medizinprodukt und ersetzt nicht den Rat medizinischen Fachpersonals.</p>
+  </aside>
+</main>
+
+<script>
+// Mêmes règles que l'application (services/nutritionCalculator.ts) : grille g/kg, bonus de 0,4 g/kg à partir de
+// 3 séances par semaine, poids de référence au-delà d'un IMC de 25 (un quart de l'excédent). Exemples épinglés par
+// services/__tests__/methodeSite.test.ts : 154, 98 et 192 g.
+(function () {
+  var GRILLE = { perte: 1.8, maintien: 1.4, prise: 1.6 }, BONUS = 0.4, IMC_REF = 25, PART_EXCEDENT = 0.25;
+  var val = function (id) { var v = document.getElementById(id).value.replace(',', '.'); return v === '' ? null : +v; };
+  var ecrire = function (id, t) { document.getElementById(id).textContent = t; };
+  var dec = function (x) { return x.toLocaleString('de-DE', { maximumFractionDigits: 1 }); };
+
+  function calculer() {
+    var poids = val('poids'), taille = val('taille');
+    var sortie = document.getElementById('sortie'), message = document.getElementById('message');
+    if (poids === null || taille === null || poids < 30 || poids > 300 || taille < 120 || taille > 230) {
+      ecrire('total', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = poids === null || taille === null
+        ? 'Gib Gewicht und Größe ein, um das Ergebnis zu sehen.'
+        : 'Prüfe die Werte: Gewicht von 30 bis 300 kg, Größe von 120 bis 230 cm.';
+      return;
+    }
+    var seuil = IMC_REF * Math.pow(taille / 100, 2);
+    var reference = poids <= seuil ? poids : seuil + PART_EXCEDENT * (poids - seuil);
+    var gkg = GRILLE[document.getElementById('objectif').value] + (document.getElementById('sportif').checked ? BONUS : 0);
+    var total = Math.round(reference * gkg);
+    message.hidden = true; sortie.hidden = false;
+    ecrire('total', total);
+    ecrire('s-gkg', dec(gkg) + ' g');
+    ecrire('s-kcal', (total * 4).toLocaleString('de-DE') + ' kcal');
+    ecrire('reference', poids <= seuil
+      ? 'Referenzgewicht: dein tatsächliches Gewicht (BMI von 25 oder weniger).'
+      : 'Referenzgewicht: ' + dec(reference) + ' kg. Über einem BMI von 25 (' + dec(seuil) + ' kg für deine Größe) zählt nur ein Viertel des Überschusses.');
+  }
+  document.getElementById('calc').addEventListener('input', calculer);
+  document.getElementById('calc').addEventListener('change', calculer);
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Proteinrechner: Proteinbedarf pro Tag berechnen",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "url": "https://basal-app.fr/de/proteinrechner.html",
+  "inLanguage": "de",
+  "description": "Täglicher Eiweißbedarf nach Gewicht, Ziel und Training, auf ein Referenzgewicht bezogen.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "publisher": {
+    "@id": "https://basal-app.fr/#organisation"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://basal-app.fr/de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Rechner",
+      "item": "https://basal-app.fr/de/rechner/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Eiweiß",
+      "item": "https://basal-app.fr/de/proteinrechner.html"
+    }
+  ]
+}
+</script>

@@ -1,0 +1,236 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Brotkrümelnavigation"><a href="/de/">Startseite</a><span aria-hidden="true">›</span><a href="/de/rechner/">Rechner</a><span aria-hidden="true">›</span>Tatsächlicher Verbrauch</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Kostenloser Rechner</p>
+    <h1>Tatsächlichen Verbrauch aus dem Gewicht berechnen</h1>
+    <p class="chapeau">Eine Formel schätzt deinen Verbrauch aus Alter, Größe und Gewicht. Hier wird er aus dem abgeleitet, was du wirklich gegessen hast, und aus dem Verlauf deines Gewichts: die Methode der Basal-App. Die Berechnung läuft in deinem Browser, es wird nichts gesendet.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="calc" novalidate>
+      <div class="champs">
+        <div class="champ large">
+          <label for="apport">Durchschnittliche Zufuhr (kcal pro Tag)</label>
+          <input id="apport" type="number" inputmode="numeric" min="500" max="8000" placeholder="2100">
+          <span class="aide">Der Durchschnitt deiner Kalorien über den ganzen Zeitraum, nur mit den Tagen, an denen du alles eingetragen hast.</span>
+        </div>
+        <div class="champ"><label for="debut">Anfangsgewicht (kg)</label><input id="debut" type="number" inputmode="decimal" step="0.1" min="30" max="300" placeholder="80,0"></div>
+        <div class="champ"><label for="fin">Endgewicht (kg)</label><input id="fin" type="number" inputmode="decimal" step="0.1" min="30" max="300" placeholder="79,4"></div>
+        <div class="champ"><label for="jours">Tage dazwischen</label><input id="jours" type="number" inputmode="numeric" min="1" max="365" placeholder="21"></div>
+        <p class="aide large" style="margin:0">Wiege dich jeden Morgen. Das Anfangsgewicht ist der Durchschnitt deiner ersten Woche, das Endgewicht der deiner letzten: 4 Wochen Tracking ergeben 21 Tage dazwischen.</p>
+        <details class="champ large">
+          <summary>Mit der Formel vergleichen (optional)</summary>
+          <div class="champs" style="margin-top:14px">
+            <div class="champ large">
+              <span id="sexe-t" style="font-weight:600;font-size:.9rem">Geschlecht</span>
+              <div class="segment" role="radiogroup" aria-labelledby="sexe-t">
+                <input type="radio" name="sexe" id="h" value="h" checked><label for="h">Mann</label>
+                <input type="radio" name="sexe" id="f" value="f"><label for="f">Frau</label>
+              </div>
+            </div>
+            <div class="champ"><label for="age">Alter</label><input id="age" type="number" inputmode="numeric" min="18" max="100" placeholder="30"></div>
+            <div class="champ"><label for="taille">Größe (cm)</label><input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="175"></div>
+            <div class="champ">
+              <label for="activite">Aktivität</label>
+              <select id="activite">
+                <option value="1.2">Sitzend</option>
+                <option value="1.375">Leicht aktiv</option>
+                <option value="1.55" selected>Mäßig aktiv</option>
+                <option value="1.725">Aktiv</option>
+                <option value="1.9">Sehr aktiv</option>
+              </select>
+            </div>
+          </div>
+        </details>
+      </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+      <p class="surtitre" id="res-t">Dein geschätzter tatsächlicher Verbrauch</p>
+      <div class="grand"><span id="depense" data-flottant="Tatsächlicher Verbrauch">—</span><small>kcal / Tag</small></div>
+      <p id="message" style="margin:14px 0 0">Fülle die ersten vier Felder aus, um das Ergebnis zu sehen.</p>
+      <div id="sortie" hidden>
+        <div class="sous">
+          <div><b id="s-maintien">—</b><span>um dein Gewicht zu halten</span></div>
+          <div><b id="s-perte">—</b><span id="s-perte-t">um in moderatem Tempo abzunehmen (− 15 %)</span></div>
+        </div>
+        <p id="comparaison" hidden style="margin:0 0 8px"></p>
+        <p id="alerte" hidden style="margin:0;color:#fb923c"></p>
+      </div>
+    </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <h2>Die Berechnung im Detail</h2>
+      <p class="formule"><code>Verbrauch = durchschnittliche Zufuhr − (Endgewicht − Anfangsgewicht) × 7.700 ÷ Tage</code></p>
+      <p>Ein Kilogramm Körpermasse entspricht etwa 7.700 kcal. Hast du abgenommen, hast du mehr verbraucht als gegessen: Die Differenz, auf den Tag umgerechnet, kommt zu deiner Zufuhr hinzu.</p>
+      <div class="calcul" role="group" aria-label="Die Berechnung mit deinen Werten">
+        <div class="ligne"><span>Durchschnittliche Zufuhr</span><b id="d-apport">2.100 kcal</b></div>
+        <div class="ligne"><span id="d-var-t">Veränderung: 79,4 − 80,0 = − 0,6 kg in 21 Tagen</span><b id="d-var">− 0,6 kg</b></div>
+        <div class="ligne"><span id="d-jour-t">− 0,6 × 7.700 ÷ 21</span><b id="d-jour">− 220 kcal / Tag</b></div>
+        <div class="ligne total"><span>Tatsächlicher Verbrauch: Zufuhr minus diese Veränderung</span><b id="d-total">2.320 kcal / Tag</b></div>
+      </div>
+      <p>Das Beispiel oben zeigt das Werkzeug, solange du keine eigenen Werte eingibst.</p>
+
+      <h2>Warum das genauer ist als eine Formel</h2>
+      <p>Eine Formel wie Mifflin-St Jeor liefert den durchschnittlichen Verbrauch von Menschen, die dir in vier Merkmalen ähneln, mit einem üblichen Fehler von etwa 10 %. Dein Gewicht dagegen reagiert auf das, was du wirklich verbrauchst. Über einige Wochen zeigt es, ob deine Zufuhr über oder unter deinem Verbrauch lag, und um wie viel.</p>
+
+      <h2>Richtig messen</h2>
+      <ul class="liste">
+        <li>Wiege dich jeden Morgen unter gleichen Bedingungen und bilde Wochendurchschnitte: Das Gewicht eines Tages schwankt mit Wasser und Salz um mehrere hundert Gramm.</li>
+        <li>Trage alles ein, was du isst, auch an misslungenen Tagen. Vergessene Mahlzeiten lassen den Verbrauch niedriger erscheinen, als er ist.</li>
+        <li>Rechne mit mindestens drei bis vier Wochen. Unter 10 Tagen rechnet das Werkzeug nicht: Das Rauschen überwiegt das Signal.</li>
+      </ul>
+
+      <h2>Was diese Berechnung nicht weiß</h2>
+      <div class="inconnu">
+        <p><strong>Der Beginn einer Diät verfälscht die Rechnung.</strong> In den ersten Tagen verliert der Körper vor allem Wasser und Glykogen, kalorisch viel leichter als Fett. Ab der zweiten Woche zu messen verhindert, deinen Verbrauch zu überschätzen.</p>
+        <p><strong>Sie ist nur so gut wie dein Tagebuch.</strong> Ein gleichbleibender Fehler von 200 kcal bei deinen Mahlzeiten landet unverändert im Ergebnis.</p>
+        <p style="margin:0"><strong>Es ist kein ärztlicher Rat.</strong> Ein Verbrauch weit weg vom Erwarteten kann eine Ursache haben, die ein Arzt ansehen sollte.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>Dieselbe Rechnung, jede Woche</strong><p>Basal rechnet sie bei jedem Wiegen neu, mit deinen eingetragenen Mahlzeiten: gleitender Gewichtsdurchschnitt, Plausibilitätsgrenzen und schrittweise Anpassung.</p></div>
+        <a class="bouton vif" href="/de/#download">Herunterladen</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>Dieses Werkzeug dient nur der Information. Basal ist kein Medizinprodukt und ersetzt nicht den Rat medizinischen Fachpersonals.</p>
+  </aside>
+</main>
+
+<script>
+// Même bilan énergétique que l'application (services/adaptiveTdeeService.ts : KCAL_PER_KG = 7700, observation
+// jugée plausible entre 0,8 et 1,6 fois la formule) et mêmes formules (services/nutritionCalculator.ts : Mifflin-St
+// Jeor, palier de perte modéré à − 15 %, plancher au métabolisme de base et à 800 kcal). Exemple épinglé par
+// services/__tests__/methodeSite.test.ts : 2 100 kcal, 80,0 → 79,4 kg en 21 jours = 2 320 kcal.
+(function () {
+  var KCAL_PAR_KG = 7700, JOURS_MIN = 10;
+  var val = function (id) { var v = document.getElementById(id).value.replace(',', '.'); return v === '' ? null : +v; };
+  var ecrire = function (id, t) { document.getElementById(id).textContent = t; };
+  var nb = function (x) { return Math.round(x).toLocaleString('de-DE'); };
+  var dec = function (x) { return x.toLocaleString('de-DE', { maximumFractionDigits: 1, minimumFractionDigits: 1 }); };
+  var signe = function (x) { return (x > 0 ? '+ ' : x < 0 ? '− ' : '') + dec(Math.abs(x)); };
+
+  function calculer() {
+    var apport = val('apport'), debut = val('debut'), fin = val('fin'), jours = val('jours');
+    var sortie = document.getElementById('sortie'), message = document.getElementById('message');
+    if (apport === null || debut === null || fin === null || jours === null) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Fülle die ersten vier Felder aus, um das Ergebnis zu sehen.';
+      return;
+    }
+    if (apport < 500 || apport > 8000 || debut < 30 || debut > 300 || fin < 30 || fin > 300 || jours < 1) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Einer der Werte liegt außerhalb plausibler Grenzen: Prüfe die Zufuhr (500 bis 8.000 kcal) und die Gewichte (30 bis 300 kg).';
+      return;
+    }
+    if (jours < JOURS_MIN) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Es braucht mindestens ' + JOURS_MIN + ' Tage zwischen den beiden Durchschnitten: Darunter wiegen Wasser und Salz mehr als Fett.';
+      return;
+    }
+    var variation = fin - debut;
+    var parJour = variation * KCAL_PAR_KG / jours;
+    var depense = apport - parJour;
+    message.hidden = true; sortie.hidden = false;
+    ecrire('depense', nb(depense));
+
+    // Profil facultatif : formule, écart, plancher de l'objectif.
+    var age = val('age'), taille = val('taille'), k = +document.getElementById('activite').value;
+    if (age !== null && age < 18) {
+      ecrire('depense', '—'); sortie.hidden = true; message.hidden = false;
+      message.textContent = 'Basal ist Volljährigen vorbehalten und berechnet vor 18 Jahren keinen Kalorienbedarf: In diesem Alter bestimmt man ihn mit medizinischem Fachpersonal.';
+      return;
+    }
+    var femme = document.getElementById('f').checked;
+    var bmr = null, formule = null;
+    if (age !== null && taille !== null) {
+      bmr = 10 * fin + 6.25 * taille - 5 * age + (femme ? -161 : 5);
+      formule = bmr * k;
+    }
+    var plancher = Math.max(bmr || 0, 800);
+    var perte = Math.max(depense * 0.85, plancher);
+    ecrire('s-maintien', nb(depense) + ' kcal');
+    // Plancher au-dessus de la maintenance mesurée : un objectif « de perte » serait plus haut que le maintien.
+    if (plancher >= depense) {
+      ecrire('s-perte', '—');
+      ecrire('s-perte-t', 'kein Abnehmziel: Der gemessene Verbrauch liegt unter der Sicherheitsgrenze, wahrscheinlich wegen eines unvollständigen Tagebuchs');
+    } else {
+      ecrire('s-perte', nb(perte) + ' kcal');
+      ecrire('s-perte-t', perte > depense * 0.85 ? 'zum Abnehmen: auf die Sicherheitsgrenze angehoben' : 'um in moderatem Tempo abzunehmen (− 15 %)');
+    }
+
+    var comparaison = document.getElementById('comparaison'), alerte = document.getElementById('alerte');
+    comparaison.hidden = formule === null; alerte.hidden = true;
+    if (formule !== null) {
+      var ecart = (depense - formule) / formule * 100;
+      comparaison.textContent = 'Die Formel sagte ' + nb(formule) + ' kcal voraus: Dein tatsächlicher Verbrauch ist ' + (ecart >= 0 ? 'höher' : 'niedriger') + ', um ' + Math.abs(Math.round(ecart)) + ' %.';
+      if (depense < formule * 0.8 || depense > formule * 1.6) {
+        alerte.hidden = false;
+        alerte.textContent = 'Diese Abweichung liegt außerhalb der Grenzen, die die App akzeptiert (0,8- bis 1,6-fache der Formel). Die häufigste Ursache ist ein unvollständiges Tagebuch.';
+      }
+    }
+
+    ecrire('d-apport', nb(apport) + ' kcal');
+    ecrire('d-var-t', 'Veränderung: ' + dec(fin) + ' − ' + dec(debut) + ' = ' + signe(variation) + ' kg in ' + jours + ' Tagen');
+    ecrire('d-var', signe(variation) + ' kg');
+    ecrire('d-jour-t', signe(variation) + ' × 7.700 ÷ ' + jours);
+    ecrire('d-jour', (parJour > 0 ? '+ ' : parJour < 0 ? '− ' : '') + nb(Math.abs(parJour)) + ' kcal / Tag');
+    ecrire('d-total', nb(depense) + ' kcal / Tag');
+  }
+  document.getElementById('calc').addEventListener('input', calculer);
+  document.getElementById('calc').addEventListener('change', calculer);
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Rechner für den tatsächlichen Verbrauch",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "url": "https://basal-app.fr/de/tatsaechlicher-verbrauch.html",
+  "inLanguage": "de",
+  "description": "Tatsächlicher Energieverbrauch aus durchschnittlicher Zufuhr und Gewichtsveränderung (Energiebilanz, 7.700 kcal pro kg).",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "publisher": {
+    "@id": "https://basal-app.fr/#organisation"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://basal-app.fr/de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Rechner",
+      "item": "https://basal-app.fr/de/rechner/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Tatsächlicher Verbrauch",
+      "item": "https://basal-app.fr/de/tatsaechlicher-verbrauch.html"
+    }
+  ]
+}
+</script>

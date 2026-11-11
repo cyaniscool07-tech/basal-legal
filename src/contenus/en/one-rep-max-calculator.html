@@ -1,0 +1,149 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Breadcrumb"><a href="/en/">Home</a><span aria-hidden="true">›</span><a href="/en/calculators/">Calculators</a><span aria-hidden="true">›</span>1RM</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Free calculator</p>
+    <h1>Work out your 1RM, the most you can lift for one rep</h1>
+    <p class="chapeau">Your estimated maximum load from a set you actually did, without testing a max. It is the Epley formula, the one the Basal app uses to track your progress. Nothing is sent.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="calc" novalidate>
+      <div class="champs">
+        <div class="champ"><label for="charge">Weight lifted (kg)</label><input id="charge" type="number" inputmode="decimal" step="0.5" min="1" max="500" placeholder="80"></div>
+        <div class="champ"><label for="reps">Reps</label><input id="reps" type="number" inputmode="numeric" min="1" max="30" placeholder="8"></div>
+        <p class="aide large" style="margin:0">Use a set taken close to failure, with clean technique. A set of a single rep is already your maximum: the calculation keeps it as is.</p>
+      </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+      <p class="surtitre" id="res-t">Your estimated 1RM</p>
+      <div class="grand"><span id="rm" data-flottant="Your estimated 1RM">—</span><small>kg</small></div>
+      <p id="message" style="margin:14px 0 0">Enter the weight and the number of reps.</p>
+      <p id="alerte" hidden style="margin:14px 0 0;color:#fb923c">Above about ten reps, the estimate becomes less reliable: fatigue and endurance weigh more than strength.</p>
+    </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <h2>Your loads from 1 to 12 reps</h2>
+      <div class="tableau">
+        <table>
+          <caption>Loads estimated from your 1RM</caption>
+          <thead><tr><th scope="col">Reps</th><th scope="col" class="n">Estimated load</th><th scope="col" class="n">Share of 1RM</th></tr></thead>
+          <tbody id="table-charges"><tr><td colspan="3" class="vide">The table fills in with your result.</td></tr></tbody>
+        </table>
+        <p class="source">Reverse Epley formula: load = 1RM ÷ (1 + reps ÷ 30). Rounded to 0.5 kg.</p>
+      </div>
+
+      <h2>The calculation in detail</h2>
+      <p class="formule"><code>1RM ≈ load × (1 + reps ÷ 30)</code></p>
+      <div class="calcul" role="group" aria-label="Example">
+        <div class="titre">Example: 80 kg lifted 8 times</div>
+        <div class="ligne"><span>80 × (1 + 8 ÷ 30)</span><b>101.3 kg</b></div>
+        <div class="ligne"><span>100 kg lifted once: already a real maximum, kept as is</span><b>100 kg</b></div>
+      </div>
+      <p>The Epley formula (1985) is the most widely used. At one rep it would return 1.033 times the load, although the load lifted is already the maximum: the app and this calculator therefore keep it as is, rather than inflating a real record by 3%.</p>
+
+      <h2>What it is for</h2>
+      <p>An estimated 1RM lets you compare sessions with different rep counts: 80 kg for 8 and 90 kg for 4 give almost the same 1RM (101.3 and 102 kg). That is how the app tracks an exercise’s progress from one week to the next.</p>
+
+      <h2>What this calculation does not know</h2>
+      <div class="inconnu">
+        <p><strong>It is an estimate.</strong> The link between reps and maximum load varies with the exercise, your training and the day’s fatigue.</p>
+        <p style="margin:0"><strong>It is not an invitation to test your max.</strong> A one-rep attempt is done warmed up, with controlled technique, and with a spotter or safeties on exercises that need them.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>Your progress, session after session</strong><p>Basal logs your sets and loads, calculates your estimated 1RM for each exercise and shows your records next to your weight trend.</p></div>
+        <a class="bouton vif" href="/en/#download">Download</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>This tool is for information only. Basal is not a medical device and does not replace advice from a health professional or a coach.</p>
+  </aside>
+</main>
+
+<script>
+// Même formule que l'application (services/strengthProgressService.ts, estimateOneRepMax) : Epley, et une seule
+// répétition gardée telle quelle. Exemple épinglé par services/__tests__/methodeSite.test.ts : 80 kg × 8 = 101,3 kg.
+(function () {
+  var val = function (id) { var v = document.getElementById(id).value.replace(',', '.'); return v === '' ? null : +v; };
+  var kg = function (x) { return x.toLocaleString('en-GB', { maximumFractionDigits: 1 }); };
+  function epley(charge, reps) { return reps === 1 ? charge : charge * (1 + reps / 30); }
+
+  function calculer() {
+    var charge = val('charge'), reps = val('reps');
+    var rm = document.getElementById('rm'), message = document.getElementById('message'), alerte = document.getElementById('alerte');
+    var table = document.getElementById('table-charges');
+    if (charge === null || reps === null || charge <= 0 || charge > 500 || reps < 1 || reps > 30 || reps % 1 !== 0) {
+      rm.textContent = '—'; alerte.hidden = true; message.hidden = false;
+      message.textContent = charge === null || reps === null
+        ? 'Enter the weight and the number of reps.'
+        : 'Check the values: load from 1 to 500 kg, 1 to 30 whole reps.';
+      table.innerHTML = '<tr><td colspan="3" class="vide">The table fills in with your result.</td></tr>';
+      return;
+    }
+    var max = epley(charge, reps);
+    message.hidden = true; alerte.hidden = reps <= 10;
+    rm.textContent = kg(Math.round(max * 10) / 10);
+    var lignes = '';
+    for (var r = 1; r <= 12; r++) {
+      var c = r === 1 ? max : max / (1 + r / 30);
+      lignes += '<tr><td>' + r + '</td><td class="n">' + kg(Math.round(c * 2) / 2) + ' kg</td><td class="n">' + Math.round(c / max * 100) + ' %</td></tr>';
+    }
+    table.innerHTML = lignes;
+  }
+  document.getElementById('calc').addEventListener('input', calculer);
+  document.getElementById('calc').addEventListener('change', calculer);
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "One-rep max (1RM) calculator",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "url": "https://basal-app.fr/en/one-rep-max-calculator.html",
+  "inLanguage": "en",
+  "description": "Estimated one-rep max from a set, Epley formula, with loads from 1 to 12 reps.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "publisher": {
+    "@id": "https://basal-app.fr/#organisation"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://basal-app.fr/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Calculators",
+      "item": "https://basal-app.fr/en/calculators/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "1RM",
+      "item": "https://basal-app.fr/en/one-rep-max-calculator.html"
+    }
+  ]
+}
+</script>

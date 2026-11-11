@@ -1,0 +1,375 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Brotkrümelnavigation"><a href="/de/">Startseite</a><span aria-hidden="true">›</span><a href="/de/rechner/">Rechner</a><span aria-hidden="true">›</span>Makros</nav>
+  <header class="article-tete" style="border:0;padding-bottom:0">
+    <p class="surtitre">Kostenloser Rechner</p>
+    <h1>Berechne deine Makros</h1>
+    <p class="chapeau">Dieselben Regeln wie in der App: Eiweiß und Fett am Körpergewicht verankert,
+    Kohlenhydrate für den Rest. Es wird nichts gesendet — die Berechnung läuft in deinem Browser.</p>
+  </header>
+
+  <div class="outil">
+    <form class="carte" id="f" novalidate>
+      <div class="champs">
+            <div class="champ">
+              <label for="sexe">Geschlecht</label>
+              <select id="sexe">
+                <option value="male">Mann</option>
+                <option value="female">Frau</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="age">Alter</label>
+              <input id="age" type="number" inputmode="numeric" min="18" max="100" placeholder="31">
+            </div>
+            <div class="champ">
+              <label for="taille">Größe (cm)</label>
+              <input id="taille" type="number" inputmode="numeric" min="120" max="230" placeholder="178">
+            </div>
+            <div class="champ">
+              <label for="poids">Gewicht (kg)</label>
+              <input id="poids" type="number" inputmode="decimal" min="30" max="300" step="0.1" placeholder="75">
+            </div>
+            <div class="champ large">
+              <label for="activite">Aktivitätsniveau</label>
+              <select id="activite">
+                <option value="1.2">Sitzend — wenig oder kein Sport · unter 5.000 Schritte/Tag</option>
+                <option value="1.375">Leicht aktiv — 1 bis 3 Einheiten pro Woche · 5.000 bis 7.500 Schritte/Tag</option>
+                <option value="1.55" selected>Mäßig aktiv — 3 bis 5 Einheiten pro Woche · 7.500 bis 10.000 Schritte/Tag</option>
+                <option value="1.725">Aktiv — 6 bis 7 Einheiten pro Woche · 10.000 bis 12.500 Schritte/Tag</option>
+                <option value="1.9">Sehr aktiv — körperliche Arbeit oder zweimal täglich Training · über 12.500 Schritte/Tag</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="objectif">Ziel</label>
+              <select id="objectif">
+                <option value="lose">Abnehmen</option>
+                <option value="maintain" selected>Gewicht halten</option>
+                <option value="gain">Muskelaufbau</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="rythme">Tempo</label>
+              <select id="rythme"></select>
+            </div>
+          </div>
+    </form>
+
+    <section class="carte resultat" aria-live="polite">
+          <p class="vide" id="vide">Fülle die vier Zahlenfelder aus, um das Ergebnis zu sehen.</p>
+          <div id="sortie" hidden>
+            <div class="ligne total">
+              <span>Kalorienziel</span><b id="kcal" data-flottant="Ziel">—</b>
+            </div>
+            <div class="ligne">
+              <span>Eiweiß <em id="protDetail"></em></span><b id="prot">—</b>
+            </div>
+            <div class="ligne">
+              <span>Kohlenhydrate</span><b id="gluc">—</b>
+            </div>
+            <div class="ligne">
+              <span>Fett <em id="lipDetail"></em></span><b id="lip">—</b>
+            </div>
+            <div class="ligne">
+              <span>Ballaststoffe</span><b id="fib">—</b>
+            </div>
+            <p class="note" id="plancher" hidden></p>
+          </div>
+        </section>
+  </div>
+
+  <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
+    <div class="corps">
+      <div class="encadre">
+        <p>
+          <strong>Das sind Startwerte, keine Verordnung.</strong> Die Berechnung beruht auf einer
+          Schätzung des Verbrauchs, für die Validierungsstudien üblicherweise etwa 10 % Abweichung
+          angeben — also 250 kcal pro Tag bei einem Verbrauch von 2.500. Deine Makros erben diese
+          Unsicherheit. Korrigiert werden sie nicht durch eine feinere Formel, sondern durch den Blick
+          auf deine Daten über mehrere Wochen.
+        </p>
+      </div>
+
+      <h2>Warum kein fester Prozentsatz</h2>
+      <p>
+        Die verbreitetste Methode teilt die Kalorien in feste Anteile auf — zum Beispiel 30 % Eiweiß,
+        40 % Kohlenhydrate, 30 % Fett. Sie hat einen Fehler, der genau dort auffällt, wo es darauf
+        ankommt: <strong>Sie macht deinen Bedarf von deinem Kalorienziel abhängig</strong>, obwohl er von
+        deinem Körper abhängt.
+      </p>
+      <p>
+        Bei einem niedrigen Ziel ergeben 30 % von 1.100 kcal etwa 82 g Eiweiß und 37 g Fett. Beides ist
+        zu wenig, und zwar genau dann, wenn es am meisten zählt — beim Abnehmen, wenn Muskelmasse und
+        hormonelles Gleichgewicht erhalten bleiben sollen.
+      </p>
+      <p>
+        Daher die Reihenfolge hier: Eiweiß und Fett werden zuerst festgelegt, ausgehend vom Körpergewicht.
+        Die Kohlenhydrate bekommen den Rest.
+      </p>
+
+      <h2>Die Berechnung im Detail</h2>
+
+      <h3>Eiweiß</h3>
+      <p>
+        In Gramm pro Kilogramm, je nach Ziel, mit einem Zuschlag ab drei Einheiten pro Woche — ab dieser
+        Schwelle erzeugt das Training einen echten Mehrbedarf.
+      </p>
+      <ul class="liste">
+        <li><strong>Abnehmen</strong> — 1,8 g/kg, oder 2,2 g/kg, wenn du trainierst.</li>
+        <li><strong>Gewicht halten</strong> — 1,4 g/kg, oder 1,8 g/kg, wenn du trainierst.</li>
+        <li><strong>Muskelaufbau</strong> — 1,6 g/kg, oder 2,0 g/kg, wenn du trainierst.</li>
+      </ul>
+      <p>
+        Diese Werte liegen in dem Bereich, den die Literatur zum Krafttraining üblicherweise nennt,
+        1,6 bis 2,2 g/kg, mit abflachendem Nutzen darüber.
+      </p>
+
+      <h3>Das Referenzgewicht, und warum es nicht immer dein Gewicht ist</h3>
+      <p>
+        Mit dem Gesamtgewicht zu multiplizieren wird ab einer gewissen Statur zum Problem: überschüssiges
+        Fettgewebe hat nicht denselben Eiweißbedarf wie der Rest des Körpers. Die Berechnung nutzt deshalb
+        das tatsächliche Gewicht bis zu einem BMI von 25 und zählt darüber nur <strong>ein Viertel des Überschusses</strong>.
+      </p>
+      <p>
+        Das ist der Faktor der klinischen Formel für das angepasste Gewicht, die genau dort verwendet wird,
+        wo das Gesamtgewicht eine Empfehlung verfälschen würde. Die Schwelle liegt am <em>oberen</em> Ende des
+        sogenannten Normalbereichs, nicht in der Mitte: Eine niedrige Schwelle würde Menschen Eiweiß
+        streichen, bei denen es nichts zu streichen gibt. In der Praxis sieht eine Person mit
+        durchschnittlicher Statur keinen Unterschied.
+      </p>
+
+      <h3>Fett</h3>
+      <p>
+        Verwendet wird der größere von zwei Werten: <strong>0,8 g pro Kilogramm Referenzgewicht</strong>
+        oder <strong>30 % der Kalorien</strong>. Der erste ist eine Untergrenze, unabhängig von der
+        Kaloriensumme — darunter ist das Risiko eines Mangels an essenziellen Fettsäuren und hormoneller
+        Störungen belegt, unabhängig vom Ziel.
+      </p>
+
+      <h3>Kohlenhydrate und Ballaststoffe</h3>
+      <p>
+        Die Kohlenhydrate bekommen, was nach Eiweiß und Fett übrig bleibt, ohne je unter null zu fallen:
+        In einem Extremfall — sehr hohes Gewicht und sehr niedriges Ziel — hat die Sicherheit der beiden
+        anderen Vorrang vor der genauen Summe. Ballaststoffe folgen der üblichen Empfehlung von 14 g pro 1.000 kcal.
+      </p>
+
+      <h3>Die Kalorienuntergrenze</h3>
+      <p>
+        Das Kalorienziel liegt nie unter deinem Grundumsatz und nie unter 800 kcal. Das ist kein
+        willkürliches Minimum, sondern eine individuelle physiologische Schwelle, berechnet aus
+        Geschlecht, Alter, Gewicht und Größe. Würde das gewählte Tempo dich darunter bringen, sagt dir der
+        Rechner das, statt still zu korrigieren.
+      </p>
+
+      <div class="appel">
+        <p class="appel-t">Diese Makros im Alltag verfolgen</p>
+        <p>
+          Basal wendet genau diese Regeln an und korrigiert das Kalorienziel dann, indem es deine Einträge
+          mit der tatsächlichen Entwicklung deines Gewichts vergleicht. Das Tracking von Kalorien, Makros,
+          Gewicht und Training ist kostenlos, unbegrenzt und braucht kein Konto.
+        </p>
+        <div class="cta">
+          <a class="store-badge play" data-goatcounter-click="store-play-de-makrorechner" href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker&amp;hl=de&amp;referrer=utm_source%3Dbasal-app.fr%26utm_medium%3Dsite%26utm_campaign%3Dde-makrorechner">
+            <img src="/img/google-play-en.png" alt="Jetzt bei Google Play" width="148" height="44" loading="lazy">
+          </a>
+          <a class="store-badge apple" data-goatcounter-click="store-apple-de-makrorechner" href="https://apps.apple.com/de/app/basal/id6793001641">
+            <img src="/img/app-store-en.svg" alt="Laden im App Store" width="132" height="44" loading="lazy">
+          </a>
+        </div>
+      </div>
+
+      <h2>Weiterlesen</h2>
+      <ul class="liste">
+        <li><a href="/de/kalorienrechner.html">Berechne deinen Energieverbrauch</a> — die Zahl, aus der alles andere folgt.</li>
+        <li><a href="/de/proteinrechner.html">Wie viel Eiweiß du brauchst</a>.</li>
+        <li><a href="/de/rezepte/">Rezepte mit Kalorien und Makros</a>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <aside class="note-page">
+    <p>Dieses Werkzeug dient nur der Information. Basal ist kein Medizinprodukt und ersetzt nicht den
+    Rat medizinischen Fachpersonals. Nur für Volljährige.</p>
+  </aside>
+</main>
+
+<script>
+// Les MÊMES règles que l'application (services/nutritionCalculator.ts, branche de référence) :
+// PROTEIN_G_PER_KG, SPORTY_PROTEIN_BONUS_G_PER_KG, FAT_FLOOR_G_PER_KG, FAT_PERCENT_OF_CALORIES,
+// MACRO_REFERENCE_BMI, EXCESS_WEIGHT_FACTOR, GOAL_TIERS et applyCalorieSafetyFloor.
+// Duplication assumée — le site est un dépôt séparé — mais elle doit rester EXACTE : un visiteur
+// qui obtient 158 g ici et un autre chiffre dans l'app cesserait de croire les deux.
+// Toute modification de ces constantes dans l'app doit être reportée ici le même jour.
+(function () {
+  var PROTEINE_G_PAR_KG = { lose: 1.8, maintain: 1.4, gain: 1.6 };
+  var BONUS_SPORTIF = 0.4;
+  var COEF_SPORTIF_MIN = 1.55; // « modérément actif » et au-dessus
+  var LIPIDES_PLANCHER_G_PAR_KG = 0.8;
+  var LIPIDES_PART_CALORIES = 0.3;
+  var IMC_REFERENCE = 25;
+  var FACTEUR_EXCEDENT = 0.25;
+  var KCAL_MIN_ABSOLU = 800;
+
+  var PALIERS = {
+    lose: [
+      { v: -0.10, t: 'Sanft — ≈10 % unter deinem Verbrauch' },
+      { v: -0.15, t: 'Moderat — ≈15 % unter deinem Verbrauch' },
+      { v: -0.20, t: 'Intensiv — ≈20 % unter deinem Verbrauch' }
+    ],
+    maintain: [{ v: 0, t: 'Gewicht halten — entspricht deinem Verbrauch' }],
+    gain: [
+      { v: 0.05, t: 'Sanft — ≈5 % über deinem Verbrauch' },
+      { v: 0.10, t: 'Moderat — ≈10 % über deinem Verbrauch' },
+      { v: 0.15, t: 'Intensiv — ≈15 % über deinem Verbrauch' }
+    ]
+  };
+
+  var f = document.getElementById('f');
+  var objectifEl = document.getElementById('objectif');
+  var rythmeEl = document.getElementById('rythme');
+
+  function nb(id) {
+    var v = parseFloat(document.getElementById(id).value);
+    return isFinite(v) ? v : null;
+  }
+
+  // Le sélecteur de rythme dépend de l'objectif : le maintien n'en a qu'un.
+  function remplitRythmes() {
+    var paliers = PALIERS[objectifEl.value];
+    var choixPrecedent = rythmeEl.value;
+    rythmeEl.innerHTML = '';
+    paliers.forEach(function (p, i) {
+      var o = document.createElement('option');
+      o.value = String(p.v);
+      o.textContent = p.t;
+      // « Modérée » par défaut, comme dans l'app.
+      if (paliers.length === 1 || i === 1) o.selected = true;
+      rythmeEl.appendChild(o);
+    });
+    // On retrouve le palier précédent s'il existe encore, pour ne pas réinitialiser le choix
+    // de l'utilisateur quand il compare deux objectifs.
+    if (paliers.some(function (p) { return String(p.v) === choixPrecedent; })) rythmeEl.value = choixPrecedent;
+    rythmeEl.disabled = paliers.length === 1;
+  }
+
+  // Poids réel jusqu'à un IMC de 25, puis un quart de l'excédent seulement.
+  function poidsReference(poids, taille) {
+    if (!isFinite(taille) || taille <= 0) return poids;
+    var seuil = IMC_REFERENCE * Math.pow(taille / 100, 2);
+    if (poids <= seuil) return poids;
+    return seuil + FACTEUR_EXCEDENT * (poids - seuil);
+  }
+
+  function g(n) { return Math.round(n).toLocaleString('de-DE') + ' g'; }
+
+  function calcule() {
+    var poids = nb('poids'), taille = nb('taille'), age = nb('age');
+    var sexe = document.getElementById('sexe').value;
+    var coef = parseFloat(document.getElementById('activite').value);
+    var objectif = objectifEl.value;
+    var ecart = parseFloat(rythmeEl.value) || 0;
+
+    var ok = poids > 25 && poids < 350 && taille > 100 && taille < 250 && age >= 18 && age < 110;
+    var vEl = document.getElementById('vide'); vEl.dataset.t = vEl.dataset.t || vEl.textContent;
+    // Comme l'app (constants/inputBounds.ts) et la politique de confidentialité : pas de calcul avant 18 ans.
+    vEl.textContent = age !== null && age > 0 && age < 18 ? 'Basal ist Volljährigen vorbehalten und berechnet vor 18 Jahren keinen Kalorienbedarf: In diesem Alter bestimmt man ihn mit medizinischem Fachpersonal.' : vEl.dataset.t;
+    document.getElementById('vide').hidden = ok;
+    document.getElementById('sortie').hidden = !ok;
+    if (!ok) return;
+
+    var bmr = 10 * poids + 6.25 * taille - 5 * age + (sexe === 'male' ? 5 : -161);
+    var tdee = bmr * coef;
+
+    // Plancher de sécurité : jamais sous le métabolisme de base, jamais sous 800 kcal.
+    var brut = tdee * (1 + ecart);
+    var plancher = Math.max(bmr, KCAL_MIN_ABSOLU);
+    var kcal = Math.round(Math.max(brut, plancher));
+    var plancherApplique = brut < plancher;
+
+    var ref = poidsReference(poids, taille);
+    var protParKg = PROTEINE_G_PAR_KG[objectif] + (coef >= COEF_SPORTIF_MIN ? BONUS_SPORTIF : 0);
+    var prot = Math.round(ref * protParKg);
+
+    var lipPlancher = LIPIDES_PLANCHER_G_PAR_KG * ref;
+    var lipPart = (kcal * LIPIDES_PART_CALORIES) / 9;
+    var lip = Math.round(Math.max(lipPlancher, lipPart));
+
+    var gluc = Math.round(Math.max(kcal - prot * 4 - lip * 9, 0) / 4);
+    var fib = Math.round((kcal / 1000) * 14);
+
+    document.getElementById('kcal').textContent = kcal.toLocaleString('de-DE') + ' kcal';
+    document.getElementById('prot').textContent = g(prot);
+    document.getElementById('gluc').textContent = g(gluc);
+    document.getElementById('lip').textContent = g(lip);
+    document.getElementById('fib').textContent = g(fib);
+
+    document.getElementById('protDetail').textContent =
+      '— ' + protParKg.toLocaleString('de-DE', { minimumFractionDigits: 1 }) + ' g/kg';
+    document.getElementById('lipDetail').textContent =
+      lipPlancher >= lipPart ? '— Untergrenze angewendet' : '— 30 % der Kalorien';
+
+    var note = document.getElementById('plancher');
+    note.hidden = !plancherApplique;
+    if (plancherApplique) {
+      note.textContent =
+        'Das gewählte Tempo läge unter deinem Grundumsatz (' +
+        Math.round(bmr).toLocaleString('de-DE') + ' kcal). Das Ziel wurde auf diese Schwelle angehoben: Ein Defizit darunter lässt sich nicht durchhalten.';
+    }
+  }
+
+  objectifEl.addEventListener('change', function () { remplitRythmes(); calcule(); });
+  f.addEventListener('input', calcule);
+  f.addEventListener('change', calcule);
+  f.addEventListener('submit', function (e) { e.preventDefault(); });
+
+  remplitRythmes();
+  calcule();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Makrorechner: Eiweiß, Kohlenhydrate und Fett",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "url": "https://basal-app.fr/de/makrorechner.html",
+  "inLanguage": "de",
+  "description": "Berechnung der Makronährstoffe aus dem Energieverbrauch: Eiweiß und Fett am Körpergewicht verankert, Kohlenhydrate für den Rest.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "publisher": {
+    "@id": "https://basal-app.fr/#organisation"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://basal-app.fr/de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Rechner",
+      "item": "https://basal-app.fr/de/rechner/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Makros",
+      "item": "https://basal-app.fr/de/makrorechner.html"
+    }
+  ]
+}
+</script>
