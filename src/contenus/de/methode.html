@@ -1,0 +1,259 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Brotkrümelnavigation"><a href="/de/">Startseite</a><span aria-hidden="true">›</span>Methode</nav>
+  <header class="article-tete">
+    <p class="surtitre">Methode</p>
+    <h1>Wie Basal rechnet</h1>
+    <p class="chapeau">Alle Formeln der App, mit ihren Konstanten, Quellen und Grenzen. Die Rechenbeispiele auf dieser Seite werden vom Code der App selbst neu berechnet: Ändert sich eine Formel, meldet das ein Test, und die Seite wird aktualisiert.</p>
+    <div class="signature">
+      <span class="avatar" aria-hidden="true">TS</span>
+      <span>Von <b>Théo Serrano</b>, Entwickler von Basal</span>
+      <span aria-hidden="true">·</span>
+      <span>Veröffentlicht am <time datetime="2026-10-30">30. Oktober 2026</time></span>
+      <span aria-hidden="true">·</span>
+      <span>App-Version 1.4</span>
+    </div>
+  </header>
+
+  <div class="article">
+    <aside class="sommaire" aria-labelledby="sommaire-t">
+      <p id="sommaire-t">Inhalt</p>
+      <ol>
+        <li><a href="#bmr">Grundumsatz</a></li>
+        <li><a href="#expenditure">Täglicher Verbrauch</a></li>
+        <li><a href="#target">Kalorienziel</a></li>
+        <li><a href="#macros">Eiweiß, Fett, Kohlenhydrate</a></li>
+        <li><a href="#adaptive">Adaptiver Verbrauch</a></li>
+        <li><a href="#trend">Gewichtstrend</a></li>
+        <li><a href="#sessions">Verbrauch der Einheiten</a></li>
+        <li><a href="#1rm">Maximum im Krafttraining</a></li>
+        <li><a href="#recipes">Werte der Rezepte</a></li>
+        <li><a href="#limits">Was diese Berechnungen nicht leisten</a></li>
+        <li><a href="#sources">Quellen</a></li>
+      </ol>
+    </aside>
+
+    <article class="corps">
+      <div class="en-bref">
+        <p class="surtitre">Kurz gesagt</p>
+        <p>Basal geht von einer veröffentlichten Formel (Mifflin-St Jeor) aus, um deinen Verbrauch zu schätzen, leitet daraus ein Ziel und an dein Gewicht gekoppelte Makros ab und korrigiert den Verbrauch dann mit dem, was du isst, und der tatsächlichen Entwicklung deines Gewichts. Jede Korrektur ist begrenzt und schrittweise, und die App zeigt nichts an, solange die Daten nicht ausreichen.</p>
+      </div>
+
+      <h2 id="bmr">Grundumsatz</h2>
+      <p>Das ist die Energie, die in völliger Ruhe verbraucht wird. Basal nutzt die Mifflin-St-Jeor-Gleichung, 1990 veröffentlicht und heute die am häufigsten verwendete:</p>
+      <ul>
+        <li>Mann: <code>10 × Gewicht (kg) + 6,25 × Größe (cm) − 5 × Alter + 5</code></li>
+        <li>Frau: <code>10 × Gewicht (kg) + 6,25 × Größe (cm) − 5 × Alter − 161</code></li>
+      </ul>
+      <div class="calcul" role="group" aria-label="Beispiel Grundumsatz">
+        <div class="titre">Beispiel: Mann, 30 Jahre, 175 cm, 70 kg</div>
+        <div class="ligne"><span>10 × 70 + 6,25 × 175 − 5 × 30 + 5</span><b>1.648,75 kcal</b></div>
+        <div class="ligne"><span>Dieselbe Person als Frau (− 161 statt + 5)</span><b>1.482,75 kcal</b></div>
+      </div>
+      <p>Was ihn verändert und wo seine Grenzen liegen, erklärt der Ratgeber zum <a href="/de/grundumsatz.html">Grundumsatz</a>. Dieser Wert wird danach nie mehr verändert: Er bleibt der theoretische Bezugswert und dient als Untergrenze für das Kalorienziel.</p>
+
+      <h2 id="expenditure">Täglicher Verbrauch</h2>
+      <p>Der Gesamtverbrauch eines Tages ist der Grundumsatz mal einem Aktivitätsfaktor, der bei der Anmeldung gewählt wird. Die in der App angezeigten Schrittzahlen dienen nur zur Einordnung; sie fließen in keine Berechnung ein.</p>
+      <div class="tableau">
+        <table>
+          <caption>Aktivitätsfaktoren der App</caption>
+          <thead><tr><th scope="col">Stufe</th><th scope="col">Richtwert</th><th scope="col" class="n">Faktor</th><th scope="col" class="n">Beispiel (1.648,75 kcal)</th></tr></thead>
+          <tbody>
+            <tr><td>Sitzend</td><td>wenig oder kein Sport · unter 5.000 Schritte am Tag</td><td class="n">× 1,2</td><td class="n">1.979 kcal</td></tr>
+            <tr><td>Leicht aktiv</td><td>1 bis 3 Einheiten pro Woche · 5.000 bis 7.500 Schritte</td><td class="n">× 1,375</td><td class="n">2.267 kcal</td></tr>
+            <tr><td>Mäßig aktiv</td><td>3 bis 5 Einheiten pro Woche · 7.500 bis 10.000 Schritte</td><td class="n">× 1,55</td><td class="n">2.556 kcal</td></tr>
+            <tr><td>Aktiv</td><td>6 bis 7 Einheiten pro Woche · 10.000 bis 12.500 Schritte</td><td class="n">× 1,725</td><td class="n">2.844 kcal</td></tr>
+            <tr><td>Sehr aktiv</td><td>täglich intensiver Sport · über 12.500 Schritte</td><td class="n">× 1,9</td><td class="n">3.133 kcal</td></tr>
+          </tbody>
+        </table>
+        <p class="source">Auf die kcal gerundet. Das ist die Schwachstelle jeder Formel: Zwischen „sitzend“ und „mäßig aktiv“ liegen mehr als 500 kcal pro Tag.</p>
+      </div>
+
+      <h2 id="target">Kalorienziel</h2>
+      <p>Das Ziel ist ein Prozentsatz des Verbrauchs, keine feste Kalorienzahl: Allen 500 kcal abzuziehen ist für die einen ein vernünftiges Defizit und für die anderen ein hartes.</p>
+      <div class="tableau">
+        <table>
+          <caption>Zielstufen</caption>
+          <thead><tr><th scope="col">Ziel</th><th scope="col" class="n">Sanft</th><th scope="col" class="n">Moderat (Standard)</th><th scope="col" class="n">Intensiv</th></tr></thead>
+          <tbody>
+            <tr><td>Abnehmen</td><td class="n">− 10 %</td><td class="n">− 15 %</td><td class="n">− 20 %</td></tr>
+            <tr><td>Zunehmen</td><td class="n">+ 5 %</td><td class="n">+ 10 %</td><td class="n">+ 15 %</td></tr>
+          </tbody>
+        </table>
+        <p class="source">Der Überschuss beim Zunehmen ist bewusst kleiner als das Defizit beim Abnehmen: Ein großer Überschuss bringt vor allem Fettmasse.</p>
+      </div>
+      <p><strong>Sicherheitsuntergrenze.</strong> Das Ziel fällt nie unter den Grundumsatz und nie unter 800 kcal pro Tag. Greift diese Untergrenze, sagt die App das, statt stillschweigend zu korrigieren.</p>
+      <div class="calcul" role="group" aria-label="Beispiel Ziel">
+        <div class="titre">Beispiel: gleiches Profil, mäßig aktiv, moderates Abnehmen</div>
+        <div class="ligne"><span>Verbrauch: 1.648,75 × 1,55</span><b>2.555,6 kcal</b></div>
+        <div class="ligne total"><span>Ziel: 2.555,6 × (1 − 0,15)</span><b>2.172 kcal / Tag</b></div>
+      </div>
+
+      <h2 id="macros">Eiweiß, Fett, Kohlenhydrate</h2>
+      <p>Eiweiß und Fett sind an das Gewicht gekoppelt, die Kohlenhydrate bekommen den Rest. Umgekehrt (ein fester Prozentsatz der Kalorien) ergab sich bei niedrigen Zielen zu wenig Eiweiß.</p>
+      <div class="tableau">
+        <table>
+          <caption>Eiweiß, in Gramm pro Kilo Bezugsgewicht</caption>
+          <thead><tr><th scope="col">Ziel</th><th scope="col" class="n">Wenig oder kein Sport</th><th scope="col" class="n">3 Einheiten pro Woche oder mehr</th></tr></thead>
+          <tbody>
+            <tr><td>Abnehmen</td><td class="n">1,8</td><td class="n">2,2</td></tr>
+            <tr><td>Halten</td><td class="n">1,4</td><td class="n">1,8</td></tr>
+            <tr><td>Zunehmen</td><td class="n">1,6</td><td class="n">2,0</td></tr>
+          </tbody>
+        </table>
+        <p class="source">„Sportlich“ ab der Stufe „mäßig aktiv“. Der Bedarf steigt im Defizit, wo Eiweiß die Muskelmasse schützt.</p>
+      </div>
+      <ul>
+        <li><strong>Bezugsgewicht.</strong> Der Bedarf richtet sich nach der fettfreien Masse, nicht nach dem Gesamtgewicht. Bis zu einem BMI von 25 ist es das tatsächliche Gewicht. Darüber zählt nur ein Viertel des Überschusses (Formel des angepassten Gewichts). Beispiel: 120 kg bei 175 cm ergeben ein Bezugsgewicht von 87,4 kg. Siehe den <a href="/de/proteinrechner.html">Proteinrechner</a>.</li>
+        <li><strong>Fett.</strong> Die größere von zwei Zahlen: 0,8 g pro Kilo Bezugsgewicht (Untergrenze) oder 30 % der Kalorien.</li>
+        <li><strong>Kohlenhydrate.</strong> Was nach Eiweiß (4 kcal/g) und Fett (9 kcal/g) übrig bleibt, geteilt durch 4. Nie negativ.</li>
+        <li><strong>Ballaststoffe.</strong> 14 g pro 1.000 kcal.</li>
+      </ul>
+      <div class="calcul" role="group" aria-label="Beispiel Makros">
+        <div class="titre">Beispiel: 70 kg, 175 cm, sportlich, Ziel 2.172 kcal beim Abnehmen</div>
+        <div class="ligne"><span>Eiweiß: 70 × 2,2</span><b>154 g</b></div>
+        <div class="ligne"><span>Fett: die größere Zahl aus 70 × 0,8 = 56 g und 2.172 × 0,3 ÷ 9 = 72,4 g</span><b>72 g</b></div>
+        <div class="ligne"><span>Kohlenhydrate: (2.172 − 154 × 4 − 72 × 9) ÷ 4</span><b>227 g</b></div>
+        <div class="ligne"><span>Ballaststoffe: 2.172 ÷ 1.000 × 14</span><b>30 g</b></div>
+      </div>
+
+      <h2 id="adaptive">Adaptiver Verbrauch</h2>
+      <p>Das ist die Korrektur der Formel durch deine Daten. Über ein gleitendes Fenster von 28 Tagen vergleicht Basal deine Zufuhr mit der Entwicklung deines geglätteten Gewichts:</p>
+      <p><code>beobachteter Verbrauch = durchschnittliche Zufuhr − (Änderung des geglätteten Gewichts × 7.700) ÷ Anzahl der Tage</code></p>
+      <p>7.700 kcal sind das übliche Energieäquivalent eines Kilogramms Körpermasse. Die Schätzung wird nur berechnet, wenn das Fenster Folgendes enthält:</p>
+      <ul>
+        <li>mindestens 4 Wägungen, verteilt auf mindestens 10 Tage;</li>
+        <li>mindestens 8 Tage mit erfassten Mahlzeiten, die mindestens 60 % des Zeitraums abdecken.</li>
+      </ul>
+      <p>Sonst zeigt die App „nicht genug Daten“ an. Ein Tag ganz ohne eingetragenes Lebensmittel wird ignoriert: Er zählt nicht als Fastentag.</p>
+      <p><strong>Drei Schutzmechanismen</strong> verhindern, dass eine untypische Woche die Zahl entgleisen lässt:</p>
+      <ul>
+        <li><strong>Plausibilitätsgrenzen</strong>: Die Beobachtung wird auf das 0,8- bis 1,6-Fache des aktuellen theoretischen Verbrauchs begrenzt, was vor einem stark untertriebenen Tagebuch schützt;</li>
+        <li><strong>Glättung</strong>: Bei jeder verwertbaren Wägung legt die Schätzung nur 30 % des Abstands zur Beobachtung zurück;</li>
+        <li><strong>maximaler Schritt</strong>: nie mehr als 150 kcal Änderung pro Neuberechnung.</li>
+      </ul>
+      <div class="calcul" role="group" aria-label="Beispiel adaptiver Verbrauch">
+        <div class="titre">Beispiel: Die Formel sagt 2.556 kcal</div>
+        <div class="ligne"><span>Durchschnittlich erfasste Zufuhr</span><b>2.100 kcal / Tag</b></div>
+        <div class="ligne"><span>Geglättetes Gewicht: − 0,6 kg in 21 Tagen, also 0,6 × 7.700 ÷ 21</span><b>220 kcal / Tag</b></div>
+        <div class="ligne"><span>Beobachteter Verbrauch: 2.100 + 220</span><b>2.320 kcal</b></div>
+        <div class="ligne"><span>1. Neuberechnung: 2.556 + 0,3 × (2.320 − 2.556)</span><b>2.485 kcal</b></div>
+        <div class="ligne"><span>2. Neuberechnung, wenn die Beobachtung bei 2.320 kcal bleibt</span><b>2.436 kcal</b></div>
+        <div class="ligne total"><span>3. Neuberechnung: Die Schätzung erreicht die Beobachtung ohne Sprung</span><b>2.401 kcal</b></div>
+      </div>
+      <p>Für die Pausen „auf Erhaltung“ einer Strategie nutzt die App diesen gemessenen Verbrauch statt der Formel, sofern er auf mindestens 5 Neuberechnungen beruht und die letzte weniger als 21 Tage zurückliegt. Um diese Rechnung einmal mit deinen Durchschnittswerten zu machen: <a href="/de/tatsaechlicher-verbrauch.html">tatsächlichen Verbrauch berechnen</a>.</p>
+
+      <h2 id="trend">Gewichtstrend</h2>
+      <p>Das als Trend angezeigte Gewicht ist der Durchschnitt der Wägungen der letzten 7 Tage. Wasser, Salz, Glykogen und Verdauung lassen das Gewicht von einem Tag zum nächsten viel stärker schwanken als Fett; dieser Durchschnitt, nicht die Wägung des Tages, speist den adaptiven Verbrauch. Siehe <a href="/de/gewichtsschwankungen.html">warum sich dein Gewicht von einem Tag auf den anderen ändert</a>.</p>
+
+      <h2 id="sessions">Verbrauch der Einheiten</h2>
+      <p>Die Kalorien einer Einheit werden berechnet, nie eingetippt: <code>kcal = MET × Gewicht (kg) × Dauer (Stunden)</code>. Der MET (metabolisches Äquivalent) hängt von der Aktivität und der empfundenen Intensität ab. Beispiel: 1 Stunde moderates Krafttraining bei 70 kg ergibt 5,0 × 70 × 1 = 350 kcal.</p>
+      <div class="tableau">
+        <table>
+          <caption>Von der App verwendete MET-Werte</caption>
+          <thead><tr><th scope="col">Aktivität</th><th scope="col" class="n">Leicht</th><th scope="col" class="n">Moderat</th><th scope="col" class="n">Intensiv</th></tr></thead>
+          <tbody>
+            <tr><td>Krafttraining</td><td class="n">3,5</td><td class="n">5,0</td><td class="n">6,0</td></tr>
+            <tr><td>Laufen</td><td class="n">8,0</td><td class="n">9,8</td><td class="n">12,8</td></tr>
+            <tr><td>Gehen</td><td class="n">2,8</td><td class="n">3,5</td><td class="n">5,0</td></tr>
+            <tr><td>Radfahren</td><td class="n">4,0</td><td class="n">8,0</td><td class="n">10,0</td></tr>
+            <tr><td>Schwimmen</td><td class="n">5,8</td><td class="n">8,3</td><td class="n">10,0</td></tr>
+            <tr><td>Fußball</td><td class="n">5,0</td><td class="n">7,0</td><td class="n">10,0</td></tr>
+            <tr><td>Basketball</td><td class="n">4,5</td><td class="n">6,5</td><td class="n">8,0</td></tr>
+            <tr><td>Tennis</td><td class="n">5,0</td><td class="n">7,3</td><td class="n">8,0</td></tr>
+            <tr><td>CrossFit</td><td class="n">5,0</td><td class="n">8,0</td><td class="n">10,0</td></tr>
+            <tr><td>HIIT</td><td class="n">6,0</td><td class="n">8,5</td><td class="n">10,5</td></tr>
+            <tr><td>Yoga</td><td class="n">2,5</td><td class="n">3,0</td><td class="n">4,0</td></tr>
+            <tr><td>Klettern</td><td class="n">5,8</td><td class="n">7,5</td><td class="n">9,0</td></tr>
+            <tr><td>Tanzen</td><td class="n">3,0</td><td class="n">4,8</td><td class="n">7,8</td></tr>
+            <tr><td>Sonstiges</td><td class="n">3,0</td><td class="n">4,5</td><td class="n">6,0</td></tr>
+          </tbody>
+        </table>
+        <p class="source">Compendium of Physical Activities (Ainsworth et al., 2011, aktualisiert 2024). CrossFit und HIIT, die im Compendium fehlen, beruhen auf Messungen vollständiger Einheiten, Pausen inklusive (Feito et al., 2018; Nalcakan, 2014; Kliszczewicz et al., 2014). Die Stufen beim Klettern und „moderates“ Yoga sind Interpolationen, da es keine eigenen Codes gibt.</p>
+      </div>
+
+      <h2 id="1rm">Maximum im Krafttraining</h2>
+      <p>Das geschätzte Maximum für eine Wiederholung (1RM) folgt der Epley-Formel: <code>1RM ≈ Gewicht × (1 + Wiederholungen ÷ 30)</code>. Beispiel: 80 kg, 8-mal gehoben, ergeben ein geschätztes 1RM von 101,3 kg. Ein Satz mit nur einer Wiederholung ist bereits ein echtes Maximum: Die App übernimmt dann das Gewicht unverändert, statt es um 3 % aufzublähen. Berechne deins mit dem <a href="/de/1rm-rechner.html">1RM-Rechner</a>.</p>
+
+      <h2 id="recipes">Werte der Rezepte</h2>
+      <p>Die Kalorien und Makros der <a href="/de/rezepte/">Rezepte</a> werden Zutat für Zutat, auf das Gramm genau, aus der Nährwerttabelle Ciqual 2025 der ANSES (Frankreich) berechnet. Die auf jedem Rezept angezeigte Aufteilung setzt die Energie aus Eiweiß (4 kcal/g), Kohlenhydraten (4 kcal/g) und Fett (9 kcal/g) ins Verhältnis zu ihrer Summe.</p>
+
+      <h2 id="limits">Was diese Berechnungen nicht leisten</h2>
+      <div class="inconnu">
+        <p><strong>Das sind Schätzungen.</strong> Eine Verbrauchsformel liegt in einer Bevölkerung häufig um etwa 10 % daneben, bei untypischen Profilen mehr. Der adaptive Verbrauch verringert diese Abweichung, hängt aber von der Qualität deines Tagebuchs ab.</p>
+        <p><strong>Die App misst deine Körperzusammensetzung nicht.</strong> Das Bezugsgewicht für die Makros ist eine Standardnäherung, keine Messung deiner fettfreien Masse.</p>
+        <p style="margin:0"><strong>Das ist keine medizinische Beratung.</strong> Basal ist kein Medizinprodukt. Ein Verbrauch, der weit vom Erwarteten abweicht, eine Schwangerschaft, eine Krankheit oder eine Essstörung gehören in die Hände medizinischen Fachpersonals.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>Diese Berechnungen, mit deinen Daten.</strong><p>Basal macht sie jede Woche für dich neu, aus deinen Mahlzeiten und Wägungen. Kostenlos, ohne Konto.</p></div>
+        <a class="bouton vif" href="/de/#download">Herunterladen</a>
+      </div>
+
+      <h2 id="sources">Quellen</h2>
+      <ol class="sources">
+        <li>Mifflin MD, St Jeor ST et al. “A new predictive equation for resting energy expenditure in healthy individuals”. <i>American Journal of Clinical Nutrition</i>, 1990, 51(2), p. 241-247.</li>
+        <li>Frankenfield D, Roth-Yousey L, Compher C. “Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review”. <i>Journal of the American Dietetic Association</i>, 2005, 105(5), p. 775-789.</li>
+        <li>Wishnofsky M. “Caloric equivalents of gained or lost weight”. <i>American Journal of Clinical Nutrition</i>, 1958, 6(5), p. 542-546.</li>
+        <li>Ainsworth BE et al. “2011 Compendium of Physical Activities: a second update of codes and MET values”. <i>Medicine &amp; Science in Sports &amp; Exercise</i>, 2011, 43(8), p. 1575-1581; Aktualisierung 2024: <a href="https://pacompendium.com/">pacompendium.com</a>.</li>
+        <li>Epley B. <i>Poundage Chart</i>. Boyd Epley Workout, 1985.</li>
+        <li>Institute of Medicine. <i>Dietary Reference Intakes for Energy, Carbohydrate, Fiber, Fat, Fatty Acids, Cholesterol, Protein, and Amino Acids</i>. National Academies Press, 2005 (Ballaststoffe: 14 g pro 1.000 kcal).</li>
+        <li>ANSES. <a href="https://ciqual.anses.fr/">Nährwerttabelle Ciqual 2025</a>, offene Lizenz Etalab 2.0.</li>
+      </ol>
+
+      <h2 style="font-size:1.5rem;margin-top:48px">Weiterlesen</h2>
+      <div class="guides" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <a class="guide" href="/de/metabolische-anpassung.html"><span class="surtitre" style="margin:0">Guide</span><h3>Metabolische Anpassung</h3><p>Warum eine Formel nicht reicht, und wie man sie korrigiert.</p></a>
+        <a class="guide" href="/de/rechner/"><span class="surtitre" style="margin:0">Werkzeuge</span><h3>Die Rechner</h3><p>Verbrauch und Makros, mit denselben Formeln wie die App.</p></a>
+      </div>
+    </article>
+  </div>
+
+  <aside class="note-page">
+    <p>Dieser Artikel dient nur der Information. Basal ist kein Medizinprodukt und ersetzt nicht den Rat medizinischen Fachpersonals.</p>
+  </aside>
+</main>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Wie Basal rechnet",
+  "description": "Alle Formeln der Basal-App: Grundumsatz, Verbrauch, Ziel, Makros, adaptiver Verbrauch, Einheiten und 1RM, mit ihren Konstanten, Quellen und Grenzen.",
+  "inLanguage": "de",
+  "url": "https://basal-app.fr/de/methode.html",
+  "mainEntityOfPage": "https://basal-app.fr/de/methode.html",
+  "image": "https://basal-app.fr/img/og-en.png",
+  "datePublished": "2026-10-30",
+  "dateModified": "2026-10-30",
+  "author": {
+    "@type": "Person",
+    "name": "Théo Serrano",
+    "url": "https://basal-app.fr/a-propos.html"
+  },
+  "publisher": {
+    "@id": "https://basal-app.fr/#organisation"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://basal-app.fr/de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Methode",
+      "item": "https://basal-app.fr/de/methode.html"
+    }
+  ]
+}
+</script>

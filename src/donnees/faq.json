@@ -7,7 +7,7 @@
   {
     "id": "appareils",
     "question": "Sur quels appareils Basal fonctionne-t-il ?",
-    "reponse": "<p>Sur iPhone (App Store) et sur Android (Google Play). Il n’existe pas de version conçue pour iPad ni de version web. L’application est en français et en anglais, selon la langue du téléphone.</p>"
+    "reponse": "<p>Sur iPhone (App Store) et sur Android (Google Play). Il n’existe pas de version conçue pour iPad ni de version web. L’application est en français, anglais, espagnol et allemand, selon la langue du téléphone.</p>"
   },
   {
     "id": "compte",

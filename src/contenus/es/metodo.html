@@ -1,0 +1,259 @@
+<main id="contenu" class="wrap">
+  <nav class="fil" aria-label="Ruta de navegación"><a href="/es/">Inicio</a><span aria-hidden="true">›</span>Método</nav>
+  <header class="article-tete">
+    <p class="surtitre">Método</p>
+    <h1>Cómo calcula Basal</h1>
+    <p class="chapeau">Todas las fórmulas de la aplicación, con sus constantes, sus fuentes y sus límites. Los ejemplos numéricos de esta página los recalcula el propio código de la app: si una fórmula cambia, un test lo señala y la página se actualiza.</p>
+    <div class="signature">
+      <span class="avatar" aria-hidden="true">TS</span>
+      <span>Por <b>Théo Serrano</b>, creador de Basal</span>
+      <span aria-hidden="true">·</span>
+      <span>Publicado el <time datetime="2026-10-30">30 de octubre de 2026</time></span>
+      <span aria-hidden="true">·</span>
+      <span>Aplicación versión 1.4</span>
+    </div>
+  </header>
+
+  <div class="article">
+    <aside class="sommaire" aria-labelledby="sommaire-t">
+      <p id="sommaire-t">Índice</p>
+      <ol>
+        <li><a href="#bmr">Metabolismo basal</a></li>
+        <li><a href="#expenditure">Gasto diario</a></li>
+        <li><a href="#target">Objetivo calórico</a></li>
+        <li><a href="#macros">Proteínas, grasas, hidratos</a></li>
+        <li><a href="#adaptive">Gasto adaptativo</a></li>
+        <li><a href="#trend">Tendencia del peso</a></li>
+        <li><a href="#sessions">Gasto de las sesiones</a></li>
+        <li><a href="#1rm">Máximo en musculación</a></li>
+        <li><a href="#recipes">Valores de las recetas</a></li>
+        <li><a href="#limits">Lo que estos cálculos no hacen</a></li>
+        <li><a href="#sources">Fuentes</a></li>
+      </ol>
+    </aside>
+
+    <article class="corps">
+      <div class="en-bref">
+        <p class="surtitre">En resumen</p>
+        <p>Basal parte de una fórmula publicada (Mifflin-St Jeor) para estimar tu gasto, deduce un objetivo y unos macros anclados a tu peso, y luego corrige el gasto con lo que comes y la evolución real de tu peso. Cada corrección está acotada y es progresiva, y la app no muestra nada mientras los datos no basten.</p>
+      </div>
+
+      <h2 id="bmr">Metabolismo basal</h2>
+      <p>Es la energía gastada en reposo completo. Basal usa la ecuación de Mifflin-St Jeor, publicada en 1990 y la más utilizada hoy:</p>
+      <ul>
+        <li>hombre: <code>10 × peso (kg) + 6,25 × altura (cm) − 5 × edad + 5</code></li>
+        <li>mujer: <code>10 × peso (kg) + 6,25 × altura (cm) − 5 × edad − 161</code></li>
+      </ul>
+      <div class="calcul" role="group" aria-label="Ejemplo de metabolismo basal">
+        <div class="titre">Ejemplo: hombre, 30 años, 175 cm, 70 kg</div>
+        <div class="ligne"><span>10 × 70 + 6,25 × 175 − 5 × 30 + 5</span><b>1.648,75 kcal</b></div>
+        <div class="ligne"><span>La misma persona, como mujer (− 161 en lugar de + 5)</span><b>1.482,75 kcal</b></div>
+      </div>
+      <p>Lo que lo hace variar, y sus límites, se explican en la guía del <a href="/es/metabolismo-basal.html">metabolismo basal</a>. Este valor no se modifica nunca después: sigue siendo la referencia teórica y sirve de suelo al objetivo calórico.</p>
+
+      <h2 id="expenditure">Gasto diario</h2>
+      <p>El gasto total de un día es el metabolismo basal multiplicado por un coeficiente de actividad, elegido al registrarte. Las referencias en pasos que muestra la app sirven para situarte; no entran en ningún cálculo.</p>
+      <div class="tableau">
+        <table>
+          <caption>Coeficientes de actividad de la aplicación</caption>
+          <thead><tr><th scope="col">Nivel</th><th scope="col">Referencia</th><th scope="col" class="n">Coeficiente</th><th scope="col" class="n">Ejemplo (1.648,75 kcal)</th></tr></thead>
+          <tbody>
+            <tr><td>Sedentario</td><td>poco o ningún deporte · menos de 5.000 pasos al día</td><td class="n">× 1,2</td><td class="n">1.979 kcal</td></tr>
+            <tr><td>Ligeramente activo</td><td>1 a 3 sesiones por semana · 5.000 a 7.500 pasos</td><td class="n">× 1,375</td><td class="n">2.267 kcal</td></tr>
+            <tr><td>Moderadamente activo</td><td>3 a 5 sesiones por semana · 7.500 a 10.000 pasos</td><td class="n">× 1,55</td><td class="n">2.556 kcal</td></tr>
+            <tr><td>Activo</td><td>6 a 7 sesiones por semana · 10.000 a 12.500 pasos</td><td class="n">× 1,725</td><td class="n">2.844 kcal</td></tr>
+            <tr><td>Muy activo</td><td>deporte intenso a diario · más de 12.500 pasos</td><td class="n">× 1,9</td><td class="n">3.133 kcal</td></tr>
+          </tbody>
+        </table>
+        <p class="source">Redondeado al kcal. Es el punto débil de cualquier fórmula: entre «sedentario» y «moderadamente activo», la diferencia supera las 500 kcal al día.</p>
+      </div>
+
+      <h2 id="target">Objetivo calórico</h2>
+      <p>El objetivo es un porcentaje del gasto, no un número fijo de calorías: quitar 500 kcal a todo el mundo es un déficit razonable para unos y severo para otros.</p>
+      <div class="tableau">
+        <table>
+          <caption>Niveles de objetivo</caption>
+          <thead><tr><th scope="col">Objetivo</th><th scope="col" class="n">Suave</th><th scope="col" class="n">Moderado (por defecto)</th><th scope="col" class="n">Intenso</th></tr></thead>
+          <tbody>
+            <tr><td>Pérdida de peso</td><td class="n">− 10 %</td><td class="n">− 15 %</td><td class="n">− 20 %</td></tr>
+            <tr><td>Aumento de peso</td><td class="n">+ 5 %</td><td class="n">+ 10 %</td><td class="n">+ 15 %</td></tr>
+          </tbody>
+        </table>
+        <p class="source">El superávit para ganar es a propósito menor que el déficit para perder: un superávit grande añade sobre todo masa grasa.</p>
+      </div>
+      <p><strong>Suelo de seguridad.</strong> El objetivo nunca baja del metabolismo basal ni de 800 kcal al día. Cuando se aplica este suelo, la app lo indica en lugar de corregir en silencio.</p>
+      <div class="calcul" role="group" aria-label="Ejemplo de objetivo">
+        <div class="titre">Ejemplo: mismo perfil, moderadamente activo, pérdida moderada</div>
+        <div class="ligne"><span>Gasto: 1.648,75 × 1,55</span><b>2.555,6 kcal</b></div>
+        <div class="ligne total"><span>Objetivo: 2.555,6 × (1 − 0,15)</span><b>2.172 kcal / día</b></div>
+      </div>
+
+      <h2 id="macros">Proteínas, grasas, hidratos</h2>
+      <p>Las proteínas y las grasas se anclan al peso, y los hidratos se llevan el resto. Lo contrario (un porcentaje fijo de las calorías) daba proteínas insuficientes con objetivos bajos.</p>
+      <div class="tableau">
+        <table>
+          <caption>Proteínas, en gramos por kilo de peso de referencia</caption>
+          <thead><tr><th scope="col">Objetivo</th><th scope="col" class="n">Poco o nada deportista</th><th scope="col" class="n">3 sesiones por semana o más</th></tr></thead>
+          <tbody>
+            <tr><td>Pérdida</td><td class="n">1,8</td><td class="n">2,2</td></tr>
+            <tr><td>Mantenimiento</td><td class="n">1,4</td><td class="n">1,8</td></tr>
+            <tr><td>Ganancia</td><td class="n">1,6</td><td class="n">2,0</td></tr>
+          </tbody>
+        </table>
+        <p class="source">«Deportista» a partir del nivel «moderadamente activo». La necesidad sube en déficit, donde las proteínas protegen la masa muscular.</p>
+      </div>
+      <ul>
+        <li><strong>Peso de referencia.</strong> Las necesidades siguen a la masa magra, no al peso total. Hasta un IMC de 25, es el peso real. Por encima, solo cuenta una cuarta parte del exceso (fórmula del peso ajustado). Ejemplo: 120 kg para 175 cm dan un peso de referencia de 87,4 kg. Ver la <a href="/es/calculadora-proteinas.html">calculadora de proteínas</a>.</li>
+        <li><strong>Grasas.</strong> El mayor de dos números: 0,8 g por kilo de peso de referencia (suelo), o el 30 % de las calorías.</li>
+        <li><strong>Hidratos.</strong> Lo que queda tras las proteínas (4 kcal/g) y las grasas (9 kcal/g), dividido entre 4. Nunca negativo.</li>
+        <li><strong>Fibra.</strong> 14 g por cada 1.000 kcal.</li>
+      </ul>
+      <div class="calcul" role="group" aria-label="Ejemplo de macros">
+        <div class="titre">Ejemplo: 70 kg, 175 cm, deportista, objetivo de 2.172 kcal en pérdida</div>
+        <div class="ligne"><span>Proteínas: 70 × 2,2</span><b>154 g</b></div>
+        <div class="ligne"><span>Grasas: el mayor entre 70 × 0,8 = 56 g y 2.172 × 0,3 ÷ 9 = 72,4 g</span><b>72 g</b></div>
+        <div class="ligne"><span>Hidratos: (2.172 − 154 × 4 − 72 × 9) ÷ 4</span><b>227 g</b></div>
+        <div class="ligne"><span>Fibra: 2.172 ÷ 1.000 × 14</span><b>30 g</b></div>
+      </div>
+
+      <h2 id="adaptive">Gasto adaptativo</h2>
+      <p>Es la corrección de la fórmula con tus datos. En una ventana móvil de 28 días, Basal compara tu ingesta con la evolución de tu peso suavizado:</p>
+      <p><code>gasto observado = ingesta media − (variación del peso suavizado × 7.700) ÷ número de días</code></p>
+      <p>7.700 kcal es el equivalente energético habitual de un kilo de masa corporal. La estimación solo se calcula si la ventana contiene:</p>
+      <ul>
+        <li>al menos 4 pesajes, repartidos en al menos 10 días;</li>
+        <li>al menos 8 días de comidas registradas, que cubran al menos el 60 % del periodo.</li>
+      </ul>
+      <p>Si no, la app muestra «datos insuficientes». Un día sin ningún alimento anotado se ignora: no cuenta como un ayuno.</p>
+      <p><strong>Tres salvaguardas</strong> impiden que una semana atípica descarrile la cifra:</p>
+      <ul>
+        <li><strong>límites de plausibilidad</strong>: la observación se lleva a entre 0,8 y 1,6 veces el gasto teórico del momento, lo que protege de un diario muy infradeclarado;</li>
+        <li><strong>suavizado</strong>: en cada pesaje aprovechable, la estimación solo recorre el 30 % de la diferencia con la observación;</li>
+        <li><strong>paso máximo</strong>: nunca más de 150 kcal de variación por recálculo.</li>
+      </ul>
+      <div class="calcul" role="group" aria-label="Ejemplo de gasto adaptativo">
+        <div class="titre">Ejemplo: la fórmula indica 2.556 kcal</div>
+        <div class="ligne"><span>Ingesta media registrada</span><b>2.100 kcal / día</b></div>
+        <div class="ligne"><span>Peso suavizado: − 0,6 kg en 21 días, es decir 0,6 × 7.700 ÷ 21</span><b>220 kcal / día</b></div>
+        <div class="ligne"><span>Gasto observado: 2.100 + 220</span><b>2.320 kcal</b></div>
+        <div class="ligne"><span>1.er recálculo: 2.556 + 0,3 × (2.320 − 2.556)</span><b>2.485 kcal</b></div>
+        <div class="ligne"><span>2.º recálculo, si la observación sigue en 2.320 kcal</span><b>2.436 kcal</b></div>
+        <div class="ligne total"><span>3.er recálculo: la estimación alcanza la observación sin saltos</span><b>2.401 kcal</b></div>
+      </div>
+      <p>Para las pausas «en mantenimiento» de una estrategia, la app usa este gasto medido en lugar de la fórmula, siempre que se base en al menos 5 recálculos y que el último tenga menos de 21 días. Para hacer este cálculo una vez, a partir de tus medias: <a href="/es/gasto-real.html">calcular tu gasto real</a>.</p>
+
+      <h2 id="trend">Tendencia del peso</h2>
+      <p>El peso que se muestra como tendencia es la media de los pesajes de los últimos 7 días. El agua, la sal, el glucógeno y la digestión hacen variar el peso de un día a otro mucho más que la grasa; es esta media, no el pesaje del día, la que alimenta el gasto adaptativo. Ver <a href="/es/variaciones-de-peso.html">por qué tu peso cambia de un día para otro</a>.</p>
+
+      <h2 id="sessions">Gasto de las sesiones</h2>
+      <p>Las calorías de una sesión se calculan, nunca se introducen a mano: <code>kcal = MET × peso (kg) × duración (horas)</code>. El MET (equivalente metabólico) depende de la actividad y de la intensidad percibida. Ejemplo: 1 h de musculación moderada con 70 kg da 5,0 × 70 × 1 = 350 kcal.</p>
+      <div class="tableau">
+        <table>
+          <caption>Valores MET usados por la aplicación</caption>
+          <thead><tr><th scope="col">Actividad</th><th scope="col" class="n">Ligera</th><th scope="col" class="n">Moderada</th><th scope="col" class="n">Intensa</th></tr></thead>
+          <tbody>
+            <tr><td>Musculación</td><td class="n">3,5</td><td class="n">5,0</td><td class="n">6,0</td></tr>
+            <tr><td>Correr</td><td class="n">8,0</td><td class="n">9,8</td><td class="n">12,8</td></tr>
+            <tr><td>Caminar</td><td class="n">2,8</td><td class="n">3,5</td><td class="n">5,0</td></tr>
+            <tr><td>Ciclismo</td><td class="n">4,0</td><td class="n">8,0</td><td class="n">10,0</td></tr>
+            <tr><td>Natación</td><td class="n">5,8</td><td class="n">8,3</td><td class="n">10,0</td></tr>
+            <tr><td>Fútbol</td><td class="n">5,0</td><td class="n">7,0</td><td class="n">10,0</td></tr>
+            <tr><td>Baloncesto</td><td class="n">4,5</td><td class="n">6,5</td><td class="n">8,0</td></tr>
+            <tr><td>Tenis</td><td class="n">5,0</td><td class="n">7,3</td><td class="n">8,0</td></tr>
+            <tr><td>CrossFit</td><td class="n">5,0</td><td class="n">8,0</td><td class="n">10,0</td></tr>
+            <tr><td>HIIT</td><td class="n">6,0</td><td class="n">8,5</td><td class="n">10,5</td></tr>
+            <tr><td>Yoga</td><td class="n">2,5</td><td class="n">3,0</td><td class="n">4,0</td></tr>
+            <tr><td>Escalada</td><td class="n">5,8</td><td class="n">7,5</td><td class="n">9,0</td></tr>
+            <tr><td>Baile</td><td class="n">3,0</td><td class="n">4,8</td><td class="n">7,8</td></tr>
+            <tr><td>Otra</td><td class="n">3,0</td><td class="n">4,5</td><td class="n">6,0</td></tr>
+          </tbody>
+        </table>
+        <p class="source">Compendium of Physical Activities (Ainsworth et al., 2011, actualizado en 2024). CrossFit y HIIT, ausentes del Compendium, se basan en mediciones de sesiones completas, descansos incluidos (Feito et al., 2018; Nalcakan, 2014; Kliszczewicz et al., 2014). Los niveles de la escalada y del yoga «moderado» son interpolaciones, a falta de códigos distintos.</p>
+      </div>
+
+      <h2 id="1rm">Máximo en musculación</h2>
+      <p>El máximo estimado a una repetición (1RM) sigue la fórmula de Epley: <code>1RM ≈ carga × (1 + repeticiones ÷ 30)</code>. Ejemplo: 80 kg levantados 8 veces dan un 1RM estimado de 101,3 kg. Una serie de una sola repetición ya es un máximo real: la app conserva entonces la carga tal cual, en lugar de inflarla un 3 %. Calcula el tuyo con la <a href="/es/calculadora-1rm.html">calculadora de 1RM</a>.</p>
+
+      <h2 id="recipes">Valores de las recetas</h2>
+      <p>Las calorías y los macros de las <a href="/es/recetas/">recetas</a> se calculan ingrediente por ingrediente, al gramo, a partir de la tabla de composición Ciqual 2025 de la ANSES (Francia). El reparto que aparece en cada receta relaciona la energía de las proteínas (4 kcal/g), los hidratos (4 kcal/g) y las grasas (9 kcal/g) con su total.</p>
+
+      <h2 id="limits">Lo que estos cálculos no hacen</h2>
+      <div class="inconnu">
+        <p><strong>Son estimaciones.</strong> Una fórmula de gasto suele equivocarse en torno a un 10 % en una población, y más en perfiles atípicos. El gasto adaptativo reduce esa diferencia, pero depende de la calidad de tu diario.</p>
+        <p><strong>La app no mide tu composición corporal.</strong> El peso de referencia de los macros es una aproximación estándar, no una medición de tu masa magra.</p>
+        <p style="margin:0"><strong>No es un consejo médico.</strong> Basal no es un dispositivo médico. Un gasto muy alejado de lo esperado, un embarazo, una enfermedad o un trastorno de la conducta alimentaria son cosa de un profesional sanitario.</p>
+      </div>
+
+      <div class="appel-contexte">
+        <div><strong>Estos cálculos, con tus datos.</strong><p>Basal los rehace por ti cada semana, a partir de tus comidas y tus pesajes. Gratis, sin cuenta.</p></div>
+        <a class="bouton vif" href="/es/#download">Descargar</a>
+      </div>
+
+      <h2 id="sources">Fuentes</h2>
+      <ol class="sources">
+        <li>Mifflin MD, St Jeor ST et al. “A new predictive equation for resting energy expenditure in healthy individuals”. <i>American Journal of Clinical Nutrition</i>, 1990, 51(2), p. 241-247.</li>
+        <li>Frankenfield D, Roth-Yousey L, Compher C. “Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review”. <i>Journal of the American Dietetic Association</i>, 2005, 105(5), p. 775-789.</li>
+        <li>Wishnofsky M. “Caloric equivalents of gained or lost weight”. <i>American Journal of Clinical Nutrition</i>, 1958, 6(5), p. 542-546.</li>
+        <li>Ainsworth BE et al. “2011 Compendium of Physical Activities: a second update of codes and MET values”. <i>Medicine &amp; Science in Sports &amp; Exercise</i>, 2011, 43(8), p. 1575-1581; actualización de 2024: <a href="https://pacompendium.com/">pacompendium.com</a>.</li>
+        <li>Epley B. <i>Poundage Chart</i>. Boyd Epley Workout, 1985.</li>
+        <li>Institute of Medicine. <i>Dietary Reference Intakes for Energy, Carbohydrate, Fiber, Fat, Fatty Acids, Cholesterol, Protein, and Amino Acids</i>. National Academies Press, 2005 (fibra: 14 g por cada 1.000 kcal).</li>
+        <li>ANSES. <a href="https://ciqual.anses.fr/">Tabla de composición nutricional de los alimentos Ciqual 2025</a>, licencia abierta Etalab 2.0.</li>
+      </ol>
+
+      <h2 style="font-size:1.5rem;margin-top:48px">Para saber más</h2>
+      <div class="guides" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <a class="guide" href="/es/metabolismo-adaptativo.html"><span class="surtitre" style="margin:0">Guide</span><h3>El metabolismo adaptativo</h3><p>Por qué una fórmula no basta, y cómo corregirla.</p></a>
+        <a class="guide" href="/es/calculadoras/"><span class="surtitre" style="margin:0">Herramientas</span><h3>Las calculadoras</h3><p>Gasto y macros, con las mismas fórmulas que la aplicación.</p></a>
+      </div>
+    </article>
+  </div>
+
+  <aside class="note-page">
+    <p>Este artículo es informativo. Basal no es un dispositivo médico y no sustituye el consejo de un profesional sanitario.</p>
+  </aside>
+</main>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cómo calcula Basal",
+  "description": "Todas las fórmulas de la app Basal: metabolismo basal, gasto, objetivo, macros, gasto adaptativo, sesiones y 1RM, con sus constantes, sus fuentes y sus límites.",
+  "inLanguage": "es",
+  "url": "https://basal-app.fr/es/metodo.html",
+  "mainEntityOfPage": "https://basal-app.fr/es/metodo.html",
+  "image": "https://basal-app.fr/img/og-en.png",
+  "datePublished": "2026-10-30",
+  "dateModified": "2026-10-30",
+  "author": {
+    "@type": "Person",
+    "name": "Théo Serrano",
+    "url": "https://basal-app.fr/a-propos.html"
+  },
+  "publisher": {
+    "@id": "https://basal-app.fr/#organisation"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://basal-app.fr/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Método",
+      "item": "https://basal-app.fr/es/metodo.html"
+    }
+  ]
+}
+</script>

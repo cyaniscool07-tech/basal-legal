@@ -29,6 +29,10 @@ U = {
     'methode': {'en': '/en/method.html', 'es': '/es/metodo.html', 'de': '/de/methode.html'},
     'faq': {'en': '/en/faq.html', 'es': '/es/preguntas-frecuentes.html', 'de': '/de/haeufige-fragen.html'},
     'apropos': {'en': '/en/about.html', 'es': '/es/sobre-basal.html', 'de': '/de/ueber-basal.html'},
+    'confidentialite': {'en': '/en/privacy.html', 'es': '/es/privacidad.html', 'de': '/de/datenschutz.html'},
+    'suppression': {'en': '/en/delete-account.html', 'es': '/es/eliminar-cuenta.html', 'de': '/de/konto-loeschen.html'},
+    'cgu': {'en': '/en/terms.html', 'es': '/es/condiciones.html', 'de': '/de/nutzungsbedingungen.html'},
+    'mentions': {'en': '/en/legal-notice.html', 'es': '/es/aviso-legal.html', 'de': '/de/impressum.html'},
 }
 
 L = {
@@ -98,7 +102,7 @@ def article(l, a):
   </div>
 
   <aside class="note-page">
-    <p>{t["note"]}</p>
+    <p>{a.get("note", t["note"])}</p>
   </aside>
 </main>'''
 
@@ -136,3 +140,17 @@ def recette(l, slug_fr):
             nom = re.search(r'<h1>(.*?)</h1>', h).group(1)
             return f'{U["recettes"][l]}{os.path.basename(f)}', nom
     raise SystemExit(f'recette introuvable : {l}/{slug_fr}')
+
+
+def avis_traduction(l, fr_url):
+    """Paragraphe des pages légales traduites : seule la version française fait foi."""
+    a = f'<a href="{fr_url}" hreflang="fr" lang="fr">'
+    return {'en': f'<p>This is a translation of the {a}French version</a>. If the two versions ever differ, only the French version is authoritative.</p>',
+            'es': f'<p>Esta es una traducción de la {a}versión francesa</a>. Si las dos versiones difieren, solo la versión francesa da fe.</p>',
+            'de': f'<p>Dies ist eine Übersetzung der {a}französischen Fassung</a>. Weichen die beiden Fassungen voneinander ab, ist allein die französische Fassung maßgeblich.</p>'}[l]
+
+
+def legale(l, cle, titre, description, corps):
+    """Entrée PAGES d'une page légale (gabarit .page, sans fil d'Ariane, comme la version française)."""
+    return {'slug': U[cle][l], 'tete': dict(title=titre, description=description, og_title=titre, og_description=description, locale=L[l]['locale']),
+            'main': f'<div class="page" role="main">\n{corps}\n</div>'}
