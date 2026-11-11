@@ -51,7 +51,12 @@ def traiter(cle):
     fr_dossier = fr_path.strip('/').rsplit('/', 1)[0] if fr_path.strip('/').count('/') or fr_path.endswith('/') else ''
     fr_base = f'src/contenus/{fr_dossier + "/" if fr_dossier else ""}{fr_nom}'
     corps_fr = lire(fr_base + '.html')
-    urls = {'fr': fr_path, **{l: mod.PAGES[l]['slug'] for l in LANGS if l in mod.PAGES}}
+    existants = getattr(mod, 'EXISTANTS', {})  # traductions déjà écrites à la main : reliées, pas réécrites
+    urls = {'fr': fr_path, **{l: existants.get(l) or mod.PAGES[l]['slug'] for l in LANGS if l in mod.PAGES or l in existants}}
+    for l, u in existants.items():
+        rel = u.lstrip('/')
+        base_e = f'src/contenus/{rel.rstrip("/") + "/index" if rel.endswith("/") else rel.replace(".html", "")}'
+        ecrire(base_e + '.tete.html', avec_hreflang(lire(base_e + '.tete.html'), urls))
     # Page française : hreflang vers les traductions.
     ecrire(fr_base + '.tete.html', avec_hreflang(lire(fr_base + '.tete.html'), urls))
     scripts = re.findall(r'(?s)<script>.*?</script>', corps_fr)
