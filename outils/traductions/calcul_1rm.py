@@ -22,12 +22,12 @@ def main(t):
       </div>
     </form>
 
-    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+    <div class="carte resultat" aria-live="polite" aria-labelledby="res-t">
       <p class="surtitre" id="res-t">{t["res"]}</p>
       <div class="grand"><span id="rm" data-flottant="{t["res"]}">—</span><small>kg</small></div>
       <p id="message" style="margin:14px 0 0">{t["vide"]}</p>
       <p id="alerte" hidden style="margin:14px 0 0;color:#fb923c">{t["alerte"]}</p>
-    </section>
+    </div>
   </div>
 
   <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">

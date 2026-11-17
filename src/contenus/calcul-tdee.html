@@ -3,8 +3,8 @@
   <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="/calculateurs/">Calculateurs</a><span aria-hidden="true">›</span>Dépense</nav>
   <header class="article-tete" style="border:0;padding-bottom:0">
     <p class="surtitre">Calculateur gratuit</p>
-    <h1>Calcul du métabolisme de base et de ta dépense journalière</h1>
-    <p class="chapeau">Avec l'équation de Mifflin-St Jeor, celle qu'utilise l'application. Rien n'est envoyé nulle
+    <h1>Calcul du TDEE et du métabolisme de base</h1>
+    <p class="chapeau">Chaque site te donne un chiffre différent, et tu ne sais pas lequel croire. Avec l'équation de Mifflin-St Jeor, celle qu'utilise l'application. Rien n'est envoyé nulle
     part : le calcul se fait dans ton navigateur.</p>
   </header>
 
@@ -52,7 +52,7 @@
           </div>
     </form>
 
-    <section class="carte resultat" aria-live="polite">
+    <div class="carte resultat" aria-live="polite">
           <p class="vide" id="vide">Renseigne les quatre champs pour voir le résultat.</p>
           <div id="sortie" hidden>
             <div class="ligne">
@@ -62,7 +62,7 @@
               <span>Dépense journalière estimée</span><b id="tdee" data-flottant="Dépense journalière">—</b>
             </div>
           </div>
-        </section>
+        </div>
   </div>
 
   <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
@@ -76,7 +76,7 @@
         </p>
       </div>
 
-      <h2>Comment le rendre juste</h2>
+      <h2>Rendre le calcul du TDEE plus juste</h2>
       <p>
         Le seul moyen de connaître ta dépense réelle est de l'observer : comparer ce que tu manges à
         l'évolution effective de ton poids sur plusieurs semaines. C'est ce que fait Basal, en
@@ -113,7 +113,7 @@
         calculateur de macros, avec les mêmes règles que l'application.
       </p>
 
-      <h2>Le détail du calcul</h2>
+      <h2>Formule de Mifflin-St Jeor : le détail du calcul</h2>
       <p>
         Mifflin-St Jeor donne le <a href="/metabolisme-de-base.html">métabolisme de base</a> : <code>10 × poids + 6,25 × taille − 5 × âge</code>,
         puis <code>+ 5</code> pour un homme et <code>− 161</code> pour une femme. La dépense
@@ -126,7 +126,7 @@
         elles servent à te situer, pas à te classer.
       </p>
 
-      <h2>Et ensuite ?</h2>
+      <h2>Après le calcul : ajuster avec ton poids réel</h2>
       <p>
         Ce chiffre est ta maintenance. Pour savoir quoi en faire :
         <a href="/combien-de-calories-par-jour.html">combien de calories par jour</a> selon ton profil,

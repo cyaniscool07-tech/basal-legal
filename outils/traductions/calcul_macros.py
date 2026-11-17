@@ -70,7 +70,7 @@ def formulaire(t):
           </div>
     </form>
 
-    <section class="carte resultat" aria-live="polite">
+    <div class="carte resultat" aria-live="polite">
           <p class="vide" id="vide">{t["vide"]}</p>
           <div id="sortie" hidden>
             <div class="ligne total">
@@ -90,7 +90,7 @@ def formulaire(t):
             </div>
             <p class="note" id="plancher" hidden></p>
           </div>
-        </section>
+        </div>
   </div>'''
 
 

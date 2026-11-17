@@ -2,8 +2,8 @@
   <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="/calculateurs/">Calculateurs</a><span aria-hidden="true">›</span>1RM</nav>
   <header class="article-tete" style="border:0;padding-bottom:0">
     <p class="surtitre">Calculateur gratuit</p>
-    <h1>Calculer son 1RM, la charge maximale sur une répétition</h1>
-    <p class="chapeau">Ta charge maximale estimée à partir d’une série que tu as réellement faite, sans tenter de maximum. C’est la formule d’Epley, celle qu’utilise l’application Basal pour suivre ta progression. Rien n’est envoyé.</p>
+    <h1>Calcul du 1RM : ta charge maximale sur une répétition</h1>
+    <p class="chapeau">Tester ton maximum au développé couché, c’est risqué et ça fatigue pour la semaine. Ta charge maximale estimée à partir d’une série que tu as réellement faite, sans tenter de maximum. C’est la formule d’Epley, celle qu’utilise l’application Basal pour suivre ta progression. Rien n’est envoyé.</p>
   </header>
 
   <div class="outil">
@@ -15,17 +15,17 @@
       </div>
     </form>
 
-    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+    <div class="carte resultat" aria-live="polite" aria-labelledby="res-t">
       <p class="surtitre" id="res-t">Ton 1RM estimé</p>
       <div class="grand"><span id="rm" data-flottant="1RM estimé">—</span><small>kg</small></div>
       <p id="message" style="margin:14px 0 0">Renseigne la charge et le nombre de répétitions.</p>
       <p id="alerte" hidden style="margin:14px 0 0;color:#fb923c">Au-delà d’une dizaine de répétitions, l’estimation devient moins fiable : fatigue et endurance pèsent plus que la force.</p>
-    </section>
+    </div>
   </div>
 
   <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
     <div class="corps">
-      <h2>Tes charges de 1 à 12 répétitions</h2>
+      <h2>Charges de 1 à 12 répétitions selon ton 1RM</h2>
       <div class="tableau">
         <table>
           <caption>Charges estimées à partir de ton 1RM</caption>
@@ -35,7 +35,7 @@
         <p class="source">Formule d’Epley inversée : charge = 1RM ÷ (1 + répétitions ÷ 30). Arrondi à 0,5 kg.</p>
       </div>
 
-      <h2>Le détail du calcul</h2>
+      <h2>Formule d’Epley : le détail du calcul</h2>
       <p class="formule"><code>1RM ≈ charge × (1 + répétitions ÷ 30)</code></p>
       <div class="calcul" role="group" aria-label="Exemple">
         <div class="titre">Exemple : 80 kg soulevés 8 fois</div>
@@ -44,7 +44,7 @@
       </div>
       <p>La formule d’Epley (1985) est la plus répandue. À une répétition, elle renverrait 1,033 fois la charge, alors que la charge soulevée est déjà le maximum : l’application et ce calculateur la gardent donc telle quelle, plutôt que de gonfler un record réel de 3 %.</p>
 
-      <h2>À quoi ça sert</h2>
+      <h2>À quoi sert le 1RM</h2>
       <p>Un 1RM estimé permet de comparer des séances qui n’ont pas le même nombre de répétitions : 80 kg pour 8 et 90 kg pour 4 donnent presque le même 1RM (101,3 et 102 kg). C’est ainsi que l’application suit la progression d’un exercice d’une semaine à l’autre. Pour l’organiser, voir <a href="/series-par-muscle.html">combien de séries par muscle et par semaine</a>.</p>
 
       <h2>Ce que ce calcul ne sait pas</h2>

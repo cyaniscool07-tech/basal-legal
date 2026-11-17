@@ -2,8 +2,8 @@
   <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">›</span><a href="/calculateurs/">Calculateurs</a><span aria-hidden="true">›</span>Dépense réelle</nav>
   <header class="article-tete" style="border:0;padding-bottom:0">
     <p class="surtitre">Calculateur gratuit</p>
-    <h1>Calculer sa dépense réelle à partir de son poids</h1>
-    <p class="chapeau">Une formule devine ta dépense d’après ton âge, ta taille et ton poids. Ici, on la déduit de ce que tu as réellement mangé et de l’évolution de ton poids : c’est la méthode qu’utilise l’application Basal. Le calcul se fait dans ton navigateur, rien n’est envoyé.</p>
+    <h1>Calories de maintien : calculer ta dépense réelle à partir de ton poids</h1>
+    <p class="chapeau">Tu manges « à ta maintenance » depuis un mois, et ton poids bouge quand même ? Une formule devine ta dépense d’après ton âge, ta taille et ton poids. Ici, on la déduit de ce que tu as réellement mangé et de l’évolution de ton poids : c’est la méthode qu’utilise l’application Basal. Le calcul se fait dans ton navigateur, rien n’est envoyé.</p>
   </header>
 
   <div class="outil">
@@ -45,7 +45,7 @@
       </div>
     </form>
 
-    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+    <div class="carte resultat" aria-live="polite" aria-labelledby="res-t">
       <p class="surtitre" id="res-t">Ta dépense réelle estimée</p>
       <div class="grand"><span id="depense" data-flottant="Dépense réelle">—</span><small>kcal / jour</small></div>
       <p id="message" style="margin:14px 0 0">Renseigne les quatre premiers champs pour voir le résultat.</p>
@@ -57,12 +57,12 @@
         <p id="comparaison" hidden style="margin:0 0 8px"></p>
         <p id="alerte" hidden style="margin:0;color:#fb923c"></p>
       </div>
-    </section>
+    </div>
   </div>
 
   <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
     <div class="corps">
-      <h2>Le détail du calcul</h2>
+      <h2>Calcul des calories de maintien : le détail</h2>
       <p class="formule"><code>dépense = apport moyen − (poids d’arrivée − poids de départ) × 7 700 ÷ jours</code></p>
       <p>Un kilogramme de masse corporelle représente environ 7 700 kcal. Si tu as perdu du poids, c’est que tu as dépensé plus que tu n’as mangé : la différence, ramenée par jour, s’ajoute à ton apport.</p>
       <div class="calcul" role="group" aria-label="Détail du calcul avec tes valeurs">
@@ -76,7 +76,7 @@
       <h2>Pourquoi c’est plus juste qu’une formule</h2>
       <p>Une formule comme Mifflin-St Jeor rend la dépense moyenne des gens qui te ressemblent sur quatre critères, avec une erreur courante d’environ 10 %. Ton poids, lui, réagit à ce que tu dépenses vraiment. Sur quelques semaines, il dit si ton apport était au-dessus ou en dessous de ta dépense, et de combien. Voir <a href="/metabolisme-adaptatif.html">pourquoi une formule ne suffit pas</a>.</p>
 
-      <h2>Bien mesurer</h2>
+      <h2>Pesées et repas : bien mesurer</h2>
       <ul class="liste">
         <li>Pèse-toi chaque matin, dans les mêmes conditions, et fais la moyenne par semaine : le poids d’un jour varie de plusieurs centaines de grammes avec l’eau et le sel.</li>
         <li>Note tout ce que tu manges, y compris les journées ratées. Des repas oubliés font croire à une dépense plus basse qu’elle n’est.</li>

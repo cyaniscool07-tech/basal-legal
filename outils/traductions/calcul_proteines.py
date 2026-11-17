@@ -36,7 +36,7 @@ def main(t):
       </div>
     </form>
 
-    <section class="carte resultat" aria-live="polite" aria-labelledby="res-t">
+    <div class="carte resultat" aria-live="polite" aria-labelledby="res-t">
       <p class="surtitre" id="res-t">{t["res"]}</p>
       <div class="grand"><span id="total" data-flottant="{t["flottant"]}">—</span><small>{t["parjour"]}</small></div>
       <p id="message" style="margin:14px 0 0">{t["vide"]}</p>
@@ -47,7 +47,7 @@ def main(t):
         </div>
         <p id="reference" style="margin:0"></p>
       </div>
-    </section>
+    </div>
   </div>
 
   <div class="article" style="grid-template-columns:minmax(0,1fr);padding-top:56px">
