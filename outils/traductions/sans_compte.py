@@ -4,7 +4,7 @@ FR = '/appli-calories-sans-compte.html'
 DATE = '2026-11-11'
 C = 'sans-compte'
 IDS = ['why', 'without-account', 'offline', 'data', 'check', 'limits']
-VERSION = {'en': 'App version 1.4', 'es': 'Aplicación versión 1.4', 'de': 'App-Version 1.4'}
+VERSION = {'en': 'App version 1.4.3', 'es': 'Aplicación versión 1.4', 'de': 'App-Version 1.4'}
 
 
 def corps(l, t):
@@ -74,7 +74,7 @@ def textes(l):
         return dict(
             s=['Why so many apps ask for an account', 'What Basal does without an account', 'What works offline', 'Not losing your data', 'Checking an app yourself', 'What Basal does not do'],
             bref_t='In short',
-            bref='Basal installs and works entirely without an account, without an email and without signing up, for free and with no ads. Tracking meals, weight and sessions works offline. You only need the internet to read a barcode, search Open Food Facts, the Community and the Premium subscription. To lose nothing when you change phone, a backup file is enough.',
+            bref='Basal installs and works entirely without an account, without an email and without signing up, for free and with no ads. Tracking meals, weight and sessions works offline. You only need the internet to read a barcode, search Open Food Facts, scan a meal photo (Premium), the Community and the Premium subscription. To lose nothing when you change phone, a backup file is enough.',
             pourquoi=['An account has real uses: getting your data back on another phone, sharing a subscription between devices. But it also serves other purposes: sending marketing emails, linking your usage to your identity, and making it harder to leave for another app.',
                       'To track what you eat, none of that is needed. A calorie counter can calculate everything on the phone: the food table, expenditure, targets and history fit in the device’s memory.'],
             tout='Everything, except two things. Without creating an account, without an email and without signing up, you get:',
@@ -85,8 +85,8 @@ def textes(l):
             compte='The account, which is optional, is only for two things: syncing your data so you can get it back on another phone, and posting in the Community.',
             cap='Basal without an internet connection', th=['Feature', 'Offline'], oui='Yes', non='No',
             tab=[('Adding a meal from the Ciqual table', 1), ('Calories, macros, targets and history', 1), ('Weight, trend and recalculated expenditure', 1), ('Sessions, routines and exercises', 1),
-                 ('Recipes, meal planning and shopping list', 1), ('Reading a barcode (Open Food Facts product page)', 0), ('Searching for a branded product in Open Food Facts', 0), ('Community, sync, buying Premium', 0)],
-            src='Behaviour of the Basal app, version 1.4. Offline, search is limited to the built-in foods, and a banner says so.',
+                 ('Recipes, meal planning and shopping list', 1), ('Reading a barcode (Open Food Facts product page)', 0), ('Searching for a branded product in Open Food Facts', 0), ('Scanning a meal photo (Premium)', 0), ('Community, sync, buying Premium', 0)],
+            src='Behaviour of the Basal app, version 1.4.3. Offline, search is limited to the built-in foods, and a banner says so.',
             pratique='In practice, at the gym with no signal or when travelling, you can log everything. A packaged product can be caught up later, once connected, or added by hand with the values on the label.',
             perdre='That is the trade-off: without an account, your data lives only on your phone. If you lose it or change it, the data does not follow you on its own. Two solutions:',
             solutions=['<strong>A backup file</strong>: in Settings, then My data, “Create a backup” produces a file you keep wherever you like, and “Restore a backup” loads it onto the new phone. Still without an account.',
@@ -107,7 +107,7 @@ def textes(l):
         return dict(
             s=['Por qué tantas apps piden una cuenta', 'Lo que Basal hace sin cuenta', 'Lo que funciona sin conexión', 'No perder tus datos', 'Comprobar una app por ti mismo', 'Lo que Basal no hace'],
             bref_t='En resumen',
-            bref='Basal se instala y se usa por completo sin cuenta, sin correo electrónico y sin registro, gratis y sin publicidad. El seguimiento de las comidas, del peso y de las sesiones funciona sin conexión. Solo hace falta internet para leer un código de barras, buscar en Open Food Facts, la Comunidad y la suscripción Premium. Para no perder nada al cambiar de teléfono, basta con un archivo de copia de seguridad.',
+            bref='Basal se instala y se usa por completo sin cuenta, sin correo electrónico y sin registro, gratis y sin publicidad. El seguimiento de las comidas, del peso y de las sesiones funciona sin conexión. Solo hace falta internet para leer un código de barras, buscar en Open Food Facts, escanear una comida en foto (Premium), la Comunidad y la suscripción Premium. Para no perder nada al cambiar de teléfono, basta con un archivo de copia de seguridad.',
             pourquoi=['Una cuenta tiene utilidades reales: recuperar tus datos en otro teléfono, compartir una suscripción entre dispositivos. Pero también sirve para otras cosas: enviar correos de marketing, vincular tu uso a tu identidad y hacer más difícil irse a otra aplicación.',
                       'Para seguir tu alimentación, nada de eso es necesario. Un contador de calorías puede calcularlo todo en el teléfono: la tabla de alimentos, el gasto, los objetivos y el historial caben en la memoria del dispositivo.'],
             tout='Todo, salvo dos cosas. Sin crear cuenta, sin correo y sin registro, tienes:',
@@ -118,7 +118,7 @@ def textes(l):
             compte='La cuenta, opcional, solo sirve para dos cosas: sincronizar tus datos para recuperarlos en otro teléfono y publicar en la Comunidad.',
             cap='Basal sin conexión a internet', th=['Función', 'Sin conexión'], oui='Sí', non='No',
             tab=[('Añadir una comida desde la tabla Ciqual', 1), ('Calorías, macros, objetivos e historial', 1), ('Peso, tendencia y gasto recalculado', 1), ('Sesiones, rutinas y ejercicios', 1),
-                 ('Recetas, planificación y lista de la compra', 1), ('Leer un código de barras (ficha de Open Food Facts)', 0), ('Buscar un producto de marca en Open Food Facts', 0), ('Comunidad, sincronización, compra de Premium', 0)],
+                 ('Recetas, planificación y lista de la compra', 1), ('Leer un código de barras (ficha de Open Food Facts)', 0), ('Buscar un producto de marca en Open Food Facts', 0), ('Escanear una comida en foto (Premium)', 0), ('Comunidad, sincronización, compra de Premium', 0)],
             src='Comportamiento de la aplicación Basal, versión 1.4. Sin conexión, la búsqueda se limita a los alimentos integrados, y un aviso lo indica.',
             pratique='En la práctica, en el gimnasio sin cobertura o de viaje, puedes anotarlo todo. Un producto envasado se recupera después, ya con conexión, o se añade a mano con los valores de la etiqueta.',
             perdre='Es la contrapartida: sin cuenta, tus datos solo viven en tu teléfono. Si lo pierdes o lo cambias, no te siguen solos. Dos soluciones:',
@@ -139,7 +139,7 @@ def textes(l):
     return dict(
         s=['Warum so viele Apps ein Konto verlangen', 'Was Basal ohne Konto kann', 'Was offline funktioniert', 'Keine Daten verlieren', 'Eine App selbst prüfen', 'Was Basal nicht kann'],
         bref_t='Kurz gesagt',
-        bref='Basal lässt sich vollständig ohne Konto, ohne E-Mail und ohne Anmeldung installieren und nutzen, kostenlos und ohne Werbung. Das Erfassen von Mahlzeiten, Gewicht und Einheiten funktioniert offline. Internet brauchst du nur, um einen Barcode zu lesen, in Open Food Facts zu suchen, für die Community und das Premium-Abo. Damit beim Handywechsel nichts verloren geht, reicht eine Sicherungsdatei.',
+        bref='Basal lässt sich vollständig ohne Konto, ohne E-Mail und ohne Anmeldung installieren und nutzen, kostenlos und ohne Werbung. Das Erfassen von Mahlzeiten, Gewicht und Einheiten funktioniert offline. Internet brauchst du nur, um einen Barcode zu lesen, in Open Food Facts zu suchen, eine Mahlzeit per Foto zu scannen (Premium), für die Community und das Premium-Abo. Damit beim Handywechsel nichts verloren geht, reicht eine Sicherungsdatei.',
         pourquoi=['Ein Konto hat echten Nutzen: deine Daten auf einem anderen Handy wiederfinden, ein Abo zwischen Geräten teilen. Es dient aber auch anderen Zwecken: Marketing-E-Mails verschicken, deine Nutzung mit deiner Identität verknüpfen und den Wechsel zu einer anderen App erschweren.',
                   'Um deine Ernährung zu erfassen, ist nichts davon nötig. Ein Kalorienzähler kann alles auf dem Handy berechnen: Die Lebensmitteltabelle, der Verbrauch, die Ziele und der Verlauf passen in den Speicher des Geräts.'],
         tout='Alles, bis auf zwei Dinge. Ohne Konto, ohne E-Mail und ohne Anmeldung hast du:',
@@ -150,7 +150,7 @@ def textes(l):
         compte='Das freiwillige Konto dient nur zwei Dingen: deine Daten zu synchronisieren, um sie auf einem anderen Handy wiederzufinden, und in der Community zu veröffentlichen.',
         cap='Basal ohne Internetverbindung', th=['Funktion', 'Offline'], oui='Ja', non='Nein',
         tab=[('Eine Mahlzeit aus der Ciqual-Tabelle hinzufügen', 1), ('Kalorien, Makros, Ziele und Verlauf', 1), ('Gewicht, Trend und neu berechneter Verbrauch', 1), ('Einheiten, Routinen und Übungen', 1),
-             ('Rezepte, Planung und Einkaufsliste', 1), ('Einen Barcode lesen (Open-Food-Facts-Eintrag)', 0), ('Ein Markenprodukt in Open Food Facts suchen', 0), ('Community, Synchronisierung, Premium-Kauf', 0)],
+             ('Rezepte, Planung und Einkaufsliste', 1), ('Einen Barcode lesen (Open-Food-Facts-Eintrag)', 0), ('Ein Markenprodukt in Open Food Facts suchen', 0), ('Eine Mahlzeit per Foto scannen (Premium)', 0), ('Community, Synchronisierung, Premium-Kauf', 0)],
         src='Verhalten der App Basal, Version 1.4. Offline beschränkt sich die Suche auf die integrierten Lebensmittel, und ein Hinweis zeigt das an.',
         pratique='In der Praxis kannst du im Fitnessstudio ohne Netz oder auf Reisen alles eintragen. Ein verpacktes Produkt lässt sich später nachholen, sobald du verbunden bist, oder von Hand mit den Werten auf dem Etikett hinzufügen.',
         perdre='Das ist die Kehrseite: Ohne Konto leben deine Daten nur auf deinem Handy. Wenn du es verlierst oder wechselst, folgen sie dir nicht von selbst. Zwei Lösungen:',

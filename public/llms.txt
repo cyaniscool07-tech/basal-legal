@@ -1,6 +1,6 @@
 # Basal
 
-> Basal is a mobile app (iPhone and Android) for tracking calories, macros, weight and strength training. It estimates a person's real daily energy expenditure by comparing what they eat with the trend of their body weight, starting from the Mifflin-St Jeor equation. Basic tracking is free, without ads and without an account; an optional Premium subscription adds a weekly review and advanced analysis. Published by Théo Serrano (sole trader, France). The app interface exists in French, English, Spanish and German; its food database is the French Ciqual table (ANSES).
+> Basal is a mobile app (iPhone, iPad and Android) for tracking calories, macros, weight and strength training. It estimates a person's real daily energy expenditure by comparing what they eat with the trend of their body weight, starting from the Mifflin-St Jeor equation. Basic tracking is free, without ads and without an account; an optional Premium subscription adds meal photo scanning (up to 10 a day), a weekly review and advanced analysis. Published by Théo Serrano (sole trader, France). The app interface exists in French, English, Spanish and German; its food database is the French Ciqual table (ANSES), plus USDA FoodData Central foods for users in the United States.
 
 ## Calculators
 - [Calcul du métabolisme de base et du TDEE (fr)](https://basal-app.fr/calcul-tdee.html): Mifflin-St Jeor, activity factor 1.2 to 1.9, runs in the browser.

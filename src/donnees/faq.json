@@ -32,7 +32,7 @@
   {
     "id": "aliments",
     "question": "La base d’aliments est-elle fiable ?",
-    "reponse": "<p>Basal embarque la table <a href=\"https://ciqual.anses.fr/\">Ciqual 2025 de l’ANSES</a>, plus de 3 300 aliments analysés et publiés par l’agence sanitaire française. Les produits scannés viennent d’Open Food Facts, une base collaborative : leurs valeurs sont celles des étiquettes, saisies par des contributeurs, donc parfois incomplètes.</p><p>S’y ajoutent les menus de six enseignes de restauration rapide et une estimation par catégorie de plat au restaurant.</p>"
+    "reponse": "<p>Basal embarque la table <a href=\"https://ciqual.anses.fr/\">Ciqual 2025 de l’ANSES</a>, plus de 3 300 aliments analysés et publiés par l’agence sanitaire française. Les produits scannés viennent d’Open Food Facts, une base collaborative : leurs valeurs sont celles des étiquettes, saisies par des contributeurs, donc parfois incomplètes.</p><p>S’y ajoutent les menus de six enseignes de restauration rapide et une estimation par catégorie de plat au restaurant.</p><p>Aux États-Unis (selon le pays du téléphone), Basal ajoute aussi 5 287 aliments de la base FoodData Central de l’USDA, du domaine public.</p>"
   },
   {
     "id": "objectif",
