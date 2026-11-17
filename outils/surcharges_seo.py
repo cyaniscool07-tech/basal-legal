@@ -22,9 +22,27 @@ def appliquer():
         ancien_h1 = re.sub(r'<[^>]+>', '', m.group(2)).strip()
         b = b[:m.start()] + f'<h1{m.group(1)}>{s["h1"]}</h1>' + b[m.end():]
         b = b.replace(f'"headline": "{ancien_h1}"', f'"headline": "{s["h1"]}"').replace(f'"description": "{avant_d}"', f'"description": "{s["description"]}"')
+        # H2 : {ancien: nouveau}, comparés sans balises ni différence d'apostrophe ; déjà remplacé = rien à faire.
+        norm = lambda x: re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', x)).replace('’', "'").strip()
+        for ancien, nouveau in s.get('h2', {}).items():
+            h2s = list(re.finditer(r'<h2([^>]*)>((?:(?!</?h[1-6]).)*?)</h2>', b, re.S))
+            if any(norm(h.group(2)) == norm(nouveau) for h in h2s):
+                continue
+            cibles = [h for h in h2s if norm(h.group(2)) == norm(ancien)]
+            assert len(cibles) == 1, (url, ancien, len(cibles))
+            h = cibles[0]
+            b = b[:h.start()] + f'<h2{h.group(1)}>{nouveau}</h2>' + b[h.end():]
+        b = sommaire(b)
         open(tp, 'w', encoding='utf-8', newline='\n').write(t)
         open(bp, 'w', encoding='utf-8', newline='\n').write(b)
     return len(surcharges)
+
+
+def sommaire(b):
+    """Entrées de sommaire (<li><a href="#id">) alignées sur le texte du H2 qui porte cet id."""
+    for h in re.finditer(r'<h2 id="([^"]+)"[^>]*>((?:(?!</?h[1-6]).)*?)</h2>', b, re.S):
+        b = re.sub(r'(<li><a href="#' + re.escape(h.group(1)) + r'">)[^<]*(</a>)', lambda m: m.group(1) + h.group(2) + m.group(2), b)
+    return b
 
 
 if __name__ == '__main__':
