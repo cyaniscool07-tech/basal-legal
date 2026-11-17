@@ -98,8 +98,8 @@ def textes(l):
                     '<strong>The store listing.</strong> The App Store (“App Privacy”) and Google Play (“Data safety”) list the data collected and the data linked to your identity.',
                     '<strong>The privacy policy.</strong> Look for the words “advertising”, “partners” and “sale”: an app with no ads has no reason to share your data with ad networks.'],
             conf=f'For Basal, the <a href="{u("confidentialite")}">privacy policy</a> lists every third-party service and its role.',
-            lim=['<strong>No photo recognition of dishes</strong>: the camera reads barcodes, not plates.', '<strong>No watch app</strong>: only steps come through, via Apple Health or Health Connect.',
-                 '<strong>No iPad or web version</strong>: Basal is an app for iPhone and Android.'],
+            lim=['<strong>Meal photo scanning goes through the internet</strong>: a Premium feature, it sends the photo for analysis, then the photo is deleted.', '<strong>No watch app</strong>: only steps come through, via Apple Health or Health Connect.',
+                 '<strong>No web version</strong>: Basal is an app for iPhone, iPad and Android.'],
             autres=f'The other answers are in the <a href="{u("faq")}">FAQ</a>, and what stays free in <a href="{u("compteur-gratuit")}">a free calorie app, with no subscription</a>.',
             appel_t='Install, open, log your first meal', appel='No email, no sign-up, no ads. Tracking is free, and your data stays on your phone.', telecharger='Download',
         )
@@ -131,8 +131,8 @@ def textes(l):
                     '<strong>La ficha de la tienda.</strong> El App Store («Privacidad de la app») y Google Play («Seguridad de los datos») enumeran los datos recogidos y los vinculados a tu identidad.',
                     '<strong>La política de privacidad.</strong> Busca las palabras «publicidad», «socios» y «venta»: una aplicación sin publicidad no tiene motivo para compartir tus datos con redes publicitarias.'],
             conf=f'En el caso de Basal, la <a href="{u("confidentialite")}">política de privacidad</a> enumera cada servicio externo y su función.',
-            lim=['<strong>No reconoce platos en foto</strong>: la cámara lee códigos de barras, no platos.', '<strong>No hay app para reloj</strong>: solo pasan los pasos, a través de Salud o Health Connect.',
-                 '<strong>No hay versión para iPad ni web</strong>: Basal es una aplicación para iPhone y Android.'],
+            lim=['<strong>El escaneo de comidas por foto pasa por internet</strong>: reservado a Premium, envía la foto para analizarla y después se borra.', '<strong>No hay app para reloj</strong>: solo pasan los pasos, a través de Salud o Health Connect.',
+                 '<strong>No hay versión web</strong>: Basal es una aplicación para iPhone, iPad y Android.'],
             autres=f'Las demás respuestas están en las <a href="{u("faq")}">preguntas frecuentes</a>, y lo que sigue siendo gratis en <a href="{u("compteur-gratuit")}">una aplicación de calorías gratis y sin suscripción</a>.',
             appel_t='Instala, abre y anota tu primera comida', appel='Sin correo, sin registro, sin publicidad. El seguimiento es gratis y tus datos se quedan en tu teléfono.', telecharger='Descargar',
         )
@@ -163,8 +163,8 @@ def textes(l):
                 '<strong>Der Store-Eintrag.</strong> Der App Store („App-Datenschutz“) und Google Play („Datensicherheit“) listen die erhobenen Daten und die mit deiner Identität verknüpften Daten auf.',
                 '<strong>Die Datenschutzerklärung.</strong> Suche nach den Wörtern „Werbung“, „Partner“ und „Verkauf“: Eine App ohne Werbung hat keinen Grund, deine Daten mit Werbenetzwerken zu teilen.'],
         conf=f'Für Basal listet die <a href="{u("confidentialite")}">Datenschutzerklärung</a> jeden Drittanbieterdienst und seine Rolle auf.',
-        lim=['<strong>Keine Erkennung von Gerichten per Foto</strong>: Die Kamera liest Barcodes, keine Teller.', '<strong>Keine Uhr-App</strong>: Nur die Schritte kommen an, über Apple Health oder Health Connect.',
-             '<strong>Keine iPad- oder Web-Version</strong>: Basal ist eine App für iPhone und Android.'],
+        lim=['<strong>Der Foto-Scan von Mahlzeiten läuft über das Internet</strong>: Er ist Premium vorbehalten, schickt das Foto zur Analyse, danach wird es gelöscht.', '<strong>Keine Uhr-App</strong>: Nur die Schritte kommen an, über Apple Health oder Health Connect.',
+             '<strong>Keine Web-Version</strong>: Basal ist eine App für iPhone, iPad und Android.'],
         autres=f'Die übrigen Antworten stehen in den <a href="{u("faq")}">häufigen Fragen</a>, und was kostenlos bleibt, in <a href="{u("compteur-gratuit")}">eine kostenlose Kalorien-App, ohne Abo</a>.',
         appel_t='Installieren, öffnen, erste Mahlzeit eintragen', appel='Keine E-Mail, keine Anmeldung, keine Werbung. Das Tracking ist kostenlos, und deine Daten bleiben auf deinem Handy.', telecharger='Herunterladen',
     )

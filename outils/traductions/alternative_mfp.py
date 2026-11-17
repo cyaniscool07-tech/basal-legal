@@ -52,7 +52,7 @@ def textes(l):
             s=['Let’s start with what Basal will not do as well', 'What Basal does differently', 'And the tone', 'In short'],
             base='A food database is built over time and with its users. Apps installed for fifteen years have a head start that nothing catches up in a few months, and for an obscure processed product, they will find an entry where Basal will not.',
             moins=['<strong>Basal exists in English, French, Spanish and German, no further.</strong> And its food database is designed for France: if you live elsewhere, some of the products in your supermarket will not be in it.',
-                   '<strong>No iPad layout</strong>: on a tablet, the app runs in iPhone compatibility mode.',
+                   
                    '<strong>Two food databases, each with its limit.</strong> Everyday foods come from ANSES’s Ciqual table (over 3,000 foods, French reference values); packaged products come from Open Food Facts, an open database fed by volunteers, whose quality varies from one product to another.',
                    '<strong>No news feed, no messaging, no conversational coach.</strong> Basal’s Community is only for sharing recipes, routines and programmes. If you are looking for a social network, Basal will disappoint you.',
                    '<strong>No import from another app.</strong> You start from a blank page: your history stays where it is.'],
@@ -79,7 +79,7 @@ def textes(l):
             s=['Empecemos por lo que Basal no hará tan bien', 'Lo que Basal hace de otra manera', 'Y el tono', 'En resumen'],
             base='Una base de alimentos se construye con el tiempo y con sus usuarios. Las aplicaciones instaladas desde hace quince años tienen una ventaja que nada recupera en unos meses, y con un producto industrial poco conocido encontrarán una ficha donde Basal no la tendrá.',
             moins=['<strong>Basal existe en español, francés, inglés y alemán, nada más.</strong> Y su base de alimentos está pensada para Francia: si vives en otro país, parte de los productos de tu supermercado no estarán.',
-                   '<strong>Sin diseño para iPad</strong>: en tableta, la aplicación funciona en modo de compatibilidad con iPhone.',
+                   
                    '<strong>Dos bases de alimentos, cada una con su límite.</strong> Los alimentos corrientes vienen de la tabla Ciqual de la ANSES (más de 3.000 alimentos, valores de referencia franceses); los productos envasados vienen de Open Food Facts, una base abierta alimentada por voluntarios, cuya calidad es desigual según el producto.',
                    '<strong>Ningún muro de noticias, ninguna mensajería, ningún coach conversacional.</strong> La Comunidad de Basal solo sirve para compartir recetas, rutinas y programas. Si buscas una red social, Basal te decepcionará.',
                    '<strong>No se puede importar desde otra aplicación.</strong> Empiezas de cero: tu historial se queda donde está.'],
@@ -105,7 +105,7 @@ def textes(l):
         s=['Zuerst, was Basal nicht so gut kann', 'Was Basal anders macht', 'Und der Ton', 'Kurz gesagt'],
         base='Eine Lebensmitteldatenbank entsteht mit der Zeit und mit ihren Nutzern. Apps, die seit fünfzehn Jahren installiert werden, haben einen Vorsprung, den in ein paar Monaten nichts aufholt, und bei einem wenig bekannten Industrieprodukt finden sie einen Eintrag, wo Basal keinen hat.',
         moins=['<strong>Basal gibt es auf Deutsch, Französisch, Englisch und Spanisch, nicht darüber hinaus.</strong> Und seine Lebensmitteldatenbank ist für Frankreich gedacht: Wenn du anderswo lebst, fehlt ein Teil der Produkte aus deinem Supermarkt.',
-               '<strong>Kein iPad-Layout</strong>: Auf dem Tablet läuft die App im iPhone-Kompatibilitätsmodus.',
+               
                '<strong>Zwei Lebensmitteldatenbanken, jede mit ihrer Grenze.</strong> Alltägliche Lebensmittel stammen aus der Ciqual-Tabelle der ANSES (über 3.000 Lebensmittel, französische Referenzwerte); verpackte Produkte stammen aus Open Food Facts, einer offenen Datenbank, die von Freiwilligen gepflegt wird und deren Qualität je nach Produkt schwankt.',
                '<strong>Kein Newsfeed, keine Nachrichten, kein Chat-Coach.</strong> Die Community von Basal dient nur dazu, Rezepte, Routinen und Programme zu teilen. Wenn du ein soziales Netzwerk suchst, wird Basal dich enttäuschen.',
                '<strong>Kein Import aus einer anderen App.</strong> Du fängst bei null an: Dein Verlauf bleibt, wo er ist.'],
