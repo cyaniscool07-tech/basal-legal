@@ -195,7 +195,7 @@ p { margin: 0 0 1em; }
 .pilier .num { font: 400 1.6rem/1 var(--serif); color: var(--accent); }
 .pilier p { color: var(--texte-2); font-size: 0.95rem; margin: 0; flex: 1; }
 .pilier a { font-weight: 600; font-size: 0.92rem; text-decoration: none; }
-.pilier a::after { content: " a0→"; }
+.pilier a::after { content: "\00a0→"; }
 @media (max-width: 980px) { .piliers { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .piliers { grid-template-columns: 1fr; } }
 
