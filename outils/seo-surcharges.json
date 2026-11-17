@@ -1,0 +1,302 @@
+{
+ "/en/calorie-calculator.html": {
+  "title": "Calorie calculator: BMR and maintenance calories",
+  "description": "Free calorie calculator: your BMR and maintenance calories in 30 s with the Mifflin-St Jeor equation, then the calories to eat to lose or gain weight.",
+  "h1": "Calorie calculator: BMR and maintenance calories"
+ },
+ "/en/how-many-calories-per-day.html": {
+  "title": "How many calories a day? Women, men, to lose weight",
+  "description": "How many calories a day you need by sex, age and goal: reference figures, the calculation step by step, and how to adjust with your real weight trend.",
+  "h1": "How many calories a day? Women, men, to lose weight"
+ },
+ "/en/calorie-deficit.html": {
+  "title": "Calorie deficit: how to calculate it for weight loss",
+  "description": "Calculate your calorie deficit and the weight loss to expect: how much to cut, for how long, and why the scale does not follow straight away.",
+  "h1": "Calorie deficit: how to calculate it, what pace, mistakes to avoid"
+ },
+ "/en/basal-metabolic-rate.html": {
+  "title": "Basal metabolic rate (BMR): definition and formula",
+  "description": "Basal metabolic rate is the energy you burn at rest. The BMR formula for women and men, what changes it, and why it is not enough to set your calories.",
+  "h1": "Basal metabolic rate (BMR): what it is and what changes it"
+ },
+ "/en/real-expenditure-calculator.html": {
+  "title": "Maintenance calories calculator from your weight",
+  "description": "Work out your maintenance calories from what you eat and how your weight changes, instead of a formula. Free calculator, result in kcal a day.",
+  "h1": "Maintenance calories: work out your real expenditure from your weight"
+ },
+ "/en/adaptive-metabolism.html": {
+  "title": "Adaptive metabolism: why weight loss slows down",
+  "description": "Adaptive metabolism explains why weight loss slows down on a diet. What research shows, what is exaggerated, and how to measure it on yourself.",
+  "h1": "Adaptive metabolism: why weight loss slows down"
+ },
+ "/en/protein-per-day.html": {
+  "title": "Protein per day: how much for your goal",
+  "description": "How much protein per day to lose weight, maintain or build muscle: grams per kilo by goal, examples of meals, and sources.",
+  "h1": "How much protein per day?"
+ },
+ "/en/protein-calculator.html": {
+  "title": "Protein calculator: daily protein for your goal",
+  "description": "Calculate your daily protein needs from your weight and goal (weight loss, maintenance, muscle gain). Result in grams, free, no sign-up.",
+  "h1": "Protein calculator: your daily protein needs"
+ },
+ "/en/macro-calculator.html": {
+  "title": "Macro calculator for weight loss or muscle gain",
+  "description": "Calculate your macros (protein, carbs, fat) to lose weight or build muscle. Free, online, result in grams a day.",
+  "h1": "Macro calculator: protein, carbs and fat"
+ },
+ "/en/one-rep-max-calculator.html": {
+  "title": "One rep max calculator: bench, squat, deadlift",
+  "description": "Calculate your one rep max on the bench press, squat or deadlift without testing it. Epley formula and loads from 1 to 12 reps.",
+  "h1": "One rep max calculator: the most you can lift for one rep"
+ },
+ "/en/bulking.html": {
+  "title": "Bulking: calories, protein and pace",
+  "description": "Bulking without too much fat: how many calories to add, how much protein, and what rate of weight gain to aim for each week.",
+  "h1": "Bulking: calories, protein and pace"
+ },
+ "/en/nutrition-for-strength-training.html": {
+  "title": "Nutrition for strength training: eating enough?",
+  "description": "Nutrition and strength training: how to tell if you eat enough to progress, when bulking or cutting. Calories, protein and the signs to watch.",
+  "h1": "Nutrition for strength training: are you eating enough for what you lift?"
+ },
+ "/en/sets-per-muscle.html": {
+  "title": "Sets per muscle group per week for hypertrophy",
+  "description": "How many sets per muscle group per week for hypertrophy: ranges from research, beginner or advanced, and how to count compound exercises.",
+  "h1": "How many sets per muscle group per week?"
+ },
+ "/en/daily-weight-fluctuations.html": {
+  "title": "Daily weight fluctuations: why your weight changes",
+  "description": "Why your weight moves by 1 to 2 kg from one day to the next: water, salt, glycogen, menstrual cycle. How to read the trend instead of the daily number.",
+  "h1": "Daily weight fluctuations: why your weight changes from one day to the next"
+ },
+ "/en/weigh-food-raw-or-cooked.html": {
+  "title": "Weigh food raw or cooked? Rice, pasta, meat",
+  "description": "Should you weigh food raw or cooked? The real differences for rice, pasta and chicken from the Ciqual table, and the mistake to avoid.",
+  "h1": "Weigh food raw or cooked: which to choose, and the mistake to avoid"
+ },
+ "/en/meal-prep.html": {
+  "title": "Meal prep: recipes and a plan for your week",
+  "description": "Meal prep for the week: recipes that keep, storage times, dishes to freeze and how to organise it in two hours on Sunday.",
+  "h1": "Meal prep: recipes and a plan to prepare your week"
+ },
+ "/en/calorie-app-without-account.html": {
+  "title": "Calorie app with no account and no sign-up",
+  "description": "A free calorie app that works without an account, without an email and offline: what it does, what needs the internet, and how to lose nothing.",
+  "h1": "Calorie app with no account, that works offline"
+ },
+ "/en/free-calorie-counter.html": {
+  "title": "Free calorie counter app, no subscription",
+  "description": "A calorie counter that is really free: what stays free with no limit in Basal, what is paid, and how to spot trials that expire.",
+  "h1": "Free calorie counter app, with no subscription"
+ },
+ "/en/myfitnesspal-alternative.html": {
+  "title": "MyFitnessPal alternative: free, with barcode scanner",
+  "description": "A free MyFitnessPal alternative made in France: free barcode scanner, no ads, ANSES Ciqual food table. What changes, and what is missing.",
+  "h1": "A free MyFitnessPal alternative, made in France"
+ },
+ "/en/nutrition-apps-compared.html": {
+  "title": "Nutrition apps compared: 2026 comparison",
+  "description": "Nutrition apps compared in 2026 (MyFitnessPal, Yazio, Foodvisor, Basal): what stays free, prices, and which one to pick for your use.",
+  "h1": "Nutrition apps compared: MyFitnessPal, Yazio, Foodvisor and Basal"
+ },
+ "/es/calculadora-calorias.html": {
+  "title": "Calculadora de calorías diarias y de mantenimiento",
+  "description": "Calculadora de calorías gratis: tu metabolismo basal y tus calorías de mantenimiento en 30 s, y cuántas comer para bajar o subir de peso.",
+  "h1": "Calculadora de calorías: metabolismo basal y gasto diario"
+ },
+ "/es/cuantas-calorias-al-dia.html": {
+  "title": "¿Cuántas calorías debo consumir al día?",
+  "description": "Cuántas calorías consumir al día según sexo, edad y objetivo: cifras de referencia, el cálculo paso a paso y cómo ajustar con tu peso real.",
+  "h1": "¿Cuántas calorías debo consumir al día?"
+ },
+ "/es/deficit-calorico.html": {
+  "title": "Déficit calórico: cómo calcularlo para perder peso",
+  "description": "Calcula tu déficit calórico y la pérdida de peso que puedes esperar: cuánto restar, durante cuánto tiempo y por qué la báscula tarda en seguir.",
+  "h1": "Déficit calórico: cálculo, ritmo y errores que evitar"
+ },
+ "/es/metabolismo-basal.html": {
+  "title": "Metabolismo basal: qué es, fórmula y cálculo",
+  "description": "El metabolismo basal es la energía que gastas en reposo. Su fórmula para mujer y hombre, qué lo hace variar y por qué no basta para fijar tus calorías.",
+  "h1": "Metabolismo basal: qué es y qué lo hace variar"
+ },
+ "/es/gasto-real.html": {
+  "title": "Calorías de mantenimiento: calcula tu gasto real",
+  "description": "Calcula tus calorías de mantenimiento a partir de lo que comes y de la evolución de tu peso, en lugar de una fórmula. Calculadora gratis, en kcal.",
+  "h1": "Calorías de mantenimiento: calcula tu gasto real a partir de tu peso"
+ },
+ "/es/metabolismo-adaptativo.html": {
+  "title": "Metabolismo adaptativo: por qué dejas de adelgazar",
+  "description": "El metabolismo adaptativo explica por qué la pérdida de peso se frena a dieta. Qué dice la investigación y cómo medirlo en ti.",
+  "h1": "Metabolismo adaptativo: por qué dejas de adelgazar"
+ },
+ "/es/proteinas-al-dia.html": {
+  "title": "Proteínas al día: cuántas según tu objetivo",
+  "description": "Cuántas proteínas al día para perder peso, mantener o ganar masa muscular: gramos por kilo según el objetivo, ejemplos de comidas y fuentes.",
+  "h1": "¿Cuántas proteínas al día?"
+ },
+ "/es/calculadora-proteinas.html": {
+  "title": "Calculadora de proteínas diarias según tu objetivo",
+  "description": "Calcula tus proteínas diarias según tu peso y objetivo (perder peso, mantener, ganar músculo). Resultado en gramos, gratis y sin registro.",
+  "h1": "Calculadora de proteínas: tus necesidades diarias"
+ },
+ "/es/calculadora-macros.html": {
+  "title": "Calculadora de macros gratis para perder o ganar peso",
+  "description": "Calcula tus macros (proteínas, hidratos y grasas) para perder peso o ganar músculo. Gratis, en línea, resultado en gramos al día.",
+  "h1": "Calculadora de macros: proteínas, hidratos y grasas"
+ },
+ "/es/calculadora-1rm.html": {
+  "title": "Calculadora 1RM: press banca, sentadilla, peso muerto",
+  "description": "Calcula tu 1RM en press banca, sentadilla o peso muerto sin probar tu máximo. Fórmula de Epley y cargas de 1 a 12 repeticiones.",
+  "h1": "Calculadora 1RM: la carga máxima en una repetición"
+ },
+ "/es/volumen-muscular.html": {
+  "title": "Volumen muscular: calorías, proteínas y ritmo",
+  "description": "Volumen muscular sin ganar demasiada grasa: cuántas calorías añadir, cuántas proteínas y qué ritmo de subida de peso buscar cada semana.",
+  "h1": "Volumen muscular: calorías, proteínas y ritmo"
+ },
+ "/es/nutricion-y-fuerza.html": {
+  "title": "Nutrición y fuerza: ¿comes lo suficiente?",
+  "description": "Nutrición y entrenamiento de fuerza: cómo saber si comes lo suficiente para progresar, en volumen o en definición. Calorías, proteínas y señales.",
+  "h1": "Nutrición y fuerza: ¿comes lo suficiente para lo que levantas?"
+ },
+ "/es/series-por-musculo.html": {
+  "title": "Series por músculo a la semana para hipertrofia",
+  "description": "Cuántas series por músculo a la semana para la hipertrofia: rangos de la investigación, principiante o avanzado, y cómo contar los ejercicios compuestos.",
+  "h1": "¿Cuántas series por músculo a la semana?"
+ },
+ "/es/variaciones-de-peso.html": {
+  "title": "Variaciones de peso: por qué cambia de un día a otro",
+  "description": "Por qué tu peso varía 1 a 2 kg de un día a otro: agua, sal, glucógeno, ciclo menstrual. Cómo leer la tendencia en lugar del peso del día.",
+  "h1": "Variaciones de peso: por qué tu peso cambia de un día para otro"
+ },
+ "/es/pesar-crudo-o-cocinado.html": {
+  "title": "¿Pesar crudo o cocinado? Arroz, pasta, carne",
+  "description": "¿Hay que pesar los alimentos crudos o cocinados? Las diferencias reales para el arroz, la pasta y el pollo según la tabla Ciqual, y el error que evitar.",
+  "h1": "Pesar crudo o cocinado: cuál elegir y el error que evitar"
+ },
+ "/es/meal-prep.html": {
+  "title": "Meal prep semanal: recetas y organización",
+  "description": "Meal prep semanal: recetas que se conservan, tiempos de conservación, platos para congelar y cómo organizarlo en dos horas el domingo.",
+  "h1": "Meal prep semanal: recetas y organización para tu semana"
+ },
+ "/es/app-calorias-sin-cuenta.html": {
+  "title": "App de calorías gratis sin cuenta ni registro",
+  "description": "Una app de calorías gratis que funciona sin cuenta, sin correo y sin conexión: qué hace, qué necesita internet y cómo no perder nada.",
+  "h1": "App de calorías sin cuenta, que funciona sin conexión"
+ },
+ "/es/contador-calorias-gratis.html": {
+  "title": "Contador de calorías gratis, sin suscripción",
+  "description": "Un contador de calorías gratis de verdad: lo que sigue gratis sin límite en Basal, lo que es de pago y cómo detectar las pruebas que caducan.",
+  "h1": "Contador de calorías gratis y sin suscripción"
+ },
+ "/es/alternativa-myfitnesspal.html": {
+  "title": "Alternativa gratis a MyFitnessPal, con escáner",
+  "description": "Una alternativa gratis a MyFitnessPal hecha en Francia: escáner gratis, sin anuncios, tabla Ciqual de la ANSES. Lo que cambia y lo que falta.",
+  "h1": "Una alternativa gratis a MyFitnessPal, hecha en Francia"
+ },
+ "/es/comparativa-apps-nutricion.html": {
+  "title": "Apps de nutrición: comparativa 2026",
+  "description": "Comparativa 2026 de apps de nutrición (MyFitnessPal, Yazio, Foodvisor, Basal): lo que sigue gratis, los precios y cuál elegir según tu uso.",
+  "h1": "Comparativa de apps de nutrición: MyFitnessPal, Yazio, Foodvisor y Basal"
+ },
+ "/de/kalorienrechner.html": {
+  "title": "Kalorienrechner: Grundumsatz und Kalorienbedarf",
+  "description": "Kostenloser Kalorienrechner: Grundumsatz und Kalorienbedarf in 30 Sekunden, mit der Mifflin-St-Jeor-Formel, und wie viel du zum Abnehmen isst.",
+  "h1": "Kalorienrechner: Grundumsatz und Kalorienbedarf berechnen"
+ },
+ "/de/wie-viele-kalorien-am-tag.html": {
+  "title": "Wie viele Kalorien am Tag? Frau, Mann, Abnehmen",
+  "description": "Wie viele Kalorien am Tag du brauchst, nach Geschlecht, Alter und Ziel: Richtwerte, die Rechnung Schritt für Schritt und Anpassung am echten Gewicht.",
+  "h1": "Wie viele Kalorien am Tag? Frau, Mann, zum Abnehmen"
+ },
+ "/de/kaloriendefizit.html": {
+  "title": "Kaloriendefizit berechnen: so nimmst du ab",
+  "description": "Kaloriendefizit berechnen und das Abnehmtempo einschätzen: wie viel weniger, wie lange, und warum die Waage nicht sofort folgt.",
+  "h1": "Kaloriendefizit: Berechnung, Tempo und Fehler, die du vermeiden solltest"
+ },
+ "/de/grundumsatz.html": {
+  "title": "Grundumsatz berechnen: Definition und Formel",
+  "description": "Der Grundumsatz ist die Energie, die du in Ruhe verbrauchst. Die Formel für Frau und Mann, was ihn verändert und warum er fürs Kalorienziel nicht reicht.",
+  "h1": "Grundumsatz: was er ist, wie man ihn berechnet und was ihn verändert"
+ },
+ "/de/tatsaechlicher-verbrauch.html": {
+  "title": "Erhaltungskalorien berechnen aus deinem Gewicht",
+  "description": "Berechne deine Erhaltungskalorien aus dem, was du isst, und dem Verlauf deines Gewichts statt mit einer Formel. Kostenloser Rechner, Ergebnis in kcal.",
+  "h1": "Erhaltungskalorien: tatsächlichen Verbrauch aus dem Gewicht berechnen"
+ },
+ "/de/metabolische-anpassung.html": {
+  "title": "Metabolische Anpassung: warum du nicht mehr abnimmst",
+  "description": "Metabolische Anpassung erklärt, warum das Abnehmen in der Diät langsamer wird. Was die Forschung zeigt und wie du sie bei dir misst.",
+  "h1": "Metabolische Anpassung: warum du nicht mehr abnimmst"
+ },
+ "/de/protein-pro-tag.html": {
+  "title": "Protein pro Tag: wie viel für dein Ziel",
+  "description": "Wie viel Protein pro Tag zum Abnehmen, Halten oder für den Muskelaufbau: Gramm pro Kilo je nach Ziel, Beispielmahlzeiten und Quellen.",
+  "h1": "Wie viel Protein pro Tag?"
+ },
+ "/de/proteinrechner.html": {
+  "title": "Proteinrechner: Proteinbedarf pro Tag berechnen",
+  "description": "Berechne deinen Proteinbedarf pro Tag nach Gewicht und Ziel (Abnehmen, Halten, Muskelaufbau). Ergebnis in Gramm, kostenlos, ohne Anmeldung.",
+  "h1": "Proteinrechner: Proteinbedarf pro Tag berechnen"
+ },
+ "/de/makrorechner.html": {
+  "title": "Makrorechner zum Abnehmen oder für Muskelaufbau",
+  "description": "Berechne deine Makros (Eiweiß, Kohlenhydrate, Fett) zum Abnehmen oder für den Muskelaufbau. Kostenlos, online, Ergebnis in Gramm pro Tag.",
+  "h1": "Makrorechner: Eiweiß, Kohlenhydrate und Fett"
+ },
+ "/de/1rm-rechner.html": {
+  "title": "1RM-Rechner: Bankdrücken, Kniebeuge, Kreuzheben",
+  "description": "Berechne dein 1RM beim Bankdrücken, bei der Kniebeuge oder beim Kreuzheben, ohne es zu testen. Epley-Formel und Lasten von 1 bis 12 Wiederholungen.",
+  "h1": "1RM-Rechner: das Maximalgewicht für eine Wiederholung"
+ },
+ "/de/masseaufbau.html": {
+  "title": "Masseaufbau: Kalorien, Eiweiß und Tempo",
+  "description": "Masseaufbau ohne zu viel Fett: wie viele Kalorien mehr, wie viel Eiweiß und welches Tempo bei der Gewichtszunahme pro Woche sinnvoll ist.",
+  "h1": "Masseaufbau: Kalorien, Eiweiß und Tempo"
+ },
+ "/de/ernaehrung-krafttraining.html": {
+  "title": "Ernährung beim Krafttraining: isst du genug?",
+  "description": "Ernährung und Krafttraining: woran du erkennst, ob du genug isst, um Fortschritte zu machen, im Aufbau wie in der Diät. Kalorien, Eiweiß, Signale.",
+  "h1": "Ernährung beim Krafttraining: isst du genug für das, was du hebst?"
+ },
+ "/de/saetze-pro-muskel.html": {
+  "title": "Sätze pro Muskelgruppe pro Woche für Muskelaufbau",
+  "description": "Wie viele Sätze pro Muskelgruppe und Woche für den Muskelaufbau: Spannen aus der Forschung, Anfänger oder Fortgeschrittene, Grundübungen zählen.",
+  "h1": "Wie viele Sätze pro Muskelgruppe und Woche?"
+ },
+ "/de/gewichtsschwankungen.html": {
+  "title": "Gewichtsschwankungen: warum dein Gewicht schwankt",
+  "description": "Warum dein Gewicht von Tag zu Tag um 1 bis 2 kg schwankt: Wasser, Salz, Glykogen, Zyklus. Wie du den Trend statt der Tageszahl liest.",
+  "h1": "Gewichtsschwankungen: warum dein Gewicht von Tag zu Tag schwankt"
+ },
+ "/de/roh-oder-gekocht-wiegen.html": {
+  "title": "Roh oder gekocht wiegen? Reis, Nudeln, Fleisch",
+  "description": "Lebensmittel roh oder gekocht wiegen? Die echten Unterschiede bei Reis, Nudeln und Hähnchen laut Ciqual-Tabelle, und der Fehler, den du vermeiden solltest.",
+  "h1": "Roh oder gekocht wiegen: was du wählen solltest und welcher Fehler teuer ist"
+ },
+ "/de/meal-prep.html": {
+  "title": "Meal Prep: Rezepte und Plan für die Woche",
+  "description": "Meal Prep für die Woche: Rezepte, die sich halten, Haltbarkeit, Gerichte zum Einfrieren und wie du alles in zwei Stunden am Sonntag organisierst.",
+  "h1": "Meal Prep: Rezepte und Plan für deine Woche"
+ },
+ "/de/kalorien-app-ohne-konto.html": {
+  "title": "Kalorien-App kostenlos ohne Anmeldung und Konto",
+  "description": "Eine kostenlose Kalorien-App, die ohne Konto, ohne E-Mail und offline funktioniert: was sie kann, was Internet braucht, wie du nichts verlierst.",
+  "h1": "Kalorien-App ohne Anmeldung, die offline funktioniert"
+ },
+ "/de/kalorienzaehler-kostenlos.html": {
+  "title": "Kalorienzähler kostenlos, ohne Abo",
+  "description": "Ein wirklich kostenloser Kalorienzähler: was in Basal ohne Grenze kostenlos bleibt, was kostet und woran du ablaufende Testphasen erkennst.",
+  "h1": "Kalorienzähler kostenlos, ohne Abo"
+ },
+ "/de/myfitnesspal-alternative.html": {
+  "title": "MyFitnessPal-Alternative: kostenlos, mit Scanner",
+  "description": "Eine kostenlose MyFitnessPal-Alternative aus Frankreich: Barcode-Scanner gratis, ohne Werbung, Ciqual-Tabelle der ANSES. Was anders ist und was fehlt.",
+  "h1": "Eine kostenlose Alternative zu MyFitnessPal, aus Frankreich"
+ },
+ "/de/ernaehrungs-apps-vergleich.html": {
+  "title": "Ernährungs-Apps im Vergleich 2026",
+  "description": "Ernährungs-Apps im Vergleich 2026 (MyFitnessPal, Yazio, Foodvisor, Basal): was kostenlos bleibt, die Preise und welche zu dir passt.",
+  "h1": "Ernährungs-Apps im Vergleich: MyFitnessPal, Yazio, Foodvisor und Basal"
+ }
+}

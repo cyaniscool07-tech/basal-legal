@@ -110,3 +110,6 @@ import corps from '{profondeur}contenus/{dossier}/{nom}.html?raw';
 if __name__ == '__main__':
     for c in sys.argv[1:]:
         traiter(c)
+    # SEO (title, description, H1) des pages traduites : outils/seo-surcharges.json, réappliqué après chaque génération.
+    import surcharges_seo
+    surcharges_seo.appliquer()
