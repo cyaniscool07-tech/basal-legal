@@ -33,6 +33,11 @@ def appliquer():
             h = cibles[0]
             b = b[:h.start()] + f'<h2{h.group(1)}>{nouveau}</h2>' + b[h.end():]
         b = sommaire(b)
+        sit = s.get('situation')
+        if sit and 'class="en-bref en-situation"' not in b:
+            assert '</header>' in b, url
+            i = b.index('</header>') + len('</header>')
+            b = b[:i] + f'\n\n  <div class="en-bref en-situation">\n    <p class="surtitre">{sit["titre"]}</p>\n    <p>{sit["texte"]}</p>\n  </div>\n' + b[i:]
         open(tp, 'w', encoding='utf-8', newline='\n').write(t)
         open(bp, 'w', encoding='utf-8', newline='\n').write(b)
     return len(surcharges)

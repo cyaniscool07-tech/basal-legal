@@ -15,6 +15,10 @@
   "h2": {
    "Ballpark figures by profile": "Calories per day by profile: ballpark figures",
    "How to work out your own need": "Working out your own calorie needs"
+  },
+  "situation": {
+   "titre": "Your situation",
+   "texte": "You eat the 2,000 kcal quoted everywhere, and your weight does not move as expected. <strong>With Basal:</strong> your target starts from your height, weight, age and activity, then corrects itself with your weigh-ins over the weeks."
   }
  },
  "/en/calorie-deficit.html": {
@@ -26,6 +30,10 @@
    "How to calculate your deficit": "How to calculate a calorie deficit",
    "What weight loss to expect": "Weight loss: what pace to expect",
    "Signs of a deficit that is too aggressive": "Deficit too aggressive: the signs to watch"
+  },
+  "situation": {
+   "titre": "Your situation",
+   "texte": "You cut 500 kcal a day, and after three weeks the scale has stopped going down. <strong>With Basal:</strong> your real expenditure is measured from your meals and your weight trend, and the app flags when weight loss slows down."
   }
  },
  "/en/basal-metabolic-rate.html": {
@@ -37,6 +45,10 @@
    "How it is estimated": "BMR formula: how it is estimated",
    "Worked examples": "BMR for women and men: worked examples",
    "What changes it": "What changes your basal metabolic rate"
+  },
+  "situation": {
+   "titre": "Your situation",
+   "texte": "You worked out your basal metabolic rate on three websites and got three different numbers. <strong>With Basal:</strong> the formula is only a starting point: your expenditure is then recalculated from your meals and your real weight."
   }
  },
  "/en/real-expenditure-calculator.html": {
@@ -54,6 +66,10 @@
   "h1": "Adaptive metabolism: why weight loss slows down",
   "h2": {
    "Correcting with what can be measured": "Measuring your real metabolism from your weight"
+  },
+  "situation": {
+   "titre": "Your situation",
+   "texte": "Your app has given you the same target for months, even though your weight has changed. <strong>With Basal:</strong> your expenditure is recalculated from what you eat and how your weight changes, and only shown once there is enough data."
   }
  },
  "/en/protein-per-day.html": {
@@ -65,6 +81,10 @@
    "By goal": "Protein to lose weight, maintain or build muscle",
    "Worked examples": "Protein per day for women and men: worked examples",
    "Where to find it": "High-protein foods: where to find it"
+  },
+  "situation": {
+   "titre": "Your situation",
+   "texte": "You do not know whether 120 g of protein a day is too much, not enough or just right. <strong>With Basal:</strong> your target follows the grid in this article, and each meal shows where you stand for the day."
   }
  },
  "/en/protein-calculator.html": {
@@ -101,12 +121,20 @@
   "h2": {
    "How many extra calories?": "Bulking calories: how many extra?",
    "How much protein?": "Protein when bulking: how much?"
+  },
+  "situation": {
+   "titre": "Your situation",
+   "texte": "You gain weight every month without knowing whether it is muscle or fat. <strong>With Basal:</strong> your weight trend, your protein and the progress of your loads are tracked in one place."
   }
  },
  "/en/nutrition-for-strength-training.html": {
   "title": "Nutrition for strength training: eating enough?",
   "description": "Nutrition and strength training: how to tell if you eat enough to progress, when bulking or cutting. Calories, protein and the signs to watch.",
-  "h1": "Nutrition for strength training: are you eating enough for what you lift?"
+  "h1": "Nutrition for strength training: are you eating enough for what you lift?",
+  "situation": {
+   "titre": "Your situation",
+   "texte": "You log your workouts in one app and your meals in another, and neither tells you whether you eat enough to progress. <strong>With Basal:</strong> both logs are in the same app, which counts your sets per muscle and compares your protein on training and rest days (Premium)."
+  }
  },
  "/en/sets-per-muscle.html": {
   "title": "Sets per muscle group per week for hypertrophy",
@@ -114,6 +142,10 @@
   "h1": "How many sets per muscle group per week?",
   "h2": {
    "What order of magnitude": "Sets per muscle group for hypertrophy: what order of magnitude"
+  },
+  "situation": {
+   "titre": "Your situation",
+   "texte": "You think you do 15 sets of shoulders a week; when you recount your log, you find far fewer. <strong>With Basal:</strong> the volume each muscle group receives is counted from your workouts (Premium)."
   }
  },
  "/en/daily-weight-fluctuations.html": {
@@ -123,6 +155,10 @@
   "h2": {
    "Where the gap really comes from": "Water, salt, glycogen: where the gap really comes from",
    "What to look at instead": "Weight trend: what to look at instead"
+  },
+  "situation": {
+   "titre": "Your situation",
+   "texte": "The scale shows one kilo more this morning, after a strict week. <strong>With Basal:</strong> you follow a smoothed trend rather than the daily weigh-in, and that trend is what recalculates your expenditure."
   }
  },
  "/en/weigh-food-raw-or-cooked.html": {
@@ -131,6 +167,10 @@
   "h1": "Weigh food raw or cooked: which to choose, and the mistake to avoid",
   "h2": {
    "Raw and cooked, food by food": "Rice, pasta, chicken: raw and cooked, food by food"
+  },
+  "situation": {
+   "titre": "Your situation",
+   "texte": "You weigh your rice cooked but pick “raw rice” in your app: your meal counts more than twice the calories. <strong>With Basal:</strong> search shows raw and cooked side by side when the Ciqual table has both."
   }
  },
  "/en/meal-prep.html": {
@@ -139,6 +179,10 @@
   "h1": "Meal prep: recipes and a plan to prepare your week",
   "h2": {
    "How long it keeps": "Meal prep storage: how long it keeps"
+  },
+  "situation": {
+   "titre": "Your situation",
+   "texte": "You cook on Sunday for the week, and by Thursday you no longer know whether the dish still keeps. <strong>With Basal:</strong> meal prep recipes show how long they keep, and the planner spreads the meals over the week."
   }
  },
  "/en/calorie-app-without-account.html": {
@@ -147,22 +191,38 @@
   "h1": "Calorie app with no account, that works offline",
   "h2": {
    "What works offline": "Offline: what works without the internet"
+  },
+  "situation": {
+   "titre": "Your situation",
+   "texte": "You want to count calories without giving your email to yet another app. <strong>With Basal:</strong> all tracking works without an account, and your data stays on your phone."
   }
  },
  "/en/free-calorie-counter.html": {
   "title": "Free calorie counter app, no subscription",
   "description": "A calorie counter that is really free: what stays free with no limit in Basal, what is paid, and how to spot trials that expire.",
-  "h1": "Free calorie counter app, with no subscription"
+  "h1": "Free calorie counter app, with no subscription",
+  "situation": {
+   "titre": "Your situation",
+   "texte": "Your calorie app went paid after a few days, just as you were getting into the habit. <strong>With Basal:</strong> meal tracking, the barcode scanner and the recalculated expenditure stay free, with no time limit."
+  }
  },
  "/en/myfitnesspal-alternative.html": {
   "title": "MyFitnessPal alternative: free, with barcode scanner",
   "description": "A free MyFitnessPal alternative made in France: free barcode scanner, no ads, ANSES Ciqual food table. What changes, and what is missing.",
-  "h1": "A free MyFitnessPal alternative, made in France"
+  "h1": "A free MyFitnessPal alternative, made in France",
+  "situation": {
+   "titre": "Your situation",
+   "texte": "MyFitnessPal moved its barcode scanner into the subscription, and you are looking for an equivalent app. <strong>With Basal:</strong> the scanner is free, with no ads, and everyday foods come from the ANSES Ciqual table."
+  }
  },
  "/en/nutrition-apps-compared.html": {
   "title": "Nutrition apps compared: 2026 comparison",
   "description": "Nutrition apps compared in 2026 (MyFitnessPal, Yazio, Foodvisor, Basal): what stays free, prices, and which one to pick for your use.",
-  "h1": "Nutrition apps compared: MyFitnessPal, Yazio, Foodvisor and Basal"
+  "h1": "Nutrition apps compared: MyFitnessPal, Yazio, Foodvisor and Basal",
+  "situation": {
+   "titre": "Your situation",
+   "texte": "You are torn between several nutrition apps, and they all say they are free. <strong>With Basal:</strong> this page compares what really stays free in each one, Basal included, limits included."
+  }
  },
  "/es/calculadora-calorias.html": {
   "title": "Calculadora de calorías diarias y de mantenimiento",
@@ -180,6 +240,10 @@
   "h2": {
    "Órdenes de magnitud según el perfil": "Calorías al día según el perfil: órdenes de magnitud",
    "Cómo calcular tu propia necesidad": "Calcular tus propias calorías diarias"
+  },
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Comes las 2.000 kcal que se citan en todas partes, y tu peso no se mueve como esperabas. <strong>Con Basal:</strong> tu objetivo parte de tu altura, tu peso, tu edad y tu actividad, y luego se corrige con tus pesajes semana a semana."
   }
  },
  "/es/deficit-calorico.html": {
@@ -191,6 +255,10 @@
    "Cómo calcular tu déficit": "Cómo calcular el déficit calórico",
    "¿Qué pérdida de peso esperar?": "Pérdida de peso: ¿qué ritmo esperar?",
    "Las señales de un déficit demasiado agresivo": "Déficit demasiado agresivo: las señales"
+  },
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Quitaste 500 kcal al día y, tras tres semanas, la báscula ya no baja. <strong>Con Basal:</strong> tu gasto real se mide a partir de tus comidas y de la tendencia de tu peso, y la app avisa cuando la pérdida se frena."
   }
  },
  "/es/metabolismo-basal.html": {
@@ -202,6 +270,10 @@
    "Cómo se estima": "Fórmula del metabolismo basal: cómo se estima",
    "Ejemplos con cifras": "Metabolismo basal en mujer y hombre: ejemplos",
    "Qué lo hace variar": "Qué hace variar el metabolismo basal"
+  },
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Calculaste tu metabolismo basal en tres webs y obtuviste tres cifras distintas. <strong>Con Basal:</strong> la fórmula solo es un punto de partida: tu gasto se recalcula después con tus comidas y tu peso real."
   }
  },
  "/es/gasto-real.html": {
@@ -219,6 +291,10 @@
   "h1": "Metabolismo adaptativo: por qué dejas de adelgazar",
   "h2": {
    "Corregir con lo que se puede medir": "Medir tu metabolismo real con tu peso"
+  },
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Tu app te da el mismo objetivo desde hace meses, aunque tu peso ha cambiado. <strong>Con Basal:</strong> tu gasto se recalcula con lo que comes y la evolución de tu peso, y solo se muestra cuando hay datos suficientes."
   }
  },
  "/es/proteinas-al-dia.html": {
@@ -230,6 +306,10 @@
    "Según tu objetivo": "Proteínas para perder peso, mantener o ganar músculo",
    "Ejemplos con cifras": "Proteínas al día en mujer y hombre: ejemplos",
    "Dónde encontrarlas": "Alimentos ricos en proteínas: dónde encontrarlas"
+  },
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "No sabes si 120 g de proteínas al día es demasiado, poco o lo justo. <strong>Con Basal:</strong> tu objetivo sigue la tabla de este artículo, y cada comida muestra cómo vas en el día."
   }
  },
  "/es/calculadora-proteinas.html": {
@@ -266,12 +346,20 @@
   "h2": {
    "¿Cuántas calorías de más?": "Calorías en volumen: ¿cuántas de más?",
    "¿Cuántas proteínas?": "Proteínas en volumen: ¿cuántas?"
+  },
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Ganas peso cada mes sin saber si es músculo o grasa. <strong>Con Basal:</strong> la tendencia de tu peso, tus proteínas y la progresión de tus cargas se siguen en el mismo sitio."
   }
  },
  "/es/nutricion-y-fuerza.html": {
   "title": "Nutrición y fuerza: ¿comes lo suficiente?",
   "description": "Nutrición y entrenamiento de fuerza: cómo saber si comes lo suficiente para progresar, en volumen o en definición. Calorías, proteínas y señales.",
-  "h1": "Nutrición y fuerza: ¿comes lo suficiente para lo que levantas?"
+  "h1": "Nutrición y fuerza: ¿comes lo suficiente para lo que levantas?",
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Apuntas tus sesiones en una app y tus comidas en otra, y ninguna te dice si comes lo suficiente para progresar. <strong>Con Basal:</strong> los dos cuadernos están en la misma app, que cuenta tus series por músculo y compara tus proteínas en días de entrenamiento y de descanso (Premium)."
+  }
  },
  "/es/series-por-musculo.html": {
   "title": "Series por músculo a la semana para hipertrofia",
@@ -279,6 +367,10 @@
   "h1": "¿Cuántas series por músculo a la semana?",
   "h2": {
    "Qué orden de magnitud": "Series por músculo para hipertrofia: qué orden de magnitud"
+  },
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Crees que haces 15 series de hombro a la semana; al recontar tu cuaderno, encuentras muchas menos. <strong>Con Basal:</strong> el volumen que recibe cada grupo muscular se cuenta a partir de tus sesiones (Premium)."
   }
  },
  "/es/variaciones-de-peso.html": {
@@ -288,6 +380,10 @@
   "h2": {
    "De dónde viene realmente la diferencia": "Agua, sal, glucógeno: de dónde viene la diferencia",
    "Qué mirar en su lugar": "La tendencia del peso: qué mirar en su lugar"
+  },
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "La báscula marca un kilo más esta mañana, tras una semana muy disciplinada. <strong>Con Basal:</strong> sigues una tendencia suavizada en lugar del pesaje del día, y es esa tendencia la que recalcula tu gasto."
   }
  },
  "/es/pesar-crudo-o-cocinado.html": {
@@ -296,6 +392,10 @@
   "h1": "Pesar crudo o cocinado: cuál elegir y el error que evitar",
   "h2": {
    "Crudo y cocido, alimento por alimento": "Arroz, pasta, pollo: crudo y cocido, alimento por alimento"
+  },
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Pesas el arroz cocido pero eliges «arroz crudo» en tu app: tu comida cuenta más del doble de calorías. <strong>Con Basal:</strong> la búsqueda muestra crudo y cocido uno al lado del otro cuando la tabla Ciqual tiene ambos."
   }
  },
  "/es/meal-prep.html": {
@@ -304,6 +404,10 @@
   "h1": "Meal prep semanal: recetas y organización para tu semana",
   "h2": {
    "Cuánto tiempo se conservan": "Conservación del meal prep: cuánto tiempo aguanta"
+  },
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Cocinas el domingo para toda la semana, y el jueves ya no sabes si el plato se conserva. <strong>Con Basal:</strong> las recetas de meal prep indican cuánto se conservan, y la planificación reparte las comidas en la semana."
   }
  },
  "/es/app-calorias-sin-cuenta.html": {
@@ -312,22 +416,38 @@
   "h1": "App de calorías sin cuenta, que funciona sin conexión",
   "h2": {
    "Lo que funciona sin conexión": "Sin conexión: lo que funciona sin internet"
+  },
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Quieres contar calorías sin dejar tu correo a una app más. <strong>Con Basal:</strong> todo el seguimiento funciona sin cuenta, y tus datos se quedan en tu teléfono."
   }
  },
  "/es/contador-calorias-gratis.html": {
   "title": "Contador de calorías gratis, sin suscripción",
   "description": "Un contador de calorías gratis de verdad: lo que sigue gratis sin límite en Basal, lo que es de pago y cómo detectar las pruebas que caducan.",
-  "h1": "Contador de calorías gratis y sin suscripción"
+  "h1": "Contador de calorías gratis y sin suscripción",
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Tu app de calorías pasó a ser de pago a los pocos días, justo cuando le habías cogido el hábito. <strong>Con Basal:</strong> el seguimiento de comidas, el escáner de códigos de barras y el gasto recalculado siguen gratis, sin límite de tiempo."
+  }
  },
  "/es/alternativa-myfitnesspal.html": {
   "title": "Alternativa gratis a MyFitnessPal, con escáner",
   "description": "Una alternativa gratis a MyFitnessPal hecha en Francia: escáner gratis, sin anuncios, tabla Ciqual de la ANSES. Lo que cambia y lo que falta.",
-  "h1": "Una alternativa gratis a MyFitnessPal, hecha en Francia"
+  "h1": "Una alternativa gratis a MyFitnessPal, hecha en Francia",
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "MyFitnessPal pasó su escáner de códigos de barras a la suscripción, y buscas una app equivalente. <strong>Con Basal:</strong> el escáner es gratis, sin anuncios, y los alimentos habituales vienen de la tabla Ciqual de la ANSES."
+  }
  },
  "/es/comparativa-apps-nutricion.html": {
   "title": "Apps de nutrición: comparativa 2026",
   "description": "Comparativa 2026 de apps de nutrición (MyFitnessPal, Yazio, Foodvisor, Basal): lo que sigue gratis, los precios y cuál elegir según tu uso.",
-  "h1": "Comparativa de apps de nutrición: MyFitnessPal, Yazio, Foodvisor y Basal"
+  "h1": "Comparativa de apps de nutrición: MyFitnessPal, Yazio, Foodvisor y Basal",
+  "situation": {
+   "titre": "Tu situación",
+   "texte": "Dudas entre varias apps de nutrición, y todas dicen ser gratis. <strong>Con Basal:</strong> esta página compara lo que de verdad sigue gratis en cada una, Basal incluida, con sus límites."
+  }
  },
  "/de/kalorienrechner.html": {
   "title": "Kalorienrechner: Grundumsatz und Kalorienbedarf",
@@ -345,6 +465,10 @@
   "h2": {
    "Größenordnungen nach Profil": "Kalorien am Tag nach Profil: Größenordnungen",
    "So berechnest du deinen eigenen Bedarf": "Deinen eigenen Kalorienbedarf berechnen"
+  },
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Du isst die überall genannten 2.000 kcal, und dein Gewicht bewegt sich nicht wie erwartet. <strong>Mit Basal:</strong> dein Ziel geht von Größe, Gewicht, Alter und Aktivität aus und korrigiert sich dann Woche für Woche mit deinen Wiegungen."
   }
  },
  "/de/kaloriendefizit.html": {
@@ -356,6 +480,10 @@
    "So berechnest du dein Defizit": "Kaloriendefizit berechnen",
    "Welche Abnahme du erwarten kannst": "Abnehmen: welches Tempo du erwarten kannst",
    "Anzeichen für ein zu aggressives Defizit": "Zu aggressives Defizit: die Anzeichen"
+  },
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Du isst 500 kcal weniger am Tag, und nach drei Wochen geht die Waage nicht mehr runter. <strong>Mit Basal:</strong> dein tatsächlicher Verbrauch wird aus deinen Mahlzeiten und deinem Gewichtstrend gemessen, und die App meldet, wenn das Abnehmen langsamer wird."
   }
  },
  "/de/grundumsatz.html": {
@@ -367,6 +495,10 @@
    "Wie man ihn schätzt": "Grundumsatz berechnen: die Formeln",
    "Rechenbeispiele": "Grundumsatz bei Frau und Mann: Rechenbeispiele",
    "Was ihn verändert": "Was den Grundumsatz verändert"
+  },
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Du hast deinen Grundumsatz auf drei Websites berechnet und drei verschiedene Zahlen bekommen. <strong>Mit Basal:</strong> die Formel ist nur der Ausgangspunkt: Dein Verbrauch wird danach mit deinen Mahlzeiten und deinem echten Gewicht neu berechnet."
   }
  },
  "/de/tatsaechlicher-verbrauch.html": {
@@ -384,6 +516,10 @@
   "h1": "Metabolische Anpassung: warum du nicht mehr abnimmst",
   "h2": {
    "Mit Messbarem korrigieren": "Deinen echten Stoffwechsel über das Gewicht messen"
+  },
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Deine App gibt dir seit Monaten dasselbe Ziel, obwohl sich dein Gewicht verändert hat. <strong>Mit Basal:</strong> dein Verbrauch wird aus dem, was du isst, und dem Verlauf deines Gewichts neu berechnet und erst angezeigt, wenn genug Daten da sind."
   }
  },
  "/de/protein-pro-tag.html": {
@@ -395,6 +531,10 @@
    "Je nach Ziel": "Protein zum Abnehmen, Halten oder Muskelaufbau",
    "Rechenbeispiele": "Protein pro Tag bei Frau und Mann: Rechenbeispiele",
    "Wo du es findest": "Eiweißreiche Lebensmittel: wo du es findest"
+  },
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Du weißt nicht, ob 120 g Protein am Tag zu viel, zu wenig oder genau richtig sind. <strong>Mit Basal:</strong> dein Ziel folgt der Tabelle aus diesem Artikel, und jede Mahlzeit zeigt, wo du am Tag stehst."
   }
  },
  "/de/proteinrechner.html": {
@@ -431,12 +571,20 @@
   "h2": {
    "Wie viele Kalorien zusätzlich?": "Kalorien im Masseaufbau: wie viele zusätzlich?",
    "Wie viel Eiweiß?": "Eiweiß im Masseaufbau: wie viel?"
+  },
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Du nimmst jeden Monat zu, ohne zu wissen, ob es Muskeln oder Fett sind. <strong>Mit Basal:</strong> dein Gewichtstrend, dein Eiweiß und die Entwicklung deiner Gewichte werden an einem Ort verfolgt."
   }
  },
  "/de/ernaehrung-krafttraining.html": {
   "title": "Ernährung beim Krafttraining: isst du genug?",
   "description": "Ernährung und Krafttraining: woran du erkennst, ob du genug isst, um Fortschritte zu machen, im Aufbau wie in der Diät. Kalorien, Eiweiß, Signale.",
-  "h1": "Ernährung beim Krafttraining: isst du genug für das, was du hebst?"
+  "h1": "Ernährung beim Krafttraining: isst du genug für das, was du hebst?",
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Du trägst deine Einheiten in einer App ein und deine Mahlzeiten in einer anderen, und keine sagt dir, ob du genug isst, um Fortschritte zu machen. <strong>Mit Basal:</strong> beide Tagebücher sind in derselben App, die deine Sätze pro Muskel zählt und dein Eiweiß an Trainings- und Ruhetagen vergleicht (Premium)."
+  }
  },
  "/de/saetze-pro-muskel.html": {
   "title": "Sätze pro Muskelgruppe pro Woche für Muskelaufbau",
@@ -444,6 +592,10 @@
   "h1": "Wie viele Sätze pro Muskelgruppe und Woche?",
   "h2": {
    "Welche Größenordnung": "Sätze pro Muskelgruppe für Muskelaufbau: welche Größenordnung"
+  },
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Du glaubst, 15 Sätze Schultern pro Woche zu machen; beim Nachzählen im Tagebuch sind es deutlich weniger. <strong>Mit Basal:</strong> das Volumen pro Muskelgruppe wird aus deinen Einheiten gezählt (Premium)."
   }
  },
  "/de/gewichtsschwankungen.html": {
@@ -453,6 +605,10 @@
   "h2": {
    "Woher der Unterschied wirklich kommt": "Wasser, Salz, Glykogen: woher der Unterschied kommt",
    "Worauf du stattdessen schauen solltest": "Gewichtstrend: worauf du stattdessen schauen solltest"
+  },
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Die Waage zeigt heute Morgen ein Kilo mehr, nach einer disziplinierten Woche. <strong>Mit Basal:</strong> du folgst einem geglätteten Trend statt der Tageswiegung, und dieser Trend berechnet deinen Verbrauch neu."
   }
  },
  "/de/roh-oder-gekocht-wiegen.html": {
@@ -461,6 +617,10 @@
   "h1": "Roh oder gekocht wiegen: was du wählen solltest und welcher Fehler teuer ist",
   "h2": {
    "Roh und gegart, Lebensmittel für Lebensmittel": "Reis, Nudeln, Hähnchen: roh und gegart, Lebensmittel für Lebensmittel"
+  },
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Du wiegst deinen Reis gekocht, wählst in der App aber „Reis roh“: Deine Mahlzeit zählt mehr als doppelt so viele Kalorien. <strong>Mit Basal:</strong> die Suche zeigt roh und gegart nebeneinander, wenn die Ciqual-Tabelle beides hat."
   }
  },
  "/de/meal-prep.html": {
@@ -469,6 +629,10 @@
   "h1": "Meal Prep: Rezepte und Plan für deine Woche",
   "h2": {
    "Wie lange es sich hält": "Meal Prep Haltbarkeit: wie lange es sich hält"
+  },
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Du kochst am Sonntag für die ganze Woche, und am Donnerstag weißt du nicht mehr, ob das Gericht noch hält. <strong>Mit Basal:</strong> Meal-Prep-Rezepte zeigen ihre Haltbarkeit, und der Wochenplan verteilt die Mahlzeiten."
   }
  },
  "/de/kalorien-app-ohne-konto.html": {
@@ -477,21 +641,37 @@
   "h1": "Kalorien-App ohne Anmeldung, die offline funktioniert",
   "h2": {
    "Was offline funktioniert": "Offline: was ohne Internet funktioniert"
+  },
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Du willst Kalorien zählen, ohne einer weiteren App deine E-Mail-Adresse zu geben. <strong>Mit Basal:</strong> das ganze Tracking funktioniert ohne Konto, und deine Daten bleiben auf deinem Handy."
   }
  },
  "/de/kalorienzaehler-kostenlos.html": {
   "title": "Kalorienzähler kostenlos, ohne Abo",
   "description": "Ein wirklich kostenloser Kalorienzähler: was in Basal ohne Grenze kostenlos bleibt, was kostet und woran du ablaufende Testphasen erkennst.",
-  "h1": "Kalorienzähler kostenlos, ohne Abo"
+  "h1": "Kalorienzähler kostenlos, ohne Abo",
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Deine Kalorien-App wurde nach ein paar Tagen kostenpflichtig, gerade als du dich daran gewöhnt hattest. <strong>Mit Basal:</strong> das Erfassen der Mahlzeiten, der Barcode-Scanner und der neu berechnete Verbrauch bleiben kostenlos, ohne Zeitlimit."
+  }
  },
  "/de/myfitnesspal-alternative.html": {
   "title": "MyFitnessPal-Alternative: kostenlos, mit Scanner",
   "description": "Eine kostenlose MyFitnessPal-Alternative aus Frankreich: Barcode-Scanner gratis, ohne Werbung, Ciqual-Tabelle der ANSES. Was anders ist und was fehlt.",
-  "h1": "Eine kostenlose Alternative zu MyFitnessPal, aus Frankreich"
+  "h1": "Eine kostenlose Alternative zu MyFitnessPal, aus Frankreich",
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "MyFitnessPal hat den Barcode-Scanner ins Abo verschoben, und du suchst eine gleichwertige App. <strong>Mit Basal:</strong> der Scanner ist kostenlos, ohne Werbung, und Alltagslebensmittel stammen aus der Ciqual-Tabelle der ANSES."
+  }
  },
  "/de/ernaehrungs-apps-vergleich.html": {
   "title": "Ernährungs-Apps im Vergleich 2026",
   "description": "Ernährungs-Apps im Vergleich 2026 (MyFitnessPal, Yazio, Foodvisor, Basal): was kostenlos bleibt, die Preise und welche zu dir passt.",
-  "h1": "Ernährungs-Apps im Vergleich: MyFitnessPal, Yazio, Foodvisor und Basal"
+  "h1": "Ernährungs-Apps im Vergleich: MyFitnessPal, Yazio, Foodvisor und Basal",
+  "situation": {
+   "titre": "Deine Situation",
+   "texte": "Du schwankst zwischen mehreren Ernährungs-Apps, und alle nennen sich kostenlos. <strong>Mit Basal:</strong> diese Seite vergleicht, was bei jeder wirklich kostenlos bleibt, Basal eingeschlossen, mit Grenzen."
+  }
  }
 }
