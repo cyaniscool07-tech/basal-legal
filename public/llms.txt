@@ -17,6 +17,7 @@
 - [Métabolisme de base (fr)](https://basal-app.fr/metabolisme-de-base.html) · [Metabolismo basal (es)](https://basal-app.fr/es/metabolismo-basal.html) · [Grundumsatz (de)](https://basal-app.fr/de/grundumsatz.html)
 - [Protéines par jour (fr)](https://basal-app.fr/proteines-par-jour.html)
 - [Sèche en musculation (fr)](https://basal-app.fr/seche-musculation.html) · [Plateau de perte de poids (fr)](https://basal-app.fr/plateau-perte-de-poids.html) · [Reverse diet (fr)](https://basal-app.fr/reverse-diet.html) · [Diet break et refeed (fr)](https://basal-app.fr/diet-break.html) · [Recomposition corporelle (fr)](https://basal-app.fr/recomposition-corporelle.html) · [Cyclage glucidique (fr)](https://basal-app.fr/cyclage-glucidique.html)
+- [Cutting (en)](https://basal-app.fr/en/cutting.html) · [Weight loss plateau (en)](https://basal-app.fr/en/weight-loss-plateau.html) · [Reverse diet (en)](https://basal-app.fr/en/reverse-diet.html) · [Diet break and refeed (en)](https://basal-app.fr/en/diet-break.html) · [Body recomposition (en)](https://basal-app.fr/en/body-recomposition.html) · [Carb cycling (en)](https://basal-app.fr/en/carb-cycling.html)
 - [Méthode de calcul de Basal (fr)](https://basal-app.fr/methode.html): every formula the app uses, with sources.
 
 ## App

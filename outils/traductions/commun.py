@@ -26,6 +26,12 @@ U = {
     'sans-compte': {'en': '/en/calorie-app-without-account.html', 'es': '/es/app-calorias-sin-cuenta.html', 'de': '/de/kalorien-app-ohne-konto.html'},
     'alternative-mfp': {'en': '/en/myfitnesspal-alternative.html', 'es': '/es/alternativa-myfitnesspal.html', 'de': '/de/myfitnesspal-alternative.html'},
     'comparatif': {'en': '/en/nutrition-apps-compared.html', 'es': '/es/comparativa-apps-nutricion.html', 'de': '/de/ernaehrungs-apps-vergleich.html'},
+    'seche': {'en': '/en/cutting.html', 'es': '/es/definicion-muscular.html', 'de': '/de/definitionsphase.html'},
+    'plateau': {'en': '/en/weight-loss-plateau.html', 'es': '/es/estancamiento-perdida-de-peso.html', 'de': '/de/plateau-beim-abnehmen.html'},
+    'reverse-diet': {'en': '/en/reverse-diet.html', 'es': '/es/dieta-inversa.html', 'de': '/de/reverse-diet.html'},
+    'diet-break': {'en': '/en/diet-break.html', 'es': '/es/pausa-de-dieta.html', 'de': '/de/diaetpause.html'},
+    'recomposition': {'en': '/en/body-recomposition.html', 'es': '/es/recomposicion-corporal.html', 'de': '/de/body-recomposition.html'},
+    'cyclage': {'en': '/en/carb-cycling.html', 'es': '/es/ciclado-de-carbohidratos.html', 'de': '/de/carb-cycling.html'},
     'methode': {'en': '/en/method.html', 'es': '/es/metodo.html', 'de': '/de/methode.html'},
     'faq': {'en': '/en/faq.html', 'es': '/es/preguntas-frecuentes.html', 'de': '/de/haeufige-fragen.html'},
     'apropos': {'en': '/en/about.html', 'es': '/es/sobre-basal.html', 'de': '/de/ueber-basal.html'},
@@ -154,3 +160,60 @@ def legale(l, cle, titre, description, corps):
     """Entrée PAGES d'une page légale (gabarit .page, sans fil d'Ariane, comme la version française)."""
     return {'slug': U[cle][l], 'tete': dict(title=titre, description=description, og_title=titre, og_description=description, locale=L[l]['locale']),
             'main': f'<div class="page" role="main">\n{corps}\n</div>'}
+
+
+# Libellés des articles écrits selon la méthode SEO du 18/11 (bloc situation, en bref, sources, pour aller plus loin).
+M = {'en': dict(situation='Your situation', bref='In short', sources='Sources', plus='Further reading', guide='Guide', calc='Calculator',
+                methode='The app’s exact rules are set out on the <a href="{u}">Method</a> page.'),
+     'es': dict(situation='Tu situación', bref='En resumen', sources='Fuentes', plus='Para saber más', guide='Guía', calc='Calculadora',
+                methode='Las reglas exactas de la aplicación se detallan en la página <a href="{u}">Método</a>.'),
+     'de': dict(situation='Deine Situation', bref='Kurz gesagt', sources='Quellen', plus='Weiterlesen', guide='Ratgeber', calc='Rechner',
+                methode='Die genauen Regeln der App stehen auf der Seite <a href="{u}">Methode</a>.')}
+
+
+def article_seo(l, cle, a, campagne):
+    """Entrée PAGES d'un article au format du lot 7 (FR : seo-2026-11/lot7_articles.py).
+    a : dict(title, desc, court, surtitre, h1, chapeau, situation, bref, sections=[(id, h2, html)], appel=(titre, texte),
+    sources=[...], plus=[(cle, surtitre ou None, h3, texte)], publie). title ≤ 60, desc ≤ 155."""
+    assert len(a['title']) <= 60 and len(a['desc']) <= 155, (l, cle, len(a['title']), len(a['desc']))
+    m = M[l]
+    nl = '\n'
+    cartes = nl.join(f'        <a class="guide" href="{U[c][l]}"><span class="surtitre" style="margin:0">{sur or m["guide"]}</span><h3>{h}</h3><p>{p}</p></a>' for c, sur, h, p in a['plus'])
+    corps = f'''      <div class="en-bref">
+        <p class="surtitre">{m["bref"]}</p>
+        <p>{a["bref"]}</p>
+      </div>
+
+''' + (nl * 2).join(f'      <h2 id="{i}">{t}</h2>{nl}      {c}' for i, t, c in a['sections']) + f'''
+
+      <div class="appel">
+        <p class="appel-t">{a["appel"][0]}</p>
+        <p>{a["appel"][1]}</p>
+        {stores(l, campagne)}
+      </div>
+
+      <h2 id="sources">{m["sources"]}</h2>
+      <ol class="sources">
+''' + nl.join(f'        <li>{x}</li>' for x in a['sources']) + f'''
+      </ol>
+      <p>{m["methode"].format(u=U["methode"][l])}</p>
+
+      <h2 style="font-size:1.5rem;margin-top:48px">{m["plus"]}</h2>
+      <div class="guides" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+{cartes}
+      </div>'''
+    art = dict(court=a['court'], surtitre=a['surtitre'], h1=a['h1'], chapeau=a['chapeau'], publie=a['publie'],
+               sommaire=[(i, t) for i, t, _ in a['sections']] + [('sources', m['sources'])], corps=corps)
+    p = page(l, cle, art, dict(title=a['title'], description=a['desc'], og_title=a['title'], og_description=a['desc']))
+    bloc = f'''
+
+  <div class="en-bref en-situation">
+    <p class="surtitre">{m["situation"]}</p>
+    <p>{a["situation"]}</p>
+  </div>'''
+    i = p['main'].index('</header>') + len('</header>')
+    p['main'] = p['main'][:i] + bloc + p['main'][i:]
+    # Liens entre articles écrits href="@cle" : résolus dans la langue de la page, via U.
+    import re
+    p['main'] = re.sub(r'href="@([a-z0-9-]+)"', lambda x: f'href="{U[x.group(1)][l]}"', p['main'])
+    return p
