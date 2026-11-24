@@ -1,0 +1,58 @@
+<div class="page" role="main">
+  <!-- Relais du partage privé de recette (app 2026-11-24, services/recipeShareLink.ts). -->
+  <section class="etat actif" id="recette">
+    <p class="note" data-fr="Une recette partagée avec toi" data-en="A recipe shared with you">Une recette partagée avec toi</p>
+    <h1 id="nom">Basal</h1>
+    <p id="portions" class="note"></p>
+    <a class="ouvrir" id="ouvrir" href="#" data-fr="Ouvrir dans Basal" data-en="Open in Basal">Ouvrir dans Basal</a>
+    <p class="note" data-fr="Les ingrédients et leurs valeurs entreront directement dans tes recettes." data-en="The ingredients and their values will go straight into your recipes.">Les ingrédients et leurs valeurs entreront directement dans tes recettes.</p>
+    <h2 data-fr="Ingrédients" data-en="Ingredients">Ingrédients</h2>
+    <ul class="ingredients" id="ingredients"></ul>
+    <h2 data-fr="Pas encore Basal ?" data-en="Don’t have Basal yet?">Pas encore Basal ?</h2>
+    <p data-fr="Installe l’application, puis rouvre ce lien depuis ton téléphone." data-en="Install the app, then open this link again from your phone.">Installe l’application, puis rouvre ce lien depuis ton téléphone.</p>
+    <p class="stores">
+      <a href="https://apps.apple.com/app/basal/id6793001641">App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=com.reqquiem07.calorietracker">Google Play</a>
+    </p>
+  </section>
+
+  <section class="etat" id="invalide">
+    <h1 data-fr="Ce lien de recette est incomplet" data-en="This recipe link is incomplete">Ce lien de recette est incomplet</h1>
+    <p data-fr="Il a peut-être été coupé en route. Demande à la personne de te le renvoyer." data-en="It may have been cut off on the way. Ask the person to send it again.">Il a peut-être été coupé en route. Demande à la personne de te le renvoyer.</p>
+  </section>
+
+  <p class="updated"><a href="/" data-fr="Découvrir Basal" data-en="Discover Basal">Découvrir Basal</a></p>
+</div>
+
+<script>
+(function () {
+  var langs = (navigator.languages || [navigator.language || 'fr']).map(function (l) { return String(l).toLowerCase(); });
+  var L = langs.length && langs[0].indexOf('en') === 0 ? 'en' : 'fr';
+  document.documentElement.lang = L;
+  document.querySelectorAll('[data-fr]').forEach(function (el) { el.textContent = el.getAttribute('data-' + L); });
+
+  function invalide() {
+    document.getElementById('recette').classList.remove('actif');
+    document.getElementById('invalide').classList.add('actif');
+  }
+  var m = /(?:^#|&)r=([^&]*)/.exec(location.hash);
+  if (!m) return invalide();
+  var recette;
+  try { recette = JSON.parse(decodeURIComponent(m[1])); } catch (e) { return invalide(); }
+  if (!recette || recette.kind !== 'recipe' || typeof recette.name !== 'string' || !Array.isArray(recette.ingredients)) return invalide();
+
+  // textContent seulement : rien de ce qui vient du lien n'est interprété comme du HTML.
+  document.getElementById('nom').textContent = recette.name;
+  var n = Number(recette.servings) || 1;
+  document.getElementById('portions').textContent = L === 'en' ? n + (n > 1 ? ' servings' : ' serving') : n + (n > 1 ? ' portions' : ' portion');
+  var ul = document.getElementById('ingredients');
+  recette.ingredients.slice(0, 60).forEach(function (i) {
+    var li = document.createElement('li');
+    li.textContent = String(i.name) + ' · ' + Math.round(Number(i.grams) || 0) + ' g';
+    ul.appendChild(li);
+  });
+  document.title = (L === 'en' ? 'A recipe for you' : 'Une recette pour toi') + ' — Basal';
+  // L'app revalide tout (validatePayload) : la page ne fait que passer la valeur telle quelle.
+  document.getElementById('ouvrir').href = 'basal://recette-partagee?r=' + m[1];
+})();
+</script>
