@@ -38,7 +38,17 @@
   var m = /(?:^#|&)r=([^&]*)/.exec(location.hash);
   if (!m) return invalide();
   var recette;
-  try { recette = JSON.parse(decodeURIComponent(m[1])); } catch (e) { return invalide(); }
+  // Format compact (2026-11-27) : tableau en base64url [schéma, nom, portions, étapes, ingrédients…],
+  // ingrédient = [nom, grammes, …]. Les anciens liens sont du JSON encodé.
+  try {
+    if (/^[A-Za-z0-9_-]+$/.test(m[1])) {
+      var bin = atob(m[1].replace(/-/g, '+').replace(/_/g, '/'));
+      var a = JSON.parse(decodeURIComponent(Array.prototype.map.call(bin, function (c) { return '%' + ('0' + c.charCodeAt(0).toString(16)).slice(-2); }).join('')));
+      recette = Array.isArray(a) && Array.isArray(a[4]) ? { kind: 'recipe', name: a[1], servings: a[2], ingredients: a[4].map(function (i) { return { name: i[0], grams: i[1] }; }) } : null;
+    } else {
+      recette = JSON.parse(decodeURIComponent(m[1]));
+    }
+  } catch (e) { return invalide(); }
   if (!recette || recette.kind !== 'recipe' || typeof recette.name !== 'string' || !Array.isArray(recette.ingredients)) return invalide();
 
   // textContent seulement : rien de ce qui vient du lien n'est interprété comme du HTML.
